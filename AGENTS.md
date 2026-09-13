@@ -14,7 +14,7 @@
 - Keep business logic out of React components. Domain engines are deterministic, side-effect-free TypeScript.
 - Access IndexedDB through repository classes. Schema changes require a Dexie migration and migration tests.
 - Use CSS Modules and the shared design tokens. Preserve keyboard operation, visible focus, reduced-motion support, safe-area padding, and 44px touch targets.
-- Keep GitHub Pages compatibility: hash routing and the `/muscle-pizza/` base path.
+- Keep GitHub Pages compatibility: hash routing and the `/Repwise/` base path.
 
 ## Working rules
 

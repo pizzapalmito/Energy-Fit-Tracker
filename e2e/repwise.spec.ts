@@ -9,7 +9,7 @@ test.describe('Repwise core offline workflow', () => {
     await page.getByRole('button', { name: /Barbell Bench Press - Medium Grip/ }).click()
     await expect(page.getByRole('dialog', { name: 'Barbell Bench Press - Medium Grip' })).toBeVisible()
     const demonstration = page.getByRole('dialog', { name: 'Barbell Bench Press - Medium Grip' }).getByRole('img')
-    await expect(demonstration).toHaveAttribute('src', /\/muscle-pizza\/catalog\/media\/barbell-bench-press-medium-grip\/start\.webp$/)
+    await expect(demonstration).toHaveAttribute('src', /\/Repwise\/catalog\/media\/barbell-bench-press-medium-grip\/start\.webp$/)
     await expect.poll(() => demonstration.evaluate((image: HTMLImageElement) => image.complete && image.naturalWidth > 0)).toBe(true)
     await expect(page.getByRole('heading', { name: 'Instructions' })).toBeVisible()
   })

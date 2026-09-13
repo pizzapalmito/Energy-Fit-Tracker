@@ -13,7 +13,7 @@ Repwise is a static, single-user PWA. React renders the interface, Dexie owns lo
 
 ## Deployment
 
-The application uses hash routing and a Vite base of `/muscle-pizza/`. GitHub Pages serves the generated static bundle and service worker. A new worker waits for user approval and must not reload an active workout.
+The application uses hash routing and a Vite base of `/Repwise/`. GitHub Pages serves the generated static bundle and service worker. A new worker waits for user approval and must not reload an active workout.
 
 ## Release evidence
 

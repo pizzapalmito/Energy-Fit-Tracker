@@ -13,7 +13,7 @@ npm run validate
 npm run test:e2e
 ```
 
-The production build uses `/muscle-pizza/` as its GitHub Pages base path. Override `BASE_PATH` only for local or custom-domain deployments.
+The production build uses `/Repwise/` as its GitHub Pages base path. Override `BASE_PATH` only for local or custom-domain deployments.
 
 ## Data and privacy
 
