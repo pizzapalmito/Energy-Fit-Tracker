@@ -1,5 +1,6 @@
 import type { EntityId, Exercise, ISODateTime, TrainingGoal } from '../domain/models'
 import type { GeneratedWorkout, GeneratorInput, WorkoutSplit } from '../domain/contracts'
+import type { SupportedLocale } from '../i18n/locale'
 
 /**
  * Persistence-layer entities that are not part of the senior-owned domain
@@ -31,6 +32,8 @@ export interface AppSettings {
   trainingGoal?: TrainingGoal
   preferredSplit?: WorkoutSplit
   defaultDurationMinutes?: number
+  /** Interface language. Absent/unsupported values fall back to English (see `normalizeLocale`). */
+  locale?: SupportedLocale
 }
 
 /** A reusable, user-facing workout plan (hand-built or saved from a generated plan) that can be repeated across sessions. */

@@ -5,6 +5,7 @@ import type { RepwiseDatabase } from '../../data/db'
 import { DexieExerciseRepository } from '../../data/repositories/exerciseRepository'
 import { DexieMuscleRepository } from '../../data/repositories/muscleRepository'
 import { useCatalogReadiness } from '../../catalog/useCatalogReadiness'
+import { useI18n } from '../../i18n/I18nContext'
 
 export type ExerciseCatalogState =
   | { status: 'loading' }
@@ -18,6 +19,7 @@ export type ExerciseCatalogState =
  * reload. Only reports a blocking state when there is no usable data at all.
  */
 export function useExerciseCatalog(db: RepwiseDatabase): ExerciseCatalogState {
+  const { t } = useI18n()
   const readiness = useCatalogReadiness()
   const [dexieState, setDexieState] = useState<{ loaded: boolean; exercises: Exercise[]; muscles: Muscle[]; error?: string }>({
     loaded: false,
@@ -56,6 +58,6 @@ export function useExerciseCatalog(db: RepwiseDatabase): ExerciseCatalogState {
     status: 'ready',
     exercises: dexieState.exercises,
     muscles: dexieState.muscles,
-    catalogNotice: readiness.status === 'error' ? `Catalog update failed (${readiness.message}). Showing previously loaded exercises.` : undefined,
+    catalogNotice: readiness.status === 'error' ? t('exercises.catalogNotice', { message: readiness.message }) : undefined,
   }
 }

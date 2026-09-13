@@ -58,7 +58,49 @@ describe('RepwiseDatabase persistence', () => {
     old.close()
     const upgraded = createDatabase(name)
     await upgraded.open()
-    expect(await upgraded.settings.get('default')).toMatchObject({ unit: 'lb', trainingGoal: 'hypertrophy', preferredSplit: 'full_body', defaultDurationMinutes: 60 })
+    expect(await upgraded.settings.get('default')).toMatchObject({ unit: 'lb', trainingGoal: 'hypertrophy', preferredSplit: 'full_body', defaultDurationMinutes: 60, locale: 'en' })
+    upgraded.close()
+    await upgraded.delete()
+  })
+
+  it('defaults a pre-localization settings row (no locale field) to English on upgrade', async () => {
+    const name = `repwise-locale-migration-${testDbCounter}`
+    const old = new Dexie(name)
+    old.version(2).stores({ exercises: 'id', muscles: 'id', workouts: 'id,status,date,[status+date]', workoutExercises: 'id,workoutId,exerciseId,order,[workoutId+order]', sets: 'id,workoutExerciseId,setNumber,completed,[workoutExerciseId+setNumber]', recoveryFeedback: 'id,muscleId,date,[muscleId+date]', equipmentProfiles: 'id,isDefault', settings: 'id', templates: 'id,createdAt,updatedAt', generatedPlans: 'id,createdAt', metadata: 'key' })
+    await old.open()
+    await old.table('settings').put({ id: 'default', unit: 'kg', trainingGoal: 'strength', preferredSplit: 'upper', defaultDurationMinutes: 45 })
+    old.close()
+    const upgraded = createDatabase(name)
+    await upgraded.open()
+    expect(await upgraded.settings.get('default')).toMatchObject({ unit: 'kg', locale: 'en' })
+    upgraded.close()
+    await upgraded.delete()
+  })
+
+  it('normalizes an unsupported persisted locale to English on upgrade', async () => {
+    const name = `repwise-locale-invalid-${testDbCounter}`
+    const old = new Dexie(name)
+    old.version(2).stores({ exercises: 'id', muscles: 'id', workouts: 'id,status,date,[status+date]', workoutExercises: 'id,workoutId,exerciseId,order,[workoutId+order]', sets: 'id,workoutExerciseId,setNumber,completed,[workoutExerciseId+setNumber]', recoveryFeedback: 'id,muscleId,date,[muscleId+date]', equipmentProfiles: 'id,isDefault', settings: 'id', templates: 'id,createdAt,updatedAt', generatedPlans: 'id,createdAt', metadata: 'key' })
+    await old.open()
+    await old.table('settings').put({ id: 'default', unit: 'kg', locale: 'de' })
+    old.close()
+    const upgraded = createDatabase(name)
+    await upgraded.open()
+    expect(await upgraded.settings.get('default')).toMatchObject({ unit: 'kg', locale: 'en' })
+    upgraded.close()
+    await upgraded.delete()
+  })
+
+  it('preserves a valid persisted locale across the upgrade', async () => {
+    const name = `repwise-locale-valid-${testDbCounter}`
+    const old = new Dexie(name)
+    old.version(2).stores({ exercises: 'id', muscles: 'id', workouts: 'id,status,date,[status+date]', workoutExercises: 'id,workoutId,exerciseId,order,[workoutId+order]', sets: 'id,workoutExerciseId,setNumber,completed,[workoutExerciseId+setNumber]', recoveryFeedback: 'id,muscleId,date,[muscleId+date]', equipmentProfiles: 'id,isDefault', settings: 'id', templates: 'id,createdAt,updatedAt', generatedPlans: 'id,createdAt', metadata: 'key' })
+    await old.open()
+    await old.table('settings').put({ id: 'default', unit: 'kg', locale: 'fr' })
+    old.close()
+    const upgraded = createDatabase(name)
+    await upgraded.open()
+    expect(await upgraded.settings.get('default')).toMatchObject({ unit: 'kg', locale: 'fr' })
     upgraded.close()
     await upgraded.delete()
   })

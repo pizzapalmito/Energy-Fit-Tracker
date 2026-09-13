@@ -1,5 +1,6 @@
 import { useEffect, useId, useRef, useState } from 'react'
 import type { WorkoutSet } from '../../domain/models'
+import { useI18n } from '../../i18n/I18nContext'
 import type { WeightUnit } from './units'
 import { kgToDisplayWeight, displayWeightToKg } from './units'
 import type { SetFieldErrors, SetFieldInput } from './validation'
@@ -72,6 +73,7 @@ export interface SetRowProps {
 
 /** One-handed gym logging row. Extended set facts remain preserved in the model but out of the primary UI. */
 export function SetRow({ set, index, unit, previous, onCommitField, onToggleComplete }: SetRowProps) {
+  const { t } = useI18n()
   const baseId = useId()
   const [errors, setErrors] = useState<SetFieldErrors>({})
   const [saveError, setSaveError] = useState<string>()
@@ -88,7 +90,7 @@ export function SetRow({ set, index, unit, previous, onCommitField, onToggleComp
       setErrors((prev) => ({ ...prev, [field]: fieldErrors[field] }))
       return !fieldErrors[field]
     }).catch(() => {
-      setSaveError('Could not save this set. Try again before completing it.')
+      setSaveError(t('setRow.saveError'))
       return false
     })
     trackWrite(write)
@@ -100,18 +102,18 @@ export function SetRow({ set, index, unit, previous, onCommitField, onToggleComp
     try {
       await onToggleComplete()
     } catch {
-      setSaveError('Could not update this set. Please try again.')
+      setSaveError(t('setRow.updateError'))
     }
   }
 
   return (
     <li className={styles.row} data-completed={set.completed}>
-      <span className={styles.setNumber} aria-label={`Set ${index + 1}`}>{index + 1}</span>
+      <span className={styles.setNumber} aria-label={t('setRow.setAriaLabel', { index: index + 1 })}>{index + 1}</span>
       <span className={styles.previous}>{previous}</span>
       <div className={styles.weightField}>
         <NumberField
           id={`${baseId}-load`}
-          label={`Load (${unit})`}
+          label={t('setRow.loadLabel', { unit })}
           value={set.loadKg === undefined ? undefined : kgToDisplayWeight(set.loadKg, unit)}
           error={errors.loadKg}
           min={0}
@@ -119,9 +121,9 @@ export function SetRow({ set, index, unit, previous, onCommitField, onToggleComp
         />
       </div>
       <div className={styles.repsField}>
-        <NumberField id={`${baseId}-reps`} label="Reps" value={set.reps} error={errors.reps} min={0} inputMode="numeric" onCommit={(value) => commitAndTrack('reps', value)} />
+        <NumberField id={`${baseId}-reps`} label={t('setRow.repsLabel')} value={set.reps} error={errors.reps} min={0} inputMode="numeric" onCommit={(value) => commitAndTrack('reps', value)} />
       </div>
-      <button type="button" className={styles.completeButton} aria-label={set.completed ? 'Completed' : 'Mark complete'} aria-pressed={set.completed} onClick={() => void toggleComplete()}>{set.completed ? '✓' : '○'}</button>
+      <button type="button" className={styles.completeButton} aria-label={set.completed ? t('setRow.completed') : t('setRow.markComplete')} aria-pressed={set.completed} onClick={() => void toggleComplete()}>{set.completed ? '✓' : '○'}</button>
       {saveError && <p className={styles.fieldError} role="alert">{saveError}</p>}
     </li>
   )

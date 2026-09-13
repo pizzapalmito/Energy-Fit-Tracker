@@ -5,6 +5,9 @@ import type { Exercise, WorkoutExercise, WorkoutSet } from '../../domain/models'
 import type { RepwiseDatabase } from '../../data/db'
 import { useLiveQuery } from '../../data/useLiveQuery'
 import { WeightedSubstitutionEngine } from '../../engines/substitution/substitutionEngine'
+import { useI18n } from '../../i18n/I18nContext'
+import type { Translator } from '../../i18n/enumLabels'
+import { formatSetFieldError } from '../../i18n/validationPresentation'
 import { usePreviousPerformance } from './usePreviousPerformance'
 import { formatPreviousSet } from './previousPerformance'
 import type { WeightUnit } from './units'
@@ -23,15 +26,16 @@ export interface WorkoutExerciseCardProps {
   onSetCompleted: (restSeconds: number, workoutExerciseId: string) => void
 }
 
-function conciseReason(source: Exercise, candidate: Exercise): string {
+function conciseReason(t: Translator, source: Exercise, candidate: Exercise): string {
   const sourcePrimary = new Set(source.muscles.filter((muscle) => muscle.weight >= 1).map((muscle) => muscle.muscleId))
-  if (candidate.muscles.some((muscle) => muscle.weight >= 1 && sourcePrimary.has(muscle.muscleId))) return 'Same primary muscle'
-  if (candidate.movementPattern === source.movementPattern) return 'Same movement'
-  if (candidate.equipment.some((equipment) => source.equipment.includes(equipment))) return 'Available equipment'
-  return 'Similar training profile'
+  if (candidate.muscles.some((muscle) => muscle.weight >= 1 && sourcePrimary.has(muscle.muscleId))) return t('workoutExerciseCard.reasonSamePrimaryMuscle')
+  if (candidate.movementPattern === source.movementPattern) return t('workoutExerciseCard.reasonSameMovement')
+  if (candidate.equipment.some((equipment) => source.equipment.includes(equipment))) return t('workoutExerciseCard.reasonAvailableEquipment')
+  return t('workoutExerciseCard.reasonSimilarProfile')
 }
 
 export function WorkoutExerciseCard({ db, workoutExercise, sets, unit, onSetCompleted }: WorkoutExerciseCardProps) {
+  const { t } = useI18n()
   const previous = usePreviousPerformance(db, workoutExercise.exerciseId, workoutExercise.workoutId)
   const exercise = useLiveQuery(() => db.exercises.get(workoutExercise.exerciseId), [db, workoutExercise.exerciseId])
   const [confirmRemoveOpen, setConfirmRemoveOpen] = useState(false)
@@ -55,7 +59,7 @@ export function WorkoutExerciseCard({ db, workoutExercise, sets, unit, onSetComp
 
   async function handleCommitField(set: WorkoutSet, field: keyof SetFieldInput, value: number | undefined): Promise<SetFieldErrors> {
     const errors = validateSetFields({ [field]: value })
-    if (errors[field]) return errors
+    if (errors[field]) return { [field]: formatSetFieldError(t, errors[field]) }
     await updateSetFields(db, set.id, { [field]: value })
     return {}
   }
@@ -95,27 +99,27 @@ export function WorkoutExerciseCard({ db, workoutExercise, sets, unit, onSetComp
 
   return <article className={styles.card}>
     <header className={styles.header}>
-      <button type="button" className={styles.thumbnailButton} onClick={() => setDemoOpen(true)} disabled={!sourceExercise} aria-label={`View ${workoutExercise.snapshot.name} demonstration`}>
+      <button type="button" className={styles.thumbnailButton} onClick={() => setDemoOpen(true)} disabled={!sourceExercise} aria-label={t('workoutExerciseCard.viewDemoAriaLabel', { name: workoutExercise.snapshot.name })}>
         <CatalogImage relativePath={sourceExercise?.media[0]} alt="" fallbackClassName={styles.thumbnailFallback} />
       </button>
       <h3>{workoutExercise.snapshot.name}</h3>
       <button type="button" className={styles.substituteButton} onClick={() => setSubstitutionsOpen((open) => !open)} disabled={substitutionLocked}>
-        ⇄ Substitute
+        {t('workoutExerciseCard.substitute')}
       </button>
     </header>
 
-    {substitutionLocked && <p className={styles.locked}>Substitution unavailable after a set is completed.</p>}
-    {substitutionsOpen && substitutions.status === 'loading' && <p role="status" className={styles.compactStatus}>Finding substitutes…</p>}
-    {substitutionsOpen && substitutions.status === 'error' && <p role="alert" className={styles.compactStatus}>Could not load substitutes.</p>}
+    {substitutionLocked && <p className={styles.locked}>{t('workoutExerciseCard.substitutionLocked')}</p>}
+    {substitutionsOpen && substitutions.status === 'loading' && <p role="status" className={styles.compactStatus}>{t('workoutExerciseCard.findingSubstitutes')}</p>}
+    {substitutionsOpen && substitutions.status === 'error' && <p role="alert" className={styles.compactStatus}>{t('workoutExerciseCard.substitutesLoadError')}</p>}
     {substitutionsOpen && substitutions.status === 'ready' && sourceExercise && <ol className={styles.substitutions}>
       {substitutions.value.map((candidate) => <li key={candidate.exercise.id}>
         <CatalogImage relativePath={candidate.exercise.media[0]} alt="" fallbackClassName={styles.candidateFallback} />
-        <div><strong>{candidate.exercise.name}</strong><span>{Math.round(candidate.score)}% match · {conciseReason(sourceExercise, candidate.exercise)}</span></div>
-        <button type="button" aria-label={`Use ${candidate.exercise.name}`} onClick={() => void substitute(candidate.exercise.id)}>Use</button>
+        <div><strong>{candidate.exercise.name}</strong><span>{t('workoutExerciseCard.matchPercent', { score: Math.round(candidate.score), reason: conciseReason(t, sourceExercise, candidate.exercise) })}</span></div>
+        <button type="button" aria-label={t('workoutExerciseCard.useAriaLabel', { name: candidate.exercise.name })} onClick={() => void substitute(candidate.exercise.id)}>{t('workoutExerciseCard.use')}</button>
       </li>)}
     </ol>}
 
-    <div className={styles.columnHeaders} aria-hidden="true"><span>Set</span><span>Previous</span><span>Weight<br /><small>{unit}</small></span><span>Reps</span><span>✓</span></div>
+    <div className={styles.columnHeaders} aria-hidden="true"><span>{t('workoutExerciseCard.setColumn')}</span><span>{t('workoutExerciseCard.previousColumn')}</span><span>{t('workoutExerciseCard.weightColumn')}<br /><small>{unit}</small></span><span>{t('workoutExerciseCard.repsColumn')}</span><span>{t('workoutExerciseCard.completeColumn')}</span></div>
     <ul className={styles.setList}>
       {sets.map((set, index) => <SetRow
         key={set.id}
@@ -128,14 +132,14 @@ export function WorkoutExerciseCard({ db, workoutExercise, sets, unit, onSetComp
       />)}
     </ul>
 
-    <button type="button" className={styles.addSetButton} onClick={() => void addSet(db, workoutExercise.id, 'working', sets)}>+ Add Set</button>
-    <button type="button" className={styles.removeExerciseButton} onClick={() => setConfirmRemoveOpen(true)}>Remove exercise</button>
+    <button type="button" className={styles.addSetButton} onClick={() => void addSet(db, workoutExercise.id, 'working', sets)}>{t('workoutExerciseCard.addSet')}</button>
+    <button type="button" className={styles.removeExerciseButton} onClick={() => setConfirmRemoveOpen(true)}>{t('workoutExerciseCard.removeExercise')}</button>
 
     {demoOpen && sourceExercise && <ExerciseDemoDialog exercise={sourceExercise} onClose={() => setDemoOpen(false)} />}
     {confirmRemoveOpen && <ConfirmDialog
-      title={`Remove ${workoutExercise.snapshot.name}?`}
-      description="This removes all recorded sets for this exercise from the workout. This cannot be undone."
-      confirmLabel="Remove"
+      title={t('workoutExerciseCard.removeConfirmTitle', { name: workoutExercise.snapshot.name })}
+      description={t('workoutExerciseCard.removeConfirmDescription')}
+      confirmLabel={t('workoutExerciseCard.removeConfirmConfirm')}
       destructive
       onConfirm={() => { setConfirmRemoveOpen(false); void removeWorkoutExercise(db, workoutExercise.id) }}
       onCancel={() => setConfirmRemoveOpen(false)}
