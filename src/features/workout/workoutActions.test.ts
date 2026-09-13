@@ -1,5 +1,6 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 import type { Exercise } from '../../domain/models'
+import type { WorkoutTemplate } from '../../data/types'
 import { createDatabase, type RepwiseDatabase } from '../../data/db'
 import { ActiveWorkoutConflictError, DexieWorkoutRepository } from '../../data/repositories/workoutRepository'
 import { DexieWorkoutExerciseRepository } from '../../data/repositories/workoutExerciseRepository'
@@ -19,6 +20,7 @@ import {
   renameWorkout,
   saveSet,
   startWorkout,
+  startWorkoutTemplate,
   uncompleteSet,
   updateSetFields,
 } from './workoutActions'
@@ -114,6 +116,105 @@ describe('addExerciseToWorkout', () => {
     expect(second.order).toBe(1)
     const all = await new DexieWorkoutExerciseRepository(db).listByWorkout(workout.id)
     expect(all).toHaveLength(2)
+  })
+})
+
+describe('startWorkoutTemplate', () => {
+  it('initializes rep-based sets to the lower rep bound and duration-based sets to the lower duration bound', async () => {
+    await db.exercises.bulkPut([
+      exercise({ id: 'leverage-shoulder-press', name: 'Leverage Shoulder Press' }),
+      exercise({ id: 'farmers-walk', name: "Farmer's Walk" }),
+    ])
+    const template: WorkoutTemplate = {
+      id: 'w1-day-d',
+      name: 'Week 1 Day D — Shoulders + Glutes Emphasis',
+      createdAt: '2026-01-01T00:00:00.000Z',
+      updatedAt: '2026-01-01T00:00:00.000Z',
+      exercises: [
+        { exerciseId: 'leverage-shoulder-press', displayName: 'Shoulder Press Machine', sets: 3, repRange: [8, 12], restSeconds: 90 },
+        { exerciseId: 'farmers-walk', displayName: 'Farmer Carry', sets: 2, durationRangeSeconds: [30, 45], restSeconds: 90 },
+      ],
+    }
+
+    const workout = await startWorkoutTemplate(db, template)
+
+    const workoutExercises = await new DexieWorkoutExerciseRepository(db).listByWorkout(workout.id)
+    const shoulderPress = workoutExercises.find((we) => we.exerciseId === 'leverage-shoulder-press')!
+    const farmerCarry = workoutExercises.find((we) => we.exerciseId === 'farmers-walk')!
+
+    const shoulderPressSets = await new DexieSetRepository(db).listByWorkoutExercise(shoulderPress.id)
+    expect(shoulderPressSets).toHaveLength(3)
+    expect(shoulderPressSets.every((s) => s.reps === 8)).toBe(true)
+    expect(shoulderPressSets.every((s) => s.durationSeconds === undefined)).toBe(true)
+
+    const farmerCarrySets = await new DexieSetRepository(db).listByWorkoutExercise(farmerCarry.id)
+    expect(farmerCarrySets).toHaveLength(2)
+    expect(farmerCarrySets.every((s) => s.durationSeconds === 30)).toBe(true)
+    expect(farmerCarrySets.every((s) => s.reps === undefined)).toBe(true)
+  })
+
+  it('throws when a template references an exerciseId that is not in the catalog and has no bundled custom definition', async () => {
+    const template: WorkoutTemplate = {
+      id: 'missing',
+      name: 'Missing',
+      createdAt: '2026-01-01T00:00:00.000Z',
+      updatedAt: '2026-01-01T00:00:00.000Z',
+      exercises: [{ exerciseId: 'does-not-exist', sets: 2, repRange: [8, 12], restSeconds: 90 }],
+    }
+    await expect(startWorkoutTemplate(db, template)).rejects.toThrow('does-not-exist')
+  })
+
+  it('resolves a bundled custom exercise not yet in the catalog, persisting its definition in the same transaction', async () => {
+    const customExercise = exercise({
+      id: 'repwise-tibialis-raise',
+      name: 'Tibialis Raise',
+      category: 'strength',
+      movementPattern: 'pull',
+      mechanic: 'isolation',
+      equipment: ['bodyweight'],
+      muscles: [{ muscleId: 'calves', weight: 1 }],
+      source: 'custom',
+      media: [],
+    })
+    const template: WorkoutTemplate = {
+      id: 'w1-day-b',
+      name: 'Week 1 Day B — Back + Glutes Emphasis',
+      createdAt: '2026-01-01T00:00:00.000Z',
+      updatedAt: '2026-01-01T00:00:00.000Z',
+      exercises: [{ exerciseId: 'repwise-tibialis-raise', displayName: 'Tibialis Raise', sets: 2, repRange: [15, 25], restSeconds: 90 }],
+      customExercises: [customExercise],
+    }
+
+    expect(await db.exercises.get('repwise-tibialis-raise')).toBeUndefined()
+
+    const workout = await startWorkoutTemplate(db, template)
+
+    const persisted = await db.exercises.get('repwise-tibialis-raise')
+    expect(persisted).toEqual(customExercise)
+
+    const workoutExercises = await new DexieWorkoutExerciseRepository(db).listByWorkout(workout.id)
+    expect(workoutExercises[0]?.snapshot).toMatchObject({ name: 'Tibialis Raise', equipment: ['bodyweight'], muscles: [{ muscleId: 'calves', weight: 1 }] })
+    const sets = await new DexieSetRepository(db).listByWorkoutExercise(workoutExercises[0]!.id)
+    expect(sets.map((s) => s.reps)).toEqual([15, 15])
+  })
+
+  it('never overwrites an existing exercise record when a template bundles a custom definition for the same id', async () => {
+    const existing = exercise({ id: 'repwise-tibialis-raise', name: 'Original Name', defaultRestSeconds: 45 })
+    await db.exercises.put(existing)
+
+    const conflictingCustom = exercise({ id: 'repwise-tibialis-raise', name: 'Different Bundled Definition', defaultRestSeconds: 90 })
+    const template: WorkoutTemplate = {
+      id: 'w1-day-b',
+      name: 'Week 1 Day B — Back + Glutes Emphasis',
+      createdAt: '2026-01-01T00:00:00.000Z',
+      updatedAt: '2026-01-01T00:00:00.000Z',
+      exercises: [{ exerciseId: 'repwise-tibialis-raise', displayName: 'Tibialis Raise', sets: 2, repRange: [15, 25], restSeconds: 90 }],
+      customExercises: [conflictingCustom],
+    }
+
+    await startWorkoutTemplate(db, template)
+
+    expect(await db.exercises.get('repwise-tibialis-raise')).toEqual(existing)
   })
 })
 

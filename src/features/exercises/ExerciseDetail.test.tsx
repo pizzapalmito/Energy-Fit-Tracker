@@ -1,5 +1,5 @@
 import { describe, expect, it, vi } from 'vitest'
-import { render, screen } from '@testing-library/react'
+import { fireEvent, render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { ExerciseDetail } from './ExerciseDetail'
 import type { Exercise } from '../../domain/models'
@@ -72,5 +72,11 @@ describe('ExerciseDetail', () => {
   it('omits the media toggle when only one demonstration frame is available', () => {
     render(<ExerciseDetail exercise={{ ...exercise, media: ['media/squat/start.webp'] }} muscles={muscles} onClose={() => {}} />)
     expect(screen.queryByRole('button', { name: 'End' })).not.toBeInTheDocument()
+  })
+
+  it('shows a clean fallback instead of a broken image', () => {
+    render(<ExerciseDetail exercise={exercise} muscles={muscles} onClose={() => {}} />)
+    fireEvent.error(screen.getByRole('img', { name: /starting position/ }))
+    expect(screen.getByRole('img', { name: /starting position unavailable/ })).toHaveTextContent('No image')
   })
 })

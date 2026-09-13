@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import type { Exercise } from '../../domain/models'
 import type { Muscle } from '../../data/types'
-import { catalogAssetUrl } from '../../catalog/mediaUrl'
+import { CatalogImage } from '../../catalog/CatalogImage'
 import { PRIMARY_WEIGHT_THRESHOLD } from '../../engines/shared/muscleContribution'
 import styles from './ExerciseDetail.module.css'
 
@@ -38,9 +38,8 @@ export function ExerciseDetail({ exercise, muscles, onClose }: { exercise: Exerc
           </button>
         </div>
 
-        {activeMedia && (
-          <figure className={styles.media}>
-            <img src={catalogAssetUrl(activeMedia)} alt={`${exercise.name} — ${frame === 'end' ? 'ending' : 'starting'} position`} loading="lazy" />
+        <figure className={styles.media}>
+            <CatalogImage relativePath={activeMedia} alt={`${exercise.name} — ${frame === 'end' ? 'ending' : 'starting'} position`} fallbackClassName={styles.mediaFallback} />
             {hasBothFrames && (
               <figcaption className={styles.mediaToggle} role="group" aria-label="Demonstration frame">
                 <button type="button" aria-pressed={frame === 'start'} onClick={() => setFrame('start')}>
@@ -52,7 +51,6 @@ export function ExerciseDetail({ exercise, muscles, onClose }: { exercise: Exerc
               </figcaption>
             )}
           </figure>
-        )}
 
         <dl className={styles.factList}>
           <div>

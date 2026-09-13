@@ -4,7 +4,7 @@ import { createDatabase, type RepwiseDatabase } from '../../data/db'
 import { DexieSetRepository } from '../../data/repositories/setRepository'
 import { DexieWorkoutExerciseRepository } from '../../data/repositories/workoutExerciseRepository'
 import { DexieWorkoutRepository } from '../../data/repositories/workoutRepository'
-import { findPreviousPerformance, summarizeWorkingSets } from './previousPerformance'
+import { findPreviousPerformance, formatPreviousSet, summarizeWorkingSets } from './previousPerformance'
 
 let db: RepwiseDatabase
 let counter = 0
@@ -62,6 +62,19 @@ describe('findPreviousPerformance', () => {
     expect(result?.workout.id).toBe('w-new')
     expect(result?.sets).toEqual([newSet])
   })
+
+  it('skips a newer occurrence that has no completed sets', async () => {
+    await new DexieWorkoutRepository(db).saveWorkout(workout({ id: 'w-old', date: '2026-01-01' }))
+    await new DexieWorkoutRepository(db).saveWorkout(workout({ id: 'w-new', date: '2026-01-10' }))
+    const oldExercise = workoutExercise({ id: 'we-old', workoutId: 'w-old' })
+    const newExercise = workoutExercise({ id: 'we-new', workoutId: 'w-new' })
+    await new DexieWorkoutExerciseRepository(db).save(oldExercise)
+    await new DexieWorkoutExerciseRepository(db).save(newExercise)
+    await new DexieSetRepository(db).save({ id: 's-old', workoutExerciseId: oldExercise.id, setNumber: 1, type: 'working', loadKg: 50, reps: 10, completed: true })
+    await new DexieSetRepository(db).save({ id: 's-new', workoutExerciseId: newExercise.id, setNumber: 1, type: 'working', loadKg: 60, reps: 8, completed: false })
+
+    expect((await findPreviousPerformance(db, 'bench-press', 'w-current'))?.workout.id).toBe('w-old')
+  })
 })
 
 describe('summarizeWorkingSets', () => {
@@ -76,5 +89,16 @@ describe('summarizeWorkingSets', () => {
       { id: 's-3', workoutExerciseId: 'we-1', setNumber: 3, type: 'working', loadKg: 60, reps: 6, completed: false },
     ]
     expect(summarizeWorkingSets(sets, (kg) => `${kg}kg`)).toBe('60kg×8')
+  })
+})
+
+describe('formatPreviousSet', () => {
+  it('uses an em dash when there is no completed historical set', () => {
+    expect(formatPreviousSet(undefined, 'kg')).toBe('—')
+  })
+
+  it('formats canonical kilograms at the selected display-unit boundary', () => {
+    const prior: WorkoutSet = { id: 'prior', workoutExerciseId: 'we', setNumber: 1, type: 'working', loadKg: 15.88, reps: 8, completed: true }
+    expect(formatPreviousSet(prior, 'lb')).toBe('35.01 lb × 8')
   })
 })

@@ -9,7 +9,7 @@ const set: WorkoutSet = { id: 'set-1', workoutExerciseId: 'we-1', setNumber: 1, 
 describe('SetRow persistence ordering', () => {
   it('preserves a focused draft across live-query prop refreshes', () => {
     const onCommitField = vi.fn(() => Promise.resolve({}))
-    const props = { index: 0, unit: 'kg' as const, onCommitField, onChangeType: async () => {}, onToggleComplete: async () => {}, onRemove: () => {} }
+    const props = { index: 0, unit: 'kg' as const, previous: '60 kg × 8', onCommitField, onToggleComplete: async () => {} }
     const { rerender } = render(<SetRow {...props} set={set} />)
 
     const load = screen.getByLabelText('Load (kg)')
@@ -26,7 +26,7 @@ describe('SetRow persistence ordering', () => {
     let resolveCommit!: (errors: SetFieldErrors) => void
     const onCommitField = vi.fn(() => new Promise<SetFieldErrors>((resolve) => { resolveCommit = resolve }))
     const onToggleComplete = vi.fn(async () => {})
-    render(<SetRow set={set} index={0} unit="kg" onCommitField={onCommitField} onChangeType={async () => {}} onToggleComplete={onToggleComplete} onRemove={() => {}} />)
+    render(<SetRow set={set} index={0} unit="kg" previous="—" onCommitField={onCommitField} onToggleComplete={onToggleComplete} />)
 
     const load = screen.getByLabelText('Load (kg)')
     fireEvent.change(load, { target: { value: '70' } })
@@ -43,7 +43,7 @@ describe('SetRow persistence ordering', () => {
     let rejectCommit!: (error: Error) => void
     const onCommitField = vi.fn(() => new Promise<SetFieldErrors>((_resolve, reject) => { rejectCommit = reject }))
     const onToggleComplete = vi.fn(async () => {})
-    render(<SetRow set={set} index={0} unit="kg" onCommitField={onCommitField} onChangeType={async () => {}} onToggleComplete={onToggleComplete} onRemove={() => {}} />)
+    render(<SetRow set={set} index={0} unit="kg" previous="—" onCommitField={onCommitField} onToggleComplete={onToggleComplete} />)
 
     const reps = screen.getByLabelText('Reps')
     fireEvent.change(reps, { target: { value: '8' } })
@@ -53,5 +53,18 @@ describe('SetRow persistence ordering', () => {
 
     expect(await screen.findByRole('alert')).toHaveTextContent('Could not save this set')
     expect(onToggleComplete).not.toHaveBeenCalled()
+  })
+
+  it('shows only the primary one-handed logging facts', () => {
+    render(<SetRow set={set} index={0} unit="kg" previous="60 kg × 8" onCommitField={() => Promise.resolve({})} onToggleComplete={() => Promise.resolve()} />)
+
+    expect(screen.getByText('60 kg × 8')).toBeVisible()
+    expect(screen.getByLabelText('Load (kg)')).toHaveAttribute('inputmode', 'decimal')
+    expect(screen.getByLabelText('Reps')).toHaveAttribute('inputmode', 'numeric')
+    expect(screen.queryByLabelText('RIR')).not.toBeInTheDocument()
+    expect(screen.queryByLabelText('RPE')).not.toBeInTheDocument()
+    expect(screen.queryByLabelText('Duration (seconds)')).not.toBeInTheDocument()
+    expect(screen.queryByLabelText('Distance (metres)')).not.toBeInTheDocument()
+    expect(screen.queryByLabelText('Set type')).not.toBeInTheDocument()
   })
 })

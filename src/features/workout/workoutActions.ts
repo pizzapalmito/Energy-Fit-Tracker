@@ -1,4 +1,5 @@
 import type { Exercise, SetType, Workout, WorkoutExercise, WorkoutSet } from '../../domain/models'
+import type { WorkoutTemplate } from '../../data/types'
 import type { RepwiseDatabase } from '../../data/db'
 import { DexieMetadataRepository } from '../../data/repositories/metadataRepository'
 import { DexieSetRepository } from '../../data/repositories/setRepository'
@@ -6,6 +7,7 @@ import { DexieWorkoutExerciseRepository } from '../../data/repositories/workoutE
 import { DexieWorkoutRepository } from '../../data/repositories/workoutRepository'
 import { CATALOG_VERSION_METADATA_KEY } from '../../catalog/seedCatalog'
 import { createId } from './id'
+import { ActiveWorkoutConflictError } from '../../data/repositories/workoutRepository'
 
 export function todayIsoDate(now: Date = new Date()): string {
   const month = String(now.getMonth() + 1).padStart(2, '0')
@@ -24,6 +26,84 @@ export async function startWorkout(db: RepwiseDatabase, name: string, now: Date 
     status: 'active',
   }
   await new DexieWorkoutRepository(db).saveWorkout(workout)
+  return workout
+}
+
+/**
+ * Atomically creates an active workout from a reusable template without creating completed history or mutating the template.
+ * Exercises the template's exerciseIds don't find in the catalog are resolved from `template.customExercises` and persisted
+ * in the same transaction (via bulkAdd, so an existing exercise with the same id is never overwritten) before the workout is built.
+ */
+export async function startWorkoutTemplate(db: RepwiseDatabase, template: WorkoutTemplate, now: Date = new Date()): Promise<Workout> {
+  const uniqueExerciseIds = [...new Set(template.exercises.map((entry) => entry.exerciseId))]
+  const customExercisesById = new Map((template.customExercises ?? []).map((exercise) => [exercise.id, exercise] as const))
+
+  const workout: Workout = {
+    id: createId('workout'),
+    date: todayIsoDate(now),
+    startTime: now.toISOString(),
+    name: template.name,
+    notes: '',
+    status: 'active',
+  }
+  const catalogVersion = (await db.metadata.get(CATALOG_VERSION_METADATA_KEY))?.value ?? 'unknown'
+
+  await db.transaction('rw', db.workouts, db.workoutExercises, db.sets, db.exercises, async () => {
+    const active = await db.workouts.where('status').equals('active').first()
+    if (active) throw new ActiveWorkoutConflictError(active.id)
+
+    const existingExercises = await db.exercises.bulkGet(uniqueExerciseIds)
+    const catalogById = new Map(existingExercises.flatMap((entry) => entry ? [[entry.id, entry] as const] : []))
+
+    const missing = uniqueExerciseIds.filter((id) => !catalogById.has(id) && !customExercisesById.has(id))
+    if (missing.length > 0) throw new Error(`Template exercises are unavailable: ${missing.join(', ')}`)
+
+    const customExercisesToPersist = uniqueExerciseIds
+      .filter((id) => !catalogById.has(id))
+      .map((id) => customExercisesById.get(id)!)
+    customExercisesToPersist.forEach((exercise) => catalogById.set(exercise.id, exercise))
+    if (customExercisesToPersist.length > 0) await db.exercises.bulkAdd(customExercisesToPersist)
+
+    const workoutExercises: WorkoutExercise[] = []
+    const sets: WorkoutSet[] = []
+    template.exercises.forEach((planned, order) => {
+      const catalogExercise = catalogById.get(planned.exerciseId)!
+      const workoutExerciseId = createId('we')
+      workoutExercises.push({
+        id: workoutExerciseId,
+        workoutId: workout.id,
+        exerciseId: catalogExercise.id,
+        order,
+        notes: '',
+        restSeconds: planned.restSeconds,
+        snapshot: {
+          name: planned.displayName ?? catalogExercise.name,
+          equipment: catalogExercise.equipment,
+          movementPattern: catalogExercise.movementPattern,
+          muscles: catalogExercise.muscles,
+          catalogVersion,
+        },
+      })
+      const plannedSets = planned.plannedSets?.length
+        ? planned.plannedSets
+        : Array.from({ length: planned.sets }, () => (
+            planned.repRange ? { reps: planned.repRange[0] } : { durationSeconds: planned.durationRangeSeconds?.[0] }
+          ))
+      plannedSets.forEach((plannedSet, index) => sets.push({
+        id: createId('set'),
+        workoutExerciseId,
+        setNumber: index + 1,
+        type: 'working',
+        completed: false,
+        ...plannedSet,
+      }))
+    })
+
+    await db.workouts.put(workout)
+    await db.workoutExercises.bulkPut(workoutExercises)
+    await db.sets.bulkPut(sets)
+  })
+
   return workout
 }
 

@@ -1,19 +1,14 @@
-.row { display: flex; flex-direction: column; gap: .6rem; padding: .75rem; border-radius: .7rem; border: 1px solid var(--line); background: var(--bg); }
-.row[data-completed="true"] { border-color: var(--success); }
-
-.topLine { display: flex; align-items: center; justify-content: space-between; gap: .5rem; flex-wrap: wrap; }
-.setLabel { font-weight: 700; color: var(--muted); font-size: .8rem; text-transform: uppercase; letter-spacing: .04em; }
-
-.typeSelect { min-height: 2.5rem; border-radius: .5rem; border: 1px solid var(--line); background: var(--surface-raised); color: var(--text); padding: 0 .5rem; font-size: .8rem; font-weight: 700; }
-
-.fields { display: grid; grid-template-columns: repeat(auto-fill, minmax(6rem, 1fr)); gap: .5rem; }
-.field { display: flex; flex-direction: column; gap: .25rem; min-width: 0; }
-.field label { font-size: .7rem; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: .04em; }
-.field input { min-height: 2.75rem; border-radius: .5rem; border: 1px solid var(--line); background: var(--surface-raised); color: var(--text); padding: 0 .6rem; width: 100%; }
+.row { display: grid; grid-template-columns: 1.7rem minmax(3.4rem, 1fr) minmax(4rem, .85fr) minmax(3.25rem, .7fr) 2.75rem; align-items: center; gap: .35rem; min-width: 0; padding: .3rem 0; border-bottom: 1px solid var(--line); }
+.row:last-child { border-bottom: 0; }
+.row[data-completed="true"] { background: color-mix(in srgb, var(--success) 8%, transparent); }
+.setNumber { text-align: center; color: var(--muted); font-weight: 800; font-variant-numeric: tabular-nums; }
+.previous { min-width: 0; overflow: hidden; color: var(--muted); font-size: .75rem; font-variant-numeric: tabular-nums; text-overflow: ellipsis; white-space: nowrap; }
+.field { display: grid; min-width: 0; }
+.field label { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+.field input { width: 100%; min-width: 0; min-height: 2.75rem; padding: 0 .35rem; border: 1px solid var(--line); border-radius: .55rem; background: var(--bg); color: var(--text); text-align: center; font-size: 1rem; font-variant-numeric: tabular-nums; }
+.field input:focus { border-color: var(--accent); outline: 2px solid var(--accent-soft); }
 .field input[aria-invalid="true"] { border-color: var(--danger); }
-.fieldError { color: var(--danger); font-size: .7rem; margin: 0; }
-
-.actions { display: flex; gap: .5rem; align-items: center; }
-.completeButton { flex: 1; min-height: 2.75rem; border-radius: .6rem; border: 1px solid var(--line); background: var(--surface-raised); color: var(--text); font-weight: 700; }
-.completeButton[aria-pressed="true"] { background: var(--success); border-color: var(--success); color: #062015; }
-.removeButton { min-height: 2.75rem; min-width: 2.75rem; border-radius: .6rem; border: 1px solid var(--line); background: var(--surface-raised); color: var(--danger); font-weight: 700; }
+.completeButton { min-width: 2.75rem; min-height: 2.75rem; padding: 0; border: 1px solid var(--line); border-radius: 50%; background: var(--surface-raised); color: var(--muted); font-size: 1.25rem; font-weight: 900; }
+.completeButton[aria-pressed="true"] { border-color: var(--success); background: var(--success); color: #062015; }
+.fieldError { grid-column: 2 / -1; margin: 0; color: var(--danger); font-size: .72rem; }
+@media (max-width: 370px) { .row { grid-template-columns: 1.5rem minmax(3rem, 1fr) minmax(3.7rem, .85fr) minmax(3rem, .7fr) 2.75rem; gap: .25rem; } .previous { font-size: .68rem; } }

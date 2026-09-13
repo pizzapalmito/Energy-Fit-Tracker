@@ -1,4 +1,4 @@
-import type { EntityId, ISODateTime, TrainingGoal } from '../domain/models'
+import type { EntityId, Exercise, ISODateTime, TrainingGoal } from '../domain/models'
 import type { GeneratedWorkout, GeneratorInput, WorkoutSplit } from '../domain/contracts'
 
 /**
@@ -36,9 +36,12 @@ export interface AppSettings {
 /** A reusable, user-facing workout plan (hand-built or saved from a generated plan) that can be repeated across sessions. */
 export interface WorkoutTemplateExercise {
   exerciseId: EntityId
+  displayName?: string
   sets: number
-  repRange: [number, number]
+  repRange?: [number, number]
+  durationRangeSeconds?: [number, number]
   restSeconds: number
+  plannedSets?: Array<{ loadKg?: number; reps?: number; durationSeconds?: number }>
 }
 
 export interface WorkoutTemplate {
@@ -47,6 +50,8 @@ export interface WorkoutTemplate {
   createdAt: ISODateTime
   updatedAt: ISODateTime
   exercises: WorkoutTemplateExercise[]
+  /** Bundled definitions for exerciseIds with no catalog equivalent; persisted on first use, never overwriting an existing exercise with the same id. */
+  customExercises?: Exercise[]
 }
 
 /** An immutable audit record of one generator run: what was asked for, and what came out. Not user-editable. */
