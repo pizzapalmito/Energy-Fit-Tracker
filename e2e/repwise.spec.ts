@@ -8,6 +8,9 @@ test.describe('Repwise core offline workflow', () => {
     await expect(page.getByText('1 of 876 exercises')).toBeVisible()
     await page.getByRole('button', { name: /Barbell Bench Press - Medium Grip/ }).click()
     await expect(page.getByRole('dialog', { name: 'Barbell Bench Press - Medium Grip' })).toBeVisible()
+    const demonstration = page.getByRole('dialog', { name: 'Barbell Bench Press - Medium Grip' }).getByRole('img')
+    await expect(demonstration).toHaveAttribute('src', /\/muscle-pizza\/catalog\/media\/barbell-bench-press-medium-grip\/start\.webp$/)
+    await expect.poll(() => demonstration.evaluate((image: HTMLImageElement) => image.complete && image.naturalWidth > 0)).toBe(true)
     await expect(page.getByRole('heading', { name: 'Instructions' })).toBeVisible()
   })
 
@@ -22,11 +25,12 @@ test.describe('Repwise core offline workflow', () => {
     await page.getByRole('button', { name: '+ Add exercise' }).click()
     await page.getByLabel('Search exercises').fill('Barbell Bench Press - Medium Grip')
     await page.getByRole('button', { name: /Barbell Bench Press - Medium Grip/ }).click()
-    await page.getByRole('button', { name: 'Add set' }).click()
+    await page.getByRole('button', { name: '+ Add Set' }).click()
+    await page.getByRole('button', { name: /View Barbell Bench Press - Medium Grip demonstration/ }).click()
+    await expect(page.getByRole('dialog', { name: 'Barbell Bench Press - Medium Grip' })).toBeVisible()
+    await page.getByRole('button', { name: 'Close demonstration' }).click()
     await page.getByLabel('Load (kg)').fill('70')
     await page.getByLabel('Reps').fill('8')
-    await page.getByLabel('RIR').fill('2')
-    await page.getByLabel('RIR').blur()
     await page.getByRole('button', { name: 'Mark complete' }).click()
     await expect(page.getByRole('group', { name: 'Rest timer' })).toBeVisible()
 
@@ -39,6 +43,23 @@ test.describe('Repwise core offline workflow', () => {
     await page.getByRole('button', { name: 'Finish workout' }).click()
     await expect(page).toHaveURL(/#\/today$/)
     await expect(page.getByText('Offline Push')).toBeVisible()
+  })
+
+  test('starts the selected built-in rotation day as an editable active workout', async ({ page }) => {
+    await page.goto('./#/today')
+    await expect(page.getByText(/Catalog:.*up to date/)).toBeVisible({ timeout: 30_000 })
+    const program = page.getByRole('region', { name: 'My Program' })
+    const dayA = program.locator('article').filter({ hasText: 'Day A' })
+    await dayA.getByRole('button', { name: 'Start' }).click()
+
+    await expect(page).toHaveURL(/#\/workout$/)
+    await expect(page.getByText('Incline Chest Press Machine', { exact: true })).toBeVisible()
+    await expect(page.getByLabel('Reps')).toHaveCount(20)
+    await expect(page.getByLabel('Reps').first()).toHaveValue('8')
+    await expect(page.getByLabel('Load (kg)').first()).toHaveValue('')
+    await page.getByRole('button', { name: 'Discard' }).click()
+    await page.getByRole('button', { name: 'Discard' }).last().click()
+    await expect(page).toHaveURL(/#\/today$/)
   })
 
   test('generates a deterministic workout and remains usable offline', async ({ page, context, browserName }) => {

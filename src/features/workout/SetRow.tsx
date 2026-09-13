@@ -1,15 +1,9 @@
 import { useEffect, useId, useRef, useState } from 'react'
-import type { SetType, WorkoutSet } from '../../domain/models'
+import type { WorkoutSet } from '../../domain/models'
 import type { WeightUnit } from './units'
 import { kgToDisplayWeight, displayWeightToKg } from './units'
 import type { SetFieldErrors, SetFieldInput } from './validation'
 import styles from './SetRow.module.css'
-
-const SET_TYPES: SetType[] = ['warmup', 'working', 'backoff', 'dropset', 'failure']
-
-function titleCase(value: string): string {
-  return value.length === 0 ? value : value[0]!.toUpperCase() + value.slice(1)
-}
 
 interface NumberFieldProps {
   id: string
@@ -18,10 +12,11 @@ interface NumberFieldProps {
   error?: string
   min?: number
   max?: number
+  inputMode?: 'decimal' | 'numeric'
   onCommit: (value: number | undefined) => void
 }
 
-function NumberField({ id, label, value, error, min, max, onCommit }: NumberFieldProps) {
+function NumberField({ id, label, value, error, min, max, inputMode = 'decimal', onCommit }: NumberFieldProps) {
   const [text, setText] = useState(value === undefined ? '' : String(value))
   const focused = useRef(false)
 
@@ -40,7 +35,7 @@ function NumberField({ id, label, value, error, min, max, onCommit }: NumberFiel
       <input
         id={id}
         type="number"
-        inputMode="decimal"
+        inputMode={inputMode}
         min={min}
         max={max}
         step="any"
@@ -70,14 +65,13 @@ export interface SetRowProps {
   set: WorkoutSet
   index: number
   unit: WeightUnit
+  previous: string
   onCommitField: (field: keyof SetFieldInput, value: number | undefined) => Promise<SetFieldErrors>
-  onChangeType: (type: SetType) => Promise<void>
   onToggleComplete: () => Promise<void>
-  onRemove: () => void
 }
 
-/** One editable set: type, load/reps/duration/distance/RIR/RPE, complete toggle, and remove. */
-export function SetRow({ set, index, unit, onCommitField, onChangeType, onToggleComplete, onRemove }: SetRowProps) {
+/** One-handed gym logging row. Extended set facts remain preserved in the model but out of the primary UI. */
+export function SetRow({ set, index, unit, previous, onCommitField, onToggleComplete }: SetRowProps) {
   const baseId = useId()
   const [errors, setErrors] = useState<SetFieldErrors>({})
   const [saveError, setSaveError] = useState<string>()
@@ -100,14 +94,6 @@ export function SetRow({ set, index, unit, onCommitField, onChangeType, onToggle
     trackWrite(write)
   }
 
-  function changeType(type: SetType) {
-    setSaveError(undefined)
-    trackWrite(onChangeType(type).then(() => true).catch(() => {
-      setSaveError('Could not save the set type. Try again before completing it.')
-      return false
-    }))
-  }
-
   async function toggleComplete() {
     const writesSucceeded = await Promise.all([...pendingWrites.current])
     if (writesSucceeded.some((succeeded) => !succeeded) || saveError || Object.values(errors).some(Boolean)) return
@@ -120,18 +106,9 @@ export function SetRow({ set, index, unit, onCommitField, onChangeType, onToggle
 
   return (
     <li className={styles.row} data-completed={set.completed}>
-      <div className={styles.topLine}>
-        <span className={styles.setLabel}>Set {index + 1}</span>
-        <select className={styles.typeSelect} aria-label={`Set ${index + 1} type`} value={set.type} onChange={(e) => changeType(e.target.value as SetType)}>
-          {SET_TYPES.map((type) => (
-            <option key={type} value={type}>
-              {titleCase(type)}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      <div className={styles.fields}>
+      <span className={styles.setNumber} aria-label={`Set ${index + 1}`}>{index + 1}</span>
+      <span className={styles.previous}>{previous}</span>
+      <div className={styles.weightField}>
         <NumberField
           id={`${baseId}-load`}
           label={`Load (${unit})`}
@@ -140,35 +117,11 @@ export function SetRow({ set, index, unit, onCommitField, onChangeType, onToggle
           min={0}
           onCommit={(value) => commitAndTrack('loadKg', value === undefined ? undefined : displayWeightToKg(value, unit))}
         />
-        <NumberField id={`${baseId}-reps`} label="Reps" value={set.reps} error={errors.reps} min={0} onCommit={(value) => commitAndTrack('reps', value)} />
-        <NumberField
-          id={`${baseId}-duration`}
-          label="Duration (s)"
-          value={set.durationSeconds}
-          error={errors.durationSeconds}
-          min={0}
-          onCommit={(value) => commitAndTrack('durationSeconds', value)}
-        />
-        <NumberField
-          id={`${baseId}-distance`}
-          label="Distance (m)"
-          value={set.distanceMeters}
-          error={errors.distanceMeters}
-          min={0}
-          onCommit={(value) => commitAndTrack('distanceMeters', value)}
-        />
-        <NumberField id={`${baseId}-rir`} label="RIR" value={set.rir} error={errors.rir} min={0} max={10} onCommit={(value) => commitAndTrack('rir', value)} />
-        <NumberField id={`${baseId}-rpe`} label="RPE" value={set.rpe} error={errors.rpe} min={1} max={10} onCommit={(value) => commitAndTrack('rpe', value)} />
       </div>
-
-      <div className={styles.actions}>
-        <button type="button" className={styles.completeButton} aria-pressed={set.completed} onClick={() => void toggleComplete()}>
-          {set.completed ? 'Completed' : 'Mark complete'}
-        </button>
-        <button type="button" className={styles.removeButton} onClick={onRemove} aria-label={`Remove set ${index + 1}`}>
-          ×
-        </button>
+      <div className={styles.repsField}>
+        <NumberField id={`${baseId}-reps`} label="Reps" value={set.reps} error={errors.reps} min={0} inputMode="numeric" onCommit={(value) => commitAndTrack('reps', value)} />
       </div>
+      <button type="button" className={styles.completeButton} aria-label={set.completed ? 'Completed' : 'Mark complete'} aria-pressed={set.completed} onClick={() => void toggleComplete()}>{set.completed ? '✓' : '○'}</button>
       {saveError && <p className={styles.fieldError} role="alert">{saveError}</p>}
     </li>
   )

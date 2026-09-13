@@ -22,9 +22,9 @@ export function WorkoutPage({ db = appDb }: { db?: RepwiseDatabase }) {
 
   const workout = data.status === 'ready' ? data.value.workout : undefined
   const exercises = data.status === 'ready' ? data.value.exercises : []
+  const completedSetCount = exercises.reduce((count, entry) => count + entry.sets.filter((set) => set.completed).length, 0)
 
   const [nameText, setNameText] = useState('')
-  const [notesText, setNotesText] = useState('')
   const [pickerOpen, setPickerOpen] = useState(false)
   const [duplicatePick, setDuplicatePick] = useState<Exercise | undefined>()
   const [finishConfirmOpen, setFinishConfirmOpen] = useState(false)
@@ -35,7 +35,6 @@ export function WorkoutPage({ db = appDb }: { db?: RepwiseDatabase }) {
   useEffect(() => {
     if (workout) {
       setNameText(workout.name)
-      setNotesText(workout.notes)
     }
   }, [workout?.id, workout?.name])
 
@@ -107,7 +106,10 @@ export function WorkoutPage({ db = appDb }: { db?: RepwiseDatabase }) {
           <div className={styles.header}>
             <div className={styles.nameRow}>
               <input aria-label="Workout name" className={styles.nameInput} value={nameText} onChange={(e) => setNameText(e.target.value)} onBlur={commitName} />
-              <span className={styles.elapsed}>{formatDuration(elapsedSeconds)}</span>
+              <span className={styles.workoutStats}>
+                <span className={styles.elapsed}>{formatDuration(elapsedSeconds)}</span>
+                <span>{completedSetCount} sets</span>
+              </span>
             </div>
             <div className={styles.headerActions}>
               <button type="button" className={styles.finishButton} onClick={requestFinish}>
@@ -120,11 +122,6 @@ export function WorkoutPage({ db = appDb }: { db?: RepwiseDatabase }) {
           </div>
 
           <RestTimerBar timer={timer} />
-
-          <label className={styles.workoutNotes}>
-            Workout notes
-            <textarea value={notesText} placeholder="Session notes…" onChange={(event) => setNotesText(event.target.value)} onBlur={() => void db.workouts.update(workout.id, { notes: notesText })} />
-          </label>
 
           {exercises.length === 0 ? (
             <p className={styles.status}>No exercises yet. Add one to start logging sets.</p>
