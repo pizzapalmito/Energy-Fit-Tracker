@@ -3,16 +3,15 @@ import type { Exercise } from '../../domain/models'
 import type { Muscle } from '../../data/types'
 import { db as appDb } from '../../data/appDatabase'
 import type { RepwiseDatabase } from '../../data/db'
+import { useI18n } from '../../i18n/I18nContext'
+import { equipmentLabel, difficultyLabel, movementPatternLabel, muscleLabel, type Translator } from '../../i18n/enumLabels'
 import { useExerciseCatalog } from './useExerciseCatalog'
 import { DEFAULT_FILTERS, collectFilterOptions, filterExercises, hasActiveFilters, type ExerciseFilters } from './filterExercises'
 import { ExerciseDetail } from './ExerciseDetail'
 import styles from './ExercisesPage.module.css'
 
-function titleCase(value: string): string {
-  return value.length === 0 ? value : value.replace(/-/g, ' ').replace(/\b\w/g, (c) => c.toUpperCase())
-}
-
 export function ExercisesPage({ db = appDb }: { db?: RepwiseDatabase }) {
+  const { t } = useI18n()
   const catalog = useExerciseCatalog(db)
   const [filters, setFilters] = useState<ExerciseFilters>(DEFAULT_FILTERS)
   const [selectedExerciseId, setSelectedExerciseId] = useState<string | undefined>()
@@ -28,7 +27,6 @@ export function ExercisesPage({ db = appDb }: { db?: RepwiseDatabase }) {
   const filterOptions = useMemo(() => collectFilterOptions(exercises), [exercises])
   const results = useMemo(() => filterExercises(exercises, filters), [exercises, filters])
   const selectedExercise = useMemo(() => exercises.find((e) => e.id === selectedExerciseId), [exercises, selectedExerciseId])
-  const musclesById = useMemo(() => new Map(muscles.map((m) => [m.id, m])), [muscles])
 
   function update<K extends keyof ExerciseFilters>(key: K, value: ExerciseFilters[K]) {
     setFilters((prev) => ({ ...prev, [key]: value }))
@@ -36,18 +34,18 @@ export function ExercisesPage({ db = appDb }: { db?: RepwiseDatabase }) {
 
   return (
     <section className={styles.page}>
-      <p className={styles.eyebrow}>Repwise</p>
-      <h1>Exercises</h1>
+      <p className={styles.eyebrow}>{t('exercises.eyebrow')}</p>
+      <h1>{t('exercises.title')}</h1>
 
       {catalog.status === 'loading' && (
         <p role="status" aria-live="polite" className={styles.status}>
-          Loading exercise library…
+          {t('exercises.loading')}
         </p>
       )}
 
       {catalog.status === 'blocked-error' && (
         <p role="alert" className={styles.statusError}>
-          Couldn't load the exercise library ({catalog.message}). Try again once you're back online.
+          {t('exercises.loadError', { message: catalog.message })}
         </p>
       )}
 
@@ -61,57 +59,57 @@ export function ExercisesPage({ db = appDb }: { db?: RepwiseDatabase }) {
 
           <div className={styles.controls}>
             <div className={styles.field}>
-              <label htmlFor={searchId}>Search</label>
+              <label htmlFor={searchId}>{t('exercises.searchLabel')}</label>
               <input
                 id={searchId}
                 type="search"
-                placeholder="Name, alias, or instruction…"
+                placeholder={t('exercises.searchPlaceholder')}
                 value={filters.query}
                 onChange={(e) => update('query', e.target.value)}
               />
             </div>
 
             <div className={styles.field}>
-              <label htmlFor={muscleId}>Muscle</label>
+              <label htmlFor={muscleId}>{t('exercises.muscleLabel')}</label>
               <select id={muscleId} value={filters.muscleId} onChange={(e) => update('muscleId', e.target.value)}>
-                <option value="all">All muscles</option>
+                <option value="all">{t('exercises.allMuscles')}</option>
                 {muscles.map((m) => (
                   <option key={m.id} value={m.id}>
-                    {m.name}
+                    {muscleLabel(t, m.id)}
                   </option>
                 ))}
               </select>
             </div>
 
             <div className={styles.field}>
-              <label htmlFor={equipmentId}>Equipment</label>
+              <label htmlFor={equipmentId}>{t('exercises.equipmentLabel')}</label>
               <select id={equipmentId} value={filters.equipment} onChange={(e) => update('equipment', e.target.value)}>
-                <option value="all">All equipment</option>
+                <option value="all">{t('exercises.allEquipment')}</option>
                 {filterOptions.equipment.map((e) => (
                   <option key={e} value={e}>
-                    {titleCase(e)}
+                    {equipmentLabel(t, e)}
                   </option>
                 ))}
               </select>
             </div>
 
             <div className={styles.field}>
-              <label htmlFor={difficultyId}>Difficulty</label>
+              <label htmlFor={difficultyId}>{t('exercises.difficultyLabel')}</label>
               <select id={difficultyId} value={filters.difficulty} onChange={(e) => update('difficulty', e.target.value as ExerciseFilters['difficulty'])}>
-                <option value="all">All difficulties</option>
-                <option value="beginner">Beginner</option>
-                <option value="intermediate">Intermediate</option>
-                <option value="advanced">Advanced</option>
+                <option value="all">{t('exercises.allDifficulties')}</option>
+                <option value="beginner">{t('difficulty.beginner')}</option>
+                <option value="intermediate">{t('difficulty.intermediate')}</option>
+                <option value="advanced">{t('difficulty.advanced')}</option>
               </select>
             </div>
 
             <div className={styles.field}>
-              <label htmlFor={movementId}>Movement</label>
+              <label htmlFor={movementId}>{t('exercises.movementLabel')}</label>
               <select id={movementId} value={filters.movementPattern} onChange={(e) => update('movementPattern', e.target.value)}>
-                <option value="all">All movements</option>
+                <option value="all">{t('exercises.allMovements')}</option>
                 {filterOptions.movementPatterns.map((m) => (
                   <option key={m} value={m}>
-                    {titleCase(m)}
+                    {movementPatternLabel(t, m)}
                   </option>
                 ))}
               </select>
@@ -119,17 +117,17 @@ export function ExercisesPage({ db = appDb }: { db?: RepwiseDatabase }) {
 
             {hasActiveFilters(filters) && (
               <button type="button" className={styles.clearButton} onClick={() => setFilters(DEFAULT_FILTERS)}>
-                Clear filters
+                {t('exercises.clearFilters')}
               </button>
             )}
           </div>
 
           <p role="status" aria-live="polite" className={styles.resultCount}>
-            {results.length} of {exercises.length} exercises
+            {t('exercises.resultCount', { shown: results.length, total: exercises.length })}
           </p>
 
           {results.length === 0 ? (
-            <p className={styles.status}>No exercises match your filters.</p>
+            <p className={styles.status}>{t('exercises.noResults')}</p>
           ) : (
             <ul className={styles.list}>
               {results.map((exercise) => (
@@ -137,7 +135,7 @@ export function ExercisesPage({ db = appDb }: { db?: RepwiseDatabase }) {
                   <button type="button" className={styles.card} onClick={() => setSelectedExerciseId(exercise.id)}>
                     <span className={styles.cardName}>{exercise.name}</span>
                     <span className={styles.cardMeta}>
-                      {primaryMuscleNames(exercise, musclesById)} · {titleCase(exercise.equipment[0] ?? 'bodyweight')} · {titleCase(exercise.difficulty)}
+                      {primaryMuscleNames(t, exercise)} · {equipmentLabel(t, exercise.equipment[0] ?? 'bodyweight')} · {difficultyLabel(t, exercise.difficulty)}
                     </span>
                   </button>
                 </li>
@@ -145,16 +143,16 @@ export function ExercisesPage({ db = appDb }: { db?: RepwiseDatabase }) {
             </ul>
           )}
 
-          {selectedExercise && <ExerciseDetail exercise={selectedExercise} muscles={musclesById} onClose={() => setSelectedExerciseId(undefined)} />}
+          {selectedExercise && <ExerciseDetail exercise={selectedExercise} onClose={() => setSelectedExerciseId(undefined)} />}
         </>
       )}
     </section>
   )
 }
 
-function primaryMuscleNames(exercise: Exercise, musclesById: Map<string, Muscle>): string {
-  const primary = exercise.muscles.filter((m) => m.weight >= 1).map((m) => musclesById.get(m.muscleId)?.name ?? m.muscleId)
+function primaryMuscleNames(t: Translator, exercise: Exercise): string {
+  const primary = exercise.muscles.filter((m) => m.weight >= 1).map((m) => muscleLabel(t, m.muscleId))
   if (primary.length > 0) return primary.join(', ')
   const first = exercise.muscles[0]
-  return first ? (musclesById.get(first.muscleId)?.name ?? first.muscleId) : 'Unspecified'
+  return first ? muscleLabel(t, first.muscleId) : t('exercises.unspecifiedMuscle')
 }

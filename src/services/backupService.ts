@@ -1,4 +1,5 @@
 import { DB_SCHEMA_VERSION, type RepwiseDatabase } from '../data/db'
+import { normalizeLocale } from '../i18n/locale'
 
 export const BACKUP_FORMAT_VERSION = 1
 
@@ -124,7 +125,7 @@ export async function restoreBackup(db: RepwiseDatabase, file: Blob): Promise<nu
       if (rows.length > 0) await table.bulkPut(rows)
     }
     const settings = await db.settings.get('default')
-    if (settings) await db.settings.put({ trainingGoal: 'hypertrophy', preferredSplit: 'full_body', defaultDurationMinutes: 60, ...settings })
+    if (settings) await db.settings.put({ trainingGoal: 'hypertrophy', preferredSplit: 'full_body', defaultDurationMinutes: 60, ...settings, locale: normalizeLocale(settings.locale) })
   })
   return validation.recordCount
 }

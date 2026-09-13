@@ -80,4 +80,26 @@ test.describe('Repwise core offline workflow', () => {
     await expect(page.getByText('876 of 876 exercises')).toBeVisible({ timeout: 30_000 })
     await expect(page.getByText(/offline — using local data/)).toHaveCount(0)
   })
+
+  test('changes the interface language in Settings, keeps it across navigation and reload, then restores English', async ({ page }) => {
+    await page.goto('./#/settings')
+    await expect(page.getByRole('heading', { name: 'Settings' })).toBeVisible({ timeout: 30_000 })
+
+    await page.getByRole('button', { name: 'Français' }).click()
+    await expect(page.getByRole('heading', { name: 'Réglages' })).toBeVisible()
+    await expect(page.getByRole('button', { name: 'Français' })).toHaveAttribute('aria-pressed', 'true')
+
+    await page.getByRole('link', { name: 'Aujourd’hui' }).click()
+    await expect(page).toHaveURL(/#\/today$/)
+    await expect(page.getByRole('heading', { name: 'Aujourd’hui' })).toBeVisible()
+
+    await page.reload()
+    await expect(page.getByRole('heading', { name: 'Aujourd’hui' })).toBeVisible({ timeout: 30_000 })
+    await expect(page.evaluate(() => document.documentElement.lang)).resolves.toBe('fr')
+
+    await page.getByRole('link', { name: 'Réglages' }).click()
+    await page.getByRole('button', { name: 'English' }).click()
+    await expect(page.getByRole('heading', { name: 'Settings' })).toBeVisible()
+    await expect(page.getByRole('button', { name: 'English' })).toHaveAttribute('aria-pressed', 'true')
+  })
 })

@@ -7,6 +7,9 @@ import type { GeneratedWorkout, GeneratorInput, WorkoutSplit } from '../../domai
 import type { TrainingGoal, WorkoutSet } from '../../domain/models'
 import { DeterministicWorkoutGenerator } from '../../engines/generator/generatorEngine'
 import { DeterministicRecoveryEngine } from '../../engines/recovery/recoveryEngine'
+import { useI18n } from '../../i18n/I18nContext'
+import { muscleLabel, trainingGoalLabel, splitLabel } from '../../i18n/enumLabels'
+import { formatGeneratorReason, formatPlanName } from '../../i18n/generatorPresentation'
 import { createId } from '../workout/id'
 import { addExerciseToWorkout, addSet, saveSet, startWorkout, updateWorkoutExercise } from '../workout/workoutActions'
 import styles from './GeneratorPanel.module.css'
@@ -32,6 +35,7 @@ async function loadInputs(db: RepwiseDatabase) {
 
 export function GeneratorPanel({ db = appDb }: { db?: RepwiseDatabase }) {
   const navigate = useNavigate()
+  const { t, formatNumber } = useI18n()
   const source = useLiveQuery(() => loadInputs(db), [db])
   const [goal, setGoal] = useState<TrainingGoal>('hypertrophy')
   const [split, setSplit] = useState<WorkoutSplit>('full_body')
@@ -62,7 +66,7 @@ export function GeneratorPanel({ db = appDb }: { db?: RepwiseDatabase }) {
     if (!plan || !input || source.status !== 'ready' || plan.exercises.length === 0) return
     setStarting(true)
     try {
-      const workout = await startWorkout(db, plan.name)
+      const workout = await startWorkout(db, formatPlanName(t, plan.name))
       for (const planned of plan.exercises) {
         const exercise = catalogById.get(planned.exerciseId)
         if (!exercise) continue
@@ -84,19 +88,19 @@ export function GeneratorPanel({ db = appDb }: { db?: RepwiseDatabase }) {
 
   return (
     <section className={styles.panel} aria-labelledby="generator-title">
-      <div className={styles.heading}><div><p className={styles.eyebrow}>Recovery-aware</p><h2 id="generator-title">Build a workout</h2></div><span>Local · deterministic</span></div>
-      {source.status === 'ready' && <div className={styles.readiness} aria-label="Most recovered muscle groups">{source.value.recovery.length === 0 ? <span>All muscle groups begin at a 100% readiness baseline.</span> : source.value.recovery.slice().sort((a, b) => b.recommendationReadiness - a.recommendationReadiness).slice(0, 4).map((entry) => <span key={entry.muscleId}>{entry.muscleId.replaceAll('-', ' ')} <strong>{Math.round(entry.recommendationReadiness)}%</strong></span>)}</div>}
+      <div className={styles.heading}><div><p className={styles.eyebrow}>{t('generator.eyebrow')}</p><h2 id="generator-title">{t('generator.title')}</h2></div><span>{t('generator.localDeterministic')}</span></div>
+      {source.status === 'ready' && <div className={styles.readiness} aria-label={t('generator.readinessAriaLabel')}>{source.value.recovery.length === 0 ? <span>{t('generator.baselineReadiness')}</span> : source.value.recovery.slice().sort((a, b) => b.recommendationReadiness - a.recommendationReadiness).slice(0, 4).map((entry) => <span key={entry.muscleId}>{muscleLabel(t, entry.muscleId)} <strong>{t('generator.readinessPercent', { percent: Math.round(entry.recommendationReadiness) })}</strong></span>)}</div>}
       <div className={styles.controls}>
-        <label>Goal<select value={goal} onChange={(event) => setGoal(event.target.value as TrainingGoal)}>{['strength', 'hypertrophy', 'general', 'endurance', 'maintenance'].map((value) => <option key={value}>{value}</option>)}</select></label>
-        <label>Split<select value={split} onChange={(event) => setSplit(event.target.value as WorkoutSplit)}>{['full_body', 'upper', 'lower', 'push', 'pull', 'legs', 'recovery_adaptive', 'custom'].map((value) => <option key={value}>{value.replaceAll('_', ' ')}</option>)}</select></label>
-        <label>Minutes<input type="number" min="15" max="180" step="5" value={duration} onChange={(event) => setDuration(Math.max(15, Number(event.target.value) || 15))} /></label>
-        {split === 'custom' && <label className={styles.customTargets}>Target muscle IDs, comma separated<input value={customTargets} onChange={(event) => setCustomTargets(event.target.value)} /></label>}
-        <button type="button" onClick={generate} disabled={source.status !== 'ready'}>Generate</button>
+        <label>{t('generator.goalLabel')}<select value={goal} onChange={(event) => setGoal(event.target.value as TrainingGoal)}>{['strength', 'hypertrophy', 'general', 'endurance', 'maintenance'].map((value) => <option key={value} value={value}>{trainingGoalLabel(t, value)}</option>)}</select></label>
+        <label>{t('generator.splitLabel')}<select value={split} onChange={(event) => setSplit(event.target.value as WorkoutSplit)}>{['full_body', 'upper', 'lower', 'push', 'pull', 'legs', 'recovery_adaptive', 'custom'].map((value) => <option key={value} value={value}>{splitLabel(t, value)}</option>)}</select></label>
+        <label>{t('generator.minutesLabel')}<input type="number" min="15" max="180" step="5" value={duration} onChange={(event) => setDuration(Math.max(15, Number(event.target.value) || 15))} /></label>
+        {split === 'custom' && <label className={styles.customTargets}>{t('generator.customTargetsLabel')}<input value={customTargets} onChange={(event) => setCustomTargets(event.target.value)} /></label>}
+        <button type="button" onClick={generate} disabled={source.status !== 'ready'}>{t('generator.generate')}</button>
       </div>
-      {source.status === 'error' && <p role="alert">Generator data is unavailable: {source.message}</p>}
+      {source.status === 'error' && <p role="alert">{t('generator.dataUnavailable', { message: source.message })}</p>}
       {plan && <div className={styles.result}>
-        <div className={styles.resultHeader}><div><strong>{plan.name}</strong><span>{Math.round(plan.estimatedDurationSeconds / 60)} min estimated</span></div><button type="button" onClick={() => void startPlan()} disabled={starting || source.status !== 'ready' || source.value.hasActiveWorkout || plan.exercises.length === 0}>{source.status === 'ready' && source.value.hasActiveWorkout ? 'Finish active workout first' : 'Start this workout'}</button></div>
-        {plan.exercises.length === 0 ? <p>No catalog exercises fit these equipment and time constraints.</p> : <ol>{plan.exercises.map((item) => <li key={item.exerciseId}><div><strong>{catalogById.get(item.exerciseId)?.name ?? item.exerciseId}</strong><span>{item.sets} × {item.repRange[0]}–{item.repRange[1]} · {item.restSeconds}s rest</span></div><p>{item.reasons.join(' · ')}</p></li>)}</ol>}
+        <div className={styles.resultHeader}><div><strong>{formatPlanName(t, plan.name)}</strong><span>{t('generator.estimatedMinutes', { minutes: Math.round(plan.estimatedDurationSeconds / 60) })}</span></div><button type="button" onClick={() => void startPlan()} disabled={starting || source.status !== 'ready' || source.value.hasActiveWorkout || plan.exercises.length === 0}>{source.status === 'ready' && source.value.hasActiveWorkout ? t('generator.finishActiveFirst') : t('generator.startThisWorkout')}</button></div>
+        {plan.exercises.length === 0 ? <p>{t('generator.noExercisesFit')}</p> : <ol>{plan.exercises.map((item) => <li key={item.exerciseId}><div><strong>{catalogById.get(item.exerciseId)?.name ?? item.exerciseId}</strong><span>{t('generator.setsByReps', { sets: item.sets, low: item.repRange[0], high: item.repRange[1], rest: item.restSeconds })}</span></div><p>{item.reasons.map((reason) => formatGeneratorReason(t, formatNumber, reason)).join(' · ')}</p></li>)}</ol>}
       </div>}
     </section>
   )

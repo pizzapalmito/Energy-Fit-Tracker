@@ -11,6 +11,10 @@ Repwise is a static, single-user PWA. React renders the interface, Dexie owns lo
 5. Domain engines receive immutable facts and return versioned results plus human-readable explanations.
 6. Derived recovery and recommendations are recalculated; backups preserve reconstruction facts.
 
+## Localization
+
+The dependency-free `src/i18n` layer provides typed English, Brazilian Portuguese, French, and Spanish message catalogs. The selected BCP 47 locale is persisted in the singleton settings row (Dexie schema 3), defaults safely to English, updates the document language immediately, and formats interface dates, numbers, plurals, and fixed vocabulary at the UI boundary. User-entered text and generated exercise catalog names/instructions remain stored and displayed verbatim.
+
 ## Deployment
 
 The application uses hash routing and a Vite base of `/Repwise/`. GitHub Pages serves the generated static bundle and service worker. A new worker waits for user approval and must not reload an active workout.

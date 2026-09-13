@@ -1,5 +1,7 @@
 # Repwise repository instructions
 
+Project memory (state, decisions, learnings): PROJECT-MEMORY.md — read Snapshot and Rules first.
+
 ## Product invariants
 
 - Repwise is offline-first. Normal workout, catalog, history, recovery, substitution, generation, export, and restore flows must not require a runtime API.

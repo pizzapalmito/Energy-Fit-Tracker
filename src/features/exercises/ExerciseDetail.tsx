@@ -1,11 +1,13 @@
 import { useEffect, useRef, useState } from 'react'
 import type { Exercise } from '../../domain/models'
-import type { Muscle } from '../../data/types'
 import { CatalogImage } from '../../catalog/CatalogImage'
 import { PRIMARY_WEIGHT_THRESHOLD } from '../../engines/shared/muscleContribution'
+import { useI18n } from '../../i18n/I18nContext'
+import { difficultyLabel, equipmentLabel, movementPatternLabel, muscleLabel } from '../../i18n/enumLabels'
 import styles from './ExerciseDetail.module.css'
 
-export function ExerciseDetail({ exercise, muscles, onClose }: { exercise: Exercise; muscles: Map<string, Muscle>; onClose: () => void }) {
+export function ExerciseDetail({ exercise, onClose }: { exercise: Exercise; onClose: () => void }) {
+  const { t } = useI18n()
   const closeButtonRef = useRef<HTMLButtonElement>(null)
   const [frame, setFrame] = useState<'start' | 'end'>('start')
 
@@ -33,20 +35,20 @@ export function ExerciseDetail({ exercise, muscles, onClose }: { exercise: Exerc
       <div className={styles.dialog} role="dialog" aria-modal="true" aria-labelledby="exercise-detail-title" onClick={(e) => e.stopPropagation()}>
         <div className={styles.header}>
           <h2 id="exercise-detail-title">{exercise.name}</h2>
-          <button type="button" ref={closeButtonRef} className={styles.closeButton} onClick={onClose} aria-label="Close exercise details">
+          <button type="button" ref={closeButtonRef} className={styles.closeButton} onClick={onClose} aria-label={t('exerciseDetail.closeAriaLabel')}>
             ×
           </button>
         </div>
 
         <figure className={styles.media}>
-            <CatalogImage relativePath={activeMedia} alt={`${exercise.name} — ${frame === 'end' ? 'ending' : 'starting'} position`} fallbackClassName={styles.mediaFallback} />
+            <CatalogImage relativePath={activeMedia} alt={`${exercise.name} — ${frame === 'end' ? t('exerciseDetail.endingPosition') : t('exerciseDetail.startingPosition')}`} fallbackClassName={styles.mediaFallback} />
             {hasBothFrames && (
-              <figcaption className={styles.mediaToggle} role="group" aria-label="Demonstration frame">
+              <figcaption className={styles.mediaToggle} role="group" aria-label={t('exerciseDetail.frameGroupAriaLabel')}>
                 <button type="button" aria-pressed={frame === 'start'} onClick={() => setFrame('start')}>
-                  Start
+                  {t('exerciseDetail.start')}
                 </button>
                 <button type="button" aria-pressed={frame === 'end'} onClick={() => setFrame('end')}>
-                  End
+                  {t('exerciseDetail.end')}
                 </button>
               </figcaption>
             )}
@@ -54,36 +56,36 @@ export function ExerciseDetail({ exercise, muscles, onClose }: { exercise: Exerc
 
         <dl className={styles.factList}>
           <div>
-            <dt>Difficulty</dt>
-            <dd>{exercise.difficulty}</dd>
+            <dt>{t('exerciseDetail.difficulty')}</dt>
+            <dd>{difficultyLabel(t, exercise.difficulty)}</dd>
           </div>
           <div>
-            <dt>Movement</dt>
-            <dd>{exercise.movementPattern}</dd>
+            <dt>{t('exerciseDetail.movement')}</dt>
+            <dd>{movementPatternLabel(t, exercise.movementPattern)}</dd>
           </div>
           <div>
-            <dt>Equipment</dt>
-            <dd>{exercise.equipment.join(', ')}</dd>
+            <dt>{t('exerciseDetail.equipment')}</dt>
+            <dd>{exercise.equipment.map((item) => equipmentLabel(t, item)).join(', ')}</dd>
           </div>
           <div>
-            <dt>Default rest</dt>
-            <dd>{exercise.defaultRestSeconds}s</dd>
+            <dt>{t('exerciseDetail.defaultRest')}</dt>
+            <dd>{t('exerciseDetail.seconds', { count: exercise.defaultRestSeconds })}</dd>
           </div>
         </dl>
 
-        <h3>Muscles</h3>
+        <h3>{t('exerciseDetail.muscles')}</h3>
         <ul className={styles.muscleList}>
           {exercise.muscles.map((m) => (
             <li key={m.muscleId}>
-              {muscles.get(m.muscleId)?.name ?? m.muscleId}
-              {m.weight >= PRIMARY_WEIGHT_THRESHOLD ? ' (primary)' : ' (secondary)'}
+              {muscleLabel(t, m.muscleId)}
+              {' '}{m.weight >= PRIMARY_WEIGHT_THRESHOLD ? t('exerciseDetail.primary') : t('exerciseDetail.secondary')}
             </li>
           ))}
         </ul>
 
         {exercise.instructions.length > 0 && (
           <>
-            <h3>Instructions</h3>
+            <h3>{t('exerciseDetail.instructions')}</h3>
             <ol className={styles.instructions}>
               {exercise.instructions.map((step, index) => (
                 <li key={index}>{step}</li>

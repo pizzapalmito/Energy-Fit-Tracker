@@ -1,3 +1,5 @@
+import { useI18n } from '../../i18n/I18nContext'
+import { muscleLabel, readinessLabel } from '../../i18n/enumLabels'
 import { readinessStatus, type MuscleMapRecovery } from './readinessPresentation'
 import styles from './MuscleMap.module.css'
 
@@ -51,14 +53,10 @@ const bodyRegions: BodyRegion[] = [
 ]
 
 const legend = [
-  { status: 'fatigued', label: 'Fatigued', range: '0–25%' },
-  { status: 'recovering', label: 'Recovering', range: '26–75%' },
-  { status: 'ready', label: 'Ready', range: '76–100%' },
+  { status: 'fatigued', range: '0–25%' },
+  { status: 'recovering', range: '26–75%' },
+  { status: 'ready', range: '76–100%' },
 ] as const
-
-function displayName(muscleId: string): string {
-  return muscleId.replaceAll('-', ' ').replace(/\b\w/g, (letter) => letter.toUpperCase())
-}
 
 function readinessForRegion(entries: MuscleMapRecovery[], side: AnatomicalSide): number {
   const bilateral = entries.find((entry) => !entry.side || entry.side === 'bilateral')
@@ -68,13 +66,14 @@ function readinessForRegion(entries: MuscleMapRecovery[], side: AnatomicalSide):
 }
 
 export function MuscleMap({ recovery, selected, onSelect }: { recovery: MuscleMapRecovery[]; selected?: string; onSelect: (muscleId: string) => void }) {
+  const { t } = useI18n()
   const byMuscle = new Map<string, MuscleMapRecovery[]>()
   for (const entry of recovery) byMuscle.set(entry.muscleId, [...(byMuscle.get(entry.muscleId) ?? []), entry])
 
   const region = (entry: BodyRegion) => {
     const value = Math.max(0, Math.min(100, readinessForRegion(byMuscle.get(entry.muscleId) ?? [], entry.side)))
     const status = readinessStatus(value)
-    const sideLabel = entry.side === 'center' ? 'center' : `${entry.side} side`
+    const sideLabel = entry.side === 'center' ? t('muscleMap.centerSide') : t(entry.side === 'left' ? 'muscleMap.leftSide' : 'muscleMap.rightSide')
     return <path
       key={`${entry.view}-${entry.muscleId}-${entry.side}`}
       d={entry.path}
@@ -88,7 +87,7 @@ export function MuscleMap({ recovery, selected, onSelect }: { recovery: MuscleMa
       opacity={selected && selected !== entry.muscleId ? .32 : 1}
       role="button"
       tabIndex={0}
-      aria-label={`${displayName(entry.muscleId)}, ${sideLabel}, ${Math.round(value)} percent ready, ${status}`}
+      aria-label={t('muscleMap.regionAriaLabel', { muscle: muscleLabel(t, entry.muscleId), side: sideLabel, percent: Math.round(value), status: readinessLabel(t, status) })}
       onClick={() => onSelect(entry.muscleId)}
       onKeyDown={(event) => {
         if (event.key === 'Enter' || event.key === ' ') {
@@ -100,7 +99,7 @@ export function MuscleMap({ recovery, selected, onSelect }: { recovery: MuscleMa
   }
 
   return <div className={styles.wrap}>
-    <svg viewBox="0 0 320 310" role="img" aria-label="Front and back muscle readiness map">
+    <svg viewBox="0 0 320 310" role="img" aria-label={t('muscleMap.mapAriaLabel')}>
       <defs>
         <pattern id="readiness-fatigued" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
           <rect width="7" height="7" fill="#e86670" /><path d="M0 0V7" stroke="#8f303a" strokeWidth="2.4" />
@@ -112,23 +111,23 @@ export function MuscleMap({ recovery, selected, onSelect }: { recovery: MuscleMa
           <rect width="8" height="8" fill="#63d49a" />
         </pattern>
       </defs>
-      <text x="80" y="14" textAnchor="middle">Front</text><text x="240" y="14" textAnchor="middle">Back</text>
-      <g aria-label="Front body">
+      <text x="80" y="14" textAnchor="middle">{t('muscleMap.frontLabel')}</text><text x="240" y="14" textAnchor="middle">{t('muscleMap.backLabel')}</text>
+      <g aria-label={t('muscleMap.frontBodyAriaLabel')}>
         <circle cx="80" cy="35" r="16" className={styles.outline} />
         <path d="M67 55 Q80 48 93 55 L108 63 121 128 Q123 136 116 140 109 143 106 134 L98 94 101 145 94 176 96 291 82 291 80 185 78 291 64 291 66 176 59 145 62 94 54 134 Q51 143 44 140 37 136 39 128 L52 63Z" className={styles.body} />
       </g>
-      <g aria-label="Back body">
+      <g aria-label={t('muscleMap.backBodyAriaLabel')}>
         <circle cx="240" cy="35" r="16" className={styles.outline} />
         <path d="M227 55 Q240 48 253 55 L268 63 281 128 Q283 136 276 140 269 143 266 134 L258 94 261 145 254 176 256 291 242 291 240 185 238 291 224 291 226 176 219 145 222 94 214 134 Q211 143 204 140 197 136 199 128 L212 63Z" className={styles.body} />
       </g>
       {bodyRegions.map(region)}
     </svg>
-    <div className={styles.legend} aria-label="Readiness legend">
+    <div className={styles.legend} aria-label={t('muscleMap.legendAriaLabel')}>
       {legend.map((entry) => <div key={entry.status} className={styles.legendItem}>
         <span className={styles.swatch} data-status={entry.status} aria-hidden="true" />
-        <span><strong>{entry.label}</strong><small>{entry.range}</small></span>
+        <span><strong>{readinessLabel(t, entry.status)}</strong><small>{entry.range}</small></span>
       </div>)}
     </div>
-    <p className={styles.hint}>Left and right share one muscle-group value unless side-specific data is recorded. Tap a region for details.</p>
+    <p className={styles.hint}>{t('muscleMap.hint')}</p>
   </div>
 }

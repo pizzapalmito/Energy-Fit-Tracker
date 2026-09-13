@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react'
+import { useI18n } from '../../i18n/I18nContext'
 import styles from './ConfirmDialog.module.css'
 
 export interface ConfirmDialogProps {
@@ -12,7 +13,9 @@ export interface ConfirmDialogProps {
 }
 
 /** Accessible confirm/cancel modal for destructive or non-obvious actions (remove exercise, discard workout, finish with no completed sets, duplicate exercise). */
-export function ConfirmDialog({ title, description, confirmLabel, cancelLabel = 'Cancel', destructive = false, onConfirm, onCancel }: ConfirmDialogProps) {
+export function ConfirmDialog({ title, description, confirmLabel, cancelLabel, destructive = false, onConfirm, onCancel }: ConfirmDialogProps) {
+  const { t } = useI18n()
+  const resolvedCancelLabel = cancelLabel ?? t('confirmDialog.cancel')
   const confirmRef = useRef<HTMLButtonElement>(null)
 
   useEffect(() => {
@@ -34,7 +37,7 @@ export function ConfirmDialog({ title, description, confirmLabel, cancelLabel = 
         <p id="confirm-dialog-description">{description}</p>
         <div className={styles.actions}>
           <button type="button" className={styles.cancelButton} onClick={onCancel}>
-            {cancelLabel}
+            {resolvedCancelLabel}
           </button>
           <button type="button" ref={confirmRef} className={destructive ? styles.confirmButton : styles.confirmButtonNeutral} onClick={onConfirm}>
             {confirmLabel}
