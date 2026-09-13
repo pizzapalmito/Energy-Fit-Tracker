@@ -1,0 +1,7 @@
+.wrap { background: var(--surface); border: 1px solid var(--line); border-radius: 1rem; padding: 1rem; }
+.wrap svg { display: block; width: min(100%, 30rem); margin: auto; }
+.wrap text { fill: var(--muted); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+.body, .outline { fill: #20262d; stroke: #3b444e; stroke-width: 2; }
+.wrap rect { cursor: pointer; transition: opacity .15s ease, stroke .15s ease; stroke: transparent; stroke-width: 3; }
+.wrap rect:focus-visible { outline: none; stroke: white; }
+.legend { display: flex; justify-content: space-between; color: var(--muted); font-size: .75rem; }

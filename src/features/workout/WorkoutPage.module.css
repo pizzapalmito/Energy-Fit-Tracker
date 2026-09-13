@@ -1,0 +1,24 @@
+.page { padding-block: 2rem; display: flex; flex-direction: column; gap: 1rem; }
+.page h1 { margin: 0; font-size: clamp(2.25rem, 8vw, 4rem); letter-spacing: -.05em; }
+.eyebrow { margin-bottom: .4rem; color: var(--accent); font-size: .75rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
+
+.status { color: var(--muted); }
+.statusError { color: var(--danger); font-weight: 600; }
+
+.empty { display: flex; flex-direction: column; gap: .75rem; align-items: flex-start; }
+.primaryLink { min-height: 2.75rem; display: inline-flex; align-items: center; padding: 0 1.25rem; border-radius: .7rem; background: var(--accent); color: #1a1204; font-weight: 800; text-decoration: none; }
+
+.header { display: flex; flex-direction: column; gap: .6rem; }
+.nameRow { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; }
+.nameInput { flex: 1; min-width: 8rem; min-height: 2.75rem; border-radius: .6rem; border: 1px solid var(--line); background: var(--surface); color: var(--text); padding: 0 .75rem; font-size: 1.1rem; font-weight: 700; }
+.elapsed { color: var(--muted); font-variant-numeric: tabular-nums; font-weight: 700; }
+
+.headerActions { display: flex; gap: .6rem; flex-wrap: wrap; }
+.finishButton { min-height: 2.75rem; padding: 0 1.2rem; border-radius: .7rem; border: 1px solid var(--success); background: var(--success); color: #062015; font-weight: 800; }
+.discardButton { min-height: 2.75rem; padding: 0 1.2rem; border-radius: .7rem; border: 1px solid var(--danger); background: transparent; color: var(--danger); font-weight: 700; }
+
+.exerciseList { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .85rem; }
+
+.addExerciseButton { min-height: 2.75rem; padding: 0 1.2rem; border-radius: .7rem; border: 1px dashed var(--accent); background: transparent; color: var(--accent); font-weight: 700; align-self: flex-start; }
+.workoutNotes { display: grid; gap: .35rem; color: var(--muted); font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .04em; }
+.workoutNotes textarea { min-height: 4rem; padding: .7rem; resize: vertical; border: 1px solid var(--line); border-radius: .7rem; background: var(--surface); color: var(--text); font: inherit; text-transform: none; letter-spacing: normal; }

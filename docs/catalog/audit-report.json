@@ -1,0 +1,3530 @@
+{
+  "buildToolVersion": "catalog-build-v1",
+  "sourceCommit": "a859101d633a01c4a1a920d6a8ce41dabba0705f",
+  "importerVersion": "catalog-importer-v2",
+  "license": {
+    "name": "Unlicense",
+    "upstreamFile": "LICENSE.md"
+  },
+  "observedUpstreamInventory": {
+    "exerciseDirectories": 873,
+    "totalBytes": 99652957
+  },
+  "counts": {
+    "inputRecords": 876,
+    "acceptedExercises": 876,
+    "rejectedRecords": 0,
+    "musclesDiscovered": 17
+  },
+  "rejected": [],
+  "media": {
+    "referencedImagePaths": 1746,
+    "convertedImages": 1746,
+    "missingImages": [],
+    "inputBytesJpg": 98671281,
+    "outputBytesWebp": 61518334,
+    "conversionSettings": {
+      "format": "webp",
+      "quality": 78,
+      "effort": 4
+    }
+  },
+  "perExerciseMediaHashes": {
+    "3-4-sit-up": {
+      "start": "d32f40bd403cd0f0d3cd60923526a0c4bccef5bc8b57194f6bd26956b72ca4e9",
+      "end": "357edfb20c01ea8b40d64bf32cd8200c0d0d7b81d7c291b1cd9ecd98ffd97a23"
+    },
+    "90-90-hamstring": {
+      "start": "3c6f813118a168bda2598f4f181ee0ae63f9ff529d7f16d15b359eb14dc9714c",
+      "end": "828f926f57dc7eb7e7ff02835d45da062511f04e262ed0954fc334c74d369432"
+    },
+    "ab-roller": {
+      "start": "4b7ed21179fa7ecd3169cb4f07d7a4958750f76cd1d3f83b47531e2d4c2884e0",
+      "end": "dd5f74886e096b3523d48794ee15f0bf63532b4990ce96393bdaa64f20027b6e"
+    },
+    "ab-crunch-machine": {
+      "start": "cf5ef970db5cde9803b4bed1d2976d7930b06ea484f6a3eda8c6a64d5fe8f52d",
+      "end": "010f52f2cb2f7a903c9572374014fa439161c5b439d65faeec8bdaf8a72480db"
+    },
+    "adductor-groin": {
+      "start": "fed7d3abbc75f5b63ff22ee524caf06e41f677151ec99a1d6ca3e729c81a3cd4",
+      "end": "f1aa934efcc905451a149441185102aaa799459a49a079f88e02003af81fbdde"
+    },
+    "adductor": {
+      "start": "cdfe73654900aef03050fbf7a514de12d53d32f44e361f49ed4f090ef83b38da",
+      "end": "eb79db4ba253a7360655f211a7a82c57dc885fb44617ad550631c262830374e0"
+    },
+    "advanced-kettlebell-windmill": {
+      "start": "c566f3af1567b23dd473b588c760b0e1e0fe0677d3e755bcdf84c843f363cfac",
+      "end": "1fcc27e8b684353447fe6e7d3f104c9abf4159586a7b2329a148d774a617b5dc"
+    },
+    "air-bike": {
+      "start": "6e3009d675f6e8ffe7feceb8645bd9f53273a10547d70aa6e6ff9f2386095aad",
+      "end": "0d1dceca6b5630bf37285c8b3b7b52d7d90a75e32e831683308fa584485895a2"
+    },
+    "all-fours-quad-stretch": {
+      "start": "3ffedbf5e11a92f3fe842c72a9ed874a2d54088984057e0a75f1a8cf1d74da07",
+      "end": "4bee24f162fc4ceb35a5a532dc326d80b55655198f4a2597f4719ee993f0916f"
+    },
+    "alternate-hammer-curl": {
+      "start": "3572a0a2bc2865b75188957673b1887d99227a3262f539b401632f5d2b79d0bc",
+      "end": "2ca89be805ac5135a53a78dd402e7952a419df215919fd00c1b14f0e974cfe70"
+    },
+    "alternate-heel-touchers": {
+      "start": "88d59e345fad26dab60910cae3e051461606140ef3d06b9c8b067071cc323ad0",
+      "end": "d70627728808c99101599b9ea6c44a0b20b2faf4c8ae4630bfec0a15182b2780"
+    },
+    "alternate-incline-dumbbell-curl": {
+      "start": "374a3fc267411abf30d84754a564d5897f3ed59e08e31161f9a8ef5976add30e",
+      "end": "bcd3177b6f6251086481deaff3315b812e6dd13674f7a81249cef91574a26ad5"
+    },
+    "alternate-leg-diagonal-bound": {
+      "start": "8d93b19304d51e18dd4fa1053b4a9ef2b814ac70490a9e83715fc4a8ced804a6",
+      "end": "68cb982602a55e0d9c50620e0995477eca770d170f02d676aeaacaa1bb9c89a4"
+    },
+    "alternating-cable-shoulder-press": {
+      "start": "7721ad4b39569e0926dc89effdd71779c8f0678e19e43b1b0b64a47130589fb8",
+      "end": "265f900a758b4883cf1278d012d76769d8bd990fb34028b3cabeb44ec6308bcd"
+    },
+    "alternating-deltoid-raise": {
+      "start": "46f5f56866b38aaeffb64deb18f9d6170fc67630e4f2cab3efd8b143cfda72d4",
+      "end": "e4d6db2abcd76d5f9816566ae2239f9403d5e279f6c9cb60451fc3cde5906e8c"
+    },
+    "alternating-floor-press": {
+      "start": "7145480ceffa798b94c820913a1e0fbbd148aa99b120e8335b225ed022d348de",
+      "end": "fdc0b161760d7a306a27363af98e40122ba55303a7ccc3b4f0e837bd0d8968e9"
+    },
+    "alternating-hang-clean": {
+      "start": "669b9ae9ca8191a8c16e1043ee028e5e28462bb5ad1ca493a478eac4a9327ab1",
+      "end": "3c1eebf1d6d982abf18136d6c84371cc695c641daad1c1da738bc0a4164c149d"
+    },
+    "alternating-kettlebell-press": {
+      "start": "df631f33b697c8a05339038a6864e7bf5cb61736334b6bbf3f0f2be0b7ff974b",
+      "end": "7ea02afcf19d63d837ad723274d68223cddb2b2fef2c32444912fbb439a999fa"
+    },
+    "alternating-kettlebell-row": {
+      "start": "5dc5afe49c47a7e94202776347f4f5e30d197d890c6de2413c5ef74b8031dd82",
+      "end": "f98648816c1e1de84a3926b007b1dd580dc61102dd56df200f6cb40a2d314e20"
+    },
+    "alternating-renegade-row": {
+      "start": "d8f82ebdc027158ce54f8befc078870031bdcdcec37d379fb1924668ad379684",
+      "end": "001de8283eaed86feca21b7fc7cfbe9ba33173ab800f998f5640ec9609813e2b"
+    },
+    "ankle-on-the-knee": {
+      "start": "3e07a694ca23e8d4eee2cb1c8929eaa6c5adafede4082121b7c9c95571265b57",
+      "end": "b3440af04d8f8c5c83ac53edd149081f37ad79bcf6f31a10bbc75529e6ad363a"
+    },
+    "ankle-circles": {
+      "start": "68da6227a87dab5f9f1b052cf05327b336fc98faa573d093f1849bd73ac58003",
+      "end": "b4f0b95288b074904802d414e9c19e24e3815a44657b2ee8d6490af86d6d9d2e"
+    },
+    "anterior-tibialis-smr": {
+      "start": "7a528ced2b38c477cd4b5842a6c9291bab46a4fc3344244b53f1131723e89159",
+      "end": "33fd124726c884100142e531c929d3e7d9229f876b5d13d9a8adde37ee0bc936"
+    },
+    "anti-gravity-press": {
+      "start": "68df8837636877965c93413774838f18f0756478ba78f64aa2cab5b66d93482f",
+      "end": "7d4348347d91176c0116c202ee694f39a67a9c73c46617f79ac4f4ae92f785b5"
+    },
+    "arm-circles": {
+      "start": "d90a419afd110a8007c7f94b4c64c1fb4fff4ef94b312200d8000c77caa0a33e",
+      "end": "ebd1574a35499ad002e0cd4fd2800dd947d13fe9f977fc1ae2e6f6f8bc1625fa"
+    },
+    "arnold-dumbbell-press": {
+      "start": "c4ee050ae7f9b67353a2fc0a57b82401df1741d438c84e24c6f2170f6eebb55b",
+      "end": "14f9af5a6581cca124f1d410f0f3acb3fab5ed2d4a115d8780f459947ddd199f"
+    },
+    "around-the-worlds": {
+      "start": "e741b5ce4ee7457e396bed6678661777499a28dc2e57b607414f4590d5ea2b08",
+      "end": "ef9660f4c761c7fa12a05c8e0fdbce24c86a989aa1b1117e3c77a2a9dc927b43"
+    },
+    "axle-deadlift": {
+      "start": "a3b736fe8dae9ced42d141877f8a8710ce3f8aa07619045f671f0ec5ae3130d7",
+      "end": "601e6932fb2f26fa7a958b5bc7370b3563f03796461908266366c168914a9324"
+    },
+    "atlas-stone-trainer": {
+      "start": "7f68abe216902b586541f1487c515ea5346c60a302113eba36522c2ad227ce04",
+      "end": "03ee07cad15fcc4b4d9ee566d2d2e37e159442a387ad64c56b76bbfddc851d3d"
+    },
+    "atlas-stones": {
+      "start": "ca459dc43aff7145315c87cfd151ecc1c0bf4e295e2d60eba38b22502a2d7778",
+      "end": "bea645738f393451ef2e9b139332dadfbfda2c2c5c8314dfa9594bea80888a4c"
+    },
+    "back-flyes-with-bands": {
+      "start": "7e1b3dd87c9effe45c5c8980453d928cf7e8a24fe455fc182662aee2a82b4af2",
+      "end": "4d98191370d0955c1c67a83cfb46ca240c5e524cb5a9d7a4583b517f2f2033d3"
+    },
+    "backward-drag": {
+      "start": "34c343f1e0b994dcdfe05b0571597d1e4e32d3700b0292cb51e5a9d5e40a469e",
+      "end": "2f9bf54a3a49a0f1567653f15223d5196fcb181c094c6660a80a9ecf0c297958"
+    },
+    "balance-board": {
+      "start": "0aaa4ba51cac7a226ed58a976d0a8615713267fc2c99df4adc85504203cab3f4",
+      "end": "7f24e4436325cceb2391f9db1529649f4c957eca71adfb7897e0215b6962bdf2"
+    },
+    "backward-medicine-ball-throw": {
+      "start": "2cbd3fe00a6b6e902d5f4d3b9508980ebb53fe024d5d71471832d3540fe13016",
+      "end": "fc3953197b58784f156bfa1c92d61dc310b7d5fda9f2eb21e9ca809bcf663e5a"
+    },
+    "ball-leg-curl": {
+      "start": "bed30788331c9203ae48d4509ed11bbe6a2a82cc40d99572e96354c85d7b4d70",
+      "end": "b28e8163611b55f70e1780d1eb045175eb7ec873d923881cda59cd56ba918ac7"
+    },
+    "band-good-morning": {
+      "start": "c40a96d4e85e550e1ff35955464348186ec614d310ebe9a5cedbaf1b4742132f",
+      "end": "2c8eb634bb622891870df45bb31ea3e1dba307f46907c1d1d9a434531fe855a7"
+    },
+    "band-hip-adductions": {
+      "start": "882304d6cc5044801ffc92f87c9bc74bab993ce61fa115383bbeb06d9c5550bc",
+      "end": "a460492d8019e52b699301cfd1cde865d848b124616fbb76a686dc0a4df2150c"
+    },
+    "band-good-morning-pull-through": {
+      "start": "cc8b8db3e474a1e44e6eefe5a7f6f319d7b65c1fb2e5e8ff7660c8cd4918f841",
+      "end": "111b212ad4309cd3d49375c87a3b4ac5e96b4e750886e79277b32eda7df5d470"
+    },
+    "band-assisted-pull-up": {
+      "start": "0252fe578b84adce51c217e61c8c2fcfbd9ae2485a2d279852eccf0e56a03a61",
+      "end": "b1f0ed61b0c3422c5cd6630640f921b32d151e059169eb56d0399118a54eb3df"
+    },
+    "band-pull-apart": {
+      "start": "e1d379171e02dd6a9a20b632adecc5157ed2ce4f72770faa82a75dc1e1106ff1",
+      "end": "ce817965673c6930d973b48dc0e5c87b41594ae8402c1e58bd60855a40338fe2"
+    },
+    "barbell-ab-rollout": {
+      "start": "ae16358352018461eb24ede1470ec34080b1e0fb063cfb2c325a455ab08239c5",
+      "end": "3d389a7dd883126a6e69e0bd1321dee833d922cdc5818d00068340818b9a065d"
+    },
+    "band-skull-crusher": {
+      "start": "34393a7044b0a243b2be84ddd6b506294db8b8511361f7cd77e62d61e35ac87b",
+      "end": "6757d144e52b4bd92c1835675e4de4d7371da44e85e9521094faeaa98c1f80bd"
+    },
+    "barbell-ab-rollout-on-knees": {
+      "start": "ef1685a8e2608d94d6d03829ae85d7af7cfcf1a1220513b493c86f3433745a2a",
+      "end": "6bffb0e677d30e755ecf08e0e95606aa079d9787b4efa971fad920b59e6421e5"
+    },
+    "barbell-bench-press-medium-grip": {
+      "start": "64a2447d1256dfd246309ede581f80a9411028e1b731ce628d930d6702bb2e89",
+      "end": "e788732cbb2b10288d6dd5312a840d50ca2a20f51dd718e1a40fa37529de6fd2"
+    },
+    "barbell-curl": {
+      "start": "e305a9b2e88f0202de3832cf7f77a04e8a5e05954952755e4003db773e86721f",
+      "end": "35bc09a12b7b757a48fb6a108e3887d3f4f4cbd0847362e4808c3e8b176bef36"
+    },
+    "barbell-curls-lying-against-an-incline": {
+      "start": "1d60b684184ba8b9fd442c4ceb343beec6d8bf4fa9c227e2ae4b8c35c0c8d9a8",
+      "end": "ea33bfd8977b7349d2d93166acab875adffc4914d0e68a0bf9d7462e7fa4e627"
+    },
+    "barbell-deadlift": {
+      "start": "2ee36ce991a90f4c3d340d7728f5217329b9c79f72e8b1aa9071a5c8f823477a",
+      "end": "e21935a743f0c53cf87fbca74fc57ea923fc078f7a476a24d51bbeb3be0d52bd"
+    },
+    "barbell-full-squat": {
+      "start": "32ac21bcb476321fd96519dd70439dc519e4d04085abf059a911f2171ae08fc7",
+      "end": "64614132a722d56c2b12b3eb1749d82bd54775e89c1fbee5d7a3982db888a341"
+    },
+    "barbell-glute-bridge": {
+      "start": "b63e8b1cce884332671b5ea431e24f11e3f0c96eb811f79391ffa7ef2b1e93ca",
+      "end": "9a0b64bdd5508d0c635e89f90ede00b1f7a13602acc34615c58b2db1a3ef3522"
+    },
+    "barbell-guillotine-bench-press": {
+      "start": "ca4573e3abe9c0b583ac7398892b17445ca379f26b6da9807cdd7759e1919c00",
+      "end": "c13a4f0a3f206feaaa3b7e3d07916efcf81c0803d2ba154e01ce88f5fcc1e9a1"
+    },
+    "barbell-hack-squat": {
+      "start": "85842d4f8c9cd2f20ad0219fc8a9e4945e9d559a42f6954873d2b2db06e24a7c",
+      "end": "d5723af8fe648173f2c90cfa1c70c275cac84fd46376055915afca12824fb1d3"
+    },
+    "barbell-hip-thrust": {
+      "start": "d3e4dd59065f5f6d23ee5790eb6aea1c1b72b8eccef126a3ce93ce34b59f12ab",
+      "end": "bbd85a23b84ce620bc372d2514bb38b568183b6056a7324c249ef23071f7d3e7"
+    },
+    "barbell-incline-bench-press-medium-grip": {
+      "start": "e852aaa598487078509d9206383860254c394d5bc5bf8c45984b3823d2fc19d1",
+      "end": "f43f1d9a738a3635f3402f8ef2f947e56cb5dc7d7343d6cc89e4a712e7f2b71b"
+    },
+    "barbell-incline-shoulder-raise": {
+      "start": "37e57b4cbb256f52128a83c2440edff77bd43f2bc1f35e40232ab8e4489b629f",
+      "end": "ddae367c319751abcdc142d7429396a765a7a0ba4891e85c7170d7bbef9f41d3"
+    },
+    "barbell-lunge": {
+      "start": "c456326812d41eb96dc80e41a79865e4dfdb6fbd522252043ec42f65d93d062c",
+      "end": "c3a1706c09aad88339c46e3783b528314250cf18552691733009e34faebabadd"
+    },
+    "barbell-rollout-from-bench": {
+      "start": "87c82e85a50dc69c37730624ab46c346564d003c88d877cdb2748d052d347a41",
+      "end": "c146b4ff200be54e58acfef574c13240bb7e3b4e58adbd07e6e8991e79eb2d65"
+    },
+    "barbell-rear-delt-row": {
+      "start": "41b108cca9ad0cd024532d0010d7497e6b8533f5e2bc4a58d186b408e10ed7fa",
+      "end": "fcc8e2bef8b955f92702d85ac677e40dd90efac87d1f0760a38558a952303d2e"
+    },
+    "barbell-seated-calf-raise": {
+      "start": "7c7e1782bb2396a8d9a0c277c45f1ada57da02b55223a5bcfdd7db2f096822ae",
+      "end": "9f7fc08fdf7bb8f9ee3b480b05ae2d807f5aa81ca63d7a1001d3f31bf5539310"
+    },
+    "barbell-shoulder-press": {
+      "start": "eb33d36d953cb5ef06084a3f7b6257f2d83410bd6234803c86af32a250f4d490",
+      "end": "227f975e2e2e8442178acf115fb6fbf387bf682eafb27af861f9595cf9b8f4ac"
+    },
+    "barbell-shrug": {
+      "start": "9b20be42e085232bf1297a9783091731b78c00dcb2de72f5458db261083069c5",
+      "end": "71e4185b487275850a77a16c8aaff4dec28c76b42e3170d07047144d8490d21c"
+    },
+    "barbell-shrug-behind-the-back": {
+      "start": "5a724e3c03cf68d5d9a9cbff2446153a13733956de0ee441cf2456a2ceaa9a1a",
+      "end": "22b74e765c361372902664d1e77e87de26e369681fb0e6cdee80bc373b5cc0d1"
+    },
+    "barbell-side-bend": {
+      "start": "75217dc74341f34a23046c01de8386e35e5cd78c881c629eca6be85b832714be",
+      "end": "bb399682b536883f10301bbd964612a330dbcaeb79b799d4953d753cd01a94e7"
+    },
+    "barbell-side-split-squat": {
+      "start": "4dc433bc315b5a03cff931b4a54efff987409e2e61e71bd70d9f9df76a5c33d4",
+      "end": "027e7bcc43a1e400307a36b72c8b9a2ca13d42d2fb4c085c516e668a1e380624"
+    },
+    "barbell-squat": {
+      "start": "3ea09729ab6642eeff4eed3a7ba586f05b508c6193404172e6f81e46bc9d0988",
+      "end": "cfa3d33fec5be3e1ff6885381d74af04a192ce55d8048257be61af3ba504988d"
+    },
+    "barbell-squat-to-a-bench": {
+      "start": "287904582220efd7f3a5f35741de95b3a380f99ab0dd04749ac1c1c9d9badb0e",
+      "end": "648bbc588056a4e002512a808152e502886d12133bb9dc9a2e21e62ac6e242bd"
+    },
+    "barbell-step-ups": {
+      "start": "0124a5394ba331c768165db0fdcd8770a14ef9a64ec7294275421395ffe15b79",
+      "end": "68cde587f108f22e5fbb02fda3b6cad7630dfca060b7a3aec18acdb650cd06f7"
+    },
+    "battling-ropes": {
+      "start": "417b71461d71092725db72aef0160c75e3fb6e1c4dabad2dbc7b98e856afe2d7",
+      "end": "49c8f937604596f8a79352b29b988ccc77ea894220d344b05da8e0bc852e2a02"
+    },
+    "barbell-walking-lunge": {
+      "start": "4d4d4a08ce379a72b46c0736a03f4952a1201e1387241aed81513a94804b240e",
+      "end": "4f22170da352aa73c8ffbb333fcfa9b2becda8dac9be0159217235db887c761b"
+    },
+    "bear-crawl-sled-drags": {
+      "start": "cf374d8b9fd120986cb3d80b6f6d4ed61c84851b12a7bca945b4ae91e5f4ff5d",
+      "end": "68b9970501a09c209df4effa323a9162c4da8bc05682954c97371a2dbe6a54a5"
+    },
+    "behind-head-chest-stretch": {
+      "start": "50eb699b52dbd335c8c6f69e8bb8fe80881d4f820c540fc84da0f27c7c35641f",
+      "end": "8f84a66bf5a53e373ed66a9118f626618447584ccce6240647b0052264e5d7bd"
+    },
+    "bench-dips": {
+      "start": "110ce7392ece19ba10d6772dc066f6a9fd94a1d79234234e69a0f04bde4aaf15",
+      "end": "c4a363b957961e7cd498a7cd7be18a46dfd5132c6deaa3652fb704a92bde7f7c"
+    },
+    "bench-jump": {
+      "start": "611501d6b4f32637d33e6a4f4e92900b89c062d5da0e13aa74193e4efb02cd9b",
+      "end": "70c3044209d56da839939573732947a6b4755ef3c102ae598036c05475e1bb4b"
+    },
+    "bench-press-powerlifting": {
+      "start": "4471f9ec9284f6b1295959dc51c82fb81286a8989868bb455920c9d18275fe16",
+      "end": "422eb9d9ea81e58e3371167a594fd9af848ca55fcf8de896986df3e313e32603"
+    },
+    "bench-press-with-bands": {
+      "start": "34bb4f6010b5a480b627f767392bb7001463e1716be9d02b00a277cede784b36",
+      "end": "07243f191b220a05eba51dd81bc7eb5f111bf417cafaf30e21e28e22404e38a1"
+    },
+    "bench-sprint": {
+      "start": "b20362caf24b195cffeeead96efdd600d142f15d90d040c19d161108b1626a45",
+      "end": "9a060d1def0009a66fe9791afb3628d9ded94b1d9441ff02694015e91914059d"
+    },
+    "bench-press-with-chains": {
+      "start": "070bb528b86f7aac0230a0c9248447d762d2b432a65f4334fd5566da19b556ea",
+      "end": "191d43f0af6ce4ab8a1a7d5baaf57993b966f20388477e56b5fe91b5621eca70"
+    },
+    "bent-arm-barbell-pullover": {
+      "start": "b9a6ff892cc42bf120876f6f6cc87b27413704378d90a9cafc8225a8e0d159fc",
+      "end": "8d82aada7caba0d848221b50efcb99f266a1a81915bcad08941f77259bff876d"
+    },
+    "bent-arm-dumbbell-pullover": {
+      "start": "323c59f0b8247737c9315eb5f902be0cd199a296b9fe2c6c48d3705ddeb12310",
+      "end": "2fe508aef6374c49d937a267d9be5aee3d6a10ede6742d3197b3e6c5fb763f0a"
+    },
+    "bent-knee-hip-raise": {
+      "start": "774410b29d6209206c11116b4b6fddc1d0642f6c49693458154a0f41d9ac0893",
+      "end": "e465363985037e5672b7107909d7cfe5ab70c00c758ca01502fba63b8a939544"
+    },
+    "bent-over-barbell-row": {
+      "start": "6d2f8dc3c99c444af70f39e903b1c1d2d75b05e8a69f29c2a879cd7a28e8a538",
+      "end": "fd4edfdfb93645581a82a35fa0dadf0a41039140ed3b2e57ea7765fc830e6f0f"
+    },
+    "bent-over-dumbbell-rear-delt-raise-with-head-on-bench": {
+      "start": "9c63e0ec34885d28f7c57267851150301459e43eedd2ec8d827ca92ac407d17e",
+      "end": "dfb2b3d0f83b9138c399f9ff833889d7699320e909969ecef0bcf84f15e47b6e"
+    },
+    "bent-over-low-pulley-side-lateral": {
+      "start": "26db01eee9aec7f410160f41f79bfac8b0d489de0a748173f8aa9f18a586d6c9",
+      "end": "6c12245a73639637226d99a4481406a35339230d5402c67ee8ca16a1b8c8fc44"
+    },
+    "bent-over-one-arm-long-bar-row": {
+      "start": "cfb53980298568557c9da8d1b47322078ad0b85e14ae9692e85a472626d2792f",
+      "end": "f93fd59c689d850b9b43518c613b03f375d8850994b4cbe4b921809df96f5ec3"
+    },
+    "bent-over-two-arm-long-bar-row": {
+      "start": "5cba5683c629757883b0f23a556b8be26cac70a2549800602ce8d94d96f872e7",
+      "end": "88dafd3c13eabdc29d271d75d2454764260b484340fd5d15f644565c3ac5eded"
+    },
+    "bent-over-two-dumbbell-row": {
+      "start": "988418199197f725793075b4f15b4fd79080a3e71b861a1d3f3d05279bb96616",
+      "end": "1f8af48fdf977926035124bb3912fe95b320271ccca81e6193eb0eda35a5694e"
+    },
+    "bent-over-two-dumbbell-row-with-palms-in": {
+      "start": "bc34364e7e53ac7499961a29d03a2dd539e9367513e78165a8a54e924eb3ba52",
+      "end": "3b871c2ac9b50d04035b1f734410326598f36fa44ec177c1bc4b2130220a79f8"
+    },
+    "bent-press": {
+      "start": "b39c8f547670fef4f8931db08b67aafec2a0681f795d434269df3e6208a9cded",
+      "end": "337562510759898c05322740d3bd1c012502a4c80119b25c9e5f16077ee363a4"
+    },
+    "bicycling": {
+      "start": "204861f324a1917cf87525f2f78740b3e60325898235921e0b82993980f92d29",
+      "end": "aaa73bbb349635819214ba658adb7a88252b602510b120ddfe001f51e1344e0f"
+    },
+    "bicycling-stationary": {
+      "start": "ad4e45ff1862a1ef49a411a9c184b8a36f259a717212d3d63c8d680f754f1be7",
+      "end": "46881d0cff9ca97c37b13d186c87bc64db2b61af1cd915cb57347b055b29a40a"
+    },
+    "board-press": {
+      "start": "1f4497c926af370ec816e5eaeae4809f268d9314ae2fb6915ed2a9a5f57e6c05",
+      "end": "31fa155f8e2acf891a792f2e887b440629e8958bbc651455e509df20848aed5b"
+    },
+    "body-up": {
+      "start": "b803c608cfb2485ce9bd97cf866b10eaf62c4f04fd19b2058c1222f596261c31",
+      "end": "6d76347c5f06a8f86ce030555c4a7f8ab164e967d4a7fb90a1e9f2aec60f85eb"
+    },
+    "body-tricep-press": {
+      "start": "10b1482a9b43d208f4f3915dc6c77aa26706156340834e9c5409fdf213447430",
+      "end": "aecd20d479ea7b85ce8e2601665286e080cab980019934f7413ac9935580a68f"
+    },
+    "bodyweight-flyes": {
+      "start": "9d16c9434af1680e7947f5d07678729ea3c38099bac6522db49f704707f4290e",
+      "end": "f9e1caef6089167ee6964ea5ccc87c42058f4c6173d6eeb1089da88531556318"
+    },
+    "bodyweight-mid-row": {
+      "start": "d0a15a1e80deb377def93e41d13c7579417585342ae261b62bd7c1b14fd7aacb",
+      "end": "4e99cf51bf76b66acf6132fbdbdc72ef6b7ea10c7c7f81a4f9305d96d4746d7f"
+    },
+    "bodyweight-squat": {
+      "start": "e697d070614865f78f0094164a9e4dedacac5c08bcf44e912105036df9ea111b",
+      "end": "f4fee328eb080502b5a00bb7e504a89dc569040f558f7061147e7b32ff1b7697"
+    },
+    "bodyweight-walking-lunge": {
+      "start": "f36d8ef25b249281f6e7b02208911d976d18de73c8c567b35f18079ce763ed00",
+      "end": "87099dcd4c5759e25939a8597e93ca19e7a4db02a8aede5470b93815278bff1d"
+    },
+    "bottoms-up": {
+      "start": "203a73e03ba19866ced8446530bbce0f2f35aba436a4dc26f3031eefbf14503e",
+      "end": "62a32884ac6b4602cee757f9922f061f9725653c026af2c8ad428f9eae66516f"
+    },
+    "bosu-ball-cable-crunch-with-side-bends": {
+      "start": "b9f485b2b0dd05967bb60d995fe8536ddb824f5079abe593cf3eafd9a87b3fcc",
+      "end": "8cd6c994478f2b68703aa46e36abcc228fe155f8a7a6c8dcc127a8a595c0c5c7"
+    },
+    "bottoms-up-clean-from-the-hang-position": {
+      "start": "d44b3268ce76c3fd48d19fc192ffeea6beb078ac1cf6ae75c7aaa0f80c92780a",
+      "end": "9448b0f3c7b5ce3a8805db2b13e9f0ae325cd5c3c2e3e6691873762ac5c81d8a"
+    },
+    "box-skip": {
+      "start": "75a90cf2c1a198c63e6ec2ff2f722410f3dcad8313f8b2d884634cbdefbf7199",
+      "end": "b9e4ecda059873595a30d5ab022415d65afe3bef1a79d8f40423b5c251eb30e7"
+    },
+    "box-squat": {
+      "start": "c3dde1b2ae22554d2d49740736ecf89e2f14a6128a744608118e2a0c17ec3ef2",
+      "end": "1b211d989c53eeadd351e46528669636db5dc41505fc79bbae67f0b14b3ce0b7"
+    },
+    "box-squat-with-bands": {
+      "start": "94104e5c3b4214c7c7be552bc05f4787c7727d2a076d7b261315d4387bb7339c",
+      "end": "d98277dd32adaeb891f21f586adcae480d186355f5b582ff98868d43e811efaf"
+    },
+    "box-jump-multiple-response": {
+      "start": "417b5600644192002187e066b1dc11d799ac5d5ab3e7d29b04d85fb5f70614c1",
+      "end": "44923023384644e66df6080a8d8cf223bb2c5a2c518c0000a1867b6cd3421200"
+    },
+    "box-squat-with-chains": {
+      "start": "b291f0785fa5781e2e093d9124b77dda55abb5b4967ce6c38a506064264a6be7",
+      "end": "5cb375a6e7b1fa1dd6454d921297ed3eb37a8d935ab6f994900b7e0390820fd0"
+    },
+    "brachialis-smr": {
+      "start": "ff4e35f9ffeae6b51d75bfacfc394a667e0d345362249ea57062df5b296377a6",
+      "end": "ff4e35f9ffeae6b51d75bfacfc394a667e0d345362249ea57062df5b296377a6"
+    },
+    "butt-lift-bridge": {
+      "start": "cb18156a1639aa7032f8057db43c1268ed37a9475e020b8a76baa04f5bb6d7e9",
+      "end": "5e29ee7bf18b9bd91bc1f9b535aa0bd5bdcb8e39e1ca65842a51397d739692c6"
+    },
+    "bradford-rocky-presses": {
+      "start": "ede32223cf348aeec3609d7404110d774fd6a0ab77859157b621e689542f6c8d",
+      "end": "5b1330c353b18c1fe2721cad024278a497a4ff49a1e7f06d8323c7de1b14817e"
+    },
+    "butt-ups": {
+      "start": "4084825af85e89fccbcaa10ec1cca99bc543de10f225e1ef348f387c72a91a52",
+      "end": "5970b54a3228c7029f061fffe6bb2f55183068249cd13e69db774b96c17932a6"
+    },
+    "butterfly": {
+      "start": "3726da3d9aba27e75cc0a1c9f87b4f9cdeb099b5d5317d1e9de8288b1a400ef7",
+      "end": "fd7d9110647c17d92880d5642f070b70511bd9ddd9a5a01bdc2120660bb8e114"
+    },
+    "cable-chest-press": {
+      "start": "3c5f172ecd168ccbcb7df3685f928656cef5c377e42303566af0b8f805aa350c",
+      "end": "7ca86525a058807f1287157c28418d2ebc920af7789d2c41019068d255184817"
+    },
+    "cable-crossover": {
+      "start": "e777847154909c0463ea854bfaae75afbfc26294193614737e603a88ea21d7e2",
+      "end": "f5c05d8e6b618eb771121cabfe96d205d45f58684d3f40a866a67fccde2e17f7"
+    },
+    "cable-crunch": {
+      "start": "ef01e405d7c0f8d0c9062bace9742dd3a247162806ddfcace5fa35ca849d2560",
+      "end": "9a4d3829815ca96c30d949530d7cd77a2fec95191e43ad23894c45bdebaf4997"
+    },
+    "cable-deadlifts": {
+      "start": "8edd0198ce0511c28a1625f30a0887ad82c1bcb7217c8c3d9fa1bc89e21e9491",
+      "end": "3000f21a200509f4731234ac081b28b1754d1ed7a4a4693f114d69f3fd1036ef"
+    },
+    "cable-hammer-curls-rope-attachment": {
+      "start": "24cfb786e3e2a7785784fdafabbce402bc1d06a03d6792edb183ffd0548de6e1",
+      "end": "603754b6b36679c279caaf635e5dfaef0b346d8d85295aad9fb01d3a64fdbaef"
+    },
+    "cable-hip-adduction": {
+      "start": "4c59bf572cb9135f52d9c45932eb868a7882699e5502b301c7e87957aaf9248b",
+      "end": "f17092e08b16179d7aafa12c564240eb7d69cf19824610f40165c541b71004ac"
+    },
+    "cable-incline-pushdown": {
+      "start": "ce725554c376202ab91ad93fdd46d62ca99087e6c3e5f6ac4fca78ec09075c82",
+      "end": "d6a9d8d32e79b54941dce6b12bdcce0dd34042fe31a216c039879be906c139fa"
+    },
+    "cable-incline-triceps-extension": {
+      "start": "f094e683f4b3b4cc061cee08ae463f32273605a0c4a0d76ae676c604d57b4c75",
+      "end": "934527397365228b154fae1d66111586472ff74217b0d9eb15ea2052be1afa0c"
+    },
+    "cable-internal-rotation": {
+      "start": "c11f0eef748bd18914b309a68b8a77fb2609a33609f378e5f02b83b61859e266",
+      "end": "0ac359dc4d328f1f4da917a3fbf4f3dd8d61e5c569a1a58d6945944b0c31b32a"
+    },
+    "cable-iron-cross": {
+      "start": "5afda0e2b05c35bae43604ce2720b99ef5eeea212a18e7d2b916cd70c20541ce",
+      "end": "ad119bc31b346e3e7a4e851e0773947f2d2c6a1d68265933d4c119e1e69a06d5"
+    },
+    "cable-one-arm-tricep-extension": {
+      "start": "30ea96b9efba683f45ab77783b0c17e42984421bd58172fb0cf8c631f936f926",
+      "end": "f385dc7c870ce1666246e23bd24ca7ac807e8f0fe691a18890ac480ace60b219"
+    },
+    "cable-lying-triceps-extension": {
+      "start": "d9171ab26aec33f83fbfcf74c86c82db617f43b23a75ba470cde2e3ac39ff20a",
+      "end": "0607f1beb729aa8f7b7f3a1fd7eda0db0b575951e6e3450bf00853a983eb834e"
+    },
+    "cable-preacher-curl": {
+      "start": "cc2c335428aba372f33d8c9a3f2f1efc0e3d37e9b2b2a4e4d81806bcbe91efc4",
+      "end": "79a1baf24c05263d93a1d5843ee063b50f912759778e63a1f7f138d13f0d96b1"
+    },
+    "cable-rear-delt-fly": {
+      "start": "fa832e77233a1abb8fb0516f6f357f351f3ebddcfbac5f3960a72b31a2deb35a",
+      "end": "695260e8891129be13febc1c76037e6e6970c596bcfa65581428dcedb954c7ef"
+    },
+    "cable-reverse-crunch": {
+      "start": "49d815139ba0fa9d45f8c8058b1229e906685ebc5792061ebdb270f863f39b6e",
+      "end": "10a06476ae7da2375d9d870271f3d1ad886b64425ca11d10c12a0c1ae9534387"
+    },
+    "cable-rope-overhead-triceps-extension": {
+      "start": "921aeabf9a09e26303fb2c1b2748de259c34dee215634a7d944443a168fa6e62",
+      "end": "4cb00b279d7057ebdd2dfc4288c55785ef8853747d688ad6b6b983b2b459f4e8"
+    },
+    "cable-rope-rear-delt-rows": {
+      "start": "47a1f6db445451119174b5ce6ed4a7b72ddb483dc55f6e7a5af27d6b72cba8cc",
+      "end": "91ddd7b9d71350bac5391d78cc265daa292bc06a79730fb52f20665ad1acf9b4"
+    },
+    "cable-russian-twists": {
+      "start": "508694908832d7a5d686a91b32cd0c039d90b6e5540a3ab0627bc8fba0d94e2b",
+      "end": "3012d5a23303c057cbb2e538fd80e1a7f2bdc67e651f8b98e693a8c652472792"
+    },
+    "cable-seated-crunch": {
+      "start": "751142554726198dbf7c290a1312213e7f51f219188703fd9b92130387000347",
+      "end": "681d7c96e1ab54c0eec714904762e87cfbd3f92f9ed2aefeea9b1b86075cfc43"
+    },
+    "cable-seated-lateral-raise": {
+      "start": "6dc511a92dc5cd5d8b19f1c22e8bdd9efad8d7d6096d42f3111753ced61d5f37",
+      "end": "dad0e3b4a5ea501480d19759e17da4bcc46d64cf232d200afa9a1165c95c1cf6"
+    },
+    "cable-shoulder-press": {
+      "start": "1bbddc33facc3076e8eba1c0cb4443a5c88823e058f38499a7ea2004ba667f74",
+      "end": "2e6f20b576af5dce6938973a692bc3e05b326e85a718dd24ddf53ad46ddf7679"
+    },
+    "cable-shrugs": {
+      "start": "8cb00595d8585e4648482d5116707057d02aa920280f1449063b7a9152c464dd",
+      "end": "d9cc77a0a9e1e67f1ea99a288e4a3b3dc483050cdcad094aec37e4078a8e3730"
+    },
+    "cable-wrist-curl": {
+      "start": "d91060fb617593961fa5e009cd436d53c3c4a3831db500546dede098c9c73e51",
+      "end": "2a5a16163029397e4583928d960e9a3e9da1a37d9e3cb2031bac01c053e3717c"
+    },
+    "calf-machine-shoulder-shrug": {
+      "start": "b1b2bcd387f7313bc39a4acc431a1ee02321aa33fef3adbba01541c16fc65118",
+      "end": "fcf99a861350f4993ed08306442683b95e87fa99cb4d9d098613a6cb8129dbab"
+    },
+    "calf-press-on-the-leg-press-machine": {
+      "start": "6cdeeb2169bb0d45b052ceb0c4054abcd459a7ef3ad34d7725033540dfe34771",
+      "end": "17b622d70dc64c125718c6a5d4e74db28f3205e7859af87850c5aa10219cbd62"
+    },
+    "calf-raise-on-a-dumbbell": {
+      "start": "bea5737636f6eae2f55a8ba54529752df22812129aa820e81c754d5ac068a19c",
+      "end": "239f6da23ebb632bf0b61147dfe477c0cfb448f7851d978c98831d9470b46334"
+    },
+    "calf-press": {
+      "start": "338315653c0e5769942a3f567f1ebcf0dc978a752ed032492deb15219f943649",
+      "end": "1b04f7c9d2e2472354fbe6ce8495426916572f769d3473d9c56e9d92fda0b33b"
+    },
+    "calf-stretch-elbows-against-wall": {
+      "start": "953b6e75d6ae6c33648b77a6ae2653f8bb8f8351c78d0c949fb896ff677d7945",
+      "end": "f5148dc5acb9dc0e623c2e681f5ebcfed252991311a714ac70c37e339d5d85f4"
+    },
+    "calf-raises-with-bands": {
+      "start": "8df3009bc304c54a6c06b8c7e7a085aad19eca483754c71706e8d1042168bf13",
+      "end": "3c8dea6f64fae8a8370ee7d152d2fecb2fa3c961c6d9fe5eff58f89c36c5d584"
+    },
+    "calf-stretch-hands-against-wall": {
+      "start": "82f84235bd76bf11787587b63c49a69e8ecd3ad272968e382e9618104b0918fa",
+      "end": "33c8ca4949dd1c6bb1c48ea98e9abd5c85ec7022405c3d7355ec7be1c21eefb1"
+    },
+    "calves-smr": {
+      "start": "403ca96804519cfdad19c8c25c2c807824b713f1d44d266544d2118b76df6d13",
+      "end": "bad9f44d02360bc670a22578b1c189b34276d7f2a3ec31392c954d9ca7000769"
+    },
+    "car-deadlift": {
+      "start": "b36258c41b7d8bf6142b6e666fa8b26bcf1748bff395639f1f6e3289ab37f69e",
+      "end": "9a175e41dedbd552e957482f6ebe8adf89bb022c608f5602885aeaa25b30fbe2"
+    },
+    "car-drivers": {
+      "start": "92a8212a791f8f4cd1327896c87696f91f4841c4d10e2c20fb3a1e23e0c2117c",
+      "end": "09f9ecfbaf3d4d0c97503f7330e3a8f3893b920f70dfd1d580e059e226e27197"
+    },
+    "carioca-quick-step": {
+      "start": "e99c2d3ae931c2e90d7233a3d7f6922c9b7e793df79563c36a945a6626fa7560",
+      "end": "e1d509bec3c2250efa482a60872d187bcffae172892951e8529d0f40e2360de4"
+    },
+    "cat-stretch": {
+      "start": "3ffedbf5e11a92f3fe842c72a9ed874a2d54088984057e0a75f1a8cf1d74da07",
+      "end": "5a28b3abcbdd9b6d4c6e4483b38e723bb8913d0f0998f795a339f6b734f33909"
+    },
+    "chain-handle-extension": {
+      "start": "4eb6726d13c558b40631e6ba1e53f242e7180a900e6bcd729d64ff00d2d5e74e",
+      "end": "97a6cc457569ea1161e24d9e71af17970e61ad44eb43e969051dfd2524820705"
+    },
+    "chain-press": {
+      "start": "64b78c91c6608a156788d731762d0805d07d1624b50d3007b0a9da498cf234cf",
+      "end": "2eb4544011cf57311cacf63eaa485c4ce5da9259d5414c92f1b1285875e27d31"
+    },
+    "chair-leg-extended-stretch": {
+      "start": "822d5193c88b6cf93cdba47512b03401de9f507e321d77c6fc1807b78f0f5be9",
+      "end": "918b1b3e59b865e211241a8070bbf35f75a107778608eda451d1f0ff5e574511"
+    },
+    "catch-and-overhead-throw": {
+      "start": "1429b2f96f941f88820b0bc59ddffc1689d9bc2636ad5385dff60e02d6b53c94",
+      "end": "0312310ea59db2cfac6abaf19c72f2a678e06c59ff04d06c7d42180b5a1f84a0"
+    },
+    "chair-lower-back-stretch": {
+      "start": "9dbd08ac84af5516ed86c6fd0159365626b57231d999447b43fa527a5c444503",
+      "end": "74b283216d0951e1b97afd70f89421a463873b3fd9ea49768b58fc54dd40c54d"
+    },
+    "chair-squat": {
+      "start": "30768402371d6af09c5d0765f0343d537bab931eb5c131fb0fac3a585b22d4af",
+      "end": "2b7b8b4619fbbb4a963758d9e27f921abde6881db4bad973c19731f3b950fc64"
+    },
+    "chair-upper-body-stretch": {
+      "start": "ee659f2ddec6a2741e7f11d2c3cfb470f15c71af29172de84e2ebf97a58d2dfb",
+      "end": "e806d527893899ac03c48edb906a8e602128fee90c7d07cb6abf99507ae07643"
+    },
+    "chest-and-front-of-shoulder-stretch": {
+      "start": "4ea850c7c27a7b692f2f981001a87f9a2427bed324cc3e8ff37fafdab51aa1ef",
+      "end": "f03e9761f60c8263eac9db0bd64e348ffc953cbcd5f780591f5726de8c08120c"
+    },
+    "chest-push-multiple-response": {
+      "start": "4eb6e6c18e87d697f6e44943cb282650dc2bfaa0fbf0e49690e0c08e4b51409f",
+      "end": "cc12de22e5f83c049ff8260694c924045234442fbd8466be24eb8cf185f159ca"
+    },
+    "chest-push-single-response": {
+      "start": "2b14413b3f283f64afe1628d51e23667baaf5ae4173b8d8ec917ca43614cae00",
+      "end": "2a6eae0eae4f2be99c9cd402093fe6a127a5bcf20be6f2b30658c6fa0442e6e2"
+    },
+    "chest-push-from-3-point-stance": {
+      "start": "8010ff7e46af8cc0b4dde11e262e20d87fc469cf92790087f76610c7a6732a7a",
+      "end": "f4c29adfb9745f02c9dd27d8e482789ce3b18c9ee5a08c429b393259c0741e0c"
+    },
+    "chest-push-with-run-release": {
+      "start": "5fc6076c88f0e2bdc32700098b4620377797f53487b0a25e5bd5b3118226b0c4",
+      "end": "95a6d4a21484a8083bf68e6e7776b0582d5402d17bc0737179bcffd0636c3f6a"
+    },
+    "chest-stretch-on-stability-ball": {
+      "start": "a914ebaaa44e41addc47414e81b158220b1aa00941e209a0343240b0b2dfb2ad",
+      "end": "04b688b307b947b56c0c7f3336d312b2b5d0ff4c90f72e537266e98faa433985"
+    },
+    "cable-judo-flip": {
+      "start": "3a60a07540fe1ea4b64b30e9b8beb3f8680adf4899710098e4a56c6b22d8fc4a",
+      "end": "203c1e627d155de8dc720e4e44d534e0fd820303dc96cd184470ddd7695f4df8"
+    },
+    "childs-pose": {
+      "start": "98ba770cc101fb8ad19e9250607402f726aaf0e8ffc274025a247b83a3fb27fa",
+      "end": "1b378250aa781cca3fc43216a1f080e3c436861e6f2e4e9d6b6591909b4559b6"
+    },
+    "chin-to-chest-stretch": {
+      "start": "87f314178e90529ceef6ed3f765a00fc6358bb69f79d3174d22f13e318710141",
+      "end": "b51afe1ef713a4bad11e761364039cec7da57c6838f543842668aaa26f3bf2ba"
+    },
+    "chin-up": {
+      "start": "e546c82319f46cd9c08d0f6a318522348300ffbd67e26353ac3de75bef709eb3",
+      "end": "448a3c53c277bf2d73abc3d1d77ba42e1056d3cd3f9387ee57b5395b7f262ae9"
+    },
+    "circus-bell": {
+      "start": "7133fa33cf1ba90df5c8eed1b14393a717a91bcf0ded047c24de675a90714fb7",
+      "end": "c5d811f873db748684515e935c9c56eedeb64b147b1ff100ca07b414e1823859"
+    },
+    "clean": {
+      "start": "8dc40cd6b70fd5d968127d9a5bf759fc89e175c36c45c05fe3235d3ed7383cb8",
+      "end": "73b820bdb1e2b3ef99321ce6649df242fb34aaced0e736167fb721551eb1d2c0"
+    },
+    "clean-and-jerk": {
+      "start": "6d93224b45c882736a3341f1af710e3ebf3a05912ba93efc4f6d612e0e8d46d7",
+      "end": "6fdf6b30b1bee9692571b9199aab9b18f27d0e6adf94510bc00c8b5763c0424e"
+    },
+    "clean-and-press": {
+      "start": "787641d6d8ef1c30ca4d23c2fd8d8b61c9d6aa790f19cf8f9332bbbc1e62d568",
+      "end": "a8d1835387d6837792d22218e834f089f202a9aedd1f7ecaa3cf0f5600a4958e"
+    },
+    "clean-deadlift": {
+      "start": "d82f5ab714b430428210fdd0dc1b449993f4d934e656a4bcf287f4cea70b54ec",
+      "end": "7c3d272dec1f9ee06d6ff6e80673a5f52a6d2e3d8dca5c12d5373b9be0f53822"
+    },
+    "clean-from-blocks": {
+      "start": "0b161eb3d2ce600aced8f17193ef923b3477ce1b35432f5962e7059e06b52e8d",
+      "end": "47d4ed463365436f45f99d83a44882cfaf0afb156bae8e1f753e5aa4294487d5"
+    },
+    "clean-pull": {
+      "start": "e4f12d0b647eb5e6af610df5caad34bcbaa7a3b72185ebaf627a1f0d9e33eb30",
+      "end": "b21e1ce7d0903215b1fff5374d46a6fe192bfacb8b37738618fc633f5d11c329"
+    },
+    "clean-shrug": {
+      "start": "90ffe879eae54ea74bbd7fb728fc75784e112406b1d117b71941a50378c3977d",
+      "end": "6276ed8b3fb9c3e973f3d7830004ddbd14f85fbdc13d8b24c6bd6728f1e362dc"
+    },
+    "clock-push-up": {
+      "start": "62c309f12cd51ab343ee489d66836bbd95629ffa7859e706ce842147795de0fe",
+      "end": "6a1230cc448c523552fb582bde6479ca4c5c991a8473dd6657244f5408d6ae7b"
+    },
+    "close-grip-barbell-bench-press": {
+      "start": "bae92083de7cfa8b21218c7033c4b327d31d1f8c4e809d1c231f97b4dcb85eb8",
+      "end": "b63c362b1e077f4ffdeb1595662629218286da9b0fd65b4b406233c66c0b8729"
+    },
+    "close-grip-dumbbell-press": {
+      "start": "f7cdcc0b25057796f98131a618a21bbe52e58c59f43c93d50269ad832ec25989",
+      "end": "55ca979698e91bece99be2b799f950e87b64d5f2cd90115884afb3fa3a1816e8"
+    },
+    "close-grip-ez-bar-curl": {
+      "start": "28b437226ad1256fef19e5b55a2174aa991646d1d4a8081b643edd4197b13165",
+      "end": "a58aa6056113d151da7180697c1c126c33274bebbb45a71fc48074fcf97c9f37"
+    },
+    "close-grip-ez-bar-curl-with-band": {
+      "start": "ec1e711c957724004521b4813ef932857b290c94a5b968a482298087ed3082c4",
+      "end": "087b87e85c75fb5c8b6b965cacfd673de7bc34fea39bcc2eb6ec2b984bd1a6b9"
+    },
+    "close-grip-ez-bar-press": {
+      "start": "ec885d2e063dcfb0ecfbf4762357ef11c0cf78aaaa2be1dc530f71223a0710ec",
+      "end": "711a9bb860d825672be12ef13a88cd89c3f76c7127b00939ccf1dae3c4d15e1d"
+    },
+    "close-grip-front-lat-pulldown": {
+      "start": "377112e3166bc58018f89697b0d076fc32b7b92c937020958c0bfac9ee31e730",
+      "end": "a855c0058f2d1c2309bb67c546cd6393742c2d63656d548e0b3b5e5977fdbc2e"
+    },
+    "close-grip-push-up-off-of-a-dumbbell": {
+      "start": "b46381016fc9e8bf16c08d3a19a66e6dcc56afa9515124eb95ab7b3807bde1ff",
+      "end": "7e61b11b307d86600165691207a6fd604fcb74f74bfa445dbc5f79b8ebff4c34"
+    },
+    "close-grip-standing-barbell-curl": {
+      "start": "b589d540fd6a6cda342c4bed864c87b15d7641de78789e8c67735ad1c41056c3",
+      "end": "0a698f4b231dde5c7fe0fbefeba81df177176975c323950a3c45bbae6068e207"
+    },
+    "cocoons": {
+      "start": "225af8afa7f77962b498c5b147dee1e09088a5345eebcf78e45f334e0f15ab08",
+      "end": "7aa1e6ff962db83ce705f41f1c5bf8ce6d9c111cd6f2ef0aee7564c63d279646"
+    },
+    "conans-wheel": {
+      "start": "0bea86fb03ec406f22974da9467d07fc3ef6ef867790d42eab0f13f880ca0fb4",
+      "end": "04526a2873c1637a25f05355529447915fb45ab4b25a221b02c34fb90c1bb2ae"
+    },
+    "concentration-curls": {
+      "start": "9fb924f77bd94b9ef3b81d4e4d97421c99624091a6069ce3853267b1242431e0",
+      "end": "fab6eb0b33b5d4196cfd022d060a4914a60fc1e589c8011e2a44d1ea0fe8d9c6"
+    },
+    "cross-body-crunch": {
+      "start": "b7350098f897e1e52ab95b248e9d80ce6de0e207da3c49347cbc2df03d7736bd",
+      "end": "cf38ef8e09f3b4fe50c1e1eabd83378a83ae85f206ddf2dc8c147c6e7168a4e7"
+    },
+    "cross-body-hammer-curl": {
+      "start": "1418ad4a10c312273bf9fa9694e2b1875d6614b52fff6774ecdab97be25b7244",
+      "end": "318026f0fb378d3c460d87630e1b097826f01f36701e8a35c82b9045b8511a16"
+    },
+    "cross-over-with-bands": {
+      "start": "8b839bbf8ae658f5472b34df7c13feb02596f80188c5bcc2421469d657686e55",
+      "end": "1b459ba86eeb517e23ac0e2efdb4e425c12eb69164c06c9f260f17db178b6267"
+    },
+    "crossover-reverse-lunge": {
+      "start": "4af259e14bd8ad23c2062b9c738023c85f590647862484f548a26fdeb9027a5d",
+      "end": "4cbd288d5422fb9f40a19d8782b9bbf5f509f4687938940fae86c78e836729bc"
+    },
+    "crucifix": {
+      "start": "d9164a3d1517dac7631fae5a0cf62e45b699747b4999641dd801f4efd5eadfb4",
+      "end": "6d16b646ba367a1d225a6897b555697991c11be6297705121aa138e7f28aa28e"
+    },
+    "crunch-hands-overhead": {
+      "start": "b6e1968e708ad89bb3a132233f5d12a63d9bdf7eadb560eb4fafd1d71240fbf3",
+      "end": "0f63d68083a08109af714aaba71b4d7aeae271442ababec90aa45e0153cbac90"
+    },
+    "crunch-legs-on-exercise-ball": {
+      "start": "f326fd3b79d14001d97ecd0e36015a00a56ce9b25e03170d8ef0cf7f36c7dfab",
+      "end": "4be1335a69ef63aeba9cdb8aa4a3a4e26547e9254f3c4e1f0a1321e7690fa799"
+    },
+    "crunches": {
+      "start": "62da29afe67e21bed2c55e2e3c4f392b826a58d64f7700d55b895872796c7628",
+      "end": "48b4a1dfa33b262bca0176131884a0f5dd9512246e63fd129efc469023eda964"
+    },
+    "cuban-press": {
+      "start": "6d14120ca14b7463e6e7d06d1dc8b31da3933783d7a89cda71ece939f12e7764",
+      "end": "ee7cb428e22bfbcadfcfe66cca695be1efb2bf4de33b745e267e10863349a3c4"
+    },
+    "dancers-stretch": {
+      "start": "6e2a803f71fc964442e9c44d59fd013b4fc0abfa541fefc735a88a54a35d4277",
+      "end": "81a06f785824106056d3e0d963df9921c5f944b2591fe6f314f767a5e60513d1"
+    },
+    "deadlift-with-bands": {
+      "start": "6c383dca392506ed7ae0d26e2e4ff4efb176a1181c636e0d3c39101bcc1c3d3d",
+      "end": "a5e546c22f353f0b56305823c965c47bc038559cd3604a32bd3152d22cafb320"
+    },
+    "deadlift-with-chains": {
+      "start": "180ac691523ec02f4f65555f58e5d95d3ce28d4cecfec911f115d6d737eb3728",
+      "end": "1fb5715e98a90a9513ee3714760e978901e8eea81be51f083c8d23b458c62e91"
+    },
+    "dead-bug": {
+      "start": "3dfce43ebb3688b5dd035f4836530ef4148d73c7ef243b7d9a4413bd72a8ceca",
+      "end": "74add8bb30b8ffd26ce56b7a457e8f6a235527a74f9f0261a8e99f2cbc15d4b8"
+    },
+    "decline-barbell-bench-press": {
+      "start": "735658fff8b4b953ec89b29c5fe01f16a18b9d0ed99dd5999c0c8f2c1d52c484",
+      "end": "d791b28af12a05d9caf38c2086a78ea3f5a9831b82a6fe1c941eb4d0f694751c"
+    },
+    "decline-close-grip-bench-to-skull-crusher": {
+      "start": "2888fb8dd2cdbdf1529ca3a8f2f6f01f7fd98836160001b73deb91539635c68f",
+      "end": "6081388b1b225b647d91aa58b8ca6a392aa44b10150bf046e814f985c043bf41"
+    },
+    "decline-crunch": {
+      "start": "1d0e4f19ee013afc104008d57c8dd2c7eb15f248612fae1b7a89435775940416",
+      "end": "cac04d4e2a5896d7682cdac2769f7547fd752bca9f17f57e7f58e9f83009a5a3"
+    },
+    "decline-dumbbell-bench-press": {
+      "start": "cda5ff70635ba93031789f9e0bc2abe20dbdca0bc54e9e439561744f2fb8091b",
+      "end": "67fa048446b070c7fca1d9686c935b564fee6430509ad8615298152dd94f3de4"
+    },
+    "decline-dumbbell-flyes": {
+      "start": "b46096b5bd5eeca4606dc48b93a1e9211313b9560d9d7f3e09deefe303900a50",
+      "end": "2c32bb3d92f1eb55b706098c1d2606b1ea15057f3266f466c02553c5ca717b2f"
+    },
+    "decline-dumbbell-triceps-extension": {
+      "start": "4a7d493b03eda583742141efcdfd6d76a82da2e22d5b0188b39e32a681464c4d",
+      "end": "c30dce050f5b112c15d5fcdd23c0fc2cdacae7dd94b1962d3e82a8eb00e5a72a"
+    },
+    "decline-ez-bar-triceps-extension": {
+      "start": "52cbbd3d110f7606dd5456bc93f9cff13280156edb1a804df616eece4a5eddd8",
+      "end": "0374b70609bd0395b71d2d8a5cef9afc4aa8b3344b63d972c056e98d910a8a39"
+    },
+    "decline-oblique-crunch": {
+      "start": "84405d5bb1c2d6f9f53b3f46803f2178103bed875c08b2161560859916069507",
+      "end": "f9c01c79cb20a76ad6f28dbcf5735611d995b40baeabbf854fdded2eb8005ce4"
+    },
+    "decline-push-up": {
+      "start": "860964d2601ae437a8be140650ab5a6151cd0a84510acf9a7b97fb872ae7fa06",
+      "end": "5d278e55738ba7d9864998c55b572faa9cbc18bba5bc09647c457bab16abdb4f"
+    },
+    "decline-reverse-crunch": {
+      "start": "5e6b463f252e74305d340882e735367c20490bb4b18d332d92e7d665cca1b253",
+      "end": "fa7bb1c271505822a2c41c4e2e94800f9121dd23ce2ee2a256802221b4266fd2"
+    },
+    "decline-smith-press": {
+      "start": "669b179bd2793f05a0e721505ac99f68236ee540a7391fdac51dd94c4fa855bc",
+      "end": "05a017324d06d9cca4340bbe481d60a72d1e99b59017ac2593f90820b0cfd9f4"
+    },
+    "deficit-deadlift": {
+      "start": "647e40350f538867fd9447f67590801b5b066c26285a5c8261e1268661c3f912",
+      "end": "a68da4bbcbcd4b324c4b19512553ec690ac7b24151a42cfaebf6b7510bf3962f"
+    },
+    "depth-jump-leap": {
+      "start": "294b1c01aee2cc44523bd7b66c7a177e43b0b408c0a1bff81c8a0310657b5c67",
+      "end": "2b78371c783d62e33329366ab630badf53641a280462010827a0ddace79977af"
+    },
+    "dip-machine": {
+      "start": "17bafc2408a97d028f8eeae03c9ba9b1e5962f38d04c77271861333b8a89a22c",
+      "end": "838185cf29e9afa5fc8da462d07db1227ceea9f150e2514b8760aafc5cab5c6b"
+    },
+    "dips-chest-version": {
+      "start": "e97b7d9cbaa630d9b97505b9d18cd8c1aef8b171f16c4fc0ecba55fb984654c4",
+      "end": "70996115861ca563b8d4583c186024a6788b794548bd46581f5657e0ce50374c"
+    },
+    "double-kettlebell-alternating-hang-clean": {
+      "start": "476a426974fa1a7f676a26b41eb610b5d20a2222401b970365e19fcb0f96ebec",
+      "end": "57ad9a4f99e7c52b48f184e8cc1ce0e2ce833e6532ca1d8e92b604ff793636c9"
+    },
+    "dips-triceps-version": {
+      "start": "f0ccbf520e8d6f09e002e9c97133fa13ddbc3956571c53d542c43bc3aa30a33f",
+      "end": "b7455e4aa50fb6ed024bb85a15a11d61a2ae7d79c3ed8305e0702f72d9646f72"
+    },
+    "donkey-calf-raises": {
+      "start": "add647d56263fa6bd02756896bfb65741919ab5e0948c47d58d926f0ef79e79f",
+      "end": "7d97b7f12e7215fc63a4c88e8fcdac3fd7de2133a33beec9329c02b033bf18bc"
+    },
+    "double-kettlebell-jerk": {
+      "start": "d5ad374566cf9bc33277a348bcdb7d6ab1f673ff550212c4e2877fa4e2bd3ee0",
+      "end": "4350ebdb41fc2bb160580627d481b9a91bedfbb67eae434d7b732261c054a6be"
+    },
+    "double-kettlebell-push-press": {
+      "start": "86c71b0df92e95fcb23f0a88cd0c54b0068eb20a69fb6bcdf3c9d7f8b41a6b1e",
+      "end": "acdc9d46cff89ff09f3038b77cee89331f326aa226bc0718b198722d10928352"
+    },
+    "double-kettlebell-snatch": {
+      "start": "8d1290e958c46ccfee3749a449e6fa9f245e722157a487d2bd588ae8ed77b4ff",
+      "end": "2ef92a2a91232a4b7f2a0175a52da6452f662f7baf31e078290d668ec485d5d8"
+    },
+    "double-kettlebell-windmill": {
+      "start": "a990739559241748d59056f16f5ddc56f9addb39253842510e2232a4b32a73c5",
+      "end": "5c3bb23cb0dad9b9c47e800ce039233523d44cc58bad1b524cf21c504c827c11"
+    },
+    "double-leg-butt-kick": {
+      "start": "262e6de88f399ea332888f1ceff1f6ff9cf9ea48a9188b7b42b5fc6114212ed0",
+      "end": "0122d6f7f7d48abd2072aaf6789858f2ce926fd8c6a2a77ce1c6f04b7446a9f3"
+    },
+    "downward-facing-balance": {
+      "start": "3a917944bb160e5fbce0552b2bf77a0dd877947df267a0479796d85b8d400572",
+      "end": "8a09b5be9d318b698bbb5ab4f45f05a99ffa10641aa7b56cfac878a5e42f6e20"
+    },
+    "drag-curl": {
+      "start": "5507edb4d4e590bb3522d6a60e0e0819951661537e2f708eaabc155fb1c899d5",
+      "end": "5cf5abb3532a81f91873b2f05a7156a98caee31c4c23dab416650379fb0cf810"
+    },
+    "drop-push": {
+      "start": "02a3bd3f89424e826b0cf37c133cfb7bb68ea89a3bd62802cc6e644088c77fba",
+      "end": "727833c96330bf5fe8b9bef3cfddd7296a8bf9094c9ea38bff134ce4a24bf446"
+    },
+    "dumbbell-alternate-bicep-curl": {
+      "start": "fb71753c1cf4d83bd49f6e8488918c5098b60775b04634c17f7732bc30bdc92d",
+      "end": "dfc3e8ba4dfed3dca9867d8ca84a748f5e864af8e15dc5437b3c5d44fa778f89"
+    },
+    "dumbbell-bench-press": {
+      "start": "e447390eb5a7ba76929eca687ad2d20943827228fb3f0f8ea4f38c29c0bd9647",
+      "end": "f6a892d9a7e0544f29c90563cc8248576ec50f980710893f1ed02f437ce346a9"
+    },
+    "dumbbell-bicep-curl": {
+      "start": "4abd5c31b782426e32ccbb23a20a223f78910bdaf8fa72724c930f13c390b63d",
+      "end": "f73842ee808cc0650f50503139c6c88321bc4ea20442ed34ee4b630476ea47d1"
+    },
+    "dumbbell-bench-press-with-neutral-grip": {
+      "start": "933237927a399cb6a98a9d24217bd45fdc2d43a491f44c5f4a77a3442caa6783",
+      "end": "b29d5ca4457124af256823956bfc1c201d92e8a69619edb3c2191bdfb61c4b99"
+    },
+    "dumbbell-clean": {
+      "start": "e01c60df7c24d752f3189ad45a6baaad3f9488af98ca880822ea0dec5b549014",
+      "end": "8a25f57bd8be187e0b442a66517b643f70889af81db87dc04f859f0823ebb15f"
+    },
+    "dumbbell-floor-press": {
+      "start": "15ce88fb890b2bdcf493d056a31ce44fea2bd6bf17e1ffdf373d7ff24d85b7af",
+      "end": "a7a532124d70e52de38e6eaa57e687a50cd565b4160e057c9d13b7c29a2524be"
+    },
+    "dumbbell-flyes": {
+      "start": "8a5d3575dc3ddca4a1cce0fd278b65c8333dfedc1e6b6b1d2cf1d154aee200e9",
+      "end": "7212353833f0d2752fcf164d040b37390f18a6d74b0d8fb06855dc63fad6fd83"
+    },
+    "dumbbell-incline-shoulder-raise": {
+      "start": "888abeaa0944569d925e6d13e5840e2e008b136150d2bdead5534b8267904c22",
+      "end": "5a6ab4989edbaa5caf4523531129e6fdfc1006f0ec8614da15004eb38e761cc2"
+    },
+    "dumbbell-incline-row": {
+      "start": "23144c8c09fc3f245bf521a384c181f0ab110a299bd2ce6d8b7a1e94b13e1d8c",
+      "end": "afc24bddc852ff030724408554a6cf5748ca28fa80179cfb367f34c03a820558"
+    },
+    "dumbbell-lunges": {
+      "start": "3d639a2ceff91b81f44c13a6c21e22b91f1414905d61d2eb3d3d7ae6db470a7d",
+      "end": "549e43c52835efa8b04c0edbcb3e7b766da6ce7db17cc9201c5f1fa7cbd494af"
+    },
+    "dumbbell-lying-one-arm-rear-lateral-raise": {
+      "start": "dac358fa31b01435fb35abb9f79bc6a9e2e1febbb07a7a1dfb5f6d76dad606e1",
+      "end": "1048cfa99ea115726418e5a03fe5259093edf4943562ec3545745b02bccb3c00"
+    },
+    "dumbbell-lying-pronation": {
+      "start": "ec60f039fb1c835c4f401ff68601efcbcc6a99bee0c50b6f2d057a804fd598d5",
+      "end": "eb1722a7b0922af8e4efd2a580152e294119a088124e706437924553b775de78"
+    },
+    "dumbbell-lying-rear-lateral-raise": {
+      "start": "40745c7c99b63d05bc7ceec889219c4d78934d77361c1c71a0cd009021dbfeee",
+      "end": "482c30bf2ef102077c4005af2e7aeab2b6bdccbd50232865ea4eba80cf21fc52"
+    },
+    "dumbbell-lying-supination": {
+      "start": "3451ef0c7dd021458920cd94481ab0c2c35994d93da53f5c513ae4721af0122d",
+      "end": "ed5191890a36a7bc9909636fc246b69a9b8b5225ffbcaea307e2ac805d9cf500"
+    },
+    "dumbbell-one-arm-shoulder-press": {
+      "start": "9d81b5878c3165f21b1a96fd7b2ed4fde51c9c125ff61d238586e562e87bcb35",
+      "end": "0b2e4b3d1ee734f9fce11e79d9a82a73921c07d6d698e4d2ed67b234f4591338"
+    },
+    "dumbbell-one-arm-triceps-extension": {
+      "start": "930aab75990e01ea6cd715c1f7af4203446b1e22f528993673478997998d6f40",
+      "end": "f80c5dd095df73eaf9a3ca96b57b382223c7279392e4f6c7fadf2a0476ebe457"
+    },
+    "dumbbell-one-arm-upright-row": {
+      "start": "9af7fba83fd8751ec00b626d15413a8acc63ee122e26a2388d5411abda283369",
+      "end": "f191bc1a26e6cedad909f2da218cd0b203a5f1521dea491cd88eeaf425cce0d5"
+    },
+    "dumbbell-prone-incline-curl": {
+      "start": "0f6eea507a091953c906636792cbd464abb6f8555eedad759f0758bf4643de3e",
+      "end": "dfde76dd3fd3498c9d7355e65a6e7fcaa842778649f6d64e52f2df038f9b12fc"
+    },
+    "dumbbell-rear-lunge": {
+      "start": "8f8180e309cf945d4fac7e3958a4468873f618f80b6bd69b097b72c51cfd72b4",
+      "end": "89ed2f0beffccf7931607e9930e76f2710c710a99cf2de64974903f075b29168"
+    },
+    "dumbbell-raise": {
+      "start": "29cdd0a62de9989b4ff564618d1ddc89e8596faada3516788831c662eb4c6b49",
+      "end": "0cf70edb952e930c6b1c8e8c8b75c20f28968263b39336056367661104010d73"
+    },
+    "dumbbell-scaption": {
+      "start": "ea6072a6c4995a4c65a9868dd63bfbf851eb89b44d81baf728226c576b6c83b3",
+      "end": "8006019ff8e493866ebbc744ca35bbc6d22df9dd6aa8a6a93f981bd70a76d951"
+    },
+    "dumbbell-seated-one-leg-calf-raise": {
+      "start": "f802ec632ac86372cb9c2f3351750bef6adbce2e4f7fa36280f03ad47e6edc2b",
+      "end": "ac55d4c8e9c0c0993a28e17f61bf5c843e16dde2f846a0d2e16e6902d97bf492"
+    },
+    "dumbbell-shoulder-press": {
+      "start": "acb43f113fb55e5fee1c2e715ca1cb941f2d83d40b086e3dde0569ed48545e2f",
+      "end": "80a6b96cec0709aef2b65f6705931848526cc6d296e4c3f4af3090d87a37357b"
+    },
+    "dumbbell-seated-box-jump": {
+      "start": "6bef3681fc5672fcc2dfb0b87f7c69fbf89d26e9614c5f487b4cfb43bbee46c4",
+      "end": "4204af7a006ece6500b785f283f872e362d9a9a239c4d8502211a1f4a62a0078"
+    },
+    "dumbbell-shrug": {
+      "start": "035ff75e2373df5b39178345a9832516fa60393a5fcc1a1fd7336b919602d158",
+      "end": "12d4d8c1742296aa0a1dadc5c3a21fe2958774e25b996c642ef4e0311ab93c18"
+    },
+    "dumbbell-side-bend": {
+      "start": "4615774e860052cd9ccb39f0dbcad4ab97d651423fc68466732ce5089a66abcc",
+      "end": "8744ccd192a9bc1893673bcac0954eb49bfecf12e816362559370b07e044de16"
+    },
+    "dumbbell-squat": {
+      "start": "0f24ac4b12264aa089e3c6cb683f258c2ce28966581a121e68a9ba3ea45319d5",
+      "end": "4391d6e00330ca07d61f1a1dfa457caa0a51088aa401cfa1116952b5eafd68be"
+    },
+    "dumbbell-squat-to-a-bench": {
+      "start": "c26d645d94c111a18205cc655e5a07b5092a9892752bad430903e0cdae6a1e86",
+      "end": "b5bc4fa7799fe9663e15d68ffe59ace06aefb23ec4d189bd28acd687c07df808"
+    },
+    "dumbbell-step-ups": {
+      "start": "c0975dab2192ca5c48c651279ac7c9776dea3f2b680550accfc84c075c324524",
+      "end": "32cf43f277be1353059c0e2bff3107e7dcc90ffcec40cc0e3af686c4f8f11876"
+    },
+    "dumbbell-tricep-extension-pronated-grip": {
+      "start": "43d5b13c43b43a189b224a1e44673bbf42e7651322d1d6eda3a3111ad3a49220",
+      "end": "09ed87d0393b7eba769a45a0bb4640d55b2752ad11f40047d55468cbc7c96044"
+    },
+    "dynamic-back-stretch": {
+      "start": "b67c26beba3b1d5bc321bc6cf52b29c752738c273ab90ed345499806c8ea3847",
+      "end": "c87c0978b55eaa88a30664bdcf86ce69f3d171fbedf1ba5c412a3dedb1854712"
+    },
+    "dynamic-chest-stretch": {
+      "start": "886c5a2e1e7454e59d69c566016b22b1b78bb0f505670d5e6a0236b2a034f2dd",
+      "end": "62f86c68ab8c44a791bc26e3f0ba13832b1e707322dc076ecb71324363ce62cf"
+    },
+    "elbow-circles": {
+      "start": "09f768ba8f56a76b9552a3249002dd97f27dde3b2177a9ab8514553a1924deaf",
+      "end": "95f8a1205284987bf03a5e7f05d27667530642d21aadebd5c896bd0e3aa567bc"
+    },
+    "elbows-back": {
+      "start": "c806919bba0e08f5d7ff512a138ad67185a99dd49d704cf289290da3ab0221c3",
+      "end": "03532791919d30095d393d587c2ab1a4a8bf62a7243a2dc4106216c7cd25683e"
+    },
+    "elbow-to-knee": {
+      "start": "7a3732afd858f975b2fd97a1ecc4cc28b46adef1881d5a5a325037ee6aafb7b9",
+      "end": "47b1d4af78bd7195d9e4dd6bc2ade3822fbf693ad2cd321f1fd75ac8d70e2906"
+    },
+    "elevated-cable-rows": {
+      "start": "f1e129c8bb95c28c65084910f40d633e0b1eaff388d4eabbd09dbe5f148b3ffd",
+      "end": "6e66a9bbefc4f60c55dcbe4f18b6957d4cc5da9011c89e7d119545d7fbc23f81"
+    },
+    "elevated-back-lunge": {
+      "start": "133e9e1b8896a7fb4679d17e34aa83db11fd5528cadce57449be2c8494b16040",
+      "end": "a3f24f7a9d885b2a0d69f2b3348e64f6a109f2451d537ddf867f2ffe653a9525"
+    },
+    "elliptical-trainer": {
+      "start": "94d25555b280fb66aabf10edbf1b2af3ccaf9677fd99332470375c63f2842408",
+      "end": "ddcf94d9b3fa60cf8292455127dbd3e8eb81d3ac82f23b1adacb7b1d998cb138"
+    },
+    "exercise-ball-crunch": {
+      "start": "6c96f89722c13af0b69d6b7a8c938ecf87e1a5fe2b60db3732331ac7c94a1ad0",
+      "end": "b698c7bc176b267c26b1eb807182a280b294be7979ea653e8fa3119938042d4f"
+    },
+    "exercise-ball-pull-in": {
+      "start": "79c3be0bcfca9d709a43808014c0542394aa85b88f185db715cd87e8833c4e0a",
+      "end": "ca71bd3789edb912c6ba8ca884cfff7fe9f0c268c5744bed85eeb64f8e6d76d2"
+    },
+    "extended-range-one-arm-kettlebell-floor-press": {
+      "start": "93d824620213d7d106ce04615ab6fc18a382750730541a4aed22354609e7c386",
+      "end": "62898de75a7ed2cd76a2c9774a053e0fa0ad72cd2a0fb36a32331c44be0081ba"
+    },
+    "external-rotation": {
+      "start": "7fb6f9d83e516d65b5b157af0c94cc91ee37c09303bae9b8ea089529c4a11f1a",
+      "end": "ace1b7f66144f7bb70eb6247a12b411e13acfa8b517093e98dea6455bb83726d"
+    },
+    "external-rotation-with-band": {
+      "start": "f194601064e01c5650366ace7ad94b99d7579a39139b1fd2d72b81ec1b9078ec",
+      "end": "b1b3680903b11446315989f4fef2e8dfbe9e45bf0b98f46383acd1238e0a0241"
+    },
+    "external-rotation-with-cable": {
+      "start": "1cefee05a71b62c04153cf0d408243b9059b353b3fd3b7556a0b9d825b6017fb",
+      "end": "8e59de54c8dd0b4af79c62291bf364a1472d2b2a691d05fde45b07c7f6d38e3c"
+    },
+    "ez-bar-curl": {
+      "start": "b72d8bc89ee780d4e687cc65044e5ce89a18dbd4dfcff2f4ae5feba9a892baf2",
+      "end": "754214f35e823380c84d6c3d5a0fc15feb0304e86a01848712726d7b40dbb40a"
+    },
+    "ez-bar-skullcrusher": {
+      "start": "32fe88df5603556af4fe6cfc71d1f369ed65f68777d7ef1c46f741ca43e68de0",
+      "end": "6964002c07a8ece07dc0a32ff03d66363761086879ef7e5eaf001fd8579c3564"
+    },
+    "face-pull": {
+      "start": "972557e8f7ff77e0ce5053dc5e79ea3d41b93b9bdd3f6d44a5d4a41a12251991",
+      "end": "ca9f01b0210397bc60289dc5c3498e724720a9443ca934f7db48c20ddd62ca87"
+    },
+    "farmers-walk": {
+      "start": "4701be7313894f4853da13743ffb7f620dfe4198f0d00460c0eb749a8764c774",
+      "end": "9a7b7fc989ce5b335d3f6e231629b345c52256e57a103a1f6cc997b220984921"
+    },
+    "fast-skipping": {
+      "start": "0b0a6375814bbcae0a3527f605cc419f01e03cf3ee6ac9bed16a954b39dfd278",
+      "end": "5e60206ae3b369bda212ca60f3daaf714be2b184081d051672cc42b0525d614e"
+    },
+    "finger-curls": {
+      "start": "6e9659f89a1330350f5f44505948bc01e18a44d15f233f01acf3d820722ce149",
+      "end": "c8a57e703be3968d2b2158592204e94b15e7ba1960b5f4013a39f29fd4da3c02"
+    },
+    "flat-bench-cable-flyes": {
+      "start": "b76b9cec9b72ed319518f6058da58c1c577ac948af38b8a49add0997026d39b2",
+      "end": "648f66503826c70ca6a8fb64c351da00ca4576615c1d73fa15653f3bab6a36c3"
+    },
+    "flat-bench-leg-pull-in": {
+      "start": "360b48463496e922fc70519ce87181276ed7954b1e95ca12aca5e6457a707537",
+      "end": "b5b5b9e08e8d217d3edd502f5f93c502a72ee38f28e05bf88c172d3f2ed9cebe"
+    },
+    "flat-bench-lying-leg-raise": {
+      "start": "b4e41860ed662b7503df19aecaedcecf8f7a2ce745469e04bcb02ae8b99dd3fd",
+      "end": "e99faae0bf4a2a27556f2c04bdd3d87393e7a31dc2cb8ac9e4da80b6389cbaad"
+    },
+    "flexor-incline-dumbbell-curls": {
+      "start": "30f95ddf052d815e93e3d4c8419aca84ec70282bc1ebe085d957f58ccc1afbce",
+      "end": "f5cf7107248d23b7c80c1574308cae41f03d3323539de167761af270aa5fd71e"
+    },
+    "floor-press": {
+      "start": "69a79aa8cfd984ceb0dce7f0fd6e2b0c6c7c1c24cbaa3fe621be69396328f654",
+      "end": "d9b5760fd42bb8b23fed61783a7d7ce475cd2a26d0fdae30ba0dfc93e0a23c02"
+    },
+    "floor-glute-ham-raise": {
+      "start": "599c41e8479ed3ae2080e43bbaf36901e0f68b4a4f40985b9809422b1db6ba5d",
+      "end": "bd580f268953cc5a3097e49f3e196a77e45bb3fd8bdbbea5c2c0537333c53280"
+    },
+    "floor-press-with-chains": {
+      "start": "67fb0c5b51daa26f737085397300679152de2f93adb817f6ab31919f57e27a2b",
+      "end": "a863fd2f5f0053295cc426524d95618ac468603487fa4e9b48da019c084753e1"
+    },
+    "flutter-kicks": {
+      "start": "bb5c3cf3c99246471b643bd0c52fc1e98609774b6a23db5bc0cab3fea34f2ee8",
+      "end": "4bbd9a0977db8029464fcf4481ce5bf24d6b8842a1c6da226d06b84e380641df"
+    },
+    "foot-smr": {
+      "start": "d63f8060e5fea85e585ee6306cb0b8534a3638865bd173156d879de9a8578203",
+      "end": "9b76dda7dac5df09ebccea7a620bc6d6b42a0c051ab936031431381d840bfd8b"
+    },
+    "forward-drag-with-press": {
+      "start": "05301221a9243b370915932e1a114d6290a27d094c3fc3ba0e2253437829e6c7",
+      "end": "301d5a0f05eb59b0d6dab0856b1c034d38f1650a76aff0f42902ae636538c218"
+    },
+    "frankenstein-squat": {
+      "start": "38c01a00f149a196539ab5426884f25b254c38a28c604aba2a159fafb68d34a5",
+      "end": "4db6bff0be1fd1feee2e0c6d49c64d0910179dfb20d2e887ca2514e0ec4842e2"
+    },
+    "freehand-jump-squat": {
+      "start": "4d9afd9010125eb8ba741bbdcadfdadcf53df627b0c4f4d23a794eb8f150cc7b",
+      "end": "3a27e10d304db6d5fbb0b339090ade9b6f167345471f7ae30a3980d872c735e1"
+    },
+    "frog-hops": {
+      "start": "8709a42f440ab960c0829c1e3b0889a43cd87a609d627e99ae10232f10787d24",
+      "end": "8199dbcc9a2fa74847935daeaaef85a7e23dabd3f84ab701f4209a307f967c60"
+    },
+    "frog-sit-ups": {
+      "start": "a6cec3ec1431fb9591b404b74758b3518763d1be0e82dcbe18f019d0b3ed8dfb",
+      "end": "87920f3e73c5ea270aaa2e0b5e606977160c684e6774346bc18583e1b4fee964"
+    },
+    "front-barbell-squat": {
+      "start": "88ba84fadf5dd814bb08939b32b0ce8aa885b5ff9d0ed421fb4bcc5030bff286",
+      "end": "a7ebafec62c3c2ddf395df9a8817d18a40fdf6e1e064ff70fc936906a9eae6ba"
+    },
+    "front-barbell-squat-to-a-bench": {
+      "start": "f5c898bc50b07ca9b0b3c394692b9138d072c34e30d85d9f1e887c268169e440",
+      "end": "49f27cd01174e2a72ba5c907be0e210bc7c8a00def5d67248be3ec44778f87eb"
+    },
+    "front-box-jump": {
+      "start": "2e0c83adfc4fde38709d1eff80df947691b21788f72dfe9ff3d697ecaa87d10e",
+      "end": "315e1151908cb5d172fdfe173ca97c6857f5d7d47cf3932750faa63455302aa9"
+    },
+    "front-cable-raise": {
+      "start": "e168d70eccd38361391dadec8c1a341f9beda797dd26fe83863cab136d91a2ed",
+      "end": "74ae95dce0319727cb026e99b07978468e72ca8f630ed8af9dfa791387e3d3d2"
+    },
+    "front-dumbbell-raise": {
+      "start": "0834828a8142d9399d971f9560036718861fa834254f565fd73d095b1c38a273",
+      "end": "62aede5dac3dfe5024daf0913091f1487d7fe6aaa42fa6e9c99b9982c91f009d"
+    },
+    "front-incline-dumbbell-raise": {
+      "start": "b38c106e0c66f20a54e2ad8be3e0e298c329ec1c4fae90ba91b032ad24a03022",
+      "end": "1b705f4bf4ca5707c71a08211725ea66d6273042b6fd8dd535690af2fd7bad02"
+    },
+    "front-leg-raises": {
+      "start": "0d1e7caca26a6f4e3bcc1cdbe72fa829785bebc22080671fbbc288782c786cd3",
+      "end": "59e9f43591efe040a466b20abe45e08abe6abbd448ec70d1f62c085f6298835e"
+    },
+    "front-cone-hops-or-hurdle-hops": {
+      "start": "973acbe95841cb35bc4397801af7d0b834a1d0a7cf2bfaf479bcd3d4b087dd62",
+      "end": "4aa02739658aaf904293ff343d3447f4e29e0bc06b34ac6927bc3ff649161ea7"
+    },
+    "front-plate-raise": {
+      "start": "f5f7e34de9bfcffc6741871284ab9c12b1d6fe743c647a3d0731556eeae4dc72",
+      "end": "026cb58366e8f55f8713d5233abe0fc8b54c710c436aac4237003835db7811c8"
+    },
+    "front-squat-clean-grip": {
+      "start": "701e0abaa88c1584d4ba75068a9b977776071183d450da0cca58b0b7a520bdc1",
+      "end": "85ebbe3cb2d40f4efd95bf9950b251143076eab7a032c6370400ddec76cb3e4b"
+    },
+    "front-raise-and-pullover": {
+      "start": "b6138d8a0ef9b5cbb1204c8e11539441f4b9c578a3b8ae74fec762c75cb0584d",
+      "end": "f119beaf2b21620f53bf8a51a7559b3cf4f073bccf318b7352f7ad3436297da9"
+    },
+    "front-squats-with-two-kettlebells": {
+      "start": "edbd6b08c9a8901c8e5f2fdc39f52e773627ba030d1feaba21c9510f64a9f9f7",
+      "end": "69b0672e26b1416edcf9905c5508a25e37592e4c454dade7edf8b89a1c4b7f47"
+    },
+    "front-two-dumbbell-raise": {
+      "start": "a3d00b0e9ce2dba7c8153e99213e4357c489b8b67af40b11f2f89da5b0d2e8c1",
+      "end": "56d4bd89179cc03d6bc650b6709ac15af1ea85f124bf0d51cd0cb09f3c427001"
+    },
+    "full-range-of-motion-lat-pulldown": {
+      "start": "b7361014ee18d39818870b23cfe9ef26292f5c2ef01db6a0e2605df19458448a",
+      "end": "c2a567d485b29a7d97f5d6f15f640d2b58f8a38337765449cb4cdf20de3a2024"
+    },
+    "gironda-sternum-chins": {
+      "start": "7f435c9dd81dc59e355d30645b41eb50dc8fddcc38f870046dda44717408a54f",
+      "end": "3060ef7bd1acaa22e3f58ca2ec3cbfc8ed67bb74d945765faf6cbc8814197b6a"
+    },
+    "glute-ham-raise": {
+      "start": "90ddf097a374c253df0f9653ed8a9311fcd82ad6fa8bfeade44581036ccf39b0",
+      "end": "fb1291a8c816cc6daede9b053bf519555649cc14209bf2529bf0c09aaea402e1"
+    },
+    "glute-kickback": {
+      "start": "ddda59c80b9ba8b50ddfaf6c583832c762646a532c8ff30a3336a7fcd1afe25c",
+      "end": "b0a485cf8c962e550bb9cf23d9b55d4fd2cb35d15029c44bcd28bc7dd49c25e1"
+    },
+    "goblet-squat": {
+      "start": "ff650e46d0d841b7bc5fbea26fcb3c011e23515b7b7fd12c2c29c469264cc5f5",
+      "end": "6cf512e29a41b0737722972b6e009905c280dcc5b19897521d0b33286ca0e513"
+    },
+    "good-morning": {
+      "start": "366db6013c0b3749da202fa59dfdde80e0e935009e41e0194f87e5c94e6f85f4",
+      "end": "c4d671e44f9198b2df8e6e3bb606a8dabb81024110719800a695dbfcb439cf70"
+    },
+    "good-morning-off-pins": {
+      "start": "cdbcb80ef8ae68f7f349c3cc21691d0750129e8ac19c5ec4e17c7d57d9b4428a",
+      "end": "46366ccbec95e7112b2cce860289d6a7e8074d8a21d0fb2f0c550e22f45656e3"
+    },
+    "gorilla-chin-crunch": {
+      "start": "07d2bb03e9ed621f3007f8e8ef4f6d18b976c1a53e354f69983de6cd58921a76",
+      "end": "b50f4c17d82dabef79443e86bde804d6e8a65fadc281a43b26a836b2bebedaba"
+    },
+    "groiners": {
+      "start": "0b3a8f630df97ff2254e5ba6381385c7d23e8e35283f37785b00f14aea477651",
+      "end": "f73325c7f13f4b8c270944778df001073fe34c0a9c85762088aaa5f4ab8ec2e0"
+    },
+    "groin-and-back-stretch": {
+      "start": "8aa2dbf79ad33eb36c83675d2747726dd9bd24a74edc424b0063959c1f959065",
+      "end": "3be033b52888123b3067ce6121f99e24f8c2e7ac0da8510148694c414d5428d7"
+    },
+    "hammer-curls": {
+      "start": "cae818bf342372ea48860de6ca0502ccd593c3e059e0e260cd369eae57ca4a0c",
+      "end": "08005ad9da6ac8b33d31e6af432a79226f4657e89391fc210e6f3975daa7d370"
+    },
+    "hack-squat": {
+      "start": "b82e2dacd9f6702895d1ed5c0ab9099e69db48bfeba9e912eb7a942f63cc3cfd",
+      "end": "1282160daa25653bc0998a422485cb3b72267f713a1ffb85c21c5db91f41b59a"
+    },
+    "hammer-grip-incline-db-bench-press": {
+      "start": "b8d144f1e99f23a852720affe7fc0730802395b028ff07d54c7fc0af00fedbca",
+      "end": "a9db3f03d46a9dbfd49091d69610ad5823fef3f70dbfc412d7afefc5a40578d0"
+    },
+    "hamstring-smr": {
+      "start": "abd4eb39cb7deaaf815415dc70ee73002fc76be4bc36c497d432205a3d8239b2",
+      "end": "39ab00d2d32c0781075bfa49f25399be235cc15c55dbc3635d14aec239031416"
+    },
+    "hamstring-stretch": {
+      "start": "7180d622cd7b798ccf3d7ac320e37d0496b082d3ff61cdec5aafd43df6761d46",
+      "end": "ac2a57090f89d3abecd6aef6701e5c100252745b07a399b7afeeb9070e626ca3"
+    },
+    "handstand-push-ups": {
+      "start": "84e8a941df2676e6c03f14d097198e66d4c8c4897c4ecebc8b192fbd7da5f0b4",
+      "end": "73c888251ac544c9a44b7529741de8bb2a8d1e1e5076b836b9b8fd6c97485ed9"
+    },
+    "hang-clean": {
+      "start": "33da979de942394c133b7f6c19990ee764c0a6c8460f3e5f8200d00deb2831a1",
+      "end": "804f5f82f01e9ef2a6ba8c6623fb6453e66a697f946149c1f3d5ecee57369b33"
+    },
+    "hang-clean-below-the-knees": {
+      "start": "fb4d129521e7c41ab5dc9537ed719bf74e16b1ce4b7a9faea228824f2cf077e7",
+      "end": "55bf0354fee0bb1a9797d7e8540e0b92e0d41e975033c3325c440a8a99b59ba8"
+    },
+    "hang-snatch": {
+      "start": "cfe8ff312c5a2a10324fe6d8e132a0c41804e2f705fb56d6a4629c31648b1ede",
+      "end": "6aa3ab9d71a82f7af782358e18723a98d67908e7768bcb9fcd7d350f1e2c0e17"
+    },
+    "hang-snatch-below-knees": {
+      "start": "cb95f49bba11f84f16ecdcbf38257c3a61e171614a840cca6d3de322b84b01af",
+      "end": "fcf8d16aac3c74da72579235c37204a66c4737da5677c2b7fa493e32f9943a27"
+    },
+    "hanging-bar-good-morning": {
+      "start": "be986087b3de8b80365a70a64f8213d678eb1ec73d3dea1c5f88b933d675dfb0",
+      "end": "75e49761bda2a8c1d5c502c4c1f7119b5be8d4aa096b61297b2e72dc1a2d0be5"
+    },
+    "hanging-leg-raise": {
+      "start": "38e65357aa038f3e76c99c5992cf119bfb97ecc915cfd5fb9312c4e7fb74f3ef",
+      "end": "34c99a6547102d36d540d4cd6e26c5425632c7902bf85251c74e97e3476fd9e6"
+    },
+    "heavy-bag-thrust": {
+      "start": "e6b60d44f35d6f0f9b0348d728e0bc9ddb1a3d5fe3b0925deaf6209c33134b5b",
+      "end": "7dbbab97041d3b2cb73b1a65087b57c129d6c98062f28670afd2dd2b812b50cf"
+    },
+    "hanging-pike": {
+      "start": "164585cc33904e8a38d75e0fedf165fe3be1ac18d450713e002b94e36317eca0",
+      "end": "b016ecad2db72e7440f74712ec9edaa4a50a7dd59ea0302b34af04dcd8cb408c"
+    },
+    "heaving-snatch-balance": {
+      "start": "c195daf78e507b4ebeac6b71b697cd6e4d2c115c3eca39b345448c3f7fbbfcc3",
+      "end": "a5ff7a9b1ae70868fdea6fc41d4c86263f13683d1dfaf2e5425407e2873768c0"
+    },
+    "high-cable-curls": {
+      "start": "ac2bda4aac5768fb580670a7ff9795ae6a1c019684f98e184885e9c62386669e",
+      "end": "a0c682a9e7431a31fef8dc02118f3393bdfedb9e34c8434da4e5d5bf839efe04"
+    },
+    "hip-circles-prone": {
+      "start": "698cec9073e7233f4c180d435f8d86e58145b5643e2155fbcc6f38017c47564e",
+      "end": "f1083d5a3042cdbc733bd60ee04a219d64b108be222e59e72de7aa7b5b05c5b5"
+    },
+    "hip-extension-with-bands": {
+      "start": "de050cda19f2231ebe45b130ac9f4ec65f701c4a068a12923f675364efe5d6f2",
+      "end": "c52a9b13f476cdaf451d3341dddaae92f55586f0236c9e48b1037fc0d2dc9fe6"
+    },
+    "hip-flexion-with-band": {
+      "start": "823755362a4d15796a3b0e93c3abc35ef6b0310221d0172018daa96958df2ac7",
+      "end": "5f10906bc34c8b8f785669f40ba319910d187c2ff21bb98d4448dfcb852da779"
+    },
+    "hip-lift-with-band": {
+      "start": "e87595627e57b46012d0dce1ab0455e6e1e905e9c188a42b6f0cfdf86f9ea483",
+      "end": "b92ba9a4dbf4bbb75315c80914ad6e7aaeb64704ddba8f690c0bbfa3f47e696e"
+    },
+    "hug-knees-to-chest": {
+      "start": "3e07a694ca23e8d4eee2cb1c8929eaa6c5adafede4082121b7c9c95571265b57",
+      "end": "386af7193a7ef44d4c89c9dac3af4eb23e60fc0e1b0b608abce929f4db10c7ef"
+    },
+    "hug-a-ball": {
+      "start": "7e3ddb5384339b0e8331e562d5a02dbcb42d8870a77474f6e6362e5c59b795a5",
+      "end": "a6f18006a0c13aa8abc0aea049934290e08e99b5719f454449433e6637c1e0df"
+    },
+    "hyperextensions-back-extensions": {
+      "start": "c89a7f61abeac5e0520f506ecb624554ba28b440d21bcb3018c0be469aa38cdd",
+      "end": "9b8f54dc06fb14c7c816748c7ad299421f5d69bdca62e3e5b076df13e1507575"
+    },
+    "hurdle-hops": {
+      "start": "52e1f5e920fe8535482df131ddc5685f51fcaca1abba01722a6d20d8d3ce842f",
+      "end": "f2ce78ab54f8cf529f8d97725b3a0a4fbda4ad4fbe01687d751872eb3e01a97e"
+    },
+    "hyperextensions-with-no-hyperextension-bench": {
+      "start": "3981c67b5806d1f922a500c0e5e6501c9ec16c3d48b76ed7b3a7abce506233b6",
+      "end": "493e7539dcc128b69a8eebf43bf525e559b3220a5f240341ccd08af0482f9b2e"
+    },
+    "iliotibial-tract-smr": {
+      "start": "de03a1715a96da9f35ddaff4427426397bbcec30ed1be228d3b84bd2952629b2",
+      "end": "849faedc94706fe9c5edb26f94404c5fcf1fcefcd596af52311f76bb91ee8680"
+    },
+    "incline-barbell-triceps-extension": {
+      "start": "506e12fb81168bddbd5b28cad65968cd56a0099d14af43306aec4927c91ae7cc",
+      "end": "3407ffbb2352907a29d3ab9c54d7ada0032a13befd2a358c0745f26f6dde3f44"
+    },
+    "incline-bench-pull": {
+      "start": "f3d586df9dc200dc42a137396cb222d9faa0d915baffe346204c33be74808557",
+      "end": "bdc83f8d9851b61d3a8b00a580147a7effeb3cafaa7847fcc6235b0eb1b76c26"
+    },
+    "incline-cable-chest-press": {
+      "start": "5ad4aaedcb4cc588cfbb2e7de2360ff7dbb2d53f9f3e3592f8f7dbaba9301e53",
+      "end": "d144e03bf07767af65fd7c6ab8f179702921a87b22d17baabec0cfff836ea9be"
+    },
+    "incline-cable-flye": {
+      "start": "7e7dd80c2bf242eee6ca12fcd5d7f246dd07ab96a7fd757d6b78a87fdd1196d7",
+      "end": "580f081c9f05a55bc47c0c1d625c3969146e358bb5ca685fe3adece7c453c7f6"
+    },
+    "incline-dumbbell-bench-with-palms-facing-in": {
+      "start": "9ed0ed90a5f4d64b276e41c1a2c39693d3a4600ce80d06a3080619cd8137025e",
+      "end": "c488f4043bce159250177add37e6aa068e65bba9794122f4b2eb9240e79d2f3e"
+    },
+    "incline-dumbbell-curl": {
+      "start": "7e905f9083adfcc4b06808c29c173b4e602bde8ebcec42fe28b141a68b7156f1",
+      "end": "a4a9f4583acf4c77fda72843c70400bf9d719e2b4f501719383ee814cc4707eb"
+    },
+    "incline-dumbbell-flyes": {
+      "start": "bc5a115d69043a1020f40b1970e2d942989e7dae46f36ef4598e8dc475df5233",
+      "end": "07d5c4436ddbaccf2c5d0a6f9dd9ca9536038a978318306801d309d52a729d70"
+    },
+    "incline-dumbbell-flyes-with-a-twist": {
+      "start": "d93c1f4db19a1fc6b76ec1c0d072616ae6c350894a823711d68b0cff503f8812",
+      "end": "bced915992aa2800c8de5e0d3c7d9009474ef360c114d5e1dc90eb3c2ed52ec2"
+    },
+    "incline-dumbbell-press": {
+      "start": "915d83e47254bb08def8849fc7e67a06917caeedbd727ab2f1316cbaf24a8f2b",
+      "end": "0d723a00519977094dd06af47733a8ed60c08837402abb27cc2064a0d1caa119"
+    },
+    "inchworm": {
+      "start": "1d230d2b6478807a734c9b23a66a0da5481c24e9ef58ce865d2d7b431881a63b",
+      "end": "cb0e5690b0005f7135818d9dc20f6e7e5563c32176a0ac0877ad9e9016db8c1d"
+    },
+    "incline-inner-biceps-curl": {
+      "start": "cc083e2b480df6d8c527365904ea49bf578e13057b57ae106e0600557e54b49f",
+      "end": "e12eae0418c26ab6f56c28306d067432fc90b12790a3675de4aae3921a570148"
+    },
+    "incline-hammer-curls": {
+      "start": "1b7ba9f63ce4037d7ccf776a0e4643207883eee52c2c610905621efde0064305",
+      "end": "112b85a744e34a0b2a301164eed39ab3703178df4f21289cac76af75d4285555"
+    },
+    "incline-push-up": {
+      "start": "a1c01c47fb0322a05c8f49ef1fba74ec64a6e4ef8b87b61f9ab45e6b12abe232",
+      "end": "ba807f73ee2509bace6d48bd91027b0ce75229622a08698770f9777540944246"
+    },
+    "incline-push-up-close-grip": {
+      "start": "2d09096976606b9db7de906c2716b0e3a5af2d077ed2b8753fb4f3f152a09c12",
+      "end": "2f5c4ae5e5ba8a2593e9c103700bd006872a8d2c78859a521881b681cb8b9b55"
+    },
+    "incline-push-up-depth-jump": {
+      "start": "0c33e80f5ad34148439d7b338b9b09e5840e5a1501b6c5652d54674ff7d54f92",
+      "end": "f273b2a448282bda58ab01006923216593a85fd320ff11724b4f24aa9a98d28c"
+    },
+    "incline-push-up-medium": {
+      "start": "6d05622bbeafa2cfbf9ef7129ce7971060cba819abae3e6af68c7a38badb70ea",
+      "end": "e194bc677bfe9a1249c1c60e753d83e14b2dff4f1db427497fdf201894eacf11"
+    },
+    "incline-push-up-reverse-grip": {
+      "start": "343cc05d008af467ad64f11293b6e84968b45d11cbe93587ead54f343d690a41",
+      "end": "6e714a284d978b0f385fa36755bf996fe2ff245f615ce20bfc0003e8f1d0bf43"
+    },
+    "incline-push-up-wide": {
+      "start": "926d3ed4a719af8b2719861df8248c335759a72ad89abff7c518c29c4a51ce51",
+      "end": "591e29889318b60c0cadda194d6c3e38a3bc82da4141090c64eacd0446679183"
+    },
+    "intermediate-groin-stretch": {
+      "start": "05820f36fbbd1f644c15ecbd6b9ec2eb33ded17527232388670c8abb157bea87",
+      "end": "733d6ebbc11a3c9c49855a3a16bc80d1c386d6621726d1374adba5f881fc443d"
+    },
+    "intermediate-hip-flexor-and-quad-stretch": {
+      "start": "ebc44af4b2d48a804ec7536df01f1c7be1738e80c97b5971a5f3ddd1c90c6f9b",
+      "end": "fbda79eff72526395d1637f4c6254cce3d704e5bb5791841c67dee66ff706469"
+    },
+    "internal-rotation-with-band": {
+      "start": "cd3306c62ba5902a4e6ad6512e4e1df520d79c92f510019426d711aea153720c",
+      "end": "c12e83060aa14af082252f63fffa72755ce35e84cc35ca45ba249a649ce0ac97"
+    },
+    "inverted-row": {
+      "start": "bd9656cd3308f1e40ce399affb9196167d5cadfb758196b903131109b550070b",
+      "end": "d347cb53c1f6a170479a06ef980b5e316601f4103572077e43ab661b48b7bbac"
+    },
+    "inverted-row-with-straps": {
+      "start": "c2f5b8511ad1c92ecca3933dd58f6beeea1f1279ee39eef03314ff37f761a2de",
+      "end": "9f45b44b7d76fcdd075683897cd865769464cb4250b0491da46703136620ae05"
+    },
+    "iron-cross": {
+      "start": "b6c88a852e344db9fdf3987de447c98df1ceb5abf943699ef18f05b54863528b",
+      "end": "9917d1becb8d583f3fb920ef52bbb639fc778c89142129c630104ae76d848fb4"
+    },
+    "iron-crosses-stretch": {
+      "start": "bb3aa2ed64e5507628e6f79cbc38c90a36039c6b8b7015088f996a5db6d9e5b1",
+      "end": "07f1afb9ef25e398a17d8f4d121caf4355c9b4874cf7206a2db7a62db71763fd"
+    },
+    "isometric-chest-squeezes": {
+      "start": "ae90be5f4554b8e059bbe948b091f4e949dd850c0bd4f784c0c609f508187d40",
+      "end": "456a8a86f58865606d047580c0e0d5ef7e17b0e569b48ee5dbf43a84a50868ed"
+    },
+    "isometric-neck-exercise-front-and-back": {
+      "start": "17227e4d513d7badc26a06281e659c4e94d1724e5859de25b913da1a41750ef3",
+      "end": "57b5406eb5b4f39465cd736ddd8c13deaccb1617a04e9d29f8b5c138f573a6db"
+    },
+    "isometric-neck-exercise-sides": {
+      "start": "d8074e071d7c2c8d9d8b2ff4d3de38ea4c1f42e332871cca280a81f00a53c0a2",
+      "end": "98040acc7d969c46978e270f80c46324f40155805f0b7979548ebf010bf74f81"
+    },
+    "isometric-wipers": {
+      "start": "a53f85fbcf597c157a4a75f782acf9a0317fb3e0accc688428499c3a9578eb8a",
+      "end": "c808e9d9ecbcf271df8695711829333d9cbef32eb19c47e60acd10116a55d650"
+    },
+    "it-band-and-glute-stretch": {
+      "start": "ebc44af4b2d48a804ec7536df01f1c7be1738e80c97b5971a5f3ddd1c90c6f9b",
+      "end": "1d9c7d38f615abd5af070be90b7ffb0d302da956881c1a76dbda20f00b20c681"
+    },
+    "jackknife-sit-up": {
+      "start": "3bc4a84e56f2d1cce1ba017f2c6a1649b7b780193ba19fb4ba3be3e5df33c2a3",
+      "end": "fa45383bb440c771dbaa04b8a61b7f7063ef64769df018a4eecc94ee1c629672"
+    },
+    "janda-sit-up": {
+      "start": "8a3301d108f159d85f6fbac915cb5f25b3acc6b358dec06cd6f451c0fd856241",
+      "end": "627e89d8ca481f5d13841ea5f354ff06a12c62c56ee640daf7fe1cc31440fc0d"
+    },
+    "jerk-balance": {
+      "start": "8a940ed033d9b48970141b2a4a4bae649e1fedaf437adb0db1aecc0a12a34eb8",
+      "end": "f64ac83916868520d7e048dea9c8883b38b7a487ff97126a9f0a8470811e8457"
+    },
+    "jefferson-squats": {
+      "start": "a860d3186d90cd97b194f9e7944e6acc64ed881cd0ec07d45e16ac0d58ddc1f3",
+      "end": "798878118379429b5671435dc93f6121849a773c290548d95abd5d733b7ef05c"
+    },
+    "jerk-dip-squat": {
+      "start": "8df97ab7826e3019cce75f575eb3c48249aaf84529315001cde0fd16affcabd2",
+      "end": "572c12812d386ff0205c6a8b01f4e72ad022e8e3ec0bc547633dbe4121e5ba1b"
+    },
+    "jm-press": {
+      "start": "6c803d9f226a1e901b2105a380b7771372c81103f0629603cf429c9a548c4e93",
+      "end": "153bf2610eaa7309c0feb713a56aea911012c08810c2900637294b7bcae5c581"
+    },
+    "jogging-treadmill": {
+      "start": "18786c5b37b63a91414e46aa099547411a130fe58a263629904791b047ac8a4f",
+      "end": "cbbde1e8f4f8a639cea591dff1796ef22237a77947c4a11dded83cdf7d24fbc8"
+    },
+    "keg-load": {
+      "start": "3cc26981db95597e97e884448251a064446c0c612133f2fb5d8e8627ec1561fa",
+      "end": "2272b86a4712007846332e96b60136270a0fc5c92620c6de0a5510d57fd89e18"
+    },
+    "kettlebell-arnold-press": {
+      "start": "9fb91a4000ed739164b7bc59bb8e640eb5a06fa7d1c5c397151b88be249169fa",
+      "end": "cc7d538094697d1886988f02b4f6d3cbd040095c704c5dcf6d372adedfce7eff"
+    },
+    "kettlebell-dead-clean": {
+      "start": "6b0790534bad5e93eb78c1e74805ab6fab4454e969e661f1fa39bf70debe8421",
+      "end": "3e26ddab7361c966b1d4e66ccc35b0b9004f0147a2b533c75bb7fb6201e76f33"
+    },
+    "kettlebell-figure-8": {
+      "start": "d9fa21e4514e1b970cd9158e0cba952535ad68cdfae557215b1f391150ca25f0",
+      "end": "fb5146e8dcd2f1e9f8b248b52702ec326fb05ac8945fcfa28ec7159cbc47dc19"
+    },
+    "kettlebell-hang-clean": {
+      "start": "f92319a606858da8209e19720f083241eff1ef34cb63ec7ab0092ec27ce07993",
+      "end": "6c9ac0e4bd52cacfee9306d54df1ec3688b2b1540bb129f9cb37d0ffffd202a0"
+    },
+    "kettlebell-one-legged-deadlift": {
+      "start": "cbf7cbfdce1bb4e3e0e914f3dfd86a4defcaafa87a0b55ad3602a027cbf0fc62",
+      "end": "ae7bd46aa2e6738a4684d1cf71a15216e4e4e3090341fece644a1563fb05258c"
+    },
+    "kettlebell-pass-between-the-legs": {
+      "start": "a1d9772157651125188c32291b1603ed8405958c6f944c3702c596cf7009e237",
+      "end": "feed11f3dca7829578bfff8f1699841f23f651c9b2faa10452b7a4339704a168"
+    },
+    "kettlebell-pirate-ships": {
+      "start": "5cab10087afa062e1d0df72939b430134dcfea0c3c55bd9728c6fed93582df6f",
+      "end": "a169363212ef4e5cec593a4856c1372c0f10110df30b4666c269e024d0272e76"
+    },
+    "kettlebell-pistol-squat": {
+      "start": "3513e84866112b85996c6bb1eb26177fcaaf9cf19006973794e800fe2fd153ef",
+      "end": "b49d076036c971b44a0be14eed2df75b6de018a16d435bf325c58774d2c08ecc"
+    },
+    "kettlebell-seated-press": {
+      "start": "7ba0defcd8d9af252698e07da53b7b0789b33ade41cdea862036767a3381dc57",
+      "end": "35e8d3d2b52f19fbdd26990e521bbe59194f32d7eaa3ec82c7d3157dee9dae3b"
+    },
+    "kettlebell-seesaw-press": {
+      "start": "153179a883ea2be279d0f0ec0a4c556ff6f44e2b127c60de0c1a772b386fd163",
+      "end": "5cfa9251f1f45094a359d2336eb8bab1b6bb5745b6581bdb7140eb5cdcf0a28f"
+    },
+    "kettlebell-sumo-high-pull": {
+      "start": "0f580f1e0ac5b73d65dde2ff158159600129ab3328e55670b5367703d56b2748",
+      "end": "6ea522bebf57d84f2e1a8519edbfacc2de80228b9d8c4e3071c546940c281e43"
+    },
+    "kettlebell-thruster": {
+      "start": "43559725930631ede9ce24cf92aae2b6d95216c0959d3a8da5369b8357c9fc5d",
+      "end": "39be4eda979f3946450fae9437705277c102bc7158fff2cfeec5dc2d07fca500"
+    },
+    "kettlebell-turkish-get-up-lunge-style": {
+      "start": "ff982ee77dbaa66079ec0716f05f4dcd20c1590aeb0ec4755d97d12173d13c22",
+      "end": "497a1f2b60ba5339d4e493fe5f66abd22d2f55f919739d758586a98cafa3807d"
+    },
+    "kettlebell-turkish-get-up-squat-style": {
+      "start": "d409ae004089edf1d91dfa60f5cc29066719dab5321255ee878444f852b8723c",
+      "end": "7b4a8aafa53cb61f1f395eb962a277f0ccdf3074e9fae0f6328a0220321f96d8"
+    },
+    "kettlebell-windmill": {
+      "start": "7d3bf83121e5710bc8660e9c3813a786891594396eff8772f57d3ab674eb3d36",
+      "end": "069083d94c732bf9d8a464f05d3f0cc8ad73b932a190076bb8340343e9fbb8dc"
+    },
+    "kipping-muscle-up": {
+      "start": "80b4571b25a2e3f4f7cc8b47b6386a7fd0496124a5885c6dd21a5c904a61f1a9",
+      "end": "f699f48bc28fce7537343efcb3592053cd1366c3c2b964c83f59ae9bbe2866c8"
+    },
+    "knee-across-the-body": {
+      "start": "e6120b13c54cb5f4ad4f6114d75e5856738a3ccae1cf5bad08469a3b84cb3f8f",
+      "end": "aec36e62816965a807d1f7b622bed4fad55d1d8f86158cabda68117acd9b218f"
+    },
+    "knee-circles": {
+      "start": "5e6500a3e4f5c9893777987e72b989ed355af554a42c27ae60357a70e411be87",
+      "end": "f8cd0dc30bdbb7582d124a1fea286f49a6b131545fe6103d4ca70dd2872f5652"
+    },
+    "knee-tuck-jump": {
+      "start": "1fcc396e352e12ee7b9972e1ac9ddbc371cac611c75a3176e4ff73875e366b43",
+      "end": "9b99571d03c1c8140ff88bf5b3d31577088cfe07c413567e65b6adefb624883c"
+    },
+    "knee-hip-raise-on-parallel-bars": {
+      "start": "618072e6ffd3ba6120f39053cbf4dbaa360d4e4e1da39c1cf3054f2784031132",
+      "end": "39f48854c14b2016df6f5877c63c05a9ab12a95ad78a3579b050cd5a4022d554"
+    },
+    "kneeling-arm-drill": {
+      "start": "ab23faaa6eae6856559541e1c96adf25f393ed2a3c9aabd847e40c1b22af1055",
+      "end": "ebefa20d571e21692fd12885711843d37bba4ffd6d8400ce2fd6178b86873f31"
+    },
+    "kneeling-cable-crunch-with-alternating-oblique-twists": {
+      "start": "2e84bbab8c748683cf4ba5e2d7d605f9b8adf56c8019ed7ad2ddefc611e433e1",
+      "end": "93065f85e043ea617c220e57e7e23e6abcebb28e7beb4b7554523b02c050170b"
+    },
+    "kneeling-cable-triceps-extension": {
+      "start": "e5339d1ee7681612a2ee0bc33b763f4deb67ff835235196e3570a02c68e4dd03",
+      "end": "191c742220b411b1f76f9f993929fb38aa62662f473f99e09012491039e588db"
+    },
+    "kneeling-forearm-stretch": {
+      "start": "b1787de9ff65d8625fdd83527a192d8bdd10a1222864fef12623e14a61f2162a",
+      "end": "eaa0cfa06c42a0e19d060be5fb1b4ba1f82f5fc53d242347ebc74f1e63092d9e"
+    },
+    "kneeling-high-pulley-row": {
+      "start": "2729c0e60e93af33f18a46c0a0684c57348fbc90c6b411512a8115bdd8f51e2c",
+      "end": "46c4515f05c50c0ca374d1bb2692e9b04dc87c6e22fb8c84a455539fcd6a7701"
+    },
+    "kneeling-hip-flexor": {
+      "start": "27df886998b73e74ab88455499ebea3c4e201aa2694e6af107443f906892e795",
+      "end": "7d75a4d104c43996e1b8613e66c563085ce16da45542ea46cc2bdde42dcabebf"
+    },
+    "kneeling-single-arm-high-pulley-row": {
+      "start": "fca9e7a623ec80a6245af1b5172bc3648df876db8cfd3fbb50351cba96bfdb1e",
+      "end": "d8afe6ad00e6b2dee796f7e4fa254710dd40bfe038a1b74b932e42b9fec3e20b"
+    },
+    "kneeling-jump-squat": {
+      "start": "45750b247794277f04bbb01562cbe214905605c04cdad4075cdfaaf659819bb1",
+      "end": "b132cebe22e055aba91993312650f149a309acabf12c82484ae33834b1164ba1"
+    },
+    "kneeling-squat": {
+      "start": "4d58d6ec665c1b479923167ee1058c2683e26d05cbfc916c65559ffda94af729",
+      "end": "b19031a7dcd24eb6801ba48175ba5c0d079d1e66df04b2c7992efbae3d279b05"
+    },
+    "landmine-180s": {
+      "start": "37fbe6f3ab830d4eebf8bc0685a74130911b1adee2d63a04476a20190b3b58f5",
+      "end": "9b49cc56ac60ed527b4135dd3bfaadddbc24cf1a3ffe9d268cdeeb3ddf50eca4"
+    },
+    "landmine-linear-jammer": {
+      "start": "cdb107ba072570f879d32ec1cb973a00f6fd7e3b99e0939b465f06e029b6440c",
+      "end": "9539abf5b5c62d4b4468a958f360c752b9023927f4245ebaead85a0479350868"
+    },
+    "lateral-bound": {
+      "start": "e159a3d920126bfc459084933712e18eb00de71a2150889c5bbec39f9207d064",
+      "end": "cb201d3e2be4927892f6df246048efbd1825d15e965c7801417c6ffb4705ef42"
+    },
+    "lateral-raise-with-bands": {
+      "start": "63d0e1fa35277d5aeebcaf1b937939f78508b846bbaae69f80f0bad87c85e3aa",
+      "end": "be5bf4cd43c270ff9c041906f3537e9fc00b951db99c9446876d342c10354210"
+    },
+    "lateral-cone-hops": {
+      "start": "c9ad97532e3a997cc6776310b3ccc959411d4825e7a2a8065a2c1136bd4b63be",
+      "end": "2db7dc40f0da06802e65feae01fc75d6d954a1b10f7ff9a12c1e2de1858200ba"
+    },
+    "latissimus-dorsi-smr": {
+      "start": "0642f225b79c859743572f1a88f0123acd096e6dbecc666a8a6ebc0c4b69dd81",
+      "end": "df0f0b94482ca26517d9c2cbfe13d0c290e6f605a627d98c8509eba227c94033"
+    },
+    "lateral-box-jump": {
+      "start": "a31e43dd5be28b78ac1a32943b71df8b600e81fd3ca9b209996a7592c8dc404d",
+      "end": "4c6e69173ce41b0dd9ea1825d37ed7855d2a71197e2b4de013d14d9a7d5ac13e"
+    },
+    "leg-extensions": {
+      "start": "9ac7d30d331b413018410e0b852a6bc4554b2ab241b332237c7cc11ffd15cc62",
+      "end": "379aafaf4f2bc99548a344afd4d34eb85cde661cb7dd728e66e0887c6c11a60e"
+    },
+    "leg-lift": {
+      "start": "cdea9b5c8b2bff85254b66591cc18029b0bd2f06684d7e4723c9da32fbbe815a",
+      "end": "8dfc6a6a9cbda3f640b7b36243e5cda7fb79ca9c4ca131b35b1750561703bb95"
+    },
+    "leg-over-floor-press": {
+      "start": "6d0ea92e37c6f014d6d04e9f33a98a562cebfa77815d784c1473a2590a0c7e45",
+      "end": "fd4fd6513c5725da48ad6512babe61fff50e483ebd0b544f3517301619ef23d6"
+    },
+    "leg-press": {
+      "start": "d888e86ff96c09b51c8bbb9529651bc3e8df9b344e96496cc090f44a7b05e25a",
+      "end": "b45c0feca33b8550a0d58488f2450958635dce69d111fc65371f04ba88a00c12"
+    },
+    "leg-up-hamstring-stretch": {
+      "start": "3c6f813118a168bda2598f4f181ee0ae63f9ff529d7f16d15b359eb14dc9714c",
+      "end": "828f926f57dc7eb7e7ff02835d45da062511f04e262ed0954fc334c74d369432"
+    },
+    "leg-pull-in": {
+      "start": "e3598b7d8c0e659f430f41499dd186812e27f4a48cdf92da8be3023dc60a712d",
+      "end": "948c88088e168964b74193db59bd2b5d5982112970a237074801f39e1f811d90"
+    },
+    "leverage-chest-press": {
+      "start": "e5e06e887b7b5c4e1950ed7eb2392b72ba1707516e48c52e4c2ce55fa76aeedb",
+      "end": "a7d60f6cecc1d0980a3134db27cfad292c53c205d6afd8e5d693628870daec90"
+    },
+    "leverage-deadlift": {
+      "start": "71ed5d8805f19e925cbd7e89fbcab01468f98effbcdbb9892140249240052446",
+      "end": "6f563a4bd31eb8062009c96dccb1c2b5eab84c782a1530e834ba0a94f2e7c753"
+    },
+    "leverage-decline-chest-press": {
+      "start": "becac15060c9d85991915938df99c19c56e60cde8005578ff3b994e56435a082",
+      "end": "131260a8da079b71a49838765d9ab494c5ad74e3cc3809365cddcbccd4af7953"
+    },
+    "leverage-high-row": {
+      "start": "881a171f0fb3a3735ffd74625db4d46c7bdb7f9c6a898718032a43044febadd4",
+      "end": "8db31a2fdf47505510fd69b53ab91ec510a1ecdcc8dd47d8364ec86d261816e9"
+    },
+    "leverage-incline-chest-press": {
+      "start": "b787bfbdc167faf7ea73b00a603994c655de770bd703bde0bdb52ecdb38385b4",
+      "end": "f4dcb31747c9ab38b3b9adf096252fad3cb7d7d546751a4a45b985fe93dd4a22"
+    },
+    "leverage-iso-row": {
+      "start": "4e6a31d0fdab1669b078aa2b38b0e88f0438d1dd5824ee638fd55d57264ea4e2",
+      "end": "f84defadf53cd7a548abde64e85eb7ce39143a0d36b21044eb3f09a971fa0ba4"
+    },
+    "leverage-shoulder-press": {
+      "start": "18248b0b508f96f31cd74090424b4bb9a3814f318a3a88162f3522b8c1bcb977",
+      "end": "3e4ebaf332693ea1efd57205e14433e79169a8b1b36ed139dfe8d93dd2214872"
+    },
+    "linear-3-part-start-technique": {
+      "start": "bd2c1744ed548277a8945081a2484b78a94b6c250cb55c692571f71d49e4bd91",
+      "end": "20a7f0ed752780589cfef389ec225aeeac5ce459a6ca92baeba82b07d399dd62"
+    },
+    "leverage-shrug": {
+      "start": "c261a6ab499a3f7033ec2c017082cfbfe08959322458472a4a9acc3e5decf37c",
+      "end": "db4b763a9d80c33ab570888bb76122f3a4be6d6594b6e83a359087152bed60ab"
+    },
+    "linear-acceleration-wall-drill": {
+      "start": "b4376068116fc63d9be58d0abfc1ff80070c70772e18c74953b517576f69a611",
+      "end": "1473a6ef66fc4db27713714f050df3f79c881d16d32cb1a676ffe7ffca3ce256"
+    },
+    "log-lift": {
+      "start": "1fc4cac2daf5802963c87dedd83fb1f7509033ea9578c046bb979d4ee8bcc0f4",
+      "end": "9435bfddb99bee0c34b3a6434fe16e2360da26577c77820a9321104bab2a0968"
+    },
+    "london-bridges": {
+      "start": "e8859883af44ebf6e64f6fd0a2e4cf440aa2fbfb067404aaaf4aeba9d241b788",
+      "end": "2f7b0467cfcf076889333586e401c5102fddc26378d45050fc4e6f0d13ae3cbc"
+    },
+    "linear-depth-jump": {
+      "start": "42d03b18d647143029c03b22770b71915efe749bd7471304911d215e56708018",
+      "end": "a1bd808fe4622f8d1c399d6182118dbf6efb005adaed50f9ea77c3b568cc0b32"
+    },
+    "looking-at-ceiling": {
+      "start": "7876805681c8b5296c967992f6e7238812a2a71e0307461c8f90450ec22c820b",
+      "end": "1cd8d37fc8b3862094f7c6f51daf96e330f87cb099a833bad5fd768ed1da4c11"
+    },
+    "low-cable-crossover": {
+      "start": "daeb864da8128a84a596d420ee8b6db89349c6f9fffe58588b12a97ea0a5753a",
+      "end": "7ac4765e1d778ad45069256e67a70fee9e1e84d0dfebaa992f3c6dca475dc19c"
+    },
+    "low-cable-triceps-extension": {
+      "start": "c8a263fce684fe593eb6a7939448dcfc768004c7916e5674a4690ba014928b5b",
+      "end": "d5c5c0948d8741732881de9a42097edfc818c1b5ae8ef6c34fea8d2caa3c5b8b"
+    },
+    "low-pulley-row-to-neck": {
+      "start": "869524ed0e2a0223ee846f038e31c823b660f880fe855c4a07cac380f455499d",
+      "end": "5c74046fee748ea53a11579b99e4ed3b327c51e8b8feb5f2ba25a8e71e49f329"
+    },
+    "lower-back-curl": {
+      "start": "67d240e8efa32e8b1efa658ade8d33681d2b292bf75419070612b5402284f8a8",
+      "end": "a153d8a0d1eb54b65fadcca0e0340886409a4e39b20854986123c56135fc9278"
+    },
+    "lower-back-smr": {
+      "start": "0642f225b79c859743572f1a88f0123acd096e6dbecc666a8a6ebc0c4b69dd81",
+      "end": "a1ed6558ad4aa1cc646721d2f0ba3eef3b540fec2d5035ff970f5a61b901cdc7"
+    },
+    "lunge-sprint": {
+      "start": "56ac49280a461a8fe720e4bbf7071e18096b14a1986cef5829e40b1b614e3280",
+      "end": "334567308b3cdad94c5f6a7c0bb0281b938cc4337ca90672c99dfc7f4c21a282"
+    },
+    "lunge-pass-through": {
+      "start": "031ab92a0e24661c904945057c1624fe5c4ebb992fc1992d5dc12b15c49ed730",
+      "end": "35a3733946e24f798d3e8d657426232783be7069c6fa96ab5104329829a46b72"
+    },
+    "lying-bent-leg-groin": {
+      "start": "279cf2a074cc5abb03923b40ec6edc675eac2f2333af7fb9857ecc6dff3f4001",
+      "end": "0be6dee836edb9bb349a45e38ebffe15784762a74dbf0b1be0773386eb1b0aa5"
+    },
+    "lying-cable-curl": {
+      "start": "80be73e15f77f454601c048fa71444a35f50e07bc5dd220d0ad87d44c054f250",
+      "end": "1a6dd1467664a4b22d5b01d0a4853104e48802eac5bb84fe45c2b3dc1c6ed478"
+    },
+    "lying-cambered-barbell-row": {
+      "start": "a10ff2cad951987eb484961f49181b57f67db3a3259030819c29374256cfa451",
+      "end": "0669fae9d805f994a1ebf192b29018d45a19117bd0203201825e8077e8108a8d"
+    },
+    "lying-close-grip-barbell-triceps-extension-behind-the-head": {
+      "start": "7fe4e4ae0b34514ed75d2052123b9a170788fa74643d9c17d81d1ad0df18122f",
+      "end": "802a3deb800c2c627f9351d40d34282744fea1b20d880d37e244be1358a5e2e4"
+    },
+    "lying-close-grip-bar-curl-on-high-pulley": {
+      "start": "37b9851a364c15413daa45275250aa7cb190e0fe27cbccf28595bc8e5bdd78b4",
+      "end": "d40036a36318c72458748528ead2c8c2d98fa11e5e33dd45e028e6a6153e7d54"
+    },
+    "lying-close-grip-barbell-triceps-press-to-chin": {
+      "start": "21c65e86202031a7be7d351f89fe73db5c187e99ad3d866ea0e1affe7f4ebd9e",
+      "end": "7ce460a23378b1540f369bd9a7b1cb36ed444b6c0da3b38f050fab8d206d7ae0"
+    },
+    "lying-crossover": {
+      "start": "28e323a9f25d26fd1dc4749b5155758a3f011103d509378c28bcd09e0b73a147",
+      "end": "6290a67ae7ec6c4b3f43755fa628f1186a1774e994f3396b23e4ef4bf18ae976"
+    },
+    "lying-face-down-plate-neck-resistance": {
+      "start": "0e4b6aa55420daef4c82948d2ad22dba79ac3456099adff1bef6cfa1d8f5192a",
+      "end": "38cb264af093f39eb9dc18f784a158cd73441637c55b41428d4ae6836f3dc7b2"
+    },
+    "lying-dumbbell-tricep-extension": {
+      "start": "dead1380e150793cfdcb39235e9deaa2f616445f9f58a348a5c269104349d4dd",
+      "end": "c7ee837614958112f772da602795c27287a20433b127ed88c5b4aee41bc07e02"
+    },
+    "lying-face-up-plate-neck-resistance": {
+      "start": "51b7bcab3c672a491befac01697eb69e38f9084667b1a090ae9580ea4a6fa11d",
+      "end": "97bf58cfc4519d559dc6d82081cbb8237ff3ee211b3d9990a82c8ec6a0c3cdbe"
+    },
+    "lying-glute": {
+      "start": "faed7e2ab020d2501d65186bc2674f99065d2b1808d514746987f4c39013d0bb",
+      "end": "61064ea2ec20bc418d0a216e5a769a39bc495c6eca12faad4a4ce20889144875"
+    },
+    "lying-hamstring": {
+      "start": "9990dadf28883e7e254e921e02ba6e6b8d87cb22efe2159005307ac8b67e51e8",
+      "end": "1fc46bb3314cc8d5348bb5cb922915c459b8bd2ae88d34ab32fcdf872ad978e9"
+    },
+    "lying-high-bench-barbell-curl": {
+      "start": "74e9e661970dd8aa86bda1b572476b3044bdd4c269257dba8a0d4136ae1b51da",
+      "end": "a290fb8821a73811843e10cb6a89c8113cfb1acc4a4d05cde99558b819bc330e"
+    },
+    "lying-leg-curls": {
+      "start": "6f005527b4420bc6bd81b8c1b72af4883abba5df5a5c4887037fa03948397990",
+      "end": "47abad9089f241fbd7e817874e84d8865c459ec10d0cf8bb9377657bba5e0cd3"
+    },
+    "lying-one-arm-lateral-raise": {
+      "start": "47be424a6ba4acb5a5f3467dfbfc48b341a2190802103d31874fb048de456e0b",
+      "end": "a1b45b18849b26e5d7f0d5193b814e2dc3a55d16de513b50cd24f177452ae39f"
+    },
+    "lying-machine-squat": {
+      "start": "8a21e1d66c4433f30a6009663add798e42a05094cb940cc570b4ae05e38d8037",
+      "end": "a95834fb69139d3a9f4dc582bd6daffcff425b5f7ac1faacb8c6f7c8d0bd51f6"
+    },
+    "lying-prone-quadriceps": {
+      "start": "814b03e47726979d27a5e10f72d8a0d8698b1ece3e5bce6ffe4ee63260ddd9f9",
+      "end": "ca2934b50e57645d3752cc1265258e26f419c3546254920306ba02df51fbb6b1"
+    },
+    "lying-rear-delt-raise": {
+      "start": "26db720faf10ca342d9975d23a3aac9737a0db3684c178b3e799cb164d509cce",
+      "end": "868b2a48fed95180e6513ee78d9a9fd29d31b0600ec7a218f40567af312d581b"
+    },
+    "lying-supine-dumbbell-curl": {
+      "start": "e0046915c6ece8757da690de1c24cc2d812d09c440c75c7e1face096690a9053",
+      "end": "41ec02ac16332141ddbd1e703dd6f37a19798f3fcf33e1b08cf5828feb7c1191"
+    },
+    "lying-t-bar-row": {
+      "start": "25fd19ce66fbfb33e5cec67b2087b4aca51208a2ac3d88ffdc00207fef412c76",
+      "end": "c4ab9558bf83979c4ddb8a50ade5c17244533c7d0c66c246e00e7ac29fb8ff43"
+    },
+    "lying-triceps-press": {
+      "start": "46fd84358d797ef374b1c4f3b6c4ede194755eb70244cbc53c4637b58ed2842b",
+      "end": "2da73ddf87a6210b6b79f2e1d87d19508b6fffe8a3af6169b6511da9cb97b373"
+    },
+    "machine-bench-press": {
+      "start": "bd12dbee27a956db8beefbe227135bea4f11a2dac2a14f6e7623f8b9360245c9",
+      "end": "18b33f1958ef82f598b3455ce071612039ecd33939130633d31ac6e303388db1"
+    },
+    "machine-bicep-curl": {
+      "start": "197e11877b53e2255d04868ed4fceff1eb1b91ae0f14521eb8be7d8afbaeb82c",
+      "end": "3cd16d2f463c049ab3cf26b58954182e17ddf9d237b2733ad7ffce818f0c8403"
+    },
+    "machine-preacher-curls": {
+      "start": "1fcac6c15a09778cdc1fda7b2c0c4c367d0736198b82a292a49af6dbdb47c701",
+      "end": "b53435a27f1fb3a5e13153d8a64fbe99de329c0599ee33fce67cd7b1e1a9a77f"
+    },
+    "machine-shoulder-military-press": {
+      "start": "d1c1ad2ce076f19c1624cddcc56d98cb1ea86ae323f198d078d407fd61c6354c",
+      "end": "0261626ce84ba46f1493fe9ee6feaab1769c0df8e676686cb0856cabdb0ca9d3"
+    },
+    "medicine-ball-chest-pass": {
+      "start": "a2ba882c7247a509932b4841519416fba242a0e18197e3beab122d410a760a84",
+      "end": "c03a7a2478d60660716ae367edd0aba5bdec69dad072425bf0df4a3b1e8cbe03"
+    },
+    "machine-triceps-extension": {
+      "start": "086f3ab7624e57c7f585211c6bab9ff544897574be975531ea0da3407d7afec6",
+      "end": "e6d2fb65f880c6578789529527e80ab4430d573a7c358f962fc111dac2f16caf"
+    },
+    "medicine-ball-scoop-throw": {
+      "start": "be86214fa7d4b2d03776a3b4ea7119ef353db4aa3c4993cbcdbe1ec153b1e988",
+      "end": "573d2a8636ceecb02b07086c0cd3c7a6b6cdb8f7efa93642d1bda450c6ae3cbf"
+    },
+    "middle-back-shrug": {
+      "start": "d3861465d8691df85411914be17edbe90eb3d3f7a5e263eb73d58afed2486176",
+      "end": "75ad64adefe6c359cbb97da5f4fee881b8451de6f988a8d2a9533df4bfd43616"
+    },
+    "medicine-ball-full-twist": {
+      "start": "070c67fdaee398f00a968e67e96c01b70a97c7ad75c4a77c2ef7434bfefb9bb2",
+      "end": "09417b8823b324655936425c3c19bcc930fdac169eff2e0f3fa9e5c62d4c9cc0"
+    },
+    "middle-back-stretch": {
+      "start": "deaa082be7f79a390b81bd1763e53b3b262a5e55f808cf694f94f498b27b8962",
+      "end": "ada1846cb6b0d6f6f23ee86e8de32ef86e35842d4f919e845a347c8a543ed38c"
+    },
+    "mixed-grip-chin": {
+      "start": "e8fa3e3e5019dc087082c35c5fd85e2c2deaef61f188a03936c569435357c5a6",
+      "end": "1ac803437163ba8fee755ba5a69ba527a0253da557cd1917220aabcec4eaca5b"
+    },
+    "monster-walk": {
+      "start": "36354abfe0af94d05d51d3640f96fdc23520cfc225c8412e9cfb674933176cd6",
+      "end": "9d4475fcf4ad7f3c9c0f70ed9c5ac1e2869063e0da5a92d1e9f054a64c136e0d"
+    },
+    "mountain-climbers": {
+      "start": "1b0916f274d60b1625413949800c381d690f13c2e44feaa57efa186101ac7c7b",
+      "end": "6b4cb05e080c7e68f4eeaad38576d287b5ab78812dd8044e63f3c6f63b142112"
+    },
+    "moving-claw-series": {
+      "start": "1ca36fdb4b06c95df1ea16962cd68ee2ebdf5d7904f27e6f8dda92bc854fdb4c",
+      "end": "39b68be3f7689849f2ba368c18867f9c7c8fcfdb56ecabdfbd64bb82080d8db0"
+    },
+    "muscle-snatch": {
+      "start": "c8e258b209e7ef1529f73116b86c6124e123f1c6b9e80a18bc695092482581c2",
+      "end": "70ecb015cdf0fa3708332729549a3b732829abe99916b1ba1e8925bc4c73a084"
+    },
+    "muscle-up": {
+      "start": "e2f17ae58f599ce03d8bc1acfa8889e813488527257a8afaa903970af8534eb2",
+      "end": "8292725334dc2e25c67cceee2730e8ee8bfff0a4e3b32560eecc8c98ac1d5052"
+    },
+    "narrow-stance-hack-squats": {
+      "start": "860d7cdeeb4d3305b03c4201f8b772c00d0d04b2b18d30f6d57bba18e728daf0",
+      "end": "fca2320fde002cf3a961104bb03572280cec58ad558f8d41eb3b3d81d16ae152"
+    },
+    "narrow-stance-leg-press": {
+      "start": "2c7ee3caaea5d5e585d5411c644d4ee40bf5f07cc52f42dc76c28d439e7fe0f3",
+      "end": "ee70e6a6b8d7936ef699c871f69a51c4708ae45c5b831bf8a5b728edee70acb0"
+    },
+    "narrow-stance-squats": {
+      "start": "32df72f80f05c04770265e1459153c4257e5b6042476bad4f13ad0730598e023",
+      "end": "e333d1b60fab5e6167cc21b01daad34fa1587dd77b47dc1ed201ccbceb08d5f1"
+    },
+    "natural-glute-ham-raise": {
+      "start": "a7908a88101a3f1a2da145689e74f76a720fbf7ce401cb3e135b45a082d2c3c1",
+      "end": "f6c58078d4485a0d5ad43742c8b29469c990e178c2c783fde6b44bf226f0bac9"
+    },
+    "neck-smr": {
+      "start": "fd9b1179c231a0f50eda804e3929dd1a854aac0ae86c6d9d3b23f48844efbb77",
+      "end": "dde381bb4cf78dd637391d80708ef3a74407a2787ff27cf4140b4025502d9608"
+    },
+    "neck-press": {
+      "start": "2695426ded27f024f58b01e559ad7535607eb07af56af1f8d9a37245a861f463",
+      "end": "147cbd93d9fccf72bab172e390b640e8fb3968b9125a1eb2bba16a7f903f37af"
+    },
+    "oblique-crunches": {
+      "start": "59b8bd457f44b8500f377187699c25ac9f58872f6f8193765513bb537ada7a11",
+      "end": "983400f76c98ef8c279d0dc439d2a0bd6e90604186b0ad9d40661eff756c39b7"
+    },
+    "oblique-crunches-on-the-floor": {
+      "start": "da63bcb76ddc3cec46d471ff05479e4e96f2d66394af3c34f9a6925f7794c50d",
+      "end": "ee09da422b3527494734fe05b6f8b86c8eaf9e5eb9cd899aa1b5e16d50fd6fb0"
+    },
+    "olympic-squat": {
+      "start": "7d3945481b7ec018ad3076ce94ea4a15dbfaa575d84f6d15dbf74843692c485c",
+      "end": "c25d3915d7d446ea097cd52fbdc8b377e0973ec0fa351a39a7cc84d35b12ee6e"
+    },
+    "on-your-back-quad-stretch": {
+      "start": "15159b240405ab3a0ff9f6422b10f8840b0be7679917e9445216da58ca88df3c",
+      "end": "46036f3868c8569c8bdb9350541bbdd399a58fa5e649c7699f6f62d85c2da03e"
+    },
+    "on-your-side-quad-stretch": {
+      "start": "5f4a499e01f9cb35e778ef29a913855a8bc2f5fb6250842fdbf71e742d2a1174",
+      "end": "43c9a7c8c37cad31e803a31341b49ae00ea8e45e26fbed25f043f9702511ea03"
+    },
+    "one-arm-against-wall": {
+      "start": "d09fd628d20e52f08cb631189f04bb56daccba026c877c5056c474c008175bc6",
+      "end": "d09fd628d20e52f08cb631189f04bb56daccba026c877c5056c474c008175bc6"
+    },
+    "one-arm-chin-up": {
+      "start": "fe7796869fc3e55e38d299e485ade10c4cff193ce40557287684160f90176e3c",
+      "end": "58ecdaadadd3bef156da9f226f93685df368b73bdd5aa8f4711d7ab74dd52992"
+    },
+    "one-arm-dumbbell-bench-press": {
+      "start": "3d21fd5948255f070d230f9ff15b8f696340b5133d52ef0b18df2332620caf97",
+      "end": "0071af6fff254a6170fdb6722340cdf4fd4da3a4f6d90802acaab101df062ec1"
+    },
+    "one-arm-dumbbell-preacher-curl": {
+      "start": "fe3009ac5d5302efe2e58ec60ee673e139fa7eb10a6c6e3d0bf45d6b54f45d67",
+      "end": "853e236f1a79e82e9f078bd62dd75e71502aa6fff79a77b8b8718e6210e50e8b"
+    },
+    "one-arm-dumbbell-row": {
+      "start": "b8852e290c216d78067ce09ba03adea3ca131aee892fd33a7d0eb9c1461c2960",
+      "end": "2582741ead93f87ae89df0db6eceb5c9deca15ccde2c5fc1a8ecba657e4512df"
+    },
+    "one-arm-flat-bench-dumbbell-flye": {
+      "start": "4bb89db839deb90c8ee07ed794516c9cfe460aa375f9163940edf692cea113c2",
+      "end": "b79f86c8f1527e84a813be5eddf50a2c22ea890854d4857dcd069fb3c8558b93"
+    },
+    "one-arm-floor-press": {
+      "start": "26dc7077c2ffd2dc7cc256b8192cb0211231a40c3ee78603ba1d3bb23e204e93",
+      "end": "2f7790c64c12e9f45e03a139135b7067551c224029157fe0dfa300f85c17d5f8"
+    },
+    "one-arm-incline-lateral-raise": {
+      "start": "ac4ff154c7cb9deb0633cb72d4d0cc1c105fee0b493f481e17304b218b9e7840",
+      "end": "c555738c307d9f25b1b2ae644e404336271da9d87957c5664925f7c2a171a04f"
+    },
+    "one-arm-kettlebell-clean": {
+      "start": "96a86f296b943ef2782403bb7f18cd58cdaacce346cda496b20b0611e5a039ce",
+      "end": "6896ff460f878026fc54b4738439a68697289b9748e7250d24f6fd83562e3b82"
+    },
+    "one-arm-kettlebell-clean-and-jerk": {
+      "start": "e52a52f38e62b96a278c5f48b4cb87dde7007e5bc80bc4b952c6e859f52b84fe",
+      "end": "9e4cc50f288945f90c4499bada8bf54b655aca0dd4c8bf1fcb81a5c78f1ef847"
+    },
+    "one-arm-high-pulley-cable-side-bends": {
+      "start": "cd861791c27089e213a5246cfeb7df08a1d50db0c2c42e0c2d6fbea90b734b19",
+      "end": "2eb9b7a194b9fa58fa86a2235b44ffeec8ad27f35a0b1684e5be28b18dc88783"
+    },
+    "one-arm-kettlebell-floor-press": {
+      "start": "dbd08c1490782030dcdbf50aa06b35347c80ee4a84ee4b64f6a8967ccf7bab81",
+      "end": "2ee5ccce9f770859b1347d4db64d25209028d62addb1840c79b7eeea808e408f"
+    },
+    "one-arm-kettlebell-jerk": {
+      "start": "87e3e21a869e2a9662b0e520a4b47a1aadf005654086c3e629d26dbce3d493c8",
+      "end": "7951e513ad3122f73b36388407770fd012569ac3d7bda0f922b195ed938dffcd"
+    },
+    "one-arm-kettlebell-military-press-to-the-side": {
+      "start": "31b16695314758315d26264ac09c82966cf9c4d8cc62d62357e2924445bc2895",
+      "end": "9c981ea808e4befaf26461edef33bf09ae3e9ada0a074daf2ecd62165c50869a"
+    },
+    "one-arm-kettlebell-para-press": {
+      "start": "97574b65f942e311ce61b3ad518b7bf5d364d5371c8bb4a933d86b99e41bc896",
+      "end": "484f0473eb8c662ecbaaa7f09769948e19af3d809ea6fc577aaf5cd955c46c9f"
+    },
+    "one-arm-kettlebell-push-press": {
+      "start": "c703c03325869fac6108841d50f1990d13b68275292b3dccf6e1b7b5aa9a9689",
+      "end": "87b7dc8c6db9467f278f1c8d80c9db2d34551a9ac1939f3a0fd634721c5264af"
+    },
+    "one-arm-kettlebell-row": {
+      "start": "10a615c7bdbf496d5ab88fbfee2f599b51525292d8fb70c7f1a135fa0256bc9f",
+      "end": "9c28df1fb5be9fc125605109d8fda00cc52b8e1c8561bbda45699c3ccfddb48d"
+    },
+    "one-arm-kettlebell-snatch": {
+      "start": "c24807c338c9cd0d097498e643dfcb22c3a9502f21dae5441655b17372103f94",
+      "end": "468a7285c669371e6a801407aafddf3be5fffb555d3ef07b67d3723d5cc3244b"
+    },
+    "one-arm-kettlebell-split-jerk": {
+      "start": "0e5e45ed28ceb075d3573a74f095cdf7bcc6b189837ca03b610bacee7cdccb0c",
+      "end": "1450dae3e2bb3b1d3c978c4af16723d6d1b7b60b9f2354d3749f6ee3f7050d5f"
+    },
+    "one-arm-kettlebell-split-snatch": {
+      "start": "616784b516a5ab3f83150ef036da683c11737565f31ffd785402d60c32301e99",
+      "end": "785826cffcefd8201e0eee97e87542bfede2330ff949c4321ba593d1ec692cc7"
+    },
+    "one-arm-kettlebell-swings": {
+      "start": "a160d865de6d28dca5c669d566a53e27f74a2c0af030d6c808753ddd4964ac9c",
+      "end": "43c2eb6df6df68a33ef9d98861d267cc738ebfdb6eafb4c9668fa210586045dd"
+    },
+    "one-arm-lat-pulldown": {
+      "start": "e78ce309b44a915d1efcd64b78fb89f16dae4099e5d3c2ce84518724cef99b26",
+      "end": "492b04712e5f91d3f2cad3f04330b5211b788c3954c4a3f3c0ea522e742882d1"
+    },
+    "one-arm-long-bar-row": {
+      "start": "1073226a19d66ea8b73894ad30f05ff44b5251c581482bd05a2929fd43a290b2",
+      "end": "19febce066d9dee725ae7086f69aba9ad1af9c8f0225b1df42375656e41dcb4a"
+    },
+    "one-arm-medicine-ball-slam": {
+      "start": "8d63d792ed246718cd5c9bf88b71f76eab6f172c487791d454943492f8c15238",
+      "end": "a93d4453f41b5e1f671cd0d78fc6f63f686566dd3eae6ae43b9cfa21df042ea9"
+    },
+    "one-arm-open-palm-kettlebell-clean": {
+      "start": "6f6356a6292227411c711370a4f80932b52633b79f251b56caa39a0dd640ebde",
+      "end": "a76997c63c7163df479148ae84778277c61b0f5e1ea8d54a7c43a56cc407cfe1"
+    },
+    "one-arm-overhead-kettlebell-squats": {
+      "start": "6b57dc34f43dc67cd78557e2ee670e00cd69e971d3b61f76811a26acc66783ee",
+      "end": "c61e0b7af38b2dadc91214fb021c811dc1ebb0d4feaa1770ba420dc0f25af15c"
+    },
+    "one-arm-side-deadlift": {
+      "start": "58ef7bc0fc19827c4ddb8717a37ad47f56b0a64e418055d0095875d06b624eac",
+      "end": "89880ee01a2f2f55a63d8f3b5474b35cbdd729ed4f02b33653dbd570d1c7086d"
+    },
+    "one-arm-pronated-dumbbell-triceps-extension": {
+      "start": "eae5321de1386d3809611e0f2055e9369e34736d418a6591b7f1c3ca4ad30c12",
+      "end": "44fd1110775c3d0dbe3a0e34bdd82da29e0e365621b510b639069e3fe7536283"
+    },
+    "one-arm-side-laterals": {
+      "start": "e72b40adee8aacc2885a68a20a8a8fb7640e8afe3aa4b139ce0bc7dc71036ea8",
+      "end": "f390e0d73b8a58e5113925659def290684e57d3052be7b12ef55b3cfd26e4e4f"
+    },
+    "one-arm-supinated-dumbbell-triceps-extension": {
+      "start": "ff42296d193e2aa925ecee84ba752c835b6f17a09919f27985c4bb540b4f1a61",
+      "end": "60e011cecd541a23b35bbe827ef04721ed2dea7e569212e96b89ecdfac2d6e9a"
+    },
+    "one-half-locust": {
+      "start": "3ffedbf5e11a92f3fe842c72a9ed874a2d54088984057e0a75f1a8cf1d74da07",
+      "end": "0e5069b40116864d591b5ed5453977cd755fa6c20d4012f3245fcb4c029da876"
+    },
+    "one-handed-hang": {
+      "start": "ac5f43052ffa78f5153b21c55eae51d74065480267db94e64c7f73dbf396376a",
+      "end": "1af303bf3e1d406485b50bb76e2512c7504978eb18a432c9d3299c1cdbb85468"
+    },
+    "one-knee-to-chest": {
+      "start": "bdb3588b83a7dec24f3385652b73d8aedc771722d5c40ed2ad8456706744bc48",
+      "end": "40d9b8f3a910c7b7b732b68dbd875e7a60afaca634b68c5a511f3fc13754a1d7"
+    },
+    "one-leg-barbell-squat": {
+      "start": "f9543eedd556a6ce0337520d6cf149ef6eb404f216b7ba736611ab1eef801adf",
+      "end": "b8a9bc862fb46eded1f2c665d375b41c221397fdd3429265ce4552f89fc9a475"
+    },
+    "one-legged-cable-kickback": {
+      "start": "0ca1b6c30dcca3c932913d7a86396225609a8a582da1ea20c78ffdcd8f9a51a8",
+      "end": "de195745216c3dc9383c1de88fb8d97d744317c0f8ea28e622aff3d9385dec0f"
+    },
+    "open-palm-kettlebell-clean": {
+      "start": "7c13a8666da07a171e9b7d3ed5425fb98c4daf92c37e096ff0f3514d4c069b7f",
+      "end": "65c04af3d7d95152738310b56338578a54d17986ce99898f93da853a01c2d89e"
+    },
+    "otis-up": {
+      "start": "838aac423d4016becbcdc2bc738012fdb6ab2baf0e1f8dcd687476a1e469a918",
+      "end": "dfa4ac5df0cb90330ad9ee2e4a5521e810677c1ed03aae7aea9b41b22cdf0ba3"
+    },
+    "overhead-cable-curl": {
+      "start": "5248c5163defee7aa7efa5fc7c6d3b141f793d1d8eb42459aa6b83e86ee243ea",
+      "end": "1fe3baa58a128758265bd1966f7f7887c8ab45559771173b315f741a5b7a3174"
+    },
+    "overhead-lat": {
+      "start": "97e6af22802103b3882cbbd7ff43a9cf2f234eea66333e2c8b3360a3dac5715d",
+      "end": "3f4b585e704e2b3e906f7ba1c5430561c7fdf521d9522c00abf49d78ccc1432c"
+    },
+    "overhead-squat": {
+      "start": "185fa430310c2e24ec75c29fc39e5b72ffb17e0e8bcbbd16eb168883ed19567b",
+      "end": "6d7fc911d2c21bd995e3386da051dad1e7e7900e3879497b31a149f30f01b681"
+    },
+    "overhead-slam": {
+      "start": "9e86f4549161ca9798be6a2a88993213436876b028a2d0914999db450b286148",
+      "end": "9e755d6a309e51ccc9b409fc8a7ef0f2458df28c18df84f5fd5432d3a104c6a5"
+    },
+    "overhead-stretch": {
+      "start": "deaa082be7f79a390b81bd1763e53b3b262a5e55f808cf694f94f498b27b8962",
+      "end": "3c64721c17876c40c77cc6aaf15d4dd0fd864a6a310bc2ce52ca8f441b00e9cf"
+    },
+    "overhead-triceps": {
+      "start": "4f0001da4fac9e7b57807d2130c0ed594e79dcf8f36ead957a9a88b5c7301952",
+      "end": "e09714cc7b50faf2b979190042ccc41ce527073b3fd6f0891dd0c4d14d45d18d"
+    },
+    "pallof-press-with-rotation": {
+      "start": "9fd13f4fb960f83ec3242038380d2f81af72e852e68cd8ec4ececb32b291aeb2",
+      "end": "05a722e68b3bec21ab9616b8c826484d17cc3baa85c4b4a60b4f0196c7b6a6c5"
+    },
+    "pallof-press": {
+      "start": "867e938ae7333c4e26a1240c4961226fb034267c8058cd26aad4ed9d97b2f29f",
+      "end": "ccf299c2f3b080f5af7559f994ba89848ac4001ef8e855120f77e295ca75a6ac"
+    },
+    "palms-down-dumbbell-wrist-curl-over-a-bench": {
+      "start": "a33e59205b0546173192ce9fa76b9b0d1be3d982d76e80cd0de30a4959020bc4",
+      "end": "d2e4f43b357b8e8a0a7f9855c0261f085fc4f2e88a1e2186ffe4a339f853c2f1"
+    },
+    "palms-down-wrist-curl-over-a-bench": {
+      "start": "c694bb85ff5c6dec2e8053cce773344ecf7ba3f8bb323d896948fa46cedd6464",
+      "end": "36044070a700339b6593530bf11860577739c8056bfc2de66450f7ab04e9e7b3"
+    },
+    "palms-up-barbell-wrist-curl-over-a-bench": {
+      "start": "e3d5b189f162a9856eb73a553b2d55b5b5038917558abda3ec849e81b5c15ca1",
+      "end": "b0b48adabb52ce47769f8ad5f41a21bf4e2b18dbaa8df218929b4ac9902a85d8"
+    },
+    "palms-up-dumbbell-wrist-curl-over-a-bench": {
+      "start": "d441653a98119aca1c8a797a6b7949497616e6ac9a83dff0e74317dea8bdb285",
+      "end": "464280b48cf803bd09635cc3397ce0eecaf9c09baa997a7b1a2cf38f874de5bb"
+    },
+    "parallel-bar-dip": {
+      "start": "27f418004b6126967ce553487acc04ef91ec2b4790c7a28cb6967234069e82f4",
+      "end": "deaa1082d8eac55a0e271b15292a9fd362afc10efd8069c0ef553cbce03ca1f1"
+    },
+    "pelvic-tilt-into-bridge": {
+      "start": "c0599355c2b30bad8d3e71b80c17b3d766b83089f6b1828d3bbf926a67ecd3f6",
+      "end": "1cbdcb34f0625bdd1466d3f558545f0adf18ab9021255c0610593c87e3c2da1e"
+    },
+    "peroneals-smr": {
+      "start": "7a37e0ce22bc029810fb133cb11719fdc7bdd7a42144fd484762a7b565a60bd6",
+      "end": "7d777ed099cdb7158899f220eccada7345453e074ae7972e13f678ec8a97fc5b"
+    },
+    "peroneals-stretch": {
+      "start": "83f247d28ee6270d0b08e443a822f7c9e5827d8522020606ef842a02e167f4fa",
+      "end": "b161c71a3be4a9a8033c0330c3cd611f256737d96df4eaab3e08ec6979f914b0"
+    },
+    "physioball-hip-bridge": {
+      "start": "a7b1d658f56867af158ed208974a539df20246c9a84379792de75c57f88c3358",
+      "end": "208086da1d6ee331fcf25a94575c6f9540dd0e5ed6f029bbf7bece5070ab0e95"
+    },
+    "pin-presses": {
+      "start": "6960a096b011a0788649cf745c06367ee5994504caa84cf6a6010395a6c1b9fa",
+      "end": "503b8fdcd458a758d8404ce90b378234d5bd7554fd649f19758e824f3b0b7147"
+    },
+    "piriformis-smr": {
+      "start": "9e37f4c19d7550a70901e9d9bff4eb296d358e92d009d551f8155c9dc452fe6e",
+      "end": "d33d09477cd92f4c2f59b406130a32eee110ae58e686e69668f0cf4cc7ff3f8c"
+    },
+    "plank": {
+      "start": "525c5b2e79512fe4060734187b4fa4bc749c3cee8a19ed28f447a7e47424f7ff",
+      "end": "b6c1d8c1bad843384566f15a0ffde7dc67880c0b4a235d443caf7cff0634d2b8"
+    },
+    "plate-pinch": {
+      "start": "c776795ce43e986de72f8ab6416354ced735368de0468c50a423300e27a0da03",
+      "end": "715dba313796d812cbc5ccda3da9b8065a3198b05632f0ce23e7f58489203e1e"
+    },
+    "plate-twist": {
+      "start": "076802f666caf53904238bb1715f02d575b83fcdeaa68f14eda7415882fdd59e",
+      "end": "f6253d66a396ff4a7c62fb39781d1624a4563e9d7d10c92724fbed15d4432395"
+    },
+    "platform-hamstring-slides": {
+      "start": "fac5781f1cf8214987e32360d4239882a09e61e4fb4d4a3579141817b42ceefd",
+      "end": "638a84247bac04f7a0fbd3b685dc5897a61d3690b023cb7c0b12c28bf406217e"
+    },
+    "plie-dumbbell-squat": {
+      "start": "b9ec8bdb63565201d75f437e2024a35e361ea113f52d34603e7dcc7e118759b8",
+      "end": "1695c423ba679d12b3a4b96c547aad5d76d7a6192caa9c06025210d87ee56198"
+    },
+    "plyo-kettlebell-pushups": {
+      "start": "d6f42fb85ed62b2ffc663dfdce126f8f123bcb02952aa7992e5af70d87d8258a",
+      "end": "bbe243727198bc9cd19f29ba558ec44390441d3cb8b0226e7ab72f47512fd863"
+    },
+    "plyo-push-up": {
+      "start": "b56dd7102e9976932755b3c3f2e36768a867f499d3d2b607c19f672c347afe8e",
+      "end": "fde72265f41d58f4dcf3320aee37f24fd2b0a552902450df462f771df366afc7"
+    },
+    "posterior-tibialis-stretch": {
+      "start": "6edf0b7985a1a78dc0da418a3d770c8d5b4df2a4b752315f4e23596c6f833aad",
+      "end": "30761d7465d8a71d8d35ffafa1ebc52f45c8c1d3f7de9e7115a96c56d864cd18"
+    },
+    "power-clean": {
+      "start": "0c03c8bf40b250e21ef60806233ca5a3c9d1b88c00dd65e3b235966e2870de94",
+      "end": "01706b267bb4355ef7eb16659fbb33174901a7cb7031d6ee94a2973fc270690e"
+    },
+    "power-clean-from-blocks": {
+      "start": "ce98e25d760f463cf6e066d130ff8298e90edfdcaa6d792954cd8645d253aaa3",
+      "end": "ed74a1351ff462e1598a6c53b0ec7b695b887b5657fecd4f7d4e1f97a9571c20"
+    },
+    "power-jerk": {
+      "start": "b8c68ae67a699ea2fbd7d16919738e8677d430eed2a43674a868ec627765e21b",
+      "end": "bbf67fe7acf933af13c76abdf3d3bd791168c41a490a6381336739dd8db4f125"
+    },
+    "power-partials": {
+      "start": "e017c640d8d70a24f8de80ab24d7a42c60064f4d128d8332dec7f1c9c57bd82c",
+      "end": "a762dc4688f1ca39f49fdc973352e441cab50c9339e5e06aff8939c89ba91a22"
+    },
+    "power-snatch": {
+      "start": "de5c5fdb6b8bb2bdcf124531b838cbac96e9a8cc6ee3cc884ffaaa5c8602a9fa",
+      "end": "8e620781d47ab0ad35e924169035712b45a45064b4d02eca526ebaf804f36029"
+    },
+    "power-snatch-from-blocks": {
+      "start": "b7e73513605257c7cc05e8a8b16082ad7303f4176563032180a9bf1dc675c52d",
+      "end": "26f09e7ec06d79c221c55660e602655b8c87777992448447f09bca3a658ddc89"
+    },
+    "power-stairs": {
+      "start": "83227b7e0aa8cf3509088afef38747bff29e538a6de1b00e5c8e0fab4bfbcddc",
+      "end": "d5f5fcc66613614f8f219d9313c6f378a372f2001f987e8cb97d9391cc7e86f1"
+    },
+    "preacher-curl": {
+      "start": "59c65f0ecebe6efd84f52817800cad0bdbaa877dc11cb725a59f27b4c8f2f2c9",
+      "end": "f72a24c74363830e294f7ce55c9093a8a070c224f3607ed2379f306c1cd1ae39"
+    },
+    "preacher-hammer-dumbbell-curl": {
+      "start": "d602e299b882d5ba204ed6d5d36dd9333d7783bbd67cdf6660b16fb91af8f090",
+      "end": "cc1c9d04c4709cb09c663db33e8e62c5f16a4a265b56488b6ea9d8a7f9e033a9"
+    },
+    "press-sit-up": {
+      "start": "123b1588d0f1c1829fad6b688efff9f62a7201e77c12f19a241fcf18d431a48a",
+      "end": "fba4a8e985372ad22536ce0d2d67b6e71618c4f245f9a729b5ecc23960278c52"
+    },
+    "prone-manual-hamstring": {
+      "start": "3155e6e4f289d9b8b3f6435b5480f0eb3dd774dd6241aa177c982a2986b5cc4d",
+      "end": "c5ef8823eefaa9d8128016d4a5545d23eb2913e1e98d502934d03f9a9d16453c"
+    },
+    "pull-through": {
+      "start": "47d95f6c3dab6a0fec768fbe58c70daef525158e5974c904d4e7bd35067af884",
+      "end": "4d76f9f05c8e1af763cfcae8bb5e1c7325afa094c19377788d2577184ca1e391"
+    },
+    "prowler-sprint": {
+      "start": "66c2d5662b9a11d949132ab329012954d9ef80942e342608c080fc8b759f0f57",
+      "end": "8df281f2bbb41fffb2643c777be84cb7a860ec4c1881627a9b4ee1f10f0eab02"
+    },
+    "pullups": {
+      "start": "53de61b499e4f09a12a468f82629d7b5497873a12c9898978aaad81eea7a964d",
+      "end": "c6521d65bb2ce1db1671b76dfd0d31b3ea1b5b04343512bd2df5c16fc36d4f1b"
+    },
+    "push-press": {
+      "start": "42fbf6180c2bd82c131b6dfab26e63c14240dad8052d4924e234c0853130515f",
+      "end": "4bf887055c3b0f3600e4f177778ab22e8bf72407ccd04f6883c40b8dfb61d4a2"
+    },
+    "push-press-behind-the-neck": {
+      "start": "bb1b8fbf5ef6f71229b516acdc502fa072f7e05fc7ee175887b74b8120f2f417",
+      "end": "33aaf758256bbe9280d97ef82c5dcad924dcb4bd8be6d4e6960cdcec0c69f975"
+    },
+    "push-up-wide": {
+      "start": "86c4fb2863758b53661579b0ed24370cdb4592abbe004acab191aafcdc6c1234",
+      "end": "685823e689e2daea02cd8163eb1a5540d0c47c8b1c3335dc29ea9cb1f7708169"
+    },
+    "push-up-to-side-plank": {
+      "start": "a31c847b80a00c3cad17c5c9be74fcea788c65d7f8ae019fb13d59c903d71ec3",
+      "end": "5ad89682c0b2041080567487f4856cf885a0e7217f10418fca7377c6a04890ea"
+    },
+    "push-ups-close-triceps-position": {
+      "start": "82a9f12b6c1b0d381956ddd19658bd803faf4cc09cbb69b087313625e4a18afd",
+      "end": "88039646084be3cbb94dcedfa2ceab7e293892512f69de986e33218ff092f8b6"
+    },
+    "push-ups-with-feet-elevated": {
+      "start": "b3e43f38b7f8d09e0d367facde760ef012288ac4513f5b9cc70ef18dfc6fd73a",
+      "end": "83306a51562048f75d4da91721aea3ed4fdba8a5e3326056c4f38411220e255c"
+    },
+    "push-ups-with-feet-on-an-exercise-ball": {
+      "start": "37accb8ef8e9bc131a44f78e2e1a84224526fac9fd8d81a20401f00d926ffb52",
+      "end": "a4c7c08a83fdabdde66af81d50a8023bf802256bb15a4085b9b677515349abab"
+    },
+    "pushups-close-and-wide-hand-positions": {
+      "start": "e08d86baca625f8a3b97f91780f1bf7d9f4d2d093de90952aff3d810ba3855fc",
+      "end": "b8aaac67266b52e6eb6574657ac2ddb16dd5269538d424db3d546004318d1946"
+    },
+    "pushups": {
+      "start": "5c83e2f4961da22634570d1ede79961168ad11dae321f532035d2924aa15ba15",
+      "end": "bbaebb1bf4d0dc261e37604b2838d56129ecc8939544f2085947db27f36a321c"
+    },
+    "pyramid": {
+      "start": "b6dd525a68bbd54493534b61e60ecc761eac661515fb1bf1b46abc13d57f7da3",
+      "end": "3a917944bb160e5fbce0552b2bf77a0dd877947df267a0479796d85b8d400572"
+    },
+    "quad-stretch": {
+      "start": "7180d622cd7b798ccf3d7ac320e37d0496b082d3ff61cdec5aafd43df6761d46",
+      "end": "1dae84396bb67f40125728d3e34c9a325360c93d6eb242a4eacc7c01af339f3e"
+    },
+    "quadriceps-smr": {
+      "start": "97f2b558b8850868b5d084da354dec4dbef1987f2e92c57071ee5ec252311cab",
+      "end": "d67aaeb33c0fca136a61b210dbc3c38b49782f1a7d420bb287455200315b330a"
+    },
+    "rack-delivery": {
+      "start": "64cfabaaf8fca641a23705b5bb92b6f90f7cfeeda9f93d5aecf841d1be90292f",
+      "end": "bebb543a90be3506950fade57017beb2b7f516757f63f282bfc48cd4423a4788"
+    },
+    "rack-pull-with-bands": {
+      "start": "1e5363367b2956d3decf1c7e43009d5732822aafe3b4cda0cbfd86735bf8610b",
+      "end": "3ee303c5de6ea1a00254e04cf4c15f90d8895e347530ebe8f40456182374352f"
+    },
+    "quick-leap": {
+      "start": "c7ca9bf0f07293f3225c1e54b7138f7d044b23ac535113a42776ec1e6e7b5f61",
+      "end": "19573ac1855e9767b3674cbb6dd42a435b0de6a28ad0bc559ed897e039e46aa5"
+    },
+    "rack-pulls": {
+      "start": "8bf6ed4f5cd79c3b82ff8ac6851544624553634659e50804938a1105c4278887",
+      "end": "df47b463dbb1c00ae7a3698041f5dc6cd3c36deb8fff54f5fca9aa19c16cfacf"
+    },
+    "rear-leg-raises": {
+      "start": "3ffedbf5e11a92f3fe842c72a9ed874a2d54088984057e0a75f1a8cf1d74da07",
+      "end": "f103a8d1346fc4e388cbcb50b7fd773378ffab09cb9afbfa83b2df50cdfc70f3"
+    },
+    "recumbent-bike": {
+      "start": "ae0ef8f40c55ccf4eeaa577493df4eb6fe6b4f87600e6779faf595beebb9029f",
+      "end": "e72fe7e5c7b0d28a5183e3d20cd26017af2e29868975e177745d449deef7a3d2"
+    },
+    "reverse-band-bench-press": {
+      "start": "48d94faf838b11aad4da2487177906d2db08ab10a91678aa13be87b243072bcc",
+      "end": "3d1f8f5e4bf634e1c73c4aff7213f11d548fb3918251599ca113cfa1e99f5bc6"
+    },
+    "return-push-from-stance": {
+      "start": "2f4d7499aba2fc2f6563f65f8cd4bd21255b4bb80180654e0fdd8f06ddd2b734",
+      "end": "67e0f97fe187b204811d53a49c30815f518837580109a2e98de462c5254927f1"
+    },
+    "reverse-band-box-squat": {
+      "start": "9c5371b4b3458e888d97d0c806e254cf56efbddd1fff53e0d5bf0d8c92613ea1",
+      "end": "6be4f77326d50729f5cdf07e2f4a30cc2da07d9fe491599d9969ef7db48052c5"
+    },
+    "reverse-band-deadlift": {
+      "start": "efe655e5ff4749addb194a1792c33d5021810ed7db4c443094d9ce3ae94327b8",
+      "end": "88545ca02202b8a8057c30703eb5466e20043fd1039bbe77283a0bc33e50a5d6"
+    },
+    "reverse-band-power-squat": {
+      "start": "5eb72f3495fc5c06ff8b7a1169947b2213d5e7452eaae1e5732eaad366210572",
+      "end": "237801707a530546068951d1b8156e8633a8981d47ff86e0939bf3f164630ef9"
+    },
+    "reverse-band-sumo-deadlift": {
+      "start": "37330530bccc9d5156e1d25f91f7e148ccc1f952382d04e33fe2d200a0237170",
+      "end": "42f17ac6f968203c1dee74569121b90949360624f83b5b6074f0d662945c9ef2"
+    },
+    "reverse-barbell-curl": {
+      "start": "2a9369ba1f7321da391be1b1c7d6ceccff4c672fdf5ead2928d969475439f081",
+      "end": "9b5915d7ca597143b053d6c50c03ee9454f30f8d77b44184d39eb0064968a533"
+    },
+    "reverse-barbell-preacher-curls": {
+      "start": "9238ac378ee941f61834e537fe002f3dfe2bd143e7a859260e72fa7614d62bd6",
+      "end": "fc1bfd0d53f27250e07592d44a80070ef594fb095ac41a3383aaabeac686b088"
+    },
+    "reverse-cable-curl": {
+      "start": "0ebcc7d6b2b2eaccffb8d3f01e1b3c95478837c476f20cb8e2e7e40c2643158f",
+      "end": "9bf071d17c10f6803a9e6e4aebe136cd2d41013e4e03318b0f1c5036b222a944"
+    },
+    "reverse-crunch": {
+      "start": "00c8852b3a2cc8bb91977b25c8ffc743a58f7bd2bce826db7aa0edcad22d0680",
+      "end": "2bed013dbcf65443d1fa9551d9bfa7cbb6fb905ef22c50a8e5b7de0862975eb5"
+    },
+    "reverse-flyes": {
+      "start": "f15240cb68e97694a6e0886d5e324bf18fefbb4857ae860b6b144ada52f4b2a0",
+      "end": "e193b3e9beefd7e6307cd6088b3bae3c893c2209c9519617ebc1cbbe0f1fd8c2"
+    },
+    "reverse-flyes-with-external-rotation": {
+      "start": "5a88c8b5fe5e680a164da02af5997a2e65e8538507ca435a3472b080a3159ccd",
+      "end": "8b67afc169f0170f2afc230a05e776fd966ec50f5124a600806d8986043981d0"
+    },
+    "reverse-grip-bent-over-rows": {
+      "start": "c923ec3db9790f83c61ac400463a6fe3bca5b2a73f1a7d405b38d3d4b7857244",
+      "end": "c923ec3db9790f83c61ac400463a6fe3bca5b2a73f1a7d405b38d3d4b7857244"
+    },
+    "reverse-grip-triceps-pushdown": {
+      "start": "f4bbd85c950e4bbf703774f5420be46a89f2ddb800b5502eb9066acfd9cb51ce",
+      "end": "f7c441a2f9113693549bdf3341cbc24755053f6ac966c7bc4e18ac2c7ecf1c97"
+    },
+    "reverse-hyperextension": {
+      "start": "06e23d9943bd158663d0870a45dbbd5a73064c681a15d5bcb04fa10f79aad25e",
+      "end": "f8872d657d9f52f4ffa936a3ff8cb5c554491c4b6c6c52c328d51bb52f852c75"
+    },
+    "reverse-machine-flyes": {
+      "start": "7b182d13521fc685c018c6b154439e793bcd352647fc1af56edf07db918040dc",
+      "end": "ba115bccec11059146638275e3f57dc12f9b012523beda928a27f4e90b268caa"
+    },
+    "reverse-plate-curls": {
+      "start": "80f697ce9d66f47bc020731f880a18fd5c6f24a2056f4e261685e4eb92febcb7",
+      "end": "de296c8b53c7c59e1fe0d90f5b0fd207e200f082047849bd549d91dea6626774"
+    },
+    "rhomboids-smr": {
+      "start": "9b843bd95dfdbbcba36b3443062e41b8c87109b9cfe98ea7c8e45ac0a9467983",
+      "end": "86c3bdf24b536134d6e49c81cb5b4bb09c8681fa53a7bfc23392dd679efd26c6"
+    },
+    "reverse-triceps-bench-press": {
+      "start": "379e8d7bb54cc41e0ce0963fea80908457da93edff4976867206ab94449f0afc",
+      "end": "16f65f2822234ab4e83415cba608bdde2556249c5d19e644c7b617840d6415b3"
+    },
+    "rickshaw-carry": {
+      "start": "06f438f27655fa80161a8676093160338c257799f882a40eb84fcad789015055",
+      "end": "6176f6a623d40dad47410e3f093da971fc61141d2253b6955e0f666002cf96bb"
+    },
+    "rickshaw-deadlift": {
+      "start": "dd7c2e6807d579e428bf43f451598d3f633b1c0d8a77b1447d65ddfc0e6d71e1",
+      "end": "3df9b0442cfef389c4c4bd568c4485e4bdcc2aa5e3117c5275ef1106594fbd0a"
+    },
+    "rocket-jump": {
+      "start": "906cf683e5dc148519018f75b628b23e521b731bf4701db07788cc5ce7ae7563",
+      "end": "c02d0adb0218d1405c3b9fdc58140d815db089549eda0402f0545aaaccfad6d2"
+    },
+    "ring-dips": {
+      "start": "c4044cca45f7905f6c1aeae719fcdb00ce57af19869edeb1d7da4a1ec9cfb62b",
+      "end": "8335a8455db1bd8b6175d5356d4ee025c43b849cbeee7eaa9e41f028ad9e4e57"
+    },
+    "rocking-standing-calf-raise": {
+      "start": "cabecb6e92067b2a593ea96cf21ee106ce1f72defa4ec63b3629b79ab1dd5706",
+      "end": "50e9a4b32b02fddd52d5096de766164ba7540da714a944fb500ed9776aa38d24"
+    },
+    "rocky-pull-ups-pulldowns": {
+      "start": "6755ecd02ca60c03847ef99be09eac5e8df7166965b3418a7a483e67aa0b5188",
+      "end": "4fd125710dc46476a9a1630840a70364c80f2a426122fdb6640e20bee956caed"
+    },
+    "romanian-deadlift": {
+      "start": "c884707a77b8668a1944ac237e88332bc268c620d8af08e6be5d2a1a7b74fc1d",
+      "end": "a2a38eeef97053cd7cdbd8a20410ce04ef32c83e1616d5bcd09a8a5de86bd3ea"
+    },
+    "romanian-deadlift-from-deficit": {
+      "start": "292fa257b6190604b993841f458cbe82b5e51a2003b034e0ca1194890319603c",
+      "end": "613fbfc91cb95c33b5eda195bb4ec38c0205de5b757ed8ea990dd709f8d2ac65"
+    },
+    "rope-climb": {
+      "start": "94c29e0577e145ec4621eca7a0804d79c1d5b3d4d1d99912c1896613e8d16ea2",
+      "end": "529134c18758581edb3e71c8f32acb0d31ed72fb2f6139048ed1dedc36b8c2ad"
+    },
+    "rope-crunch": {
+      "start": "2d28b3c3c85da576d9a355db82a386ca129a1dcbd6635e7459f7a49e36ebfcd2",
+      "end": "067198e672cfd1ef6d9149a70c9ae97865ec9ac293e1de2a0637fc2363dee80b"
+    },
+    "rope-jumping": {
+      "start": "ef3ed004324fda8948ad29736840469fce74fd942183c9a92188ef5d0d96f0b7",
+      "end": "5e6239910557b669ac08221ae23b9521df9c98f7b9554d4e19eacf9a026d3e02"
+    },
+    "rope-straight-arm-pulldown": {
+      "start": "c53266430077f9abb3f0edcfe40fc6daa3cc5c2c19bad6e8d20df8da5e53a15d",
+      "end": "848b3bd55b716d415d62719aaaeb2d7d1443cf9de27d3c186ff2ca86d98b95dc"
+    },
+    "round-the-world-shoulder-stretch": {
+      "start": "c7b44e6a023ddc5a5fb3c364ca143516951212bd687d705d27ed68601720beb4",
+      "end": "90284da37e58796b634c8b3d562f8380879aafdb98e251019965b51d200332ba"
+    },
+    "rowing-stationary": {
+      "start": "de59a407a920157d67192e9ac3f5ea1d7a7effb68067d4c7ed7a0c7670fe52f3",
+      "end": "128cbb215b586e32da4a27588a696ad97d27f610b3a082237aa4a078d989b7f7"
+    },
+    "runners-stretch": {
+      "start": "3a32424af0dcb031f2841ab333b731462724b0ea457e4b5d8da2d3b0008cce82",
+      "end": "5eadc5615c038cf32481f8d858e4171f87a86ac5e4080dae7c4fe9828eaa1d1e"
+    },
+    "running-treadmill": {
+      "start": "69ed79812d56aeee72b366fd6f8151ecc9459ee9fb3f4dcb6dd33fc9af2acdbc",
+      "end": "b01fdb696703e9285e03c1cd77a5a525a37c8e830efc0da15d1362a701f22f58"
+    },
+    "russian-twist": {
+      "start": "bc9012a2077e64db6dec5bae0123bef7e4d29762d2695c20d112804ae0d332a4",
+      "end": "e828b063814d759e847867d322d6cc18603b63616d4ba2ce3fff4351c5637047"
+    },
+    "sandbag-load": {
+      "start": "0b62a0341aab86733a51b64298abfb21cfe1282076e58f7659a17a60200556b7",
+      "end": "2eb7c21c8868db3aefb7cc592f09241b978d4b7c15fdb76c75cc09ea3eabb6c6"
+    },
+    "scapular-pull-up": {
+      "start": "94d12c7c2d50f069bba0332381851098631a322c7aa40beec253fe7614c834f2",
+      "end": "ed3ef9a22f0a8f949dc348c2f6e48ed503e5be4400cec266f13508c8fc2a0b18"
+    },
+    "scissors-jump": {
+      "start": "5c3ae2d8bece9a86733b98fbb3baf1db1b77e581209201c505cffa069b424ec6",
+      "end": "5e1aa748400624cfd17a386c58262bed19125559b3f58e8a41e2f0ae8577f3ae"
+    },
+    "scissor-kick": {
+      "start": "8095bda5ec33a271aff53abff26ed43865ef7d2110f7e9af34d9949805bfb144",
+      "end": "d06e3bcca5c31ec07f27ef275b9faffcae6e5211c4ce2fa24203114d79e2b571"
+    },
+    "seated-band-hamstring-curl": {
+      "start": "d69c44533ad1f3155a2011431418b558b9a7f19405a3d19e57ef058c77b98503",
+      "end": "1de478a409d6b13df5843ca87706b3965009bab91edff0f34aaad5426e2896d3"
+    },
+    "seated-barbell-military-press": {
+      "start": "818c4e9bc6e8dda32e22c0905aacd4f3f5dd5f0a88476fffc488e3b09b7273fc",
+      "end": "ecfdc34cfe465cde520937cf557b0f81a272e65d67b4a17babdce0bfc0ba8e9a"
+    },
+    "seated-barbell-twist": {
+      "start": "1940f93674a9a3a63561554d19ead116f748b1d23a1a42a06a3e5b218a4553de",
+      "end": "a94586c4657969181be51944c2a4bf0ded4c3c0d66992ed9f8465cca764a3130"
+    },
+    "seated-bent-over-one-arm-dumbbell-triceps-extension": {
+      "start": "7d6ac6177bd72ce536dc438023c8abce3337f30f2059a99775db9ff46ab61e16",
+      "end": "23d449af4592a1b6ed17eb000b46bf4abb327569e27e25c2f7899787cc6be23f"
+    },
+    "seated-bent-over-rear-delt-raise": {
+      "start": "250fb3ec857ea0a14d4753b42673f435701f4464fedb00773d7ce1b9cafa652b",
+      "end": "89a4da82ca7bb9603f193f2c97f126432f5e393c587f4cb1d6126088b3c48a9b"
+    },
+    "seated-bent-over-two-arm-dumbbell-triceps-extension": {
+      "start": "948746ec326f7cd90cb594f7cdd3f2cd18f740faebcc2f633b82f05b75ae7df0",
+      "end": "1c378c9773f8a15f1780d09634dfce3c49c43c19c6b153895b2602bbbd96097c"
+    },
+    "seated-biceps": {
+      "start": "71b5a4b391df1202e0294abbe94cc3f5d0cff2f4d66172a3543022bf48e23287",
+      "end": "89a6ce562151d3c318c213e4b76b5b82aed69ccfdf9d8f894ef94c1495040ca6"
+    },
+    "seated-cable-rows": {
+      "start": "6c92df991a7f622e4c9b48a32c0b74ccf599016e6550c86ed8b6e6ae702c5da1",
+      "end": "9373aac27d39334c4f1d2aa97364d74c2faea3cf14380db43e1f5f95f638900d"
+    },
+    "seated-calf-raise": {
+      "start": "7ed013ebde978adfb5cf65b94e8badebcad68aa3aee7f16150c31a84eb8e1634",
+      "end": "ef6ab0511d35b3d6ac686e6b20199d46fd3f99f12586580bf8ba4f84615d061b"
+    },
+    "seated-cable-shoulder-press": {
+      "start": "3e2ac80f37d4d05750252983dc731a72e0af6c6a6aae3de6567d4a5489060b5e",
+      "end": "6d04319e8b17ecd279be5868992ca2f934cba78b7be8211f747a5d0899503037"
+    },
+    "seated-calf-stretch": {
+      "start": "7564a8ad7226fe5779161a71a8dca51c0b9f20277d2b4a5c60f8f0b57e4469f7",
+      "end": "4c637474369d04ae1897456d1d524f0e276a18935a6f3e659bf3186c98e57a4d"
+    },
+    "seated-close-grip-concentration-barbell-curl": {
+      "start": "3d0bf7d97e5eec3baae3b4eae8185120d4720bb2b5a4b03ea50f157cdc971420",
+      "end": "c46e03f446cbf5040b47be3b7ecebf1f46f85d4f205713221890b860409711de"
+    },
+    "seated-dumbbell-curl": {
+      "start": "f11d64093bcdb2fa5753f3d90d6ede80f293d1022991f730c6b33f8eb3f8469f",
+      "end": "0cd8ddaa538879c42fb78b00c9e874dd5d03d647028c4a1287c35ab63dcdfaf9"
+    },
+    "seated-dumbbell-inner-biceps-curl": {
+      "start": "88714eb242d50aa3ce0ef127115a46892376d521218d09555546dc4744236428",
+      "end": "af37c4bf527803a486d35eab0b1a5c72e76073f5b97cb3254815ac1c58c1fc03"
+    },
+    "seated-dumbbell-palms-down-wrist-curl": {
+      "start": "90ce4961f0402145caaf7e7499caf57247b4504ec481dc41a3b5633eff1bbcb4",
+      "end": "3c189ade4dd6ffdc619a1306ed9fd217417f7315ab2deabd83fe154e7fc2bcfa"
+    },
+    "seated-dumbbell-palms-up-wrist-curl": {
+      "start": "d23be590fb3147f5eff79c3939bdb238883549abdd08fa122231506e54d0643d",
+      "end": "2e09f65ba69fc7ba176511a34540be6ecccf086194e1971803788ba8f9b60e33"
+    },
+    "seated-dumbbell-press": {
+      "start": "396939b145e52aa24043e2ae88335803ead5f8fa98b3888c30bbd7ed8ba089c1",
+      "end": "17935a8a57bdcc8a63a5b2f7e69ead05cfdd49fe987515ce5d943cbbc1e5f65c"
+    },
+    "seated-flat-bench-leg-pull-in": {
+      "start": "b9f7b3578a06892f52f1cf4dabbecd0ca71bc0d6c83a47053547eeb60a284715",
+      "end": "b812200da72b19465334cc9b0714fa57aba901ef2434f392e8657767fc3f0e89"
+    },
+    "seated-floor-hamstring-stretch": {
+      "start": "222b853388f1809dd1956fdb238b7fd30506339bf1e4e12cecc7be803cce5c9b",
+      "end": "222b853388f1809dd1956fdb238b7fd30506339bf1e4e12cecc7be803cce5c9b"
+    },
+    "seated-front-deltoid": {
+      "start": "3c5209c5c371171a2c4d3434087becb6384d04ed4dc429fe5a792238bcb0f411",
+      "end": "f0731bd8fb254e28dd254aac1034c67992877364fda69f192a13c114fb61163e"
+    },
+    "seated-glute": {
+      "start": "159e61a0b33ce71453c11bab21aec8282cba5837a7f471d354b345f4c780e641",
+      "end": "c74799bc9a91c4572a581523589481d859e647ee0720963b5b30700c6ad7edf7"
+    },
+    "seated-hamstring": {
+      "start": "2f73277e4ddff349410a1b210881d5b82702ba22e04b3b7e4f62a83877318f61",
+      "end": "e237c9282cdf824d314cff50800bd661e9ae835ff91db3f53755c1b22f8df20c"
+    },
+    "seated-good-mornings": {
+      "start": "f98e55a8949e0d5c3590a54932e686e062dfdbefff1efa26f06809b50f8bf055",
+      "end": "a8df7070092ab673b5dd31eadd49c070d8f7a6b669448810711114a67f9b43d9"
+    },
+    "seated-hamstring-and-calf-stretch": {
+      "start": "e310356f80295e7b4ed07ce161164466c5ded1578bebb402dc7a43a44ee53232",
+      "end": "539489f154e9490d283c7129c4dac830a5b96e0654f9995288c189256bb71ee0"
+    },
+    "seated-head-harness-neck-resistance": {
+      "start": "7dca039db26f87d66f2df8ae9f536b4c664987038c769ab19aea9dc9d6708010",
+      "end": "9540881c456df0111f6e95ad7f2dd49e1f205e9671fcc908c8eb4714fd2ea3c9"
+    },
+    "seated-leg-curl": {
+      "start": "5215f6f103f807161568fa7a448ca7e9baae160c5cd2deca8abeab5f7550993a",
+      "end": "9ceda15e85b91eab63484e36e5f5e4017a5b2a56f324fd53c187d23bdf1da115"
+    },
+    "seated-leg-tucks": {
+      "start": "253ae61fd57cb96f2375516eb7d74e53bc404844d25cfebfb717d94c671c3d61",
+      "end": "7aaebbd38a856ea4952b76b5fe3bdb8d9220fc8b747ca0e4a2926c39f3d46ba8"
+    },
+    "seated-one-arm-cable-pulley-rows": {
+      "start": "a56ccf12cf60883ce734d15b11d52ad96c392f4016fd4b87ac15b0c6b85b61ca",
+      "end": "493705dbe64bef7bee5c1eca7fed3c894ae6729bebe2d36e5a1bd1ae77b62cda"
+    },
+    "seated-one-arm-dumbbell-palms-down-wrist-curl": {
+      "start": "974e0f3135a2a5001e6cd2ce70be0de7c19b1d0918857ce0522932e5890ba0dc",
+      "end": "3f027b328ce2288fbe6efcc943383f49d4ff76cf24692977371a59a00f57a7af"
+    },
+    "seated-one-arm-dumbbell-palms-up-wrist-curl": {
+      "start": "46414395f452ca455537115c09b46c95a6ab38295340f59b45d620268729d62f",
+      "end": "cef2c61a555c8b682ee69f98c283b19907e46ddd630f352e2fe2676f0a263c9b"
+    },
+    "seated-overhead-stretch": {
+      "start": "62d3e3d0a786b46791b6e457049943d0bd44ae9e7958e64c57a06bacc8bfd067",
+      "end": "b60ec02157a5503cdfa9394997c885b222a11e15e064d21b447ccf072a2548ca"
+    },
+    "seated-palm-up-barbell-wrist-curl": {
+      "start": "b32b0e4aabad89c1de20a1c5d6ae3e571e79847e1a1398dd7a714be03dcb6759",
+      "end": "abf9b39499e70918bb8e456f394ed0a17473911f3b7320980377f0149b46a32d"
+    },
+    "seated-palms-down-barbell-wrist-curl": {
+      "start": "e7eb6f3bcdf0eec8f665e1d531e0cd4dbf7334cad04d9ada197ca1a90f8f030c",
+      "end": "3cc4e67762603e861f142441da6f36590c5e250f98cdf677d06e939812350146"
+    },
+    "seated-side-lateral-raise": {
+      "start": "7a83e4ca432356e0894cfbd1545786a1944ad1230855faa2f0fd92046a5d8d98",
+      "end": "f210bcff7291c78e4653eabbf6aa57405dcdfff5b498848a026e52abc7e099f4"
+    },
+    "seated-triceps-press": {
+      "start": "719a03e84f6b0aec1c3d36deac317911b25a1796bdcd0fdbcd1620be825e1e46",
+      "end": "47d0f1d1476a0ddeeac9000f0d1681944df8bafd79b2dda373d10b73994570cf"
+    },
+    "seated-two-arm-palms-up-low-pulley-wrist-curl": {
+      "start": "ace4a310b5e1868fb9850a2128ea51c54db042e3d8086a8046384ff5aca75dc3",
+      "end": "85a605e8ad438b8df1346b9304c37573c2d0e692473e36e7b34529091e46a5fb"
+    },
+    "see-saw-press-alternating-side-press": {
+      "start": "ab301543ebe41657e76f1383f1d8635d3a6e322dc0d019913ee03d38e9aa022c",
+      "end": "7f29af32b1d3d4a47b0b011f2ab996e269ed9376d093fe68efd6c2788be559ae"
+    },
+    "shotgun-row": {
+      "start": "7aafe6d9c363199cc5e2350b8fbbfe27cce6e40cd600a44eacdc718097595f72",
+      "end": "de125b368290080f9ad2764cf47c2763a1c76f4d2ba37716a9a429ada8e2d9ef"
+    },
+    "shoulder-circles": {
+      "start": "ad3c0971a9c2cc405902953012ce214fdc6b18af01f14041a677c8a8508e020c",
+      "end": "b0b4b6f89444afc69e78313c87b9ca752e4f3decc4d2639cd8a2755dee8d5eef"
+    },
+    "shoulder-press-with-bands": {
+      "start": "5183f72d209b976c20e423314f936d8b4e3ad96729cb64544f8085472257f6b5",
+      "end": "63e65b573466fcbccf9d1b31193871e735fd3049472ae19fec771ab871400ddb"
+    },
+    "shoulder-raise": {
+      "start": "8affa84418982b6ff89e9e9db4c1306e290a007d300d28f784b5fda68cbe7d95",
+      "end": "a99b6eca22ff77ad01f36b42b0802f68e8a9937aab0ab2ae764c00dec083c99a"
+    },
+    "shoulder-stretch": {
+      "start": "64f422b1d957ab91e15e3c262dc55c4a840ac09f9e0ab3d82dba995aa95bed5c",
+      "end": "439bf50ca19e13e2dcf289d88e8429bc0e117fbc55720a6554b77cba54cebc35"
+    },
+    "side-bridge": {
+      "start": "0ae5f93575433b43cae439a10a6de092df9b825983cbaa43097be0170950b9ff",
+      "end": "6617d724e5abc5708ec37796dda6bfd9e97cfbcc5b7fb7b532b159dc25380efd"
+    },
+    "side-hop-sprint": {
+      "start": "b1f3a4832e3854187d1820ff901c332e043dd300d95c55d0be39d2960086bae7",
+      "end": "2900630e125e4968817e81d58d8e0b1489ab79e066151c6d6028e415a6842f88"
+    },
+    "side-jackknife": {
+      "start": "a37339b3f0a22235b3be6f9efd537096ffea3f790a24013958eccc6ad3622c1f",
+      "end": "1cb0aac76afb1345388b6b6b187f54601a2e1d895946990419edf0671e147d2c"
+    },
+    "side-lateral-raise": {
+      "start": "06dd391135727ae5c90333969300bab2453aa53c2eb05233e3e3c12f85e13ade",
+      "end": "298c2f62c34fbcbd89bb35d52bc2e9b0696fe837090b487a77b0c830d145f1fc"
+    },
+    "side-laterals-to-front-raise": {
+      "start": "449a0acd5496884e971024dd8d490a388ddb9eb0b7fe8d80307c4ce84e9c9893",
+      "end": "898a982cd50bebed20e701fb92f0898cbdf547d218304b7bd1c8db1a3559bb71"
+    },
+    "side-leg-raises": {
+      "start": "f8f446737f5ac9466262495dfb4c5aed52502c5fb6567e77e18c216f7642d65e",
+      "end": "1e7838a537e68c8758a2957b5629941c4d7fa06535acf485240b133f2beba8ff"
+    },
+    "side-lying-floor-stretch": {
+      "start": "f5006f547d0a5514459524e0ff7e812441599acc5ade2770ae0d8e4b615d797e",
+      "end": "e5aa891d87f70312d284c260396aee8e5fa36d05679d87e8bd2f99bd582cf303"
+    },
+    "side-lying-groin-stretch": {
+      "start": "38263895c6b607911cda70b6153eee1cd8d34ced474e1c3dd240a3bd79bd134d",
+      "end": "2f93b1e3d950b1d7c9bfe7d44cb1fc2b420433309d02bd504e396b8a80b6d149"
+    },
+    "side-neck-stretch": {
+      "start": "892e0ecf04a64fb3b4eff25ba03517507808fed05ecd772a7c3e4a01aad734c6",
+      "end": "3ff1618185c91af801088058e81a2a5ff1fb2595a6332b55831744dc3bc50b04"
+    },
+    "side-standing-long-jump": {
+      "start": "82cd19d52a52de12f56d5f0fd348f4489852789378aeddcf0d1a2bd5f12a36ec",
+      "end": "6f0a3572bbf13b4440e81232ceb5f4eb3187d94be3000de15b5c1e5a89eea84e"
+    },
+    "side-to-side-chins": {
+      "start": "f1ee8172327c4a799ae936c282f636eefe0b8919a6ee9c426bc3a5a89921486f",
+      "end": "4f87a2b5e3b32d158feedd3cfbb91273431b1c288d7337776a2c6615344df6fa"
+    },
+    "side-wrist-pull": {
+      "start": "a992800ce18594cd893cf4ac2d450d8c7de5434cdc82f08d3c7dd06780b2c22b",
+      "end": "bcd0ef25c2063034c769c0ae4f786ecc8e7622dbc478bde36aed73a80992fd7e"
+    },
+    "side-to-side-box-shuffle": {
+      "start": "52e0a9b38942586b34762463e5ff8ef917db0f53b0f5d56d0c1c8d07e9fc4c5f",
+      "end": "d48e73295c90c29681369e8b5096bb8c556d1e9f7bcf063a4fbdcd5fa9ba945d"
+    },
+    "single-arm-cable-crossover": {
+      "start": "bed73de02f508b3414831afc37a6780b08e2be718d7e37ca4c02373c3d47dc14",
+      "end": "460a963bfadf7027327d0695981b1dd9e1ba488883ae94a249667487d31f96aa"
+    },
+    "single-arm-linear-jammer": {
+      "start": "23fb1f589e6fd719da2516694da6fed4e1f205e5b15232c1100694ce8cc59fa3",
+      "end": "8ebc37a1d2041fe143ab689e9d9fff25164667481a8fccdbfd1ffe96225e3831"
+    },
+    "single-arm-push-up": {
+      "start": "46434509e76f2f48af7ca6dea89ad92f4933f46677b93b525060247091316104",
+      "end": "bf5d26636c34bea808989064756900858deca81f199f20286b4b35233060a01b"
+    },
+    "single-cone-sprint-drill": {
+      "start": "91edf1100fda88864ef87443e6442d5dea00d47986701e8a2e11687542ae7d6a",
+      "end": "a0a6d59f75440926dd0001908ee195a62d7e8662d8cbbf5a4393efe54557d14e"
+    },
+    "single-dumbbell-raise": {
+      "start": "429947ca07d0ff1bd269090e9cb435f578980abdda98739a9ed32af751b5c341",
+      "end": "47c2dd725e0d79112a2285c68fad2e3f76b8a5d8b6ab64f18673b99dfd1e1e4c"
+    },
+    "single-leg-butt-kick": {
+      "start": "6af4dae2b5353869ad83cc00b626c284fa96a4953bef25c2d61f5e16321493b8",
+      "end": "8655e096aaf430da6493b9b5f1d1d507a6b717c3f6ecbf1b0c884db51646f489"
+    },
+    "single-leg-glute-bridge": {
+      "start": "4cba81210f83535f4381d0e8fec7fafa8e6b9790f6b1698c33f0b3770b224716",
+      "end": "4878f0502cddb0c2298830b1d05bfa8a4987fd709664b428d1fd8002753d8d34"
+    },
+    "single-leg-hop-progression": {
+      "start": "8e7fd486be1513a4665b44e23fb378565bb41363b54f429d8fdd2acc43fba8e6",
+      "end": "5446f4095581502c3b6609c1518f792f7b131285d6bb70234eb96e393afe6cfe"
+    },
+    "single-leg-high-box-squat": {
+      "start": "3235d264c7fdcdb876567be99c09f677dc8d586c75eb211e336a53c8e531d27e",
+      "end": "838c2730c5e3af03e6d4e7458b6948f552534986989dde111b0581f408f112ea"
+    },
+    "single-leg-lateral-hop": {
+      "start": "6d55fd3097873bbd8753f389c41b78e0867ab354702379d74072e7af979f478a",
+      "end": "3a9f832c1ea7b668be456272820d2ac5398e63b823a5589043cf99294a426228"
+    },
+    "single-leg-leg-extension": {
+      "start": "bfcff213935311bfbcb5a6e5082db73cfbc9e964ce5517f82d087bc5a3865248",
+      "end": "1ebe581762d11a620727026a0327db835fcafad1a3a40c04e152ffd60cb648e3"
+    },
+    "single-leg-stride-jump": {
+      "start": "d3ff9b617ae2298c60b77f29494e1f3bf83571ff1badd45959e443d386aa772f",
+      "end": "fb8b8f1167bed0ea157c57f76f3c387f05b2e8043def1f6c03dd79198e205805"
+    },
+    "single-leg-push-off": {
+      "start": "2de31fde1f7b542b8047b911833d2e85e5af1f39ac36376c703dc30eeee212ec",
+      "end": "8a0726195a38b3fbd303597123574658bb1a33d48def26498e7244f62cb5f034"
+    },
+    "sit-squats": {
+      "start": "3164d801cb3339d7134225e19e2c49397782c961528be581ca20924b9260bacd",
+      "end": "200450cf98af2ef8ab4dcecd971620864a724fa191a08c03c041c9f8fa72a5ad"
+    },
+    "sit-up": {
+      "start": "3c4bf288ff20010d3b490603d1b75fec9e18f5bce5cfad722f7bd2bda66bc24f",
+      "end": "5dcd32c31d0d6f56cadc5a81334085ce64d45113891abe8f7661b936ea76f01d"
+    },
+    "skating": {
+      "start": "1c61164d534d2d77496e612406d5095054451982202fdf5cb46fa16ef004282d",
+      "end": "8ae958cf4f9c5829f73e2330ea953750a9e08468acea8bfe2b626f57c1ad4e7d"
+    },
+    "sled-drag-harness": {
+      "start": "20bb34b2b0d197d0942834b0af3b4f7205ee431be00b7c1da8bec42326ebfbb4",
+      "end": "e88fdbcf0c7ebe6b3f5dca87d8109318b9db9ae1d85c1de0dd1278495c5ec949"
+    },
+    "sled-overhead-backward-walk": {
+      "start": "3cd05ee2d897c8c275f103e45b067a5929343adcabfee0cc32f68ad35daff090",
+      "end": "e46fb86e4315a2894e17b206d48d9db11132f5050daefb424134f140eb1d0f94"
+    },
+    "sled-overhead-triceps-extension": {
+      "start": "3961ef22c944a7476d5f42379d3c9bfdda7dd7cc5d8fde944423e86164432e54",
+      "end": "0e54a5464a618103efe6ccbd6259773d32d4f34578e72b3a1f174d88aef43361"
+    },
+    "sled-push": {
+      "start": "23fc6f49ad1b435bd45d0693b40665db5c1c6932be62198b3ddddde409e7c342",
+      "end": "3e46acac47545fd44b580e561b2469ef10fc36cec9d649fd4f09d07f9ccbe81b"
+    },
+    "sled-reverse-flye": {
+      "start": "8547d8cee46a202ff170ea28d0e76f7e12f0c0ecad331857fc7d62cc0a78b56c",
+      "end": "2c4f824b25ceb26fc604a06d9881ce6ea02fa5748a9f3563ed8060500fe7b032"
+    },
+    "sled-row": {
+      "start": "8f9e354536af4fe3802bf9c0b1305063f3b809e7e204f3c5c39252ece56fbf09",
+      "end": "07fca121237dc0071d5c489f59d88e3ee26f9b2b1d1ed9b7dbdba8543e4a439b"
+    },
+    "sledgehammer-swings": {
+      "start": "9dcf44f095cf5654ad719dcfb6572608f7023c642fab37294f63a02d54a0b9ab",
+      "end": "f03ca1f102981974ffe20c0fbe5acddf9c187c4615f991cd0f4ac52008eb112d"
+    },
+    "smith-incline-shoulder-raise": {
+      "start": "ca57a4ceeedc06d7956d9b1d395d6ddfbce00b0f0ea75cf17160a451c1d7768c",
+      "end": "293f92d063384be816bd5337e9de9423e260d2864c90de3ee35753e16065a890"
+    },
+    "smith-machine-behind-the-back-shrug": {
+      "start": "60b0f40212b05e6f3f44d8e7ad89ff453f4a341f7f6a6e8fba31962a94cfedcf",
+      "end": "877ff60e9049d68753736fbe04318f9ff0557a366e44d677f13fe3ae32864a63"
+    },
+    "smith-machine-bench-press": {
+      "start": "786d522359ed8cf39e3555d5ff5b39ed0db66256d3d7c095a868500a418178d6",
+      "end": "f8ab64bbafddb2dd49b2b02eaa901ec7894710004409a81b2f1aedc40055305f"
+    },
+    "smith-machine-calf-raise": {
+      "start": "55f5b7c6212d1533623ead2d0ad4f97c7205ca71152173aa4e5ebc16d28e9026",
+      "end": "69ad42cdbf3e16e7a16080e8db1bc51c341d8eddee66e91d8720776dbb5eab57"
+    },
+    "smith-machine-bent-over-row": {
+      "start": "3323289a4751543e5b835e7f9a21fc050a759e361305aa70c2791ee3aebfb6f6",
+      "end": "03849aa57647eb0d4c6e2c8513f1ce9a3a9f21bbdfb3e93f421f85a4e75fd60b"
+    },
+    "smith-machine-close-grip-bench-press": {
+      "start": "35fd7fe87f9b3f01c7fbc8efe9ed15f494ea003b588ceea55ddedccf3219998a",
+      "end": "861ba47b8c4055fe73bd3818d394f766058dfeec57185fde6ddc47c964645663"
+    },
+    "smith-machine-decline-press": {
+      "start": "f8f695857b6628e179634914221f9166386f3245b77376e246cbdc972c7f64a1",
+      "end": "b773b0b5ab0eb7d1bba85ace81d4d3ee3d6d37c6e0588753af6eccee42f9bfe4"
+    },
+    "smith-machine-hang-power-clean": {
+      "start": "ad882069d0821f57d05427306e47ad15ccbfa69b2d6f733944c36c1789876b21",
+      "end": "73682e3e8ccc551f2fdb5b87c5721df3d06dbc8edb4f01b9ba160ca650495858"
+    },
+    "smith-machine-hip-raise": {
+      "start": "d4c4ea4acbda0da2a454110727f934a13f77e96f498d8e107dc30c44d9f1ac66",
+      "end": "397cf08bd5096824af95343c015c23665099238d36d2ec58c1d346d94368beb1"
+    },
+    "smith-machine-incline-bench-press": {
+      "start": "c75cc501245cbed104f2b31cca604fd7548e9ab0a6fa77ca9fb2502aa45f519b",
+      "end": "617dab5bc228e365df9eeeaae2a0b1fe49d4fd48ff5dd5678da44156687f68d1"
+    },
+    "smith-machine-leg-press": {
+      "start": "c37aa7d247e725498bbbc9b1e92bcccfc7cf425e2158864ddb5a351b27ad5184",
+      "end": "4f4b8e8e594b73b0ce041f8ce41baf2dbc901bfaf35f716bb6edc8b3a1663660"
+    },
+    "smith-machine-one-arm-upright-row": {
+      "start": "bc62c49ba060b824b0663091f047cc53d14411476634478857bce3ca74776d07",
+      "end": "fa6da0f6c4343c8dcc3fcde4ba5324db200b7de3b624781325ca9bc36e43baec"
+    },
+    "smith-machine-overhead-shoulder-press": {
+      "start": "77678cac6cec56e2566290cc73efad6b0af679290e7d7ba070cacb15c329ac6f",
+      "end": "e9702378806bd2a45b08cfd4741ca9478fc8e61de7cf8bd6eff148decd6d0eed"
+    },
+    "smith-machine-pistol-squat": {
+      "start": "582106bdbe21cd2a841d816a7bd223cd70f3be3577ef9b5d7afb62ffb53283ce",
+      "end": "1bbd269613126524d4e064c7b2e3ee8c954a3cf0e3860ac2dbf631e9c5693d13"
+    },
+    "smith-machine-reverse-calf-raises": {
+      "start": "849794f81735285dea330dda9c5ab3540f7ffb575b0f67430775cacfef3c851a",
+      "end": "70804208bf660015d069e9a311f3f9b46e4086bc97d0f5bfed0efbd4bd2eaf30"
+    },
+    "smith-machine-squat": {
+      "start": "9c1cfc74bc1704e49af6c0190cc2013c18a89df676dc7707f02858cca7b4ca65",
+      "end": "807b6e0cd1843f4483da8de3e85f7d33b425f6a6d25a2cbc4d05480a10ac4980"
+    },
+    "smith-machine-stiff-legged-deadlift": {
+      "start": "933fcb142d2246d0f500defd279b46ce9dc5786a2295b25b1840f4b3249403c2",
+      "end": "edbe5b072c06c3bbc33055f01fe3a6b40d8da75bfcbf06443bd65854d4ae0b73"
+    },
+    "smith-machine-upright-row": {
+      "start": "89e636bf395c4ee26718d8f4e7ce52228414eec273456c17332b6a5d0009ca4f",
+      "end": "7ab066fda640bd885c649a03dda7664afacf33b5cca1d62273ac74a0344b45db"
+    },
+    "smith-single-leg-split-squat": {
+      "start": "046e14ec6990d4c5110ce66c50529df596478b26b154c0389581d035a4c6cb4f",
+      "end": "e8c36bec24a63bea15a7fbea22f7986247ad3157b8b61c35cc6893b3a67aa935"
+    },
+    "snatch": {
+      "start": "e879fb2d17a3518be36703b6dae1ecf9956c5929e40f2095af5793b0e8dac2c9",
+      "end": "124141094612b922a8261767ccd40c643b6c9b38de39c11e5fcde40079b1a833"
+    },
+    "snatch-balance": {
+      "start": "aaf5e5d4d7d33edc4ff7e2be7c97d5aa5f531139e97bae4c61fef584bc29f446",
+      "end": "0ae9b383e4ad21ffa4341b5d471525aef69cc9153c303d13ee519c349a68b725"
+    },
+    "snatch-deadlift": {
+      "start": "0db549571592889de466ce5352aec1de0fb2cc95ffb135f39a6a43913ad32464",
+      "end": "c845fefeea6719efa2fb75f2743d85d19968969ac9608c7327e655a2c5574086"
+    },
+    "snatch-from-blocks": {
+      "start": "8a46ccd2457705de96474bf9a6a8cde1f5dd4e217059a7007b9e9cbff4efed0b",
+      "end": "dc865c01fef24960b7a7f26ab0394c21235fbf236b944dbad6586c5c1d327923"
+    },
+    "snatch-pull": {
+      "start": "5e45659a0074c4e49dce268f92ce1026ba60e9999e71d335978cdd9e7c442eaa",
+      "end": "c208307bb95c4f75dc747e5be5539682f06d7b56ac69c9e790519ba911bc3d28"
+    },
+    "snatch-shrug": {
+      "start": "0b9fec99c394c645f6e6038395d991888746fa88cd14ed0d8cc2c010c786e733",
+      "end": "5bf37c604cb40d46ec8224866ea7dd13408619336e8db511a2d670d436e50a38"
+    },
+    "speed-band-overhead-triceps": {
+      "start": "3174b03193761c860f29ec21d0e68394d2118d2db4f4e77f9a190e03061ef203",
+      "end": "9ea37802ed4199163965d131248a87753b070488c901b144f76141c3a44be036"
+    },
+    "speed-box-squat": {
+      "start": "7a5ad64cfbc37f7b6296b68a62faf1645bef797295aa77da26a97b416a11e49b",
+      "end": "bab1e6fea35347257e257c728a35ccaf5a5a4a128d39c2887dd99d99b8b25965"
+    },
+    "speed-squats": {
+      "start": "b24f455caf9e22949a307cf2f5e228d2fd1244ad70341bed192571d0db3c881c",
+      "end": "6357d1b0b613299b5548880309f24ca179606df836087b28e67d2f6750a568d8"
+    },
+    "spell-caster": {
+      "start": "158a550cfc1abe407bca6893a6968ae1396325345e43d2498146f6a056d2fce3",
+      "end": "7fa48ae52bdfe881164a6638514dabfe8c2144b1513c5e41f6e99a48ef02699a"
+    },
+    "spider-crawl": {
+      "start": "ac784e77db459f1b2cd57342d5a823627605f7ae934f3a9fbf4ad3a44fad4630",
+      "end": "8ee86f8f45fe07d86c01d90ec78f39e8a32b098a029bf9d3b9d51db89d1d6279"
+    },
+    "spider-curl": {
+      "start": "0c34508341955c4243786016e2983b550f4599652a32cd54d9cf35a773db4086",
+      "end": "45ef97504032b5ad4ff8f5263af94b082f45ecc3fcfdfd9be6eccde57917dcb2"
+    },
+    "spinal-stretch": {
+      "start": "5013de67cd727769cbf10c3e40a5ea592ce614928e63c57fc1342340c1cbf841",
+      "end": "ff7416cdc715d4c2790481153b6e66b5a53177ff4902b21ab825607f7893166f"
+    },
+    "split-clean": {
+      "start": "f29d92c868fbe89e5358e39053888bf9bad413eba254e49dfac93ff72060ba89",
+      "end": "44730833df02263352758c52d49691ad5401af81965e1a308eb786950107fa95"
+    },
+    "split-jerk": {
+      "start": "7de8d6aada3c63387aab433b3b0f9ead2661a3718f1325e8ff1f34936ad4a372",
+      "end": "4a0d11f4f194037e2a03d7a8ae996ab791c5ef2388ed90d84bf1ab935233897a"
+    },
+    "split-jump": {
+      "start": "1da2e8a76ba8533585736e95265ed8f48d4be5c106c2fded19a7806f1a4157aa",
+      "end": "bafa55ed6aecc9ff49cb0ead3a71bc1756d06b74eb2df956ea29aa975dfd91fb"
+    },
+    "split-snatch": {
+      "start": "07614003597cfbc3a676144eaee58174d61fd5f3bb153c8c235894f4aef8a861",
+      "end": "db77d6cda5f5bdad6291ab8d83319c074289f54dc72191a227b79a7f8edf51e8"
+    },
+    "split-squats": {
+      "start": "7ac47fb66796c8734caa7437d89d7d3d03def3b85b3c8fa70070727aef37cd7e",
+      "end": "47726d07f0beaca656e735f32cf340109ad8908724ead1320304d411a9a01daa"
+    },
+    "squat-jerk": {
+      "start": "fbb5707e02a2cd0fc897b190ef7f7c9245c903a4e4592b2f26c476e0dd8e51c7",
+      "end": "cb80ee2ab39249705b0b95884c961beaf3cb4b4e7a90cab33d7d0ccb1aa892f3"
+    },
+    "squat-with-bands": {
+      "start": "ecb652c4eb1aa0f59f10cf76b96b879fb8bf9076afa9173227689cee5e14fcdb",
+      "end": "cc34a7294667533ad8125c3e6b3c3d8a46abb4e10db0fa768cda50f54b82f223"
+    },
+    "split-squat-with-dumbbells": {
+      "start": "8bfea8b325c9cf4f0342c0721bcf28e9a03a9b8385fedb614532618bf1ca0e67",
+      "end": "d946781654b10ed2a2ce6280a239f16c387500db0c359d0baac71c098d013d03"
+    },
+    "squat-with-chains": {
+      "start": "c4bfdc3071e10c39268e5f1d94e40ccf7375afd067cc4753c4f9600131ee1bc5",
+      "end": "2668cd88ea998f94b7a3baf67a2d69f5045ebb9f1d56fe77526694096629b083"
+    },
+    "squat-with-plate-movers": {
+      "start": "837c03a4c2eee5e12ffc992305419292e19cc4bc5bc4e3f3ed38579697db9270",
+      "end": "e3379bfd57c6b62c99d15350c5c938daff7ba9ad28842c3c4580ca7dbe6e0524"
+    },
+    "squats-with-bands": {
+      "start": "d34cedceb587801d803cab43159cbc7a4930e62066ebc1a5fc324ce0b4fc5668",
+      "end": "b627b02fae6e24ac4de0723029337473453b4f064b5533c0d8b4b7ddf73100b0"
+    },
+    "stairmaster": {
+      "start": "4729e35a1e035f4bd866f77f4f9840cd0c733afd8500e45331668dbe938bcb5f",
+      "end": "c5cd78e648a09be78242c7d14da5874d3df8429a730e10fe4df6088c5df22da5"
+    },
+    "standing-barbell-calf-raise": {
+      "start": "d1e671a3b19892359af31de52bcf5282ef83023389abad3f3e9a13ec5e661a03",
+      "end": "6df430f8cde869848abe3b247d6e06d859c0b20f467878e2e507049cbb483377"
+    },
+    "standing-alternating-dumbbell-press": {
+      "start": "d63e71d202a0d91e33657fcb4df8ff80f99205e8ef1bb71b0ae6771be3ea6625",
+      "end": "90642aeca03406466e667fe3c8e30b1f639caba92306b1b92997e7a402c18aa3"
+    },
+    "standing-barbell-press-behind-neck": {
+      "start": "018fe8c92ce0b0872dfe1f8034f32bd2601bb5055f7ea31a5a9f4a252f9ffe4c",
+      "end": "d2e253b1515d0be4d767e148bd41a420a4967bc7be104f234965748a0cbb6770"
+    },
+    "standing-bent-over-one-arm-dumbbell-triceps-extension": {
+      "start": "c550c50645d373cfe52f597a00c2fa2b556e90dfd1dd742644cde80b2aa1cddb",
+      "end": "f5a9b180709a8ecea1a6d5fa047487014fe08ae604c0634297bceddb23cc9787"
+    },
+    "standing-bent-over-two-arm-dumbbell-triceps-extension": {
+      "start": "b702b3e2e9decfc781ed432c1ee836de813952fef1f9645e640ecf46b50cfe93",
+      "end": "72737a1ea8551ac1dff234580f8848f4cb1268e53db05b441b8d4702584ea09c"
+    },
+    "standing-biceps-cable-curl": {
+      "start": "15048c8d987c17b496a9a3d52695bf0dfe92b889319e06b78f0e9adf50d5fcf6",
+      "end": "2b318454fbe5780100d6b4c92f72500a01ff1992c85db281239b72a13aa11515"
+    },
+    "standing-biceps-stretch": {
+      "start": "f8ff2d28569a7864991c7c7e2114715297fb1d88521e8abf0d333bdddb366126",
+      "end": "da2aa6bd9628b11f66958f1450eabd6786217bafd06186a2abb75490723da187"
+    },
+    "standing-bradford-press": {
+      "start": "11d1f90ea6a00930bdafbf9501d39c86a38d3336e514fb1a1778ec5478ed48ee",
+      "end": "798196b4fc5b063b2ab11ab319a6fdeb2e32831ccc8c62cf8d90c5dc6591502f"
+    },
+    "standing-cable-chest-press": {
+      "start": "ac2a2a53157c6bbb0e4e17a7e75534d4d52b572ddf30aa9b5dc30170e0d60428",
+      "end": "82cd2e60d3cbc6f4ac4ca27f2046898a290af9abc444a2d21203f33e1853a3a4"
+    },
+    "standing-cable-lift": {
+      "start": "c799f36bc274ab57340d4afdb51cce16f196c78dd2a4a9c7f59581f40183d107",
+      "end": "370ad15fe6e0a3797d5bd89306ef935abc49f0ae822a75c41a33c1daf0867c64"
+    },
+    "standing-calf-raises": {
+      "start": "434adc67b12cbb2750d94972470cbed4998b474d8243ab1509c1d3067a8ef08e",
+      "end": "2de0b0c1c82846c929292800ef4bf04e20b7f67940d76de908caf8daf70c895e"
+    },
+    "standing-cable-wood-chop": {
+      "start": "81736df9b49134a365c6ee03e7281de7d3775b064ddaea664682cb833eac834c",
+      "end": "03354b499e6fabb7fcb2fd3349450ae12ef9a74f03f93dec8eee458d7e2aa372"
+    },
+    "standing-concentration-curl": {
+      "start": "bcbc8f12a0fad3c00c324409fd7f0ae11a25a58450773d215a0c40ce377359df",
+      "end": "b4ecc6509039a493a05f2fc1e52a3db37700901f4913f1cf72e4662296c00439"
+    },
+    "standing-dumbbell-calf-raise": {
+      "start": "6503e0c4442bf1ea555b80ecb764221986f6675b90f4c77c2438631c7634f42f",
+      "end": "d81e34e318db57859bec2019c908c2719fc85867d9ad8e615863430680d992fa"
+    },
+    "standing-dumbbell-press": {
+      "start": "aaab182923a17a6d823c482affe60fe87cd0890a49f18afd01b776c8e71b7c46",
+      "end": "c6d1f3e67ac9fafc78137ad43631ff8d47b7eceff13791566d3952e7d586b653"
+    },
+    "standing-dumbbell-reverse-curl": {
+      "start": "0d3444b9c3e10df5a825809648adf619831b66ce9f3b4d3dec7c3684022af60e",
+      "end": "45c4661a5773fe7a14d85099530169d2f66f51986d87a9b49917c3a253c90d61"
+    },
+    "standing-dumbbell-straight-arm-front-delt-raise-above-head": {
+      "start": "f122a0632659a04a0be64e538b81bcfe4dd6da6d18aa554b63a403b6a7ccc757",
+      "end": "b3a26e14906011ba9a205deb73bacfced084a1bed5340f03dc4016a7cc6d29ab"
+    },
+    "standing-dumbbell-triceps-extension": {
+      "start": "d429230315b865bbfb094204499e8c2ddb4ff9143fde5f19ddf6d9c1cf9c3ce7",
+      "end": "f918e6430bb3f4e6d63fe051a3abd45a9f8baf60726098b9c5e4cddd52cdfca6"
+    },
+    "standing-dumbbell-upright-row": {
+      "start": "9e2dc143c6a73d1b4ee51ed2393673dc697dab44b8020716595cec02aae0c465",
+      "end": "47b1bd89ed7b697d6f6062d40357640b9a95e547e8126ad54872c7376268fbd9"
+    },
+    "standing-elevated-quad-stretch": {
+      "start": "ba664ccad6a42be466a92d2e0ee13e23d6d0912c75c72d9306360bd6534dd2e5",
+      "end": "3917f67979e93f1c33cacad520061b7ded3b2a00424b9c3e0d3a2e8f84a8c799"
+    },
+    "standing-front-barbell-raise-over-head": {
+      "start": "0847726de0c69d6aec3e3f03a7272717b69140704a5469af0a190bf8e22e1bfc",
+      "end": "7a338184604690944f9d512f5dcede8bde78f17613d0e463a6980b26d55fddc3"
+    },
+    "standing-gastrocnemius-calf-stretch": {
+      "start": "336722f21f18c782727615cf06380435d0df220d6f816e83ce82d7f500d0c7c2",
+      "end": "f93a7637e39fe38f059f3ca6a551be1575021ad963da9cc26d4bca33b4b141e8"
+    },
+    "standing-hamstring-and-calf-stretch": {
+      "start": "8b1b13e323726c382cf3ab20d4efc5a0c4c83ad843baa3f4f0c51c27e4412721",
+      "end": "8b1b13e323726c382cf3ab20d4efc5a0c4c83ad843baa3f4f0c51c27e4412721"
+    },
+    "standing-hip-circles": {
+      "start": "ce510de9d05cf60a778565a56c821febd8ebeb9518d1df750afd380823ba1f69",
+      "end": "291a1c0e47c0d1e9c5aac2bc9565cc7b32686366c6383680abf75f336ed20a1c"
+    },
+    "standing-hip-flexors": {
+      "start": "11937a2c2b8a62570750a44ed2c09bdcecde50d728118343905d54f7ed19768a",
+      "end": "42d1b196e18ce663ef193be5905b6b894fd4b75badc00b1307e32f8b94f115f2"
+    },
+    "standing-inner-biceps-curl": {
+      "start": "607c99405dc385efb261fceaf770f99504ec7d5e9b21b03b5cef8040a16a9a3a",
+      "end": "e1300606448cba995fadc794351a5a373be69aba9187d394d191f2243f652453"
+    },
+    "standing-lateral-stretch": {
+      "start": "f99fd2eb8194b60c33880555027869823f56e0477334bcbb2580ad3bbed2f5cb",
+      "end": "8be305856d43fb64e879c8615c5ce35406e73f56dc4a69c60c02bea2983a9a9f"
+    },
+    "standing-leg-curl": {
+      "start": "e906916ac4e59277bd21b0b7fc2fb254eda0202ca48d4341f614223d56edaf88",
+      "end": "70d578098aca0c42a4f24a8744eff17c482daf3c1abab7016347c7a5e39a0676"
+    },
+    "standing-long-jump": {
+      "start": "62d1ea4b7056b9328bd5dc75e389e43170d1df12ba44c02014648da5ae2d9061",
+      "end": "a8c7fc9a1c7d860b162ba93b11104cc26593b8f9beb04ae02ba478c2ee4aef68"
+    },
+    "standing-low-pulley-deltoid-raise": {
+      "start": "9b13cce247b531a81ca10024961a5b340140b3e95ea9f48c9e4040edb65a1c04",
+      "end": "3240212d155b4f3cd6ae6a2cd70f7e28669eb7efbfb093c62e525a73df31f42c"
+    },
+    "standing-low-pulley-one-arm-triceps-extension": {
+      "start": "80045fc4a4f05bd32c8da9688c58029cda528a6d4abdcb93d99c93f56386deb8",
+      "end": "09f117076672bdc800b3edee69a938c530d1dba4f9ce08c45e7ceeb57398a716"
+    },
+    "standing-military-press": {
+      "start": "f2cf91adef35a24e56f36cd0c66b2b9131e8e4bc995ad1a836c345bdcf4494dd",
+      "end": "1be4225f3e78dd2a598555dbeae6f21d20d24c5e24c7fe88cae51eb01fdc710d"
+    },
+    "standing-olympic-plate-hand-squeeze": {
+      "start": "26e1169288dc9ec6087a752e80c97d07a2b2ba840fa9a6890aa77f6e8bee6bc8",
+      "end": "128c5eff504da2a999e89d6f1dd7dd57449b97b7a0af75809ee0d07bb4f01dd2"
+    },
+    "standing-one-arm-cable-curl": {
+      "start": "8be6ae458e8327043a42d7ace4e5fb280bead532b1540161f434be0ff3a720bd",
+      "end": "45d7f39b426d038f2bb28ae05b1a6f018be08e5283fe0178d12f8cc3ddfdf6e4"
+    },
+    "standing-one-arm-dumbbell-curl-over-incline-bench": {
+      "start": "693e8f5bf1f1a2aa97dc7f59d8ead11a55cd1e0fe5d9739a6a8cdfc38a781600",
+      "end": "bf968cbb318aeec43cae9090c52c9b88c8a0bdbcdd9bca07da77c4e74b318d51"
+    },
+    "standing-one-arm-dumbbell-triceps-extension": {
+      "start": "11bad78deb5473c128875db43ecb1687790cf5d86a58e06af24d9ea5fda7a467",
+      "end": "f645b95cbfc7bee429d520c75cc418d0bf233aaedefd41636d85c75dbd45b171"
+    },
+    "standing-overhead-barbell-triceps-extension": {
+      "start": "8b422ffd68754e0a19bcf62ec274a00890955a248e36add364bd558ee8515412",
+      "end": "56df02e7687a5906be8f7fd6f1bf0f7eb1c86e03f3d2b50d736e6107cab096a4"
+    },
+    "standing-palm-in-one-arm-dumbbell-press": {
+      "start": "c3e2cc20210f22c540d996b9badfd39ebc8ae4112564bf7091dbf695ccf4839a",
+      "end": "fe7799ce4c89b0f1f5f51b4905df6f10d4aee91dcfd38b031be9482f31e08b95"
+    },
+    "standing-palms-in-dumbbell-press": {
+      "start": "650974963b2aaf7cdb93245889552a993cd351c0c768941b5fd587fc5ae893bf",
+      "end": "f6ce21dfe4064034de272a5de88a204acd1185edab567b48c3a66336ba5f0bab"
+    },
+    "standing-palms-up-barbell-behind-the-back-wrist-curl": {
+      "start": "f94bd9b83a251dfc0194b63d6fc8d883baf89d0f16f170d25d56e134f6902311",
+      "end": "6c1b656350e97f44701afc18577f00bbcdc4ae23516cb0054f6532097ff5a1ec"
+    },
+    "standing-pelvic-tilt": {
+      "start": "91f1c6f856d5559f7d76036faf7862ba3a4661dce1c91d14234fe23106e11aaf",
+      "end": "fbe0259f152e2b450269d053be83663b2f2951fe133dcd0889b7f4febbee9c2b"
+    },
+    "standing-rope-crunch": {
+      "start": "15aa490ae97bd4a0b04fe5c27007e29dee7222b2deca90f7cde946a13a89a695",
+      "end": "f7e4c10c020cf74a29ff04bc716b79b7bbea25d0a44cc81b3bf685b859da7f95"
+    },
+    "standing-soleus-and-achilles-stretch": {
+      "start": "11937a2c2b8a62570750a44ed2c09bdcecde50d728118343905d54f7ed19768a",
+      "end": "260cb089e9b7fad64a85fce3262305478a6ebef77e83940fe12835a50effdce1"
+    },
+    "standing-toe-touches": {
+      "start": "c806919bba0e08f5d7ff512a138ad67185a99dd49d704cf289290da3ab0221c3",
+      "end": "1ab219d3e0ff87e6961777404f911e241301853a35b41e9c3ead65e0c55dd4ae"
+    },
+    "standing-towel-triceps-extension": {
+      "start": "68a1ac2e3f06a4aff42006a1c697f10e38b3b25c793a79586c623a0ff59cb1ed",
+      "end": "b3cb5e23e5616e3984208614c508a3d8d2245e6b68153da4cf9bbeb6f4c9e934"
+    },
+    "standing-two-arm-overhead-throw": {
+      "start": "7bb2d96170fe06c3ed7637d9b7b8566eb25738b6839e88a22209c39762096e01",
+      "end": "424a137a66d59e66785c6dc52205e1ca18749fc1fc30598e231f0c57f462b385"
+    },
+    "star-jump": {
+      "start": "cf7efba22eecf6717b88989ae6a41ad4f7db5f331990894f064c8a3cf7dec100",
+      "end": "77e79c0035466ddfc7aa1165f89a06b49f6639c0bfb0c5915b1f522d46a30598"
+    },
+    "step-mill": {
+      "start": "bde3e736932c1ae3ecc666e1e3929945b5387a9b3d5ab2b3cd98f3bb36103e54",
+      "end": "474e25c0e488676c6aad6b9cee008a2167ab16d4473d78dde9bf5987df4d5336"
+    },
+    "step-up-with-knee-raise": {
+      "start": "7f58743fcbbf5fe1c4c3037f8d511bd2cd13bc97faae6003e6c5c7adf86daac2",
+      "end": "bf65017369984069c4724e335029a755872a517ff56b8a9a574d600faf306c44"
+    },
+    "stiff-legged-barbell-deadlift": {
+      "start": "4c08c77a1d354b6f38a7f82a743266e8e1629265d54376db8a14e51bebed011f",
+      "end": "477b4e58c5cb49e1893fb5fa6ba97a062c1a9f44d489c8845afc6e64db6b0d7f"
+    },
+    "stiff-leg-barbell-good-morning": {
+      "start": "4e37e54d5a9350ef5a5a534e552ab6983806935f9baca82f952578cf95adaaeb",
+      "end": "a6b700d21f36dd840789efa0ff889cce9a05040938fc75a77dcb2811fdfd0733"
+    },
+    "stiff-legged-dumbbell-deadlift": {
+      "start": "2fe7d982d0f480d46fd8524738f5791d66ee868754e21648736516635fa296c2",
+      "end": "18c4beb0cc399afa219fe26f26775d22da1a9bb16cab098f94077384411f01b7"
+    },
+    "stomach-vacuum": {
+      "start": "28ea41d2aa12b5280007d8e44a0ea330ece82350cb2c1678ba560d6a323be2d7",
+      "end": "4b2f51ce734db2cc4ab2398f54a2d1ff92d5a435f3056021e7962027602778ff"
+    },
+    "straight-arm-dumbbell-pullover": {
+      "start": "3c75c92dc4a991ef5a2b963210d5f53ba8220287b545e7040140cdf18604550e",
+      "end": "230a50ce828f5b73554cb79e7706e4d49cee5e9259f3b982e97a0a6648f0417f"
+    },
+    "straight-arm-pulldown": {
+      "start": "b5452d50ef2f0dfb7dac9cfaf5ebca1394c782af27a7316b06cd3e823034f659",
+      "end": "f2cca78d15f68e0718118b3950785059d1f5f340fe0bf61dfa62cd16fe3d6f13"
+    },
+    "straight-bar-bench-mid-rows": {
+      "start": "99da3aae5f8e54a9268e3aa83951d41799cef0c50c97a33545526c83bb6ddaf2",
+      "end": "08e9a3a4ddd3b3ed6d02462f982661a55b560fd24d0dac92e028b4bab4c4ce2f"
+    },
+    "straight-raises-on-incline-bench": {
+      "start": "b202343dcd5d62633abb505f5fd742e1f6faf8cdfa8d5b4280002db30a79f19a",
+      "end": "5e6d8ce3973d020128e83cc385bcba1c725ec2a3f9d9e6686a3c5687edd5ccc0"
+    },
+    "sumo-deadlift": {
+      "start": "f9678f67cc7dbb2677a092fbf1ca7afc6e5db2a32d176d6f23558af5a8d1e83b",
+      "end": "c935a31f92973736ce2835bde08a590c7c49a046ed2fc811a07c0bc61e096e11"
+    },
+    "stride-jump-crossover": {
+      "start": "29ab763733696c605664d620aa95013c38f88f9d4c7da54964e916f99d9b9c83",
+      "end": "cc59491b4d2e6fae971464e63ff9a080325e57dee0521d9da49f53b32ce86b5d"
+    },
+    "sumo-deadlift-with-bands": {
+      "start": "c0851fb0060c360f1538d660ac8e0ebc2bfa1e11ce43696f63b2bc421d3f2ec2",
+      "end": "cfbe5cbc1c19da2230f88bd4dec130eede410dc63e915b531f4f262acbe0b8f4"
+    },
+    "sumo-deadlift-with-chains": {
+      "start": "772e224966567f28779ac06bc3483544a532ee365028ef7176d68974fda3b2ac",
+      "end": "9bbcd99aa8de87fb2b22059677a5958f9800873854364d126610a8cf55e4b3fd"
+    },
+    "superman": {
+      "start": "3dd7edb93b8c3e223829336b711a1dd5a7aa2f176a71343f06255d18bed3372d",
+      "end": "02c6aa92c6e07d7b2f782618526ae738cf313f3dbdfcbecac18861d6b5758328"
+    },
+    "supine-chest-throw": {
+      "start": "c971b232fde080672c3942b5f67daf4b2b11a1982d1f1d6fd9e3046df69c439c",
+      "end": "c809e38596ac405251766ae70ed00a6092f54f4a256dc27f11900c255f3e41cc"
+    },
+    "supine-one-arm-overhead-throw": {
+      "start": "7530cf055fd405131d4c76c18c7dafd6e2281fee1479e948e0659b9831cc5735",
+      "end": "358618a2ff50723289182fa8d240e54856df155ee249ba5f16d7fc9eb54973db"
+    },
+    "supine-two-arm-overhead-throw": {
+      "start": "96ff4ec6e7b833476a0c723324218ad8d9c5540aad311b17c6ce1e285d8167d4",
+      "end": "84ee0db02346f338fefa67ed5aaa77a89cc990f1078bbf929efbe0add3403e3b"
+    },
+    "suspended-push-up": {
+      "start": "5821989910b968171575e44d4de0498485bf8ee58476514f74ad1d5ee67361d9",
+      "end": "9f4ddd54e9b88965838c560f60285bd4a04526bbef99bec797e556d96f3ae859"
+    },
+    "suspended-reverse-crunch": {
+      "start": "67d5f5b90b5c559492da2e050de208559d8de38eb109b3095b55aebddaf71cb4",
+      "end": "3421e6a3ac553204c580956181048e02af31795cdce1e822d3daa73b814fc29c"
+    },
+    "suspended-fallout": {
+      "start": "bd70f8d73332ecdf570b52536fa6e528473926e4e150c0e11a41370ea9fd86cd",
+      "end": "e154541bd4ae49aa39865cf69f72eb7e0145ce361743ab288f14a4ca04633e69"
+    },
+    "suspended-row": {
+      "start": "f8bfc5f5ca5726e7a2e03b88c4f3cb845e42cc4933454032bcb928e1dc2195b7",
+      "end": "460f69b0bb2668c16f9662cdc23e1e102e324ab3ca3b18408f47e76541d0cc26"
+    },
+    "suspended-split-squat": {
+      "start": "c5177cc14c7113073a2816ca5e4aa5beaf9ed63613b41a089fcbc3694c2c89ed",
+      "end": "58cd33701d23e31b06bd7e0ca793d797096ddceacd1101ce66c444d9206ed713"
+    },
+    "t-bar-row-with-handle": {
+      "start": "42fb9d0cfa152b25aac1e9684f6e62d619ad38be4bdf5367b643be81b4a45663",
+      "end": "0760d359930ca32359c7a27a1421dc3763fb02f829af5567e3149f16b8b2a536"
+    },
+    "tate-press": {
+      "start": "acecfb93fd7b702a9e3593988fbe708b9e3ad3493231c26a0382674f4bdf18bc",
+      "end": "d0d26503156f7d6821dc0ec69bd168cf485e2a59eaa3b77342e776b28d8ba18b"
+    },
+    "svend-press": {
+      "start": "3994f5541e394b73ab6c1f101e040b6c35d60290219525bb63f78de94b3eccbc",
+      "end": "8ea37a57cc3660bb328a85b82d6311872e9a06b726bef0f9be0891dd45a1fc0c"
+    },
+    "the-straddle": {
+      "start": "e7c267dcfddce24a4943c5522f97f2fcf69a7d9c20d86f3808f6add7d81fc890",
+      "end": "e7c267dcfddce24a4943c5522f97f2fcf69a7d9c20d86f3808f6add7d81fc890"
+    },
+    "thigh-abductor": {
+      "start": "47bb4dda0d620dd834f683a107d800f8acc6846aab2273f036b227ed5c628b40",
+      "end": "1f1c00fadb2d900ad38777593a83dd3524747494de70b891c5987b4d3c341f82"
+    },
+    "tire-flip": {
+      "start": "5a7064c819e12d42ef77a3436e01c5bfd8f2638c1fc836f7bd3c04dc88199073",
+      "end": "bf8ac823e49fce3659d1b985a318ab012a4e49f648b5cb7445a1d0f9319e7baa"
+    },
+    "thigh-adductor": {
+      "start": "ee0680a556bac274e573b35bc4a243ee1ed4253ef5a51df16e5e736acf0cfc10",
+      "end": "8f4c8b81450c73c65a8dc04f2e5297e20abfdd48d36763051963b02e3f70121c"
+    },
+    "toe-touchers": {
+      "start": "c479191cbf3ea9fd71efe313d9d61c2d0162687409e840ba699e0ae2321ca480",
+      "end": "76767033d0df2c350ef8ccf26bb0097fb15fa34f18eba78a0d7797a688c89f30"
+    },
+    "torso-rotation": {
+      "start": "3e227791bf7b60bafdd5fc435291b99a7edad040ef79dd018a838f1df8165a03",
+      "end": "96376e612f41ee2afed0af2c25e1f7720096b0b05af77a846d49b9304ebcb1fb"
+    },
+    "trail-running-walking": {
+      "start": "7b8d9f535c35ede1bf60bc8281d27a4c7704c810fb7e111efe07ff6bd3e5eb77",
+      "end": "aae6f3b0cdc636d0d7c3545bd4b191ceb332856ef673000cb792e0e1c7d73bf8"
+    },
+    "tricep-dumbbell-kickback": {
+      "start": "781facc16cc3f07c802205bf24518cb94834b89e65eed2c5fb8164b8b594b75c",
+      "end": "cd33c8d8f5a60778f013a8e754dd1b3f8f2e942ee7bf3841d5b6d9c645c52efb"
+    },
+    "tricep-side-stretch": {
+      "start": "64f422b1d957ab91e15e3c262dc55c4a840ac09f9e0ab3d82dba995aa95bed5c",
+      "end": "40f6cc3da71cefbd1266ad2d0c0564fd8a113b09bebbb4e02082b7b387e6774c"
+    },
+    "trap-bar-deadlift": {
+      "start": "fe33db1ac4c62518646627c90e9a76393545eb6390d90d72150700b21428f22e",
+      "end": "d2104a8bc57c25fd882624e42af4d01b7b26cf4d5271f38a639a5f33ed8f1167"
+    },
+    "triceps-overhead-extension-with-rope": {
+      "start": "45f19bc586697abc8f7397bb2b6262591ee43a6dc5da786fe4319edadf8d8e26",
+      "end": "4cd32bfbfb93669de48b6de61c9868c3cd7967ebba435b49706a740ec28b5bb4"
+    },
+    "triceps-pushdown": {
+      "start": "9533fa7b6321ec9814101ab674c0bd7c22ce21dd8ffeac6aac1a7044d3f0c9a3",
+      "end": "f9caf1e9096279426fc60e277d05528afdad00b1f9d3f717fc5d0485a2df351f"
+    },
+    "triceps-pushdown-rope-attachment": {
+      "start": "f3dcb97d67c1f0b40fabf8e4c72fd9d925ee082b86a01b69104d03f8d14d5f10",
+      "end": "223760479f4aeece2926143251c6076e963348959497e0e4c05230da02c130f0"
+    },
+    "triceps-stretch": {
+      "start": "64f422b1d957ab91e15e3c262dc55c4a840ac09f9e0ab3d82dba995aa95bed5c",
+      "end": "4b893cbc4747702ed0b40b34d0f5d9e643ce520c4e98cbd48f019a738b8b2ee1"
+    },
+    "triceps-pushdown-v-bar-attachment": {
+      "start": "8728fc67d3b178a006942fccec598556d18081599cbd1332fa858d4c5d47a713",
+      "end": "fdb0c6fcda66ad76cc5a29aa5762b0818416f3b2d3061c999ac5d59db31d3f45"
+    },
+    "tuck-crunch": {
+      "start": "4f9f3665182422417dc7a5eeb8f0760609485e26ed24f1345464b4a32fa131a6",
+      "end": "f65e8270eaf6e405288f6c5b21acdfef30b03add6ad77768b40a34ead7ff6d1a"
+    },
+    "two-arm-dumbbell-preacher-curl": {
+      "start": "b72057a267f6827790859266bafad9069facbe150563602787a8a303dda09ee8",
+      "end": "fde57940256d936d0280b13a737a9bdf4427e53032ada9c7632415aba3e0bace"
+    },
+    "two-arm-kettlebell-clean": {
+      "start": "106d868edd9648c6c680937c9d8b41230e861983583553fdb8c3a71bc1b65510",
+      "end": "183e8d7a463c6742823f3aacbfabc02d4e4703bad65bad156fdec7799259f710"
+    },
+    "two-arm-kettlebell-military-press": {
+      "start": "d2f8bc1a7ffbd156c2f2233734eb7a69b18d3d92b4bfa79f8f0974edf987fdff",
+      "end": "2dc41789d9007831c5039e6848d0379e83119f3d278d9afb97112de0e30d7a5d"
+    },
+    "two-arm-kettlebell-jerk": {
+      "start": "6fc883a51099a1f685c27c903cf95072b75812e61466f113c61999d7f5ae9b37",
+      "end": "c646895c107e7b005dac167841f3038eda0618abdcd425cf4641fe0c9878197a"
+    },
+    "two-arm-kettlebell-row": {
+      "start": "efceaff1179651efb80da3162791f82ba564d56a688db918dac0d4a7db862c4e",
+      "end": "95f0ed93f8e5523fffd3690177052704ae340c94b61f98f277f7091e4273f220"
+    },
+    "underhand-cable-pulldowns": {
+      "start": "37b8bfbc4b702d744c7c46b4e8b478534bc1e875f911c70b15a039f4646fa42f",
+      "end": "6e027450bae1e01d0fb2ccbf184877600e81304e7e242bf46dee222db975423b"
+    },
+    "upper-back-leg-grab": {
+      "start": "7564a8ad7226fe5779161a71a8dca51c0b9f20277d2b4a5c60f8f0b57e4469f7",
+      "end": "21f79998c632742c570dc7ce78bcb8dc1817ccd028129fb9ea636262eba8e4a2"
+    },
+    "upper-back-stretch": {
+      "start": "91f1c6f856d5559f7d76036faf7862ba3a4661dce1c91d14234fe23106e11aaf",
+      "end": "16509482b2de25614acff5e08e8c2a8398eea33c9276cf15fdcd7473ff8c58e8"
+    },
+    "upright-barbell-row": {
+      "start": "7361c684d85aad4ca9642cd21634c007442212b009db2047cc16d1149952a513",
+      "end": "3742c7baed3a34a6cf587f8cad2ce0e019a7902e9842a05c8c4e74f07b0b5f1b"
+    },
+    "upright-row-with-bands": {
+      "start": "90b93f23b281690f47e3115d23f0b1ae0142869021185f8f6a8123e9118d066d",
+      "end": "445023d34178ea16f93841f5bfef04fe0a6d33c3130d973ca2b88493c3b5e73e"
+    },
+    "upright-cable-row": {
+      "start": "b28e890efb58a8e4534a40894da2ff70a46ae676dd7f86f858a5bf37f8e2c5db",
+      "end": "5cca26ffcd275aa0e2015821e39724a64b2e002c25fcb97372830fff48fdc17a"
+    },
+    "upward-stretch": {
+      "start": "a6efcc483012e6f4b365f05391416c67e0e7dfdfb32b3e5028099c78461a721b",
+      "end": "ce5ef3189183f65a2851d912b51306d61103a637c2749cf6c55fe3a44488d993"
+    },
+    "v-bar-pulldown": {
+      "start": "b4350398e87d72e7405a2e0dda270bb45abbdff6f7a386d9be4e5573d713985c",
+      "end": "22d56b673cb09711c58779b5b3490401bb403a85e32ce62ac2996a9c9a686ed9"
+    },
+    "v-bar-pullup": {
+      "start": "8317012e0133e0e470c4957c508140c68e5edbf6c0fe642775615a9c285d98b5",
+      "end": "6615b76c733fabfb1bfda1d7292baaf477d9e8245f6871a18ebd595ae18e3934"
+    },
+    "vertical-swing": {
+      "start": "d20ad479f2324bcec1cfd27213ebadae900e7621ef2e62d48cfd0088172b27c9",
+      "end": "9402eecf2408ee2686e5cca551dcc6e01ea9b555b14fa28969428dd69994bc8f"
+    },
+    "walking-treadmill": {
+      "start": "085536e602c4b27971345a186c4a44c6494df440aebf949af4486ffed1150fa9",
+      "end": "3d823fe8f8248f18f26b501775bb674312e9d9e6c5d6f862690b7487b2dffb83"
+    },
+    "weighted-ball-hyperextension": {
+      "start": "44ab73ff7344ecbcad7035d750221ac441d8949a80525965d9b2aa49e4259e2b",
+      "end": "d27b6286af643c2fe0fe49d4145e3ca4b44bb4fe99aac807cf8be5e213257a6e"
+    },
+    "weighted-ball-side-bend": {
+      "start": "f0265233d86b43ec8399f1f7e174fc2852e155a19e22318ce15b9adf78a73f5f",
+      "end": "e65f255765dc359c1d6c3458b89439f19802dc53f0332dc437f4937c5e99769e"
+    },
+    "weighted-bench-dip": {
+      "start": "38067c6db88dff9ad6fad00f899a520d63ac219ec84619338556dd9487b109cc",
+      "end": "1a7ef55ad27314fa99c0dbf45c681d1ce6f64c415c0bf9249aaf51655b1399a4"
+    },
+    "weighted-jump-squat": {
+      "start": "87b19be91a6abb15837d9a332223c11dbe9da9b7b6c0d0c2ad161220b35075f5",
+      "end": "fc045bf41a5c515ca5dd9dbc27437f01715f2d6e330494243ba2b54acfcf8399"
+    },
+    "weighted-crunches": {
+      "start": "c25cf06883c39fa929a9c0d926dfd9dedc886d3427ee52b19c4f40eecabe66f6",
+      "end": "a2623b07ee96f4eded562af5e602c878261c960e00785c747b1fc0a6edc4b61b"
+    },
+    "weighted-sissy-squat": {
+      "start": "451c69a38b0f06f14d4ef5f01d46540cd83c6ee1a39471a55c019502365bf1d3",
+      "end": "8fd172cd0ad976fd47b5600912403771df8aba2a50593ee8fdc8481f00340afe"
+    },
+    "weighted-sit-ups-with-bands": {
+      "start": "1dd149bac6d59146331f9fb6b2be6debeb8f4706afd95b1be31f591e3fffbc3d",
+      "end": "cf8b31e320305ee8fbb5fb93823e870209407551fa3a53a5846b5e437b014d90"
+    },
+    "weighted-squat": {
+      "start": "7b81087582f4832ca2f573ed3bf0c80c977d681b895398afb72b996706ffb1e7",
+      "end": "a75a1cb10c542c0666e9a01791457457c36099633a226cbbe41a256d768d58d7"
+    },
+    "weighted-pull-ups": {
+      "start": "f05985c75dfff3762ccf71c4e2e20a2499a28d2d3dac4acfcb597080e29c02a6",
+      "end": "346d142e47d27ca720fae3044a0d3c1118161d0abd65fde62112e79f82611f4e"
+    },
+    "wide-grip-decline-barbell-pullover": {
+      "start": "f28ed48e3157308466a7862e79bcc16567fe083cda1a31a4c1b6d5ad94ac13e0",
+      "end": "59bbdef331aacca1603c3ff061f196e756801fcf80b946dccb161524fd4052e0"
+    },
+    "wide-grip-barbell-bench-press": {
+      "start": "54c9ad2b88a884986c046c03e6a27d2b62ad31143d1db92aa084273c13ee9485",
+      "end": "c785066f3d9e51a2f51d8544e3e4c14d819c188c565a6dc493595d1443350343"
+    },
+    "wide-grip-decline-barbell-bench-press": {
+      "start": "d9a203a5a2d48cc57118c7b6a54f53d121955ba22ac130970653a7a6afb0c760",
+      "end": "a2ba0fceecca36d7594c5a2a863f3fe012443f9f16e6203746ced0bfb7734b5e"
+    },
+    "wide-grip-lat-pulldown": {
+      "start": "3b67219339f7b78f41e5ccacc84a4f23fbb3e446c68155450e3e21745e7ca448",
+      "end": "8e896f8a149ecb7b12c2c4dc9ac1affeeab58777d3b092f4f372e842d91475f7"
+    },
+    "wide-grip-pulldown-behind-the-neck": {
+      "start": "692ff33042ac66ac56aa9cc1a9aa463d887356a733f7f12968e47c046161c9f8",
+      "end": "f53b8803d0cc19bb1dec99b64b909778703f05428c8fc648b368b8a0a263e4d1"
+    },
+    "wide-grip-rear-pull-up": {
+      "start": "30745fde711a2fe7bdd845c6fa580cd8487d86f42b597c7478caa76ada1cd782",
+      "end": "d69103acdd518b6d114730482d1e942792d9ce1304c2e23884e5443b6abf8fc1"
+    },
+    "wide-grip-standing-barbell-curl": {
+      "start": "2e44b7792b01334bfa5c0a8b46598802bbe6f0d7d8106c008c2f0a3bbdd4eb43",
+      "end": "ea85028c34723e679e200d75ecde364b40ccc87fd6bd18451102dc6b0efa7587"
+    },
+    "wide-stance-barbell-squat": {
+      "start": "1eaf31a6e14dcc0a24f4690b264828b16b458469f2a7c812726abaa128e4c3b6",
+      "end": "7325b8d07e3cfe876c87252d95893b44a32f7080459d4aec5da34c52fe1ce260"
+    },
+    "wind-sprints": {
+      "start": "f135be10011a4fe827bcc86972a09b302bd53b8e76d2bfa9ad097e915a8d6a6d",
+      "end": "1a58975e849b0decd2a557bf35816b79565bc7928ed97dc4373d099daeeef13c"
+    },
+    "wide-stance-stiff-legs": {
+      "start": "e953949e2bca9a7e2dfecba20405a82c34b01e420f8a55564c5c148e9caf508c",
+      "end": "f5c53ad758805b8f5b41edf49eeb8c2e26c85357ea507b2052f560b211b7c32b"
+    },
+    "windmills": {
+      "start": "38263895c6b607911cda70b6153eee1cd8d34ced474e1c3dd240a3bd79bd134d",
+      "end": "8b05c69f0c087848b90c1f9fc5adb7c4ac62beab64019a2e4a8c73b8ccd066ae"
+    },
+    "worlds-greatest-stretch": {
+      "start": "42d1b196e18ce663ef193be5905b6b894fd4b75badc00b1307e32f8b94f115f2",
+      "end": "44bac131c41c93ae904b9f24afaca5f459fe37a9377c8fbbe34cc644c26f5aa0"
+    },
+    "wrist-circles": {
+      "start": "f712c67630d177a204279460f6805e05cbf7c580a78ea0f515cad2405e59f48f",
+      "end": "f8af7dbcceb1cf4197ec25ed20b8dc119c746fbef2a97ea8c226857f057a0a14"
+    },
+    "wrist-roller": {
+      "start": "5542ec0f53209af9771688fa631500e5e7bfb2506862bcceb78be4c10ddd848b",
+      "end": "5131e3f4f69366a6021878ac4dac3f8f09532590456c2adf5775f52c6811598d"
+    },
+    "wrist-rotations-with-straight-bar": {
+      "start": "476e4d3a3b22f3ab0e099cb345e8148ee99ad120f0bd79d063f96571ab966ed2",
+      "end": "4e121a46bc13fb9186b9d42e801742a5493bea7118f84cdeb88d6e66e8c804c7"
+    },
+    "yoke-walk": {
+      "start": "f7e27013d30495e3c6983e6001f462a94c8af0dc63ef59879e217d99666bff53",
+      "end": "a7978d0b4f4ccfacc2334d9c2a4c8626edfc730dfc9329aeed7504828c99fd81"
+    },
+    "zercher-squats": {
+      "start": "81bceab3c0e0d5a9b577eb1e123c056de841cd3b7d0e3e5e296c6dbb5a288265",
+      "end": "6aaa335280d9a960ec28bfbf62e8dafc62f671418e28bb72e163e78c9b3304c9"
+    },
+    "zottman-curl": {
+      "start": "4393f2726bb5d61dbd4e9e42561c34de3e15c1eca4c80772f077495dcd620389",
+      "end": "4d2e1f24b186a0eaf43bb0d470925f7b27380d377a4e09cb793444080f78f5c7"
+    },
+    "zottman-preacher-curl": {
+      "start": "949745e117087b55e8051e6cabcc3859d89eb679df29681bc32cf5d1fe73eece",
+      "end": "54e41db5c275a315be3ee3327e128b264894f75d43c30fc5b79d63d21c1560b5"
+    }
+  },
+  "catalogVersion": "catalog-c5127a81dbb9a941",
+  "catalogJsonSha256": "3af0fd5d27b09afea7f6faf93c95305d8c0e2503748bfd74e7f7d356a68d29c9",
+  "catalogJsonBytes": 1306091,
+  "maxAssetBytes": 2097152
+}

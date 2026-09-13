@@ -1,0 +1,12 @@
+.page { display: grid; gap: 1rem; padding-block: 1rem 3rem; }
+.page h1 { margin: 0; font-size: clamp(2.5rem, 9vw, 4.5rem); letter-spacing: -.055em; }
+.page h2 { margin-top: 0; }
+.eyebrow { margin: 0; color: var(--accent); text-transform: uppercase; letter-spacing: .16em; font-size: .75rem; font-weight: 800; }
+.card, .reminder { padding: 1rem; border: 1px solid var(--line); border-radius: 1rem; background: var(--surface); }
+.reminder { border-color: var(--accent); color: var(--accent); }
+.segment, .actions { display: flex; flex-wrap: wrap; gap: .5rem; }
+.page button { min-height: 2.75rem; padding: .65rem .9rem; border: 1px solid var(--line); border-radius: .7rem; color: var(--text); background: var(--surface-raised); }
+.page button[aria-pressed=true] { border-color: var(--accent); color: var(--accent); }
+.page label { display: grid; gap: .35rem; margin-top: .75rem; color: var(--muted); }
+.page input, .page select { min-height: 2.75rem; padding: .65rem; border: 1px solid var(--line); border-radius: .7rem; background: var(--bg); color: var(--text); }
+.profile { display: block; width: 100%; margin-bottom: .5rem; text-align: left; }

@@ -1,0 +1,24 @@
+.page { padding-block: 2rem; display: flex; flex-direction: column; gap: 1.25rem; }
+.page h1 { margin: 0; font-size: clamp(2.25rem, 8vw, 4rem); letter-spacing: -.05em; }
+.eyebrow { margin-bottom: .4rem; color: var(--accent); font-size: .75rem; font-weight: 800; letter-spacing: .18em; text-transform: uppercase; }
+
+.status { color: var(--muted); }
+.statusError { color: var(--danger); font-weight: 600; }
+
+.startCard { display: flex; flex-direction: column; gap: .75rem; padding: 1.25rem; border-radius: 1rem; border: 1px solid var(--line); background: var(--surface); }
+.startRow { display: flex; gap: .6rem; flex-wrap: wrap; }
+.nameInput { flex: 1; min-width: 8rem; min-height: 2.75rem; border-radius: .6rem; border: 1px solid var(--line); background: var(--bg); color: var(--text); padding: 0 .75rem; }
+.startButton, .resumeButton { min-height: 2.75rem; padding: 0 1.4rem; border-radius: .7rem; border: 1px solid var(--accent); background: var(--accent); color: #1a1204; font-weight: 800; }
+
+.resumeCard { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.25rem; border-radius: 1rem; border: 1px solid var(--accent); background: var(--accent-soft); flex-wrap: wrap; }
+.resumeCard h2 { margin: 0; }
+.resumeCard p { margin: .25rem 0 0; color: var(--muted); }
+
+.summaryGrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); gap: .75rem; }
+.summaryCard { padding: 1rem; border-radius: .9rem; border: 1px solid var(--line); background: var(--surface); display: flex; flex-direction: column; gap: .3rem; }
+.summaryCard h2 { margin: 0; font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); }
+.summaryValue { font-size: 1.5rem; font-weight: 800; }
+.summaryDetail { color: var(--muted); font-size: .85rem; margin: 0; }
+
+.statusLine { display: flex; gap: .75rem; flex-wrap: wrap; color: var(--muted); font-size: .8rem; }
+.statusLine strong { color: var(--text); }

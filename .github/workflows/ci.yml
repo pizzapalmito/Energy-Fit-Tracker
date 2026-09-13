@@ -1,0 +1,29 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.15.0
+          cache: npm
+      - run: npm ci
+      - run: npm run validate
+      - name: Reproduce catalog from pinned source
+        shell: bash
+        run: |
+          git clone --filter=blob:none https://github.com/yuhonas/free-exercise-db.git "$RUNNER_TEMP/free-exercise-db"
+          git -C "$RUNNER_TEMP/free-exercise-db" checkout a859101d633a01c4a1a920d6a8ce41dabba0705f
+          npm run catalog:check -- --source "$RUNNER_TEMP/free-exercise-db"
+      - run: npx playwright install --with-deps chromium webkit
+      - run: npm run test:e2e

@@ -1,0 +1,22 @@
+.page { display: grid; gap: 1.25rem; padding-block: 1rem 3rem; }
+.page h1 { margin: 0; font-size: clamp(2.5rem, 9vw, 4.5rem); letter-spacing: -.055em; }
+.page h2, .page h3 { margin: 0 0 .75rem; }
+.eyebrow { margin: 0; color: var(--accent); text-transform: uppercase; letter-spacing: .16em; font-size: .75rem; font-weight: 800; }
+.metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr)); gap: .65rem; }
+.metrics article, .card, .history article, .feedback { background: var(--surface); border: 1px solid var(--line); border-radius: 1rem; padding: 1rem; }
+.metrics strong { display: block; font-size: clamp(1.25rem, 5vw, 2rem); }
+.metrics span, .page p, .history span { color: var(--muted); }
+.chart { height: 15rem; }
+.columns { display: grid; gap: 1.25rem; }
+.history { display: grid; gap: .65rem; align-content: start; }
+.history article div { display: flex; justify-content: space-between; gap: 1rem; }
+.history article p { margin-bottom: 0; }
+.feedback { margin-top: .75rem; }
+.feedback div { display: grid; grid-template-columns: repeat(2, 1fr); gap: .5rem; }
+.feedback button { min-height: 2.75rem; border: 1px solid var(--line); border-radius: .7rem; color: var(--text); background: var(--surface-raised); text-transform: capitalize; }
+@media (min-width: 800px) { .columns { grid-template-columns: minmax(18rem, .8fr) 1.2fr; } }
+.records { display: grid; gap: .55rem; }
+.records article { padding: .7rem; border: 1px solid var(--line); border-radius: .7rem; background: var(--surface-raised); }
+.records article div { display: flex; justify-content: space-between; gap: .75rem; }
+.records article span, .records article p { color: var(--muted); font-size: .8rem; }
+.records article p { margin: .3rem 0 0; }

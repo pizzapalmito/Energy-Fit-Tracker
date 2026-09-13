@@ -1,0 +1,5 @@
+/** Prefixed unique id. Uses the Web Crypto API (available in browsers and Node 20+/jsdom); falls back for older hosts. */
+export function createId(prefix: string): string {
+  const value = typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function' ? crypto.randomUUID() : `${Date.now().toString(36)}-${Math.random().toString(36).slice(2)}`
+  return `${prefix}-${value}`
+}

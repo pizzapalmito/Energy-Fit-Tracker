@@ -1,0 +1,22 @@
+.panel { margin-top: 1.5rem; padding: 1.1rem; border: 1px solid var(--line); border-radius: 1rem; background: var(--surface); }
+.heading, .resultHeader { display: flex; justify-content: space-between; gap: 1rem; align-items: center; }
+.heading h2 { margin: .15rem 0 0; }
+.heading > span, .resultHeader span { color: var(--muted); font-size: .82rem; }
+.eyebrow { margin: 0; color: var(--accent); font-size: .72rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.readiness { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .8rem; }
+.readiness span { padding: .35rem .55rem; border-radius: 999px; background: var(--surface-raised); color: var(--muted); font-size: .75rem; text-transform: capitalize; }
+.readiness strong { color: var(--success); }
+.controls { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)) auto; gap: .7rem; align-items: end; margin-top: 1rem; }
+.controls label { display: grid; gap: .35rem; color: var(--muted); font-size: .8rem; }
+.controls select, .controls input { width: 100%; min-height: 2.65rem; padding: .55rem; color: var(--text); border: 1px solid var(--line); border-radius: .7rem; background: var(--surface-raised); }
+.controls button, .resultHeader button { min-height: 2.65rem; padding: .55rem .9rem; border: 0; border-radius: .7rem; color: #17120c; background: var(--accent); font-weight: 800; }
+.controls button:disabled, .resultHeader button:disabled { opacity: .55; }
+.customTargets { grid-column: 1 / -1; }
+.result { margin-top: 1rem; padding-top: 1rem; border-top: 1px solid var(--line); }
+.resultHeader > div { display: grid; gap: .2rem; }
+.result ol { display: grid; gap: .6rem; margin: 1rem 0 0; padding-left: 1.5rem; }
+.result li { padding-left: .25rem; }
+.result li div { display: flex; justify-content: space-between; gap: 1rem; }
+.result li span, .result li p { color: var(--muted); font-size: .82rem; }
+.result li p { margin: .2rem 0 0; }
+@media (max-width: 720px) { .controls { grid-template-columns: 1fr 1fr; } .controls button { grid-column: 1 / -1; } .resultHeader, .result li div { align-items: stretch; flex-direction: column; } }
