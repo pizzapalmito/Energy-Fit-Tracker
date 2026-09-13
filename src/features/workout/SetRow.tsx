@@ -1,4 +1,4 @@
-import { useEffect, useId, useState } from 'react'
+import { useEffect, useId, useRef, useState } from 'react'
 import type { SetType, WorkoutSet } from '../../domain/models'
 import type { WeightUnit } from './units'
 import { kgToDisplayWeight, displayWeightToKg } from './units'
@@ -65,9 +65,9 @@ export interface SetRowProps {
   set: WorkoutSet
   index: number
   unit: WeightUnit
-  onCommitField: (field: keyof SetFieldInput, value: number | undefined) => SetFieldErrors
-  onChangeType: (type: SetType) => void
-  onToggleComplete: () => void
+  onCommitField: (field: keyof SetFieldInput, value: number | undefined) => Promise<SetFieldErrors>
+  onChangeType: (type: SetType) => Promise<void>
+  onToggleComplete: () => Promise<void>
   onRemove: () => void
 }
 
@@ -75,17 +75,49 @@ export interface SetRowProps {
 export function SetRow({ set, index, unit, onCommitField, onChangeType, onToggleComplete, onRemove }: SetRowProps) {
   const baseId = useId()
   const [errors, setErrors] = useState<SetFieldErrors>({})
+  const [saveError, setSaveError] = useState<string>()
+  const pendingWrites = useRef(new Set<Promise<boolean>>())
+
+  function trackWrite(write: Promise<boolean>) {
+    pendingWrites.current.add(write)
+    void write.finally(() => pendingWrites.current.delete(write))
+  }
 
   function commitAndTrack(field: keyof SetFieldInput, value: number | undefined) {
-    const fieldErrors = onCommitField(field, value)
-    setErrors((prev) => ({ ...prev, [field]: fieldErrors[field] }))
+    setSaveError(undefined)
+    const write = onCommitField(field, value).then((fieldErrors) => {
+      setErrors((prev) => ({ ...prev, [field]: fieldErrors[field] }))
+      return !fieldErrors[field]
+    }).catch(() => {
+      setSaveError('Could not save this set. Try again before completing it.')
+      return false
+    })
+    trackWrite(write)
+  }
+
+  function changeType(type: SetType) {
+    setSaveError(undefined)
+    trackWrite(onChangeType(type).then(() => true).catch(() => {
+      setSaveError('Could not save the set type. Try again before completing it.')
+      return false
+    }))
+  }
+
+  async function toggleComplete() {
+    const writesSucceeded = await Promise.all([...pendingWrites.current])
+    if (writesSucceeded.some((succeeded) => !succeeded) || saveError || Object.values(errors).some(Boolean)) return
+    try {
+      await onToggleComplete()
+    } catch {
+      setSaveError('Could not update this set. Please try again.')
+    }
   }
 
   return (
     <li className={styles.row} data-completed={set.completed}>
       <div className={styles.topLine}>
         <span className={styles.setLabel}>Set {index + 1}</span>
-        <select className={styles.typeSelect} aria-label={`Set ${index + 1} type`} value={set.type} onChange={(e) => onChangeType(e.target.value as SetType)}>
+        <select className={styles.typeSelect} aria-label={`Set ${index + 1} type`} value={set.type} onChange={(e) => changeType(e.target.value as SetType)}>
           {SET_TYPES.map((type) => (
             <option key={type} value={type}>
               {titleCase(type)}
@@ -125,13 +157,14 @@ export function SetRow({ set, index, unit, onCommitField, onChangeType, onToggle
       </div>
 
       <div className={styles.actions}>
-        <button type="button" className={styles.completeButton} aria-pressed={set.completed} onClick={onToggleComplete}>
+        <button type="button" className={styles.completeButton} aria-pressed={set.completed} onClick={() => void toggleComplete()}>
           {set.completed ? 'Completed' : 'Mark complete'}
         </button>
         <button type="button" className={styles.removeButton} onClick={onRemove} aria-label={`Remove set ${index + 1}`}>
           ×
         </button>
       </div>
+      {saveError && <p className={styles.fieldError} role="alert">{saveError}</p>}
     </li>
   )
 }

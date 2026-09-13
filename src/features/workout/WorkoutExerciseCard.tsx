@@ -89,10 +89,10 @@ export function WorkoutExerciseCard({ db, workoutExercise, sets, unit, onSetComp
     await addSet(db, workoutExercise.id, newSetType, sets)
   }
 
-  function handleCommitField(set: WorkoutSet, field: keyof SetFieldInput, value: number | undefined): SetFieldErrors {
+  async function handleCommitField(set: WorkoutSet, field: keyof SetFieldInput, value: number | undefined): Promise<SetFieldErrors> {
     const errors = validateSetFields({ [field]: value })
     if (errors[field]) return errors
-    void updateSetFields(db, set.id, { [field]: value })
+    await updateSetFields(db, set.id, { [field]: value })
     return {}
   }
 
@@ -196,8 +196,8 @@ export function WorkoutExerciseCard({ db, workoutExercise, sets, unit, onSetComp
               index={index}
               unit={unit}
               onCommitField={(field, value) => handleCommitField(set, field, value)}
-              onChangeType={(type) => void updateSetFields(db, set.id, { type })}
-              onToggleComplete={() => void handleToggleComplete(set)}
+              onChangeType={(type) => updateSetFields(db, set.id, { type })}
+              onToggleComplete={() => handleToggleComplete(set)}
               onRemove={() => void removeSet(db, set.id)}
             />
           ))}
