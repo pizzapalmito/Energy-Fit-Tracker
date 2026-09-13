@@ -4,7 +4,7 @@ import { VitePWA } from 'vite-plugin-pwa'
 import { MAX_ASSET_BYTES } from './scripts/catalog/limits.mjs'
 
 export default defineConfig({
-  base: process.env.BASE_PATH ?? '/muscle-pizza/',
+  base: process.env.BASE_PATH ?? '/Repwise/',
   plugins: [
     react(),
     VitePWA({
