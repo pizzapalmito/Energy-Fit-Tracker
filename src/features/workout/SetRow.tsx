@@ -23,13 +23,14 @@ interface NumberFieldProps {
 
 function NumberField({ id, label, value, error, min, max, onCommit }: NumberFieldProps) {
   const [text, setText] = useState(value === undefined ? '' : String(value))
+  const focused = useRef(false)
 
   useEffect(() => {
-    setText(value === undefined ? '' : String(value))
+    if (!focused.current) setText(value === undefined ? '' : String(value))
   }, [value])
 
-  function commit() {
-    const trimmed = text.trim()
+  function commit(rawValue: string) {
+    const trimmed = rawValue.trim()
     onCommit(trimmed === '' ? undefined : Number(trimmed))
   }
 
@@ -45,7 +46,11 @@ function NumberField({ id, label, value, error, min, max, onCommit }: NumberFiel
         step="any"
         value={text}
         onChange={(e) => setText(e.target.value)}
-        onBlur={commit}
+        onFocus={() => { focused.current = true }}
+        onBlur={(event) => {
+          focused.current = false
+          commit(event.currentTarget.value)
+        }}
         onKeyDown={(e) => {
           if (e.key === 'Enter') e.currentTarget.blur()
         }}

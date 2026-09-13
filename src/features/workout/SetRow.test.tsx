@@ -7,6 +7,21 @@ import { SetRow } from './SetRow'
 const set: WorkoutSet = { id: 'set-1', workoutExerciseId: 'we-1', setNumber: 1, type: 'working', completed: false }
 
 describe('SetRow persistence ordering', () => {
+  it('preserves a focused draft across live-query prop refreshes', () => {
+    const onCommitField = vi.fn(() => Promise.resolve({}))
+    const props = { index: 0, unit: 'kg' as const, onCommitField, onChangeType: async () => {}, onToggleComplete: async () => {}, onRemove: () => {} }
+    const { rerender } = render(<SetRow {...props} set={set} />)
+
+    const load = screen.getByLabelText('Load (kg)')
+    fireEvent.focus(load)
+    fireEvent.change(load, { target: { value: '70' } })
+    rerender(<SetRow {...props} set={{ ...set, loadKg: 5 }} />)
+
+    expect(load).toHaveValue(70)
+    fireEvent.blur(load)
+    expect(onCommitField).toHaveBeenCalledWith('loadKg', 70)
+  })
+
   it('waits for a blur-triggered field save before completing the set', async () => {
     let resolveCommit!: (errors: SetFieldErrors) => void
     const onCommitField = vi.fn(() => new Promise<SetFieldErrors>((resolve) => { resolveCommit = resolve }))

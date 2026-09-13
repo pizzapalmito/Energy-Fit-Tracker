@@ -5,6 +5,7 @@ import type { RepwiseDatabase } from '../../data/db'
 import { useLiveQuery } from '../../data/useLiveQuery'
 import { DeterministicRecoveryEngine } from '../../engines/recovery/recoveryEngine'
 import { MuscleMap } from './MuscleMap'
+import { readinessStatus } from './readinessPresentation'
 import { buildExerciseProgress, trainingConsistency, workoutDurationMinutes } from './progressMetrics'
 import styles from './ProgressPage.module.css'
 
@@ -85,7 +86,8 @@ export function ProgressPage({ db = appDb }: { db?: RepwiseDatabase }) {
               {selectedMuscle && (
                 <div className={styles.feedback}>
                   <h3>{selectedMuscle.replaceAll('-', ' ')}</h3>
-                  <p>{Math.round(selectedRecovery?.calculatedRecovery ?? 100)}% estimated recovery</p>
+                  <p className={styles.readinessSummary}><strong>{Math.round(selectedRecovery?.recommendationReadiness ?? 100)}%</strong> training readiness · {readinessStatus(selectedRecovery?.recommendationReadiness ?? 100)}</p>
+                  {selectedRecovery && selectedRecovery.recommendationReadiness !== selectedRecovery.calculatedRecovery && <p>{Math.round(selectedRecovery.calculatedRecovery)}% estimated recovery before your soreness feedback.</p>}
                   <div>{(['very_sore', 'sore', 'normal', 'fresh'] as const).map((state) => <button key={state} onClick={() => void saveFeedback(state)}>{state.replace('_', ' ')}</button>)}</div>
                 </div>
               )}

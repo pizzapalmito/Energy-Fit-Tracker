@@ -12,6 +12,8 @@
 .history article div { display: flex; justify-content: space-between; gap: 1rem; }
 .history article p { margin-bottom: 0; }
 .feedback { margin-top: .75rem; }
+.readinessSummary { display: flex; flex-wrap: wrap; align-items: baseline; gap: .35rem; text-transform: capitalize; }
+.readinessSummary strong { color: var(--text); font-size: 1.5rem; }
 .feedback div { display: grid; grid-template-columns: repeat(2, 1fr); gap: .5rem; }
 .feedback button { min-height: 2.75rem; border: 1px solid var(--line); border-radius: .7rem; color: var(--text); background: var(--surface-raised); text-transform: capitalize; }
 @media (min-width: 800px) { .columns { grid-template-columns: minmax(18rem, .8fr) 1.2fr; } }
