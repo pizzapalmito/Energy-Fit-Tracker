@@ -1,5 +1,5 @@
 {
-  "buildToolVersion": "catalog-build-v1",
+  "buildToolVersion": "catalog-build-v2",
   "sourceCommit": "a859101d633a01c4a1a920d6a8ce41dabba0705f",
   "importerVersion": "catalog-importer-v2",
   "license": {
@@ -8,7 +8,7 @@
   },
   "observedUpstreamInventory": {
     "exerciseDirectories": 873,
-    "totalBytes": 99652957
+    "totalBytes": 99630582
   },
   "counts": {
     "inputRecords": 876,

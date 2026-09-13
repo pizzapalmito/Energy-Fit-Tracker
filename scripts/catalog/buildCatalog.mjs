@@ -1,5 +1,5 @@
 import { existsSync, readFileSync, readdirSync, statSync, mkdirSync, writeFileSync } from 'node:fs'
-import { dirname, join } from 'node:path'
+import { dirname, extname, join } from 'node:path'
 import sharp from 'sharp'
 import { resolveGitHead } from './gitHead.mjs'
 import { PINNED_UPSTREAM_COMMIT } from './pinnedSource.mjs'
@@ -21,7 +21,17 @@ function isDuplicateId(reason) {
 }
 
 /** Recursively sums file bytes and directory count under `dir` (used only to corroborate the documented upstream inventory, not for the transformation itself). */
-function measureTree(dir) {
+function reproducibleFileSize(path) {
+  if (extname(path).toLowerCase() !== '.json') return statSync(path).size
+
+  // Git may check text files out as CRLF on Windows and LF on Linux. The
+  // inventory is provenance evidence, so measure JSON's canonical LF form
+  // instead of making the committed audit depend on the builder's platform.
+  const buffer = readFileSync(path)
+  return Buffer.byteLength(buffer.toString('utf8').replaceAll('\r\n', '\n'), 'utf8')
+}
+
+export function measureTree(dir) {
   let bytes = 0
   let directDirCount = 0
   for (const entry of readdirSync(dir, { withFileTypes: true })) {
@@ -31,7 +41,7 @@ function measureTree(dir) {
       const sub = measureTree(full)
       bytes += sub.bytes
     } else if (entry.isFile()) {
-      bytes += statSync(full).size
+      bytes += reproducibleFileSize(full)
     }
   }
   return { bytes, directDirCount }
@@ -164,7 +174,7 @@ export async function buildCatalog({ sourceDir, repoRoot }) {
   }
 
   const audit = {
-    buildToolVersion: 'catalog-build-v1',
+    buildToolVersion: 'catalog-build-v2',
     sourceCommit: PINNED_UPSTREAM_COMMIT,
     importerVersion: CATALOG_IMPORTER_VERSION,
     license: { name: 'Unlicense', upstreamFile: 'LICENSE.md' },
@@ -205,4 +215,3 @@ export function writeCatalogOutput({ catalogJsonText, mediaFiles, audit }, { pub
   mkdirSync(dirname(auditReportPath), { recursive: true })
   writeFileSync(auditReportPath, JSON.stringify(audit, null, 2) + '\n', 'utf8')
 }
-
