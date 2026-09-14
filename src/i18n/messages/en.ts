@@ -5,9 +5,9 @@
  */
 export const en = {
   app: {
-    name: 'Repwise',
+    name: 'Energy Fit Tracker',
     tagline: 'Train with intent',
-    loading: 'Loading Repwise…',
+    loading: 'Loading Energy Fit Tracker…',
   },
   nav: {
     primary: 'Primary',
@@ -28,8 +28,8 @@ export const en = {
     defaultWorkoutName: 'Workout',
   },
   pwa: {
-    updateReady: 'Repwise update ready',
-    offlineReady: 'Repwise is ready offline',
+    updateReady: 'Energy Fit Tracker update ready',
+    offlineReady: 'Energy Fit Tracker is ready offline',
     reload: 'Reload update',
     later: 'Later',
     checking: 'Checking workout state before reloading.',
@@ -37,7 +37,7 @@ export const en = {
     finishFirst: 'Finish the active workout before reloading.',
   },
   today: {
-    eyebrow: 'Repwise',
+    eyebrow: 'Energy Fit',
     title: 'Today',
     loadingSummary: 'Loading your training summary…',
     loadError: 'Couldn’t load your training summary ({message}).',
@@ -76,7 +76,7 @@ export const en = {
     focusShouldersGlutes: 'Shoulders + Glutes Emphasis',
   },
   workout: {
-    eyebrow: 'Repwise',
+    eyebrow: 'Energy Fit',
     title: 'Workout',
     loading: 'Loading your workout…',
     loadError: 'Couldn’t load your workout ({message}).',
@@ -122,6 +122,7 @@ export const en = {
     reasonSameMovement: 'Same movement',
     reasonAvailableEquipment: 'Available equipment',
     reasonSimilarProfile: 'Similar training profile',
+    advancedCaution: 'Advanced exercise — use caution',
   },
   setRow: {
     setAriaLabel: 'Set {index}',
@@ -131,6 +132,9 @@ export const en = {
     markComplete: 'Mark complete',
     saveError: 'Could not save this set. Try again before completing it.',
     updateError: 'Could not update this set. Please try again.',
+    delete: 'Delete',
+    deleteAriaLabel: 'Delete set {index}',
+    deleteError: 'Could not delete this set. Please try again.',
     empty: '—',
   },
   restTimer: {
@@ -168,7 +172,7 @@ export const en = {
     endingPosition: 'ending position',
   },
   exercises: {
-    eyebrow: 'Repwise',
+    eyebrow: 'Energy Fit',
     title: 'Exercises',
     loading: 'Loading exercise library…',
     loadError: 'Couldn’t load the exercise library ({message}). Try again once you’re back online.',
@@ -255,6 +259,7 @@ export const en = {
     goalLabel: 'Goal',
     splitLabel: 'Split',
     minutesLabel: 'Minutes',
+    minutesRange: 'Enter 15 to 180 minutes.',
     customTargetsLabel: 'Target muscle IDs, comma separated',
     generate: 'Generate',
     dataUnavailable: 'Generator data is unavailable: {message}',
@@ -280,6 +285,9 @@ export const en = {
     trainingGoalLabel: 'Training goal',
     preferredSplitLabel: 'Preferred split',
     defaultDurationLabel: 'Default workout duration',
+    durationRange: 'Enter 15 to 180 minutes before saving.',
+    saveSettings: 'Save settings',
+    settingsSaved: 'Settings saved.',
     equipmentProfilesTitle: 'Equipment profiles',
     profileNameLabel: 'Profile name',
     equipmentCommaLabel: 'Equipment, comma separated',

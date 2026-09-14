@@ -9,7 +9,7 @@ const set: WorkoutSet = { id: 'set-1', workoutExerciseId: 'we-1', setNumber: 1, 
 describe('SetRow persistence ordering', () => {
   it('preserves a focused draft across live-query prop refreshes', () => {
     const onCommitField = vi.fn(() => Promise.resolve({}))
-    const props = { index: 0, unit: 'kg' as const, previous: '60 kg × 8', onCommitField, onToggleComplete: async () => {} }
+    const props = { index: 0, unit: 'kg' as const, previous: '60 kg × 8', onCommitField, onToggleComplete: async () => {}, onDelete: async () => {} }
     const { rerender } = render(<SetRow {...props} set={set} />)
 
     const load = screen.getByLabelText('Load (kg)')
@@ -26,7 +26,7 @@ describe('SetRow persistence ordering', () => {
     let resolveCommit!: (errors: SetFieldErrors) => void
     const onCommitField = vi.fn(() => new Promise<SetFieldErrors>((resolve) => { resolveCommit = resolve }))
     const onToggleComplete = vi.fn(async () => {})
-    render(<SetRow set={set} index={0} unit="kg" previous="—" onCommitField={onCommitField} onToggleComplete={onToggleComplete} />)
+    render(<SetRow set={set} index={0} unit="kg" previous="—" onCommitField={onCommitField} onToggleComplete={onToggleComplete} onDelete={async () => {}} />)
 
     const load = screen.getByLabelText('Load (kg)')
     fireEvent.change(load, { target: { value: '70' } })
@@ -43,7 +43,7 @@ describe('SetRow persistence ordering', () => {
     let rejectCommit!: (error: Error) => void
     const onCommitField = vi.fn(() => new Promise<SetFieldErrors>((_resolve, reject) => { rejectCommit = reject }))
     const onToggleComplete = vi.fn(async () => {})
-    render(<SetRow set={set} index={0} unit="kg" previous="—" onCommitField={onCommitField} onToggleComplete={onToggleComplete} />)
+    render(<SetRow set={set} index={0} unit="kg" previous="—" onCommitField={onCommitField} onToggleComplete={onToggleComplete} onDelete={async () => {}} />)
 
     const reps = screen.getByLabelText('Reps')
     fireEvent.change(reps, { target: { value: '8' } })
@@ -56,7 +56,7 @@ describe('SetRow persistence ordering', () => {
   })
 
   it('shows only the primary one-handed logging facts', () => {
-    render(<SetRow set={set} index={0} unit="kg" previous="60 kg × 8" onCommitField={() => Promise.resolve({})} onToggleComplete={() => Promise.resolve()} />)
+    render(<SetRow set={set} index={0} unit="kg" previous="60 kg × 8" onCommitField={() => Promise.resolve({})} onToggleComplete={() => Promise.resolve()} onDelete={() => Promise.resolve()} />)
 
     expect(screen.getByText('60 kg × 8')).toBeVisible()
     expect(screen.getByLabelText('Load (kg)')).toHaveAttribute('inputmode', 'decimal')
@@ -66,5 +66,23 @@ describe('SetRow persistence ordering', () => {
     expect(screen.queryByLabelText('Duration (seconds)')).not.toBeInTheDocument()
     expect(screen.queryByLabelText('Distance (metres)')).not.toBeInTheDocument()
     expect(screen.queryByLabelText('Set type')).not.toBeInTheDocument()
+  })
+
+  it('exposes an accessible delete action for swipe and keyboard users', async () => {
+    const onDelete = vi.fn(async () => {})
+    render(<SetRow set={set} index={0} unit="kg" previous="—" onCommitField={() => Promise.resolve({})} onToggleComplete={() => Promise.resolve()} onDelete={onDelete} />)
+
+    const deleteButton = screen.getByRole('button', { name: 'Delete set 1' })
+    const pointerEvent = (type: string, clientX: number, clientY: number) => {
+      const event = new Event(type, { bubbles: true })
+      Object.defineProperties(event, { pointerType: { value: 'touch' }, clientX: { value: clientX }, clientY: { value: clientY } })
+      return event
+    }
+    fireEvent(deleteButton.parentElement!, pointerEvent('pointerdown', 120, 20))
+    fireEvent(deleteButton.parentElement!, pointerEvent('pointerup', 40, 24))
+    expect(deleteButton.parentElement).toHaveAttribute('data-revealed', 'true')
+
+    fireEvent.click(deleteButton)
+    await waitFor(() => expect(onDelete).toHaveBeenCalledOnce())
   })
 })

@@ -11,7 +11,7 @@ export function AppShell() {
   return (
     <div className={styles.shell}>
       <header className={styles.header}>
-        <span className={styles.mark} aria-hidden="true">R</span>
+        <span className={styles.mark} aria-hidden="true">E</span>
         <div><strong>{t('app.name')}</strong><small>{t('app.tagline')}</small></div>
       </header>
       <main className={styles.main}><Suspense fallback={<p role="status">{t('app.loading')}</p>}><Outlet /></Suspense></main>

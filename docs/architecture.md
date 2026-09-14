@@ -1,6 +1,6 @@
-# Repwise architecture
+# Energy Fit Tracker architecture
 
-Repwise is a static, single-user PWA. React renders the interface, Dexie owns local persistence, and pure domain engines calculate recovery, substitution, progression, and workout recommendations. There is no runtime server.
+Energy Fit Tracker is a static, single-user PWA. React renders the interface, Dexie owns local persistence, and pure domain engines calculate recovery, substitution, progression, and workout recommendations. There is no runtime server.
 
 ## Data flow
 
@@ -17,7 +17,7 @@ The dependency-free `src/i18n` layer provides typed English, Brazilian Portugues
 
 ## Deployment
 
-The application uses hash routing and a Vite base of `/Repwise/`. GitHub Pages serves the generated static bundle and service worker. A new worker waits for user approval and must not reload an active workout.
+The application uses hash routing and a Vite base of `/Energy-Fit-Tracker/`. GitHub Pages serves the generated static bundle and service worker. A new worker waits for user approval and must not reload an active workout.
 
 ## Release evidence
 

@@ -75,7 +75,7 @@ function validateSource(sourceDir) {
 }
 
 /**
- * Builds the deterministic Repwise exercise catalog + optimized WebP media
+ * Builds the deterministic Energy Fit Tracker exercise catalog + optimized WebP media
  * from a pinned, verified checkout of free-exercise-db. Never touches the
  * network. Writes nothing until validation and normalization succeed for the
  * whole input; schema-breaking errors or duplicate normalized ids abort the

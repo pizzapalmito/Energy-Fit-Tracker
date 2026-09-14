@@ -13,7 +13,7 @@ function lookupOrTitleCase(t: Translator, namespace: string, value: string): str
   return translated === key ? titleCase(value) : translated
 }
 
-/** Repwise's own fixed equipment-profile vocabulary (see `ALL_EQUIPMENT` in `data/appDatabase.ts`), also used to tag catalog exercises. */
+/** Energy Fit Tracker's own fixed equipment-profile vocabulary (see `ALL_EQUIPMENT` in `data/appDatabase.ts`), also used to tag catalog exercises. */
 export function equipmentLabel(t: Translator, value: string): string {
   return lookupOrTitleCase(t, 'equipment', value)
 }
@@ -60,7 +60,7 @@ const DEFAULT_EQUIPMENT_PROFILE_ID_KEYS: Record<string, MessageKey> = {
 }
 
 /**
- * Repwise seeds three equipment profiles with stable ids ('commercial-gym',
+ * Energy Fit Tracker seeds three equipment profiles with stable ids ('commercial-gym',
  * 'home', 'hotel'; see `ensureAppDefaults` in `data/appDatabase.ts`) whose
  * display names should localize. Any other profile is user-created, so its
  * `name` is user-entered content and must be shown verbatim.

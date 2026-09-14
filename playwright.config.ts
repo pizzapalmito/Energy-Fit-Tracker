@@ -6,14 +6,14 @@ export default defineConfig({
   fullyParallel: true,
   retries: process.env.CI ? 2 : 0,
   reporter: 'html',
-  use: { baseURL: 'http://127.0.0.1:4173/Repwise/', trace: 'on-first-retry' },
+  use: { baseURL: 'http://127.0.0.1:4173/Energy-Fit-Tracker/', trace: 'on-first-retry' },
   projects: [
     { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
     { name: 'mobile-webkit', use: { ...devices['iPhone 13'] } }
   ],
   webServer: {
     command: 'npm run build && npm run preview -- --host 127.0.0.1 --port 4173 --strictPort',
-    url: 'http://127.0.0.1:4173/Repwise/',
+    url: 'http://127.0.0.1:4173/Energy-Fit-Tracker/',
     reuseExistingServer: !process.env.CI
   }
 })

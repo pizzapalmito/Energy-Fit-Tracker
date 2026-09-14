@@ -1,6 +1,8 @@
 .card { display: flex; flex-direction: column; gap: .55rem; padding: .8rem; border: 1px solid var(--line); border-radius: .9rem; background: var(--surface); overflow: hidden; }
 .header { display: grid; grid-template-columns: 3.25rem minmax(0, 1fr) auto; align-items: center; gap: .65rem; }
+.exerciseTitle { display: flex; align-items: center; min-width: 0; gap: .45rem; }
 .header h3 { margin: 0; min-width: 0; font-size: 1rem; line-height: 1.25; }
+.cautionBadge { display: inline-grid; flex: 0 0 1.45rem; width: 1.45rem; height: 1.45rem; place-items: center; border: 1px solid var(--neon-magenta); border-radius: 50%; background: color-mix(in srgb, var(--neon-magenta) 16%, transparent); color: var(--neon-magenta); font-size: .9rem; font-weight: 950; box-shadow: 0 0 .75rem color-mix(in srgb, var(--neon-magenta) 35%, transparent); }
 .thumbnailButton { width: 3.25rem; height: 3.25rem; padding: 0; overflow: hidden; border: 1px solid var(--line); border-radius: .65rem; background: var(--surface-raised); }
 .thumbnailButton img { display: block; width: 100%; height: 100%; object-fit: cover; }
 .thumbnailFallback, .candidateFallback { width: 100%; height: 100%; display: grid; place-items: center; color: var(--muted); font-size: .62rem; }

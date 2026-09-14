@@ -69,15 +69,19 @@ export interface SetRowProps {
   previous: string
   onCommitField: (field: keyof SetFieldInput, value: number | undefined) => Promise<SetFieldErrors>
   onToggleComplete: () => Promise<void>
+  onDelete: () => Promise<void>
 }
 
 /** One-handed gym logging row. Extended set facts remain preserved in the model but out of the primary UI. */
-export function SetRow({ set, index, unit, previous, onCommitField, onToggleComplete }: SetRowProps) {
+export function SetRow({ set, index, unit, previous, onCommitField, onToggleComplete, onDelete }: SetRowProps) {
   const { t } = useI18n()
   const baseId = useId()
   const [errors, setErrors] = useState<SetFieldErrors>({})
   const [saveError, setSaveError] = useState<string>()
+  const [deleteRevealed, setDeleteRevealed] = useState(false)
+  const [deleting, setDeleting] = useState(false)
   const pendingWrites = useRef(new Set<Promise<boolean>>())
+  const pointerStart = useRef<{ x: number; y: number } | undefined>(undefined)
 
   function trackWrite(write: Promise<boolean>) {
     pendingWrites.current.add(write)
@@ -106,25 +110,63 @@ export function SetRow({ set, index, unit, previous, onCommitField, onToggleComp
     }
   }
 
+  async function deleteSet() {
+    setDeleting(true)
+    setSaveError(undefined)
+    try {
+      await onDelete()
+    } catch {
+      setDeleting(false)
+      setSaveError(t('setRow.deleteError'))
+    }
+  }
+
   return (
-    <li className={styles.row} data-completed={set.completed}>
-      <span className={styles.setNumber} aria-label={t('setRow.setAriaLabel', { index: index + 1 })}>{index + 1}</span>
-      <span className={styles.previous}>{previous}</span>
-      <div className={styles.weightField}>
-        <NumberField
-          id={`${baseId}-load`}
-          label={t('setRow.loadLabel', { unit })}
-          value={set.loadKg === undefined ? undefined : kgToDisplayWeight(set.loadKg, unit)}
-          error={errors.loadKg}
-          min={0}
-          onCommit={(value) => commitAndTrack('loadKg', value === undefined ? undefined : displayWeightToKg(value, unit))}
-        />
+    <li
+      className={styles.swipeContainer}
+      data-revealed={deleteRevealed}
+      onPointerDown={(event) => {
+        if (event.pointerType === 'touch') pointerStart.current = { x: event.clientX, y: event.clientY }
+      }}
+      onPointerUp={(event) => {
+        const start = pointerStart.current
+        pointerStart.current = undefined
+        if (!start || event.pointerType !== 'touch') return
+        const deltaX = event.clientX - start.x
+        const deltaY = event.clientY - start.y
+        if (Math.abs(deltaX) < 48 || Math.abs(deltaX) <= Math.abs(deltaY)) return
+        setDeleteRevealed(deltaX < 0)
+      }}
+    >
+      <button
+        type="button"
+        className={styles.deleteButton}
+        aria-label={t('setRow.deleteAriaLabel', { index: index + 1 })}
+        disabled={deleting}
+        onFocus={() => setDeleteRevealed(true)}
+        onClick={() => void deleteSet()}
+      >
+        {deleting ? '…' : t('setRow.delete')}
+      </button>
+      <div className={styles.row} data-completed={set.completed}>
+        <span className={styles.setNumber} aria-label={t('setRow.setAriaLabel', { index: index + 1 })}>{index + 1}</span>
+        <span className={styles.previous}>{previous}</span>
+        <div className={styles.weightField}>
+          <NumberField
+            id={`${baseId}-load`}
+            label={t('setRow.loadLabel', { unit })}
+            value={set.loadKg === undefined ? undefined : kgToDisplayWeight(set.loadKg, unit)}
+            error={errors.loadKg}
+            min={0}
+            onCommit={(value) => commitAndTrack('loadKg', value === undefined ? undefined : displayWeightToKg(value, unit))}
+          />
+        </div>
+        <div className={styles.repsField}>
+          <NumberField id={`${baseId}-reps`} label={t('setRow.repsLabel')} value={set.reps} error={errors.reps} min={0} inputMode="numeric" onCommit={(value) => commitAndTrack('reps', value)} />
+        </div>
+        <button type="button" className={styles.completeButton} aria-label={set.completed ? t('setRow.completed') : t('setRow.markComplete')} aria-pressed={set.completed} onClick={() => void toggleComplete()}>{set.completed ? '✓' : '○'}</button>
+        {saveError && <p className={styles.fieldError} role="alert">{saveError}</p>}
       </div>
-      <div className={styles.repsField}>
-        <NumberField id={`${baseId}-reps`} label={t('setRow.repsLabel')} value={set.reps} error={errors.reps} min={0} inputMode="numeric" onCommit={(value) => commitAndTrack('reps', value)} />
-      </div>
-      <button type="button" className={styles.completeButton} aria-label={set.completed ? t('setRow.completed') : t('setRow.markComplete')} aria-pressed={set.completed} onClick={() => void toggleComplete()}>{set.completed ? '✓' : '○'}</button>
-      {saveError && <p className={styles.fieldError} role="alert">{saveError}</p>}
     </li>
   )
 }

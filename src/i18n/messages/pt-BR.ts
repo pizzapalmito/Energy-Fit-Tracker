@@ -2,9 +2,9 @@ import type { Messages } from './en'
 
 export const ptBR: Messages = {
   app: {
-    name: 'Repwise',
+    name: 'Energy Fit Tracker',
     tagline: 'Treine com intenção',
-    loading: 'Carregando o Repwise…',
+    loading: 'Carregando o Energy Fit Tracker…',
   },
   nav: {
     primary: 'Principal',
@@ -25,8 +25,8 @@ export const ptBR: Messages = {
     defaultWorkoutName: 'Treino',
   },
   pwa: {
-    updateReady: 'Atualização do Repwise pronta',
-    offlineReady: 'Repwise está pronto para uso offline',
+    updateReady: 'Atualização do Energy Fit Tracker pronta',
+    offlineReady: 'Energy Fit Tracker está pronto para uso offline',
     reload: 'Recarregar atualização',
     later: 'Mais tarde',
     checking: 'Verificando o estado do treino antes de recarregar.',
@@ -34,7 +34,7 @@ export const ptBR: Messages = {
     finishFirst: 'Finalize o treino ativo antes de recarregar.',
   },
   today: {
-    eyebrow: 'Repwise',
+    eyebrow: 'Energy Fit',
     title: 'Hoje',
     loadingSummary: 'Carregando o resumo do seu treino…',
     loadError: 'Não foi possível carregar o resumo do seu treino ({message}).',
@@ -73,7 +73,7 @@ export const ptBR: Messages = {
     focusShouldersGlutes: 'Ênfase em Ombros + Glúteos',
   },
   workout: {
-    eyebrow: 'Repwise',
+    eyebrow: 'Energy Fit',
     title: 'Treino',
     loading: 'Carregando seu treino…',
     loadError: 'Não foi possível carregar seu treino ({message}).',
@@ -119,6 +119,7 @@ export const ptBR: Messages = {
     reasonSameMovement: 'Mesmo movimento',
     reasonAvailableEquipment: 'Equipamento disponível',
     reasonSimilarProfile: 'Perfil de treino semelhante',
+    advancedCaution: 'Exercício avançado — tenha cuidado',
   },
   setRow: {
     setAriaLabel: 'Série {index}',
@@ -128,6 +129,9 @@ export const ptBR: Messages = {
     markComplete: 'Marcar como concluída',
     saveError: 'Não foi possível salvar esta série. Tente novamente antes de concluí-la.',
     updateError: 'Não foi possível atualizar esta série. Tente novamente.',
+    delete: 'Excluir',
+    deleteAriaLabel: 'Excluir série {index}',
+    deleteError: 'Não foi possível excluir esta série. Tente novamente.',
     empty: '—',
   },
   restTimer: {
@@ -165,7 +169,7 @@ export const ptBR: Messages = {
     endingPosition: 'posição final',
   },
   exercises: {
-    eyebrow: 'Repwise',
+    eyebrow: 'Energy Fit',
     title: 'Exercícios',
     loading: 'Carregando biblioteca de exercícios…',
     loadError: 'Não foi possível carregar a biblioteca de exercícios ({message}). Tente novamente quando estiver on-line.',
@@ -252,6 +256,7 @@ export const ptBR: Messages = {
     goalLabel: 'Objetivo',
     splitLabel: 'Divisão',
     minutesLabel: 'Minutos',
+    minutesRange: 'Insira de 15 a 180 minutos.',
     customTargetsLabel: 'IDs de músculos-alvo, separados por vírgula',
     generate: 'Gerar',
     dataUnavailable: 'Os dados do gerador estão indisponíveis: {message}',
@@ -277,6 +282,9 @@ export const ptBR: Messages = {
     trainingGoalLabel: 'Objetivo de treino',
     preferredSplitLabel: 'Divisão preferida',
     defaultDurationLabel: 'Duração padrão do treino',
+    durationRange: 'Insira de 15 a 180 minutos antes de salvar.',
+    saveSettings: 'Salvar configurações',
+    settingsSaved: 'Configurações salvas.',
     equipmentProfilesTitle: 'Perfis de equipamento',
     profileNameLabel: 'Nome do perfil',
     equipmentCommaLabel: 'Equipamentos, separados por vírgula',

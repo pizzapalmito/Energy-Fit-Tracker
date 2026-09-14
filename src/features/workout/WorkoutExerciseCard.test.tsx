@@ -57,4 +57,12 @@ describe('WorkoutExerciseCard', () => {
     expect(await screen.findByRole('button', { name: /Substitute/ })).toBeDisabled()
     expect(screen.getByText('Substitution unavailable after a set is completed.')).toBeVisible()
   })
+
+  it('marks advanced exercises with a visible caution indicator', async () => {
+    const advanced = { ...source, difficulty: 'advanced' as const }
+    await db.exercises.put(advanced)
+    render(<WorkoutExerciseCard db={db} workoutExercise={workoutExercise} sets={[]} unit="kg" onSetCompleted={vi.fn()} />)
+
+    expect(await screen.findByRole('img', { name: 'Advanced exercise — use caution' })).toHaveTextContent('!')
+  })
 })

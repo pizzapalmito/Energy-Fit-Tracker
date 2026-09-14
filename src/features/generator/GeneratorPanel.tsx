@@ -39,7 +39,7 @@ export function GeneratorPanel({ db = appDb }: { db?: RepwiseDatabase }) {
   const source = useLiveQuery(() => loadInputs(db), [db])
   const [goal, setGoal] = useState<TrainingGoal>('hypertrophy')
   const [split, setSplit] = useState<WorkoutSplit>('full_body')
-  const [duration, setDuration] = useState(60)
+  const [durationText, setDurationText] = useState('60')
   const [customTargets, setCustomTargets] = useState('chest,lats,quadriceps')
   const [plan, setPlan] = useState<GeneratedWorkout>()
   const [input, setInput] = useState<GeneratorInput>()
@@ -52,11 +52,14 @@ export function GeneratorPanel({ db = appDb }: { db?: RepwiseDatabase }) {
     preferencesLoaded.current = true
     if (source.value.settings?.trainingGoal) setGoal(source.value.settings.trainingGoal)
     if (source.value.settings?.preferredSplit) setSplit(source.value.settings.preferredSplit)
-    if (source.value.settings?.defaultDurationMinutes) setDuration(source.value.settings.defaultDurationMinutes)
+    if (source.value.settings?.defaultDurationMinutes) setDurationText(String(source.value.settings.defaultDurationMinutes))
   }, [source])
 
+  const duration = Number(durationText)
+  const durationValid = durationText.trim() !== '' && Number.isFinite(duration) && duration >= 15 && duration <= 180
+
   function generate() {
-    if (source.status !== 'ready') return
+    if (source.status !== 'ready' || !durationValid) return
     const nextInput: GeneratorInput = { goal, split, durationMinutes: duration, availableEquipment: source.value.equipment, excludedExerciseIds: [], seed: new Date().toISOString().slice(0, 10), recentSuccessfulLoadByExerciseId: source.value.recentSuccessfulLoadByExerciseId, ...(split === 'custom' ? { customTargetMuscleIds: customTargets.split(',').map((target) => target.trim()).filter(Boolean) } : {}) }
     setInput(nextInput)
     setPlan(new DeterministicWorkoutGenerator().generate(nextInput, source.value.exercises, source.value.recovery))
@@ -93,9 +96,9 @@ export function GeneratorPanel({ db = appDb }: { db?: RepwiseDatabase }) {
       <div className={styles.controls}>
         <label>{t('generator.goalLabel')}<select value={goal} onChange={(event) => setGoal(event.target.value as TrainingGoal)}>{['strength', 'hypertrophy', 'general', 'endurance', 'maintenance'].map((value) => <option key={value} value={value}>{trainingGoalLabel(t, value)}</option>)}</select></label>
         <label>{t('generator.splitLabel')}<select value={split} onChange={(event) => setSplit(event.target.value as WorkoutSplit)}>{['full_body', 'upper', 'lower', 'push', 'pull', 'legs', 'recovery_adaptive', 'custom'].map((value) => <option key={value} value={value}>{splitLabel(t, value)}</option>)}</select></label>
-        <label>{t('generator.minutesLabel')}<input type="number" min="15" max="180" step="5" value={duration} onChange={(event) => setDuration(Math.max(15, Number(event.target.value) || 15))} /></label>
+        <label>{t('generator.minutesLabel')}<input type="number" min="15" max="180" step="5" value={durationText} aria-label={t('generator.minutesLabel')} aria-invalid={!durationValid ? 'true' : undefined} aria-describedby="generator-duration-help" onChange={(event) => setDurationText(event.target.value)} /><span id="generator-duration-help" className={!durationValid ? styles.fieldError : styles.fieldHint}>{t('generator.minutesRange')}</span></label>
         {split === 'custom' && <label className={styles.customTargets}>{t('generator.customTargetsLabel')}<input value={customTargets} onChange={(event) => setCustomTargets(event.target.value)} /></label>}
-        <button type="button" onClick={generate} disabled={source.status !== 'ready'}>{t('generator.generate')}</button>
+        <button type="button" onClick={generate} disabled={source.status !== 'ready' || !durationValid}>{t('generator.generate')}</button>
       </div>
       {source.status === 'error' && <p role="alert">{t('generator.dataUnavailable', { message: source.message })}</p>}
       {plan && <div className={styles.result}>

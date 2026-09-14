@@ -1,15 +1,17 @@
 import { expect, test } from '@playwright/test'
 
-test.describe('Repwise core offline workflow', () => {
+test.describe('Energy Fit Tracker core offline workflow', () => {
   test('browses the complete local exercise catalog', async ({ page }) => {
     await page.goto('./#/exercises')
+    await expect(page).toHaveTitle('Energy Fit Tracker')
+    await expect(page.getByText('Energy Fit Tracker', { exact: true }).first()).toBeVisible()
     await expect(page.getByText('876 of 876 exercises')).toBeVisible({ timeout: 30_000 })
     await page.getByLabel('Search').fill('Barbell Bench Press - Medium Grip')
     await expect(page.getByText('1 of 876 exercises')).toBeVisible()
     await page.getByRole('button', { name: /Barbell Bench Press - Medium Grip/ }).click()
     await expect(page.getByRole('dialog', { name: 'Barbell Bench Press - Medium Grip' })).toBeVisible()
     const demonstration = page.getByRole('dialog', { name: 'Barbell Bench Press - Medium Grip' }).getByRole('img')
-    await expect(demonstration).toHaveAttribute('src', /\/Repwise\/catalog\/media\/barbell-bench-press-medium-grip\/start\.webp$/)
+    await expect(demonstration).toHaveAttribute('src', /\/Energy-Fit-Tracker\/catalog\/media\/barbell-bench-press-medium-grip\/start\.webp$/)
     await expect.poll(() => demonstration.evaluate((image: HTMLImageElement) => image.complete && image.naturalWidth > 0)).toBe(true)
     await expect(page.getByRole('heading', { name: 'Instructions' })).toBeVisible()
   })
@@ -21,7 +23,7 @@ test.describe('Repwise core offline workflow', () => {
     await page.getByRole('button', { name: 'Start workout' }).click()
     await expect(page).toHaveURL(/#\/workout$/)
     await expect(page.getByRole('heading', { name: 'Workout', exact: true })).toBeVisible()
-    await expect(page.getByText('Repwise is ready offline')).toBeVisible({ timeout: 30_000 })
+    await expect(page.getByText('Energy Fit Tracker is ready offline')).toBeVisible({ timeout: 30_000 })
     await page.getByRole('button', { name: '+ Add exercise' }).click()
     await page.getByLabel('Search exercises').fill('Barbell Bench Press - Medium Grip')
     await page.getByRole('button', { name: /Barbell Bench Press - Medium Grip/ }).click()
@@ -31,6 +33,19 @@ test.describe('Repwise core offline workflow', () => {
     await page.getByRole('button', { name: 'Close demonstration' }).click()
     await page.getByLabel('Load (kg)').fill('70')
     await page.getByLabel('Reps').fill('8')
+    await page.getByRole('button', { name: '+ Add Set' }).click()
+    await expect(page.getByLabel('Load (kg)')).toHaveCount(2)
+    await expect(page.getByLabel('Load (kg)').last()).toHaveValue('70')
+    await expect(page.getByLabel('Reps').last()).toHaveValue('8')
+
+    const deleteSecondSet = page.getByRole('button', { name: 'Delete set 2' })
+    const secondSetRow = deleteSecondSet.locator('..')
+    await secondSetRow.dispatchEvent('pointerdown', { pointerType: 'touch', pointerId: 1, clientX: 140, clientY: 20 })
+    await secondSetRow.dispatchEvent('pointerup', { pointerType: 'touch', pointerId: 1, clientX: 40, clientY: 22 })
+    await expect(secondSetRow).toHaveAttribute('data-revealed', 'true')
+    await deleteSecondSet.click()
+    await expect(page.getByLabel('Load (kg)')).toHaveCount(1)
+
     await page.getByRole('button', { name: 'Mark complete' }).click()
     await expect(page.getByRole('group', { name: 'Rest timer' })).toBeVisible()
 
@@ -84,6 +99,17 @@ test.describe('Repwise core offline workflow', () => {
   test('changes the interface language in Settings, keeps it across navigation and reload, then restores English', async ({ page }) => {
     await page.goto('./#/settings')
     await expect(page.getByRole('heading', { name: 'Settings' })).toBeVisible({ timeout: 30_000 })
+
+    const defaultDuration = page.getByLabel('Default workout duration')
+    const saveSettings = page.getByRole('button', { name: 'Save settings' })
+    await defaultDuration.clear()
+    await expect(defaultDuration).toHaveValue('')
+    await expect(saveSettings).toBeDisabled()
+    await defaultDuration.fill('45')
+    await saveSettings.click()
+    await expect(page.getByText('Settings saved.')).toBeVisible()
+    await page.reload()
+    await expect(page.getByLabel('Default workout duration')).toHaveValue('45')
 
     await page.getByRole('button', { name: 'Français' }).click()
     await expect(page.getByRole('heading', { name: 'Réglages' })).toBeVisible()

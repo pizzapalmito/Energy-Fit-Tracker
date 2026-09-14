@@ -2,9 +2,9 @@ import type { Messages } from './en'
 
 export const fr: Messages = {
   app: {
-    name: 'Repwise',
+    name: 'Energy Fit Tracker',
     tagline: 'Entraînez-vous avec intention',
-    loading: 'Chargement de Repwise…',
+    loading: 'Chargement d’Energy Fit Tracker…',
   },
   nav: {
     primary: 'Principal',
@@ -25,8 +25,8 @@ export const fr: Messages = {
     defaultWorkoutName: 'Séance',
   },
   pwa: {
-    updateReady: 'Mise à jour de Repwise prête',
-    offlineReady: 'Repwise est prêt hors ligne',
+    updateReady: 'Mise à jour d’Energy Fit Tracker prête',
+    offlineReady: 'Energy Fit Tracker est prêt hors ligne',
     reload: 'Recharger la mise à jour',
     later: 'Plus tard',
     checking: 'Vérification de l’état de la séance avant de recharger.',
@@ -34,7 +34,7 @@ export const fr: Messages = {
     finishFirst: 'Terminez la séance en cours avant de recharger.',
   },
   today: {
-    eyebrow: 'Repwise',
+    eyebrow: 'Energy Fit',
     title: 'Aujourd’hui',
     loadingSummary: 'Chargement de votre résumé d’entraînement…',
     loadError: 'Impossible de charger votre résumé d’entraînement ({message}).',
@@ -73,7 +73,7 @@ export const fr: Messages = {
     focusShouldersGlutes: 'Accent épaules + fessiers',
   },
   workout: {
-    eyebrow: 'Repwise',
+    eyebrow: 'Energy Fit',
     title: 'Séance',
     loading: 'Chargement de votre séance…',
     loadError: 'Impossible de charger votre séance ({message}).',
@@ -119,6 +119,7 @@ export const fr: Messages = {
     reasonSameMovement: 'Même mouvement',
     reasonAvailableEquipment: 'Équipement disponible',
     reasonSimilarProfile: 'Profil d’entraînement similaire',
+    advancedCaution: 'Exercice avancé — soyez prudent',
   },
   setRow: {
     setAriaLabel: 'Série {index}',
@@ -128,6 +129,9 @@ export const fr: Messages = {
     markComplete: 'Marquer comme terminée',
     saveError: 'Impossible d’enregistrer cette série. Réessayez avant de la terminer.',
     updateError: 'Impossible de mettre à jour cette série. Veuillez réessayer.',
+    delete: 'Supprimer',
+    deleteAriaLabel: 'Supprimer la série {index}',
+    deleteError: 'Impossible de supprimer cette série. Veuillez réessayer.',
     empty: '—',
   },
   restTimer: {
@@ -165,7 +169,7 @@ export const fr: Messages = {
     endingPosition: 'position finale',
   },
   exercises: {
-    eyebrow: 'Repwise',
+    eyebrow: 'Energy Fit',
     title: 'Exercices',
     loading: 'Chargement de la bibliothèque d’exercices…',
     loadError: 'Impossible de charger la bibliothèque d’exercices ({message}). Réessayez une fois de retour en ligne.',
@@ -252,6 +256,7 @@ export const fr: Messages = {
     goalLabel: 'Objectif',
     splitLabel: 'Répartition',
     minutesLabel: 'Minutes',
+    minutesRange: 'Saisissez entre 15 et 180 minutes.',
     customTargetsLabel: 'IDs de muscles ciblés, séparés par des virgules',
     generate: 'Générer',
     dataUnavailable: 'Les données du générateur ne sont pas disponibles : {message}',
@@ -277,6 +282,9 @@ export const fr: Messages = {
     trainingGoalLabel: 'Objectif d’entraînement',
     preferredSplitLabel: 'Répartition préférée',
     defaultDurationLabel: 'Durée de séance par défaut',
+    durationRange: 'Saisissez entre 15 et 180 minutes avant d’enregistrer.',
+    saveSettings: 'Enregistrer les réglages',
+    settingsSaved: 'Réglages enregistrés.',
     equipmentProfilesTitle: 'Profils d’équipement',
     profileNameLabel: 'Nom du profil',
     equipmentCommaLabel: 'Équipement, séparé par des virgules',
