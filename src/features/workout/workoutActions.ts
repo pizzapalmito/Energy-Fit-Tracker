@@ -151,15 +151,29 @@ export function nextSetNumber(existingSets: WorkoutSet[]): number {
 }
 
 export async function addSet(db: RepwiseDatabase, workoutExerciseId: string, type: SetType, existingSets: WorkoutSet[]): Promise<WorkoutSet> {
-  const set: WorkoutSet = {
-    id: createId('set'),
-    workoutExerciseId,
-    setNumber: nextSetNumber(existingSets),
-    type,
-    completed: false,
-  }
-  await new DexieSetRepository(db).save(set)
-  return set
+  return db.transaction('rw', db.sets, async () => {
+    const persistedSets = await db.sets.where('workoutExerciseId').equals(workoutExerciseId).sortBy('setNumber')
+    const sourceSets = persistedSets.length > 0 ? persistedSets : existingSets
+    const lastSet = sourceSets.reduce<WorkoutSet | undefined>(
+      (latest, candidate) => !latest || candidate.setNumber > latest.setNumber ? candidate : latest,
+      undefined,
+    )
+    const set: WorkoutSet = {
+      id: createId('set'),
+      workoutExerciseId,
+      setNumber: nextSetNumber(sourceSets),
+      type,
+      completed: false,
+      ...(lastSet?.loadKg === undefined ? {} : { loadKg: lastSet.loadKg }),
+      ...(lastSet?.reps === undefined ? {} : { reps: lastSet.reps }),
+      ...(lastSet?.durationSeconds === undefined ? {} : { durationSeconds: lastSet.durationSeconds }),
+      ...(lastSet?.distanceMeters === undefined ? {} : { distanceMeters: lastSet.distanceMeters }),
+      ...(lastSet?.rir === undefined ? {} : { rir: lastSet.rir }),
+      ...(lastSet?.rpe === undefined ? {} : { rpe: lastSet.rpe }),
+    }
+    await db.sets.put(set)
+    return set
+  })
 }
 
 export async function removeSet(db: RepwiseDatabase, setId: string): Promise<void> {

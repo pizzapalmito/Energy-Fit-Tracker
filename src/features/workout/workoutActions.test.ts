@@ -245,6 +245,31 @@ describe('sets: add/remove/complete and immediate persistence', () => {
     expect(persisted.map((s) => s.id)).toEqual([set1.id, set2.id])
   })
 
+  it('copies the previous set values into a newly added incomplete set', async () => {
+    const workout = await startWorkout(db, 'Push Day')
+    const workoutExercise = await addExerciseToWorkout(db, workout.id, exercise())
+    const set1 = await addSet(db, workoutExercise.id, 'working', [])
+    const entered = { ...set1, loadKg: 62.5, reps: 9, rir: 2, completed: true, completedAt: '2026-01-10T09:15:30.000Z' }
+    await saveSet(db, entered)
+
+    const set2 = await addSet(db, workoutExercise.id, 'working', [entered])
+
+    expect(set2).toMatchObject({ setNumber: 2, loadKg: 62.5, reps: 9, rir: 2, completed: false })
+    expect(set2.completedAt).toBeUndefined()
+    expect(await db.sets.get(set2.id)).toEqual(set2)
+  })
+
+  it('copies the latest persisted values when the rendered set list is stale', async () => {
+    const workout = await startWorkout(db, 'Push Day')
+    const workoutExercise = await addExerciseToWorkout(db, workout.id, exercise())
+    const stale = await addSet(db, workoutExercise.id, 'working', [])
+    await updateSetFields(db, stale.id, { loadKg: 70, reps: 8 })
+
+    const next = await addSet(db, workoutExercise.id, 'working', [stale])
+
+    expect(next).toMatchObject({ setNumber: 2, loadKg: 70, reps: 8, completed: false })
+  })
+
   it('saveSet persists an edited field immediately, without waiting for workout finish', async () => {
     const workout = await startWorkout(db, 'Push Day')
     const workoutExercise = await addExerciseToWorkout(db, workout.id, exercise())

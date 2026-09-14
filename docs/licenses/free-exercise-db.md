@@ -9,9 +9,9 @@
 
 ## Intended use
 
-Repwise imports exercise names, classification fields, instructions, muscle associations, and start/end demonstration images. The import process normalizes identifiers and vocabulary, validates every record, converts included images to WebP, and records rejected records.
+Energy Fit Tracker imports exercise names, classification fields, instructions, muscle associations, and start/end demonstration images. The import process normalizes identifiers and vocabulary, validates every record, converts included images to WebP, and records rejected records.
 
-The upstream license states that the repository is free and unencumbered software released into the public domain and permits copying, modification, publication, use, and distribution. Repwise retains this provenance record even though attribution is not required by the Unlicense.
+The upstream license states that the repository is free and unencumbered software released into the public domain and permits copying, modification, publication, use, and distribution. Energy Fit Tracker retains this provenance record even though attribution is not required by the Unlicense.
 
 The app must not fetch these assets from GitHub at runtime. Only artifacts reproduced from this pinned revision and emitted by the audited build pipeline may be packaged for offline use.
 

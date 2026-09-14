@@ -9,6 +9,10 @@
 .controls { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)) auto; gap: .7rem; align-items: end; margin-top: 1rem; }
 .controls label { display: grid; gap: .35rem; color: var(--muted); font-size: .8rem; }
 .controls select, .controls input { width: 100%; min-height: 2.65rem; padding: .55rem; color: var(--text); border: 1px solid var(--line); border-radius: .7rem; background: var(--surface-raised); }
+.controls input[aria-invalid="true"] { border-color: var(--neon-magenta); }
+.fieldHint, .fieldError { font-size: .68rem; }
+.fieldHint { color: var(--muted); }
+.fieldError { color: var(--neon-magenta); font-weight: 700; }
 .controls button, .resultHeader button { min-height: 2.65rem; padding: .55rem .9rem; border: 0; border-radius: .7rem; color: #17120c; background: var(--accent); font-weight: 800; }
 .controls button:disabled, .resultHeader button:disabled { opacity: .55; }
 .customTargets { grid-column: 1 / -1; }

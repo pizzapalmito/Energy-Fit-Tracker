@@ -106,3 +106,27 @@ describe('SettingsPage language control', () => {
     expect(screen.getByRole('button', { name: 'Ma Salle Perso · Barre' })).toBeInTheDocument()
   })
 })
+
+describe('SettingsPage workout preferences', () => {
+  it('allows replacing the duration, blocks an empty value, and saves preferences explicitly', async () => {
+    await db.settings.put({ id: SETTINGS_SINGLETON_ID, unit: 'kg', trainingGoal: 'hypertrophy', preferredSplit: 'full_body', defaultDurationMinutes: 55 })
+    const user = userEvent.setup()
+    renderSettings()
+    await screen.findByRole('heading', { name: 'Settings' })
+
+    const duration = screen.getByLabelText('Default workout duration')
+    const save = screen.getByRole('button', { name: 'Save settings' })
+    await waitFor(() => expect(duration).toHaveValue(55))
+    await user.clear(duration)
+    expect(duration).toHaveValue(null)
+    expect(save).toBeDisabled()
+
+    await user.type(duration, '45')
+    await user.selectOptions(screen.getByLabelText('Training goal'), 'strength')
+    expect((await db.settings.get(SETTINGS_SINGLETON_ID))?.defaultDurationMinutes).toBe(55)
+
+    await user.click(save)
+    await waitFor(async () => expect(await db.settings.get(SETTINGS_SINGLETON_ID)).toMatchObject({ trainingGoal: 'strength', defaultDurationMinutes: 45 }))
+    expect(screen.getByRole('status')).toHaveTextContent('Settings saved.')
+  })
+})

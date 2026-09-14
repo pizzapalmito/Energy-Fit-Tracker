@@ -6,9 +6,12 @@
   --text: #f4f5f6;
   --muted: #9ba4ae;
   --line: #2b323b;
-  --accent: #ffb05c;
+  --neon-green: #5cff9a;
+  --neon-orange: #ff9d2e;
+  --neon-magenta: #ff4fd8;
+  --accent: var(--neon-orange);
   --accent-soft: #3a2a1b;
-  --success: #64d89b;
-  --danger: #ff6b72;
+  --success: var(--neon-green);
+  --danger: var(--neon-magenta);
   font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }

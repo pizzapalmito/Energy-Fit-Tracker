@@ -12,7 +12,7 @@ import { usePreviousPerformance } from './usePreviousPerformance'
 import { formatPreviousSet } from './previousPerformance'
 import type { WeightUnit } from './units'
 import { validateSetFields, type SetFieldErrors, type SetFieldInput } from './validation'
-import { addSet, completeSet, removeWorkoutExercise, updateSetFields, uncompleteSet, updateWorkoutExercise } from './workoutActions'
+import { addSet, completeSet, removeSet, removeWorkoutExercise, updateSetFields, uncompleteSet, updateWorkoutExercise } from './workoutActions'
 import { SetRow } from './SetRow'
 import { ConfirmDialog } from './ConfirmDialog'
 import { ExerciseDemoDialog } from './ExerciseDemoDialog'
@@ -102,7 +102,10 @@ export function WorkoutExerciseCard({ db, workoutExercise, sets, unit, onSetComp
       <button type="button" className={styles.thumbnailButton} onClick={() => setDemoOpen(true)} disabled={!sourceExercise} aria-label={t('workoutExerciseCard.viewDemoAriaLabel', { name: workoutExercise.snapshot.name })}>
         <CatalogImage relativePath={sourceExercise?.media[0]} alt="" fallbackClassName={styles.thumbnailFallback} />
       </button>
-      <h3>{workoutExercise.snapshot.name}</h3>
+      <div className={styles.exerciseTitle}>
+        <h3>{workoutExercise.snapshot.name}</h3>
+        {sourceExercise?.difficulty === 'advanced' && <span className={styles.cautionBadge} role="img" aria-label={t('workoutExerciseCard.advancedCaution')} title={t('workoutExerciseCard.advancedCaution')}>!</span>}
+      </div>
       <button type="button" className={styles.substituteButton} onClick={() => setSubstitutionsOpen((open) => !open)} disabled={substitutionLocked}>
         {t('workoutExerciseCard.substitute')}
       </button>
@@ -129,6 +132,7 @@ export function WorkoutExerciseCard({ db, workoutExercise, sets, unit, onSetComp
         previous={formatPreviousSet(previousSets[index], unit)}
         onCommitField={(field, value) => handleCommitField(set, field, value)}
         onToggleComplete={() => handleToggleComplete(set)}
+        onDelete={() => removeSet(db, set.id)}
       />)}
     </ul>
 

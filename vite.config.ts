@@ -4,15 +4,15 @@ import { VitePWA } from 'vite-plugin-pwa'
 import { MAX_ASSET_BYTES } from './scripts/catalog/limits.mjs'
 
 export default defineConfig({
-  base: process.env.BASE_PATH ?? '/Repwise/',
+  base: process.env.BASE_PATH ?? '/Energy-Fit-Tracker/',
   plugins: [
     react(),
     VitePWA({
       registerType: 'prompt',
       includeAssets: ['icons/*.{svg,png}'],
       manifest: {
-        name: 'Repwise Workout Tracker',
-        short_name: 'Repwise',
+        name: 'Energy Fit Tracker',
+        short_name: 'Energy Fit',
         description: 'A private, offline-first workout tracker.',
         display: 'standalone',
         start_url: './#/today',
