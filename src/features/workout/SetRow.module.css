@@ -1,8 +1,8 @@
-.swipeContainer { position: relative; overflow: hidden; min-width: 0; background: var(--neon-magenta); touch-action: pan-y; }
+.swipeContainer { position: relative; overflow: hidden; min-width: 0; background: var(--neon-orange); touch-action: pan-y; }
 .row { position: relative; z-index: 1; display: grid; grid-template-columns: 1.7rem minmax(3.4rem, 1fr) minmax(4rem, .85fr) minmax(3.25rem, .7fr) 2.75rem; align-items: center; gap: .35rem; min-width: 0; padding: .3rem 0; border-bottom: 1px solid var(--line); background: var(--surface); transition: transform .18s ease; }
 .swipeContainer:last-child .row { border-bottom: 0; }
 .swipeContainer[data-revealed="true"] .row { transform: translateX(-5.25rem); }
-.deleteButton { position: absolute; z-index: 0; inset: 0 0 0 auto; width: 5.25rem; min-height: 100%; padding: 0 .45rem; border: 0; background: var(--neon-magenta); color: #24001b; font-size: .75rem; font-weight: 900; }
+.deleteButton { position: absolute; z-index: 0; inset: 0 0 0 auto; width: 5.25rem; min-height: 100%; padding: 0 .45rem; border: 0; background: var(--neon-orange); color: #241100; font-size: .75rem; font-weight: 900; box-shadow: -.6rem 0 1rem color-mix(in srgb, var(--neon-orange) 22%, transparent); }
 .deleteButton:focus-visible { z-index: 2; }
 .row[data-completed="true"] { background: color-mix(in srgb, var(--success) 8%, transparent); }
 .setNumber { text-align: center; color: var(--muted); font-weight: 800; font-variant-numeric: tabular-nums; }

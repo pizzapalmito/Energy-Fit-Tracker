@@ -30,4 +30,4 @@
 
 .cancelButton { border: 1px solid var(--line); background: var(--surface-raised); color: var(--text); }
 .confirmButton { border: 1px solid var(--danger); background: var(--danger); color: #1a0808; }
-.confirmButtonNeutral { border: 1px solid var(--accent); background: var(--accent); color: #1a1204; }
+.confirmButtonNeutral { border: 1px solid var(--accent); background: var(--accent); color: #180413; box-shadow: var(--accent-glow); }

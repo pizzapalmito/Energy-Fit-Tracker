@@ -8,9 +8,9 @@
 .startCard { display: flex; flex-direction: column; gap: .75rem; padding: 1.25rem; border-radius: 1rem; border: 1px solid var(--line); background: var(--surface); }
 .startRow { display: flex; gap: .6rem; flex-wrap: wrap; }
 .nameInput { flex: 1; min-width: 8rem; min-height: 2.75rem; border-radius: .6rem; border: 1px solid var(--line); background: var(--bg); color: var(--text); padding: 0 .75rem; }
-.startButton, .resumeButton { min-height: 2.75rem; padding: 0 1.4rem; border-radius: .7rem; border: 1px solid var(--accent); background: var(--accent); color: #1a1204; font-weight: 800; }
+.startButton, .resumeButton { min-height: 2.75rem; padding: 0 1.4rem; border-radius: .7rem; border: 1px solid var(--accent); background: var(--accent); color: #180413; font-weight: 800; box-shadow: var(--accent-glow); }
 
-.resumeCard { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.25rem; border-radius: 1rem; border: 1px solid var(--accent); background: var(--accent-soft); flex-wrap: wrap; }
+.resumeCard { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.25rem; border-radius: 1rem; border: 1px solid var(--accent); background: var(--accent-soft); box-shadow: 0 0 1.2rem color-mix(in srgb, var(--neon-magenta) 10%, transparent); flex-wrap: wrap; }
 .resumeCard h2 { margin: 0; }
 .resumeCard p { margin: .25rem 0 0; color: var(--muted); }
 
@@ -34,4 +34,4 @@
 .programGrid article div { display: grid; min-width: 0; gap: .15rem; }
 .programGrid strong { font-size: .82rem; }
 .programGrid span { overflow: hidden; color: var(--muted); font-size: .75rem; text-overflow: ellipsis; white-space: nowrap; }
-.programGrid button { min-width: 4.5rem; min-height: 2.75rem; padding: 0 .8rem; border: 1px solid var(--accent); border-radius: .6rem; background: var(--accent); color: #1a1204; font-weight: 800; }
+.programGrid button { min-width: 4.5rem; min-height: 2.75rem; padding: 0 .8rem; border: 1px solid var(--accent); border-radius: .6rem; background: var(--accent); color: #180413; font-weight: 800; box-shadow: var(--accent-glow); }

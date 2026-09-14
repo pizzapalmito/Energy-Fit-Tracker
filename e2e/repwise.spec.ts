@@ -9,6 +9,27 @@ test.describe('Energy Fit Tracker core offline workflow', () => {
     await expect(appMark).toBeVisible()
     await expect(appMark).toHaveAttribute('src', '/Energy-Fit-Tracker/icons/icon.svg')
     await expect.poll(() => appMark.evaluate((image) => (image as HTMLImageElement).complete && (image as HTMLImageElement).naturalWidth > 0)).toBe(true)
+    const energyTheme = await page.evaluate(() => {
+      const probe = document.createElement('span')
+      probe.style.color = 'var(--accent)'
+      probe.style.border = '1px solid var(--neon-magenta)'
+      probe.style.backgroundColor = 'var(--danger)'
+      probe.style.outlineColor = 'var(--neon-orange)'
+      document.body.append(probe)
+      const probeStyles = getComputedStyle(probe)
+      const theme = {
+        accentMatchesMagenta: probeStyles.color === probeStyles.borderTopColor,
+        dangerMatchesOrange: probeStyles.backgroundColor === probeStyles.outlineColor,
+        scanlines: getComputedStyle(document.body, '::before').backgroundImage,
+        headerTrail: getComputedStyle(document.querySelector('header')!, '::after').backgroundImage,
+      }
+      probe.remove()
+      return theme
+    })
+    expect(energyTheme.accentMatchesMagenta).toBe(true)
+    expect(energyTheme.dangerMatchesOrange).toBe(true)
+    expect(energyTheme.scanlines).toContain('repeating-linear-gradient')
+    expect(energyTheme.headerTrail).toContain('linear-gradient')
     await expect(page.getByText('876 of 876 exercises')).toBeVisible({ timeout: 30_000 })
     await page.getByLabel('Search').fill('Barbell Bench Press - Medium Grip')
     await expect(page.getByText('1 of 876 exercises')).toBeVisible()
