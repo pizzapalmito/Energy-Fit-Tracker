@@ -27,6 +27,21 @@ function disableDecorativeCompositing() {
 
 const variants = [
   { name: 'original', setup: async () => {} },
+  ...[
+    ['text-shadow-disabled', '* { text-shadow: none !important; }'],
+    ['filter-disabled', '* { filter: none !important; }'],
+    ['hero-disabled', 'header > div:first-of-type { background: none !important; -webkit-mask-image: none !important; mask-image: none !important; }'],
+    ['nav-blur-disabled', 'nav { backdrop-filter: none !important; -webkit-backdrop-filter: none !important; }'],
+  ].map(([name, css]) => ({
+    name,
+    setup: async (context) => context.addInitScript((rules) => {
+      document.addEventListener('DOMContentLoaded', () => {
+        const style = document.createElement('style')
+        style.textContent = rules
+        document.head.appendChild(style)
+      })
+    }, css),
+  })),
   { name: 'fonts-aborted', setup: async (context) => { await context.route('**/fonts/**', (route) => route.abort()) } },
   { name: 'decorative-disabled', setup: async (context) => { await context.addInitScript(disableDecorativeCompositing) } },
   {
