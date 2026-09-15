@@ -12,8 +12,8 @@
   background: var(--accent-soft);
 }
 
-.time { font-size: 1.5rem; font-weight: 800; font-variant-numeric: tabular-nums; min-width: 4ch; }
-.label { color: var(--muted); font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; font-weight: 700; }
+.time { font-family: var(--font-mono); font-size: 1.5rem; font-weight: 800; font-variant-numeric: tabular-nums; min-width: 4ch; }
+.label { color: var(--muted); font-family: var(--font-mono); font-size: .68rem; text-transform: uppercase; letter-spacing: .08em; font-weight: 500; }
 
 .controls { display: flex; gap: .5rem; margin-left: auto; flex-wrap: wrap; }
 .controls button { min-height: 2.75rem; min-width: 2.75rem; padding: 0 .9rem; border-radius: .6rem; border: 1px solid var(--line); background: var(--surface-raised); color: var(--text); font-weight: 700; }

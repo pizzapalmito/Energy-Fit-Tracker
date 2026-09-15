@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import type { Exercise } from '../../domain/models'
 import { db as appDb } from '../../data/appDatabase'
@@ -31,6 +31,8 @@ export function WorkoutPage({ db = appDb }: { db?: RepwiseDatabase }) {
   const [duplicatePick, setDuplicatePick] = useState<Exercise | undefined>()
   const [finishConfirmOpen, setFinishConfirmOpen] = useState(false)
   const [discardConfirmOpen, setDiscardConfirmOpen] = useState(false)
+  const [lifecycleBusy, setLifecycleBusy] = useState(false)
+  const [lifecycleError, setLifecycleError] = useState<string>()
 
   const elapsedSeconds = useElapsedSeconds(workout?.startTime)
 
@@ -40,11 +42,19 @@ export function WorkoutPage({ db = appDb }: { db?: RepwiseDatabase }) {
     }
   }, [workout?.id, workout?.name])
 
+  /** Exercise ids present the first time this workout's data was seen; anything added afterward is "new" and defaults to expanded. Resets when a different workout loads. */
+  const initialExerciseIds = useRef<{ workoutId: string; ids: Set<string> } | undefined>(undefined)
+  if (workout && initialExerciseIds.current?.workoutId !== workout.id) {
+    initialExerciseIds.current = { workoutId: workout.id, ids: new Set(exercises.map((entry) => entry.workoutExercise.id)) }
+  }
+
   function commitName() {
     if (workout) void renameWorkout(db, workout, nameText)
   }
 
   function requestFinish() {
+    if (lifecycleBusy) return
+    setLifecycleError(undefined)
     if (!hasAnyCompletedSet(exercises)) {
       setFinishConfirmOpen(true)
       return
@@ -53,17 +63,31 @@ export function WorkoutPage({ db = appDb }: { db?: RepwiseDatabase }) {
   }
 
   async function doFinish() {
-    if (!workout) return
-    await finishWorkout(db, workout)
-    timer.skip()
-    void navigate('/today')
+    if (!workout || lifecycleBusy) return
+    setLifecycleBusy(true)
+    setLifecycleError(undefined)
+    try {
+      const completed = await finishWorkout(db, workout)
+      timer.skip()
+      void navigate(`/workout/summary/${completed.id}`)
+    } catch {
+      setLifecycleError(t('workout.finishError'))
+      setLifecycleBusy(false)
+    }
   }
 
   async function doDiscard() {
-    if (!workout) return
-    await discardWorkout(db, workout)
-    timer.skip()
-    void navigate('/today')
+    if (!workout || lifecycleBusy) return
+    setLifecycleBusy(true)
+    setLifecycleError(undefined)
+    try {
+      await discardWorkout(db, workout)
+      timer.skip()
+      void navigate('/today')
+    } catch {
+      setLifecycleError(t('workout.discardError'))
+      setLifecycleBusy(false)
+    }
   }
 
   function handlePick(exercise: Exercise) {
@@ -113,15 +137,10 @@ export function WorkoutPage({ db = appDb }: { db?: RepwiseDatabase }) {
                 <span>{tn('workout.setsCount', completedSetCount)}</span>
               </span>
             </div>
-            <div className={styles.headerActions}>
-              <button type="button" className={styles.finishButton} onClick={requestFinish}>
-                {t('workout.finishWorkout')}
-              </button>
-              <button type="button" className={styles.discardButton} onClick={() => setDiscardConfirmOpen(true)}>
-                {t('workout.discard')}
-              </button>
-            </div>
+
           </div>
+
+          {lifecycleError && <p role="alert" className={styles.statusError}>{lifecycleError}</p>}
 
           <RestTimerBar timer={timer} />
 
@@ -129,13 +148,16 @@ export function WorkoutPage({ db = appDb }: { db?: RepwiseDatabase }) {
             <p className={styles.status}>{t('workout.noExercisesYet')}</p>
           ) : (
             <ul className={styles.exerciseList}>
-              {exercises.map(({ workoutExercise, sets }) => (
+              {exercises.map(({ workoutExercise, sets }, index) => (
                 <li key={workoutExercise.id}>
                   <WorkoutExerciseCard
                     db={db}
                     workoutExercise={workoutExercise}
                     sets={sets}
                     unit={unit}
+                    position={index + 1}
+                    total={exercises.length}
+                    defaultExpanded={index === 0 || !initialExerciseIds.current?.ids.has(workoutExercise.id)}
                     onSetCompleted={(restSeconds, workoutExerciseId) => {
                       if (restSeconds > 0) timer.start(workoutExerciseId, restSeconds)
                     }}
@@ -148,6 +170,15 @@ export function WorkoutPage({ db = appDb }: { db?: RepwiseDatabase }) {
           <button type="button" className={styles.addExerciseButton} onClick={() => setPickerOpen(true)}>
             {t('workout.addExercise')}
           </button>
+
+            <div className={styles.headerActions}>
+              <button type="button" className={styles.finishButton} onClick={requestFinish} disabled={lifecycleBusy}>
+                {t('workout.finishWorkout')}
+              </button>
+              <button type="button" className={styles.discardButton} onClick={() => setDiscardConfirmOpen(true)} disabled={lifecycleBusy}>
+                {t('workout.discard')}
+              </button>
+            </div>
 
           {pickerOpen && (
             <ExercisePicker db={db} existingExerciseIds={new Set(exercises.map((e) => e.workoutExercise.exerciseId))} onPick={handlePick} onClose={() => setPickerOpen(false)} />

@@ -6,6 +6,7 @@ import { db, ensureAppDefaults } from './data/appDatabase'
 import { initCatalogSeeding } from './catalog/catalogReadiness'
 import { I18nProvider } from './i18n/I18nContext'
 import './styles/tokens.css'
+import './styles/fonts.css'
 import './styles/global.css'
 
 initCatalogSeeding(db)
