@@ -46,3 +46,33 @@ jobs:
             test-results/
           retention-days: 7
           if-no-files-found: ignore
+
+  diagnose-webkit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    container:
+      image: mcr.microsoft.com/playwright:v1.55.1-noble
+      options: --ipc=host
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20.15.0
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - run: node scripts/quality/diagnose-webkit.mjs
+        env:
+          DEBUG: pw:browser
+          LIBGL_ALWAYS_SOFTWARE: '1'
+          GALLIUM_DRIVER: llvmpipe
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: isolated-webkit-diagnostics
+          path: test-results/webkit-diagnostic-*.png
+          if-no-files-found: ignore
+          retention-days: 7
