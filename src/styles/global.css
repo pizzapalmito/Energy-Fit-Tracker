@@ -19,6 +19,7 @@ body::before {
   pointer-events: none;
   background: repeating-linear-gradient(180deg, transparent 0 3px, rgb(0 0 0 / 12%) 3px 4px);
   opacity: .16;
+  mix-blend-mode: soft-light;
 }
 h1 {
   font-size: 2.125rem;
