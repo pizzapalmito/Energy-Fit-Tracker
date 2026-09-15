@@ -25,10 +25,6 @@ h1 {
   font-size: 2.125rem;
   font-weight: 800;
   letter-spacing: -.02em;
-  text-shadow:
-    -.045rem 0 color-mix(in srgb, var(--neon-green) 18%, transparent),
-    .045rem 0 color-mix(in srgb, var(--neon-orange) 15%, transparent),
-    0 0 1rem color-mix(in srgb, var(--neon-magenta) 15%, transparent);
 }
 ::selection { color: #180413; background: var(--neon-magenta); }
 button, input, select, textarea { font: inherit; }
