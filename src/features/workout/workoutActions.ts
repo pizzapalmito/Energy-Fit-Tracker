@@ -1,4 +1,5 @@
 import type { Exercise, SetType, Workout, WorkoutExercise, WorkoutSet } from '../../domain/models'
+import type { GeneratedWorkout, GeneratorInput } from '../../domain/contracts'
 import type { WorkoutTemplate } from '../../data/types'
 import type { RepwiseDatabase } from '../../data/db'
 import { DexieMetadataRepository } from '../../data/repositories/metadataRepository'
@@ -107,6 +108,57 @@ export async function startWorkoutTemplate(db: RepwiseDatabase, template: Workou
   return workout
 }
 
+/** Creates a generated workout and its audit record as one all-or-nothing database operation. */
+export async function startGeneratedWorkout(
+  db: RepwiseDatabase,
+  input: GeneratorInput,
+  plan: GeneratedWorkout,
+  displayName: string,
+  now: Date = new Date(),
+): Promise<Workout> {
+  const workout: Workout = {
+    id: createId('workout'), date: todayIsoDate(now), startTime: now.toISOString(),
+    name: displayName.trim() || 'Workout', notes: '', status: 'active',
+  }
+  await db.transaction('rw', [db.workouts, db.workoutExercises, db.sets, db.exercises, db.generatedPlans, db.metadata], async () => {
+    const active = await db.workouts.where('status').equals('active').first()
+    if (active) throw new ActiveWorkoutConflictError(active.id)
+    const catalogVersion = (await db.metadata.get(CATALOG_VERSION_METADATA_KEY))?.value ?? 'unknown'
+    const uniqueIds = [...new Set(plan.exercises.map((entry) => entry.exerciseId))]
+    const available = await db.exercises.bulkGet(uniqueIds)
+    const catalogById = new Map(available.flatMap((entry) => entry ? [[entry.id, entry] as const] : []))
+    const missing = uniqueIds.filter((id) => !catalogById.has(id))
+    if (missing.length > 0) throw new Error(`Generated workout exercises are unavailable: ${missing.join(', ')}`)
+
+    const workoutExercises: WorkoutExercise[] = []
+    const sets: WorkoutSet[] = []
+    plan.exercises.forEach((planned, order) => {
+      const catalogExercise = catalogById.get(planned.exerciseId)!
+      const workoutExerciseId = createId('we')
+      workoutExercises.push({
+        id: workoutExerciseId, workoutId: workout.id, exerciseId: catalogExercise.id, order, notes: '',
+        restSeconds: planned.restSeconds,
+        snapshot: {
+          name: catalogExercise.name, equipment: catalogExercise.equipment, movementPattern: catalogExercise.movementPattern,
+          muscles: catalogExercise.muscles, catalogVersion,
+        },
+      })
+      for (let index = 0; index < planned.sets; index += 1) {
+        sets.push({
+          id: createId('set'), workoutExerciseId, setNumber: index + 1, type: 'working', completed: false,
+          reps: planned.repRange[0], ...(planned.recommendedLoadKg === undefined ? {} : { loadKg: planned.recommendedLoadKg }),
+        })
+      }
+    })
+
+    await db.workouts.put(workout)
+    await db.workoutExercises.bulkPut(workoutExercises)
+    await db.sets.bulkPut(sets)
+    await db.generatedPlans.put({ id: createId('plan'), createdAt: now.toISOString(), input, plan })
+  })
+  return workout
+}
+
 export function isDuplicateExercise(existing: WorkoutExercise[], exerciseId: string): boolean {
   return existing.some((e) => e.exerciseId === exerciseId)
 }
@@ -136,9 +188,12 @@ export async function addExerciseToWorkout(db: RepwiseDatabase, workoutId: strin
   return workoutExercise
 }
 
+/** Deletes the workout exercise and all of its sets in one transaction, so an injected failure rolls back both. */
 export async function removeWorkoutExercise(db: RepwiseDatabase, workoutExerciseId: string): Promise<void> {
-  await new DexieSetRepository(db).deleteByWorkoutExercise(workoutExerciseId)
-  await new DexieWorkoutExerciseRepository(db).delete(workoutExerciseId)
+  await db.transaction('rw', db.workoutExercises, db.sets, async () => {
+    await new DexieSetRepository(db).deleteByWorkoutExercise(workoutExerciseId)
+    await new DexieWorkoutExerciseRepository(db).delete(workoutExerciseId)
+  })
 }
 
 export async function updateWorkoutExercise(db: RepwiseDatabase, workoutExercise: WorkoutExercise): Promise<void> {
@@ -206,20 +261,18 @@ export function hasAnyCompletedSet(exercises: Array<{ sets: WorkoutSet[] }>): bo
   return exercises.some((e) => e.sets.some((s) => s.completed))
 }
 
+/** Atomically completes an active workout. Throws IllegalWorkoutTransitionError if it is no longer active (already finished/discarded). */
 export async function finishWorkout(db: RepwiseDatabase, workout: Workout, now: Date = new Date()): Promise<Workout> {
-  const updated: Workout = { ...workout, status: 'completed', endTime: now.toISOString() }
-  await new DexieWorkoutRepository(db).saveWorkout(updated)
-  return updated
+  return new DexieWorkoutRepository(db).transitionLifecycle(workout.id, 'completed', now.toISOString())
 }
 
+/** Atomically discards an active workout. Throws IllegalWorkoutTransitionError if it is no longer active (already finished/discarded). */
 export async function discardWorkout(db: RepwiseDatabase, workout: Workout, now: Date = new Date()): Promise<Workout> {
-  const updated: Workout = { ...workout, status: 'discarded', endTime: now.toISOString() }
-  await new DexieWorkoutRepository(db).saveWorkout(updated)
-  return updated
+  return new DexieWorkoutRepository(db).transitionLifecycle(workout.id, 'discarded', now.toISOString())
 }
 
+/** Patches only the name field against the current DB record, so a stale in-memory workout can never reactivate it or overwrite newer lifecycle fields. */
 export async function renameWorkout(db: RepwiseDatabase, workout: Workout, name: string): Promise<void> {
   const trimmed = name.trim() || 'Workout'
-  if (trimmed === workout.name) return
-  await new DexieWorkoutRepository(db).saveWorkout({ ...workout, name: trimmed })
+  await new DexieWorkoutRepository(db).renameWorkout(workout.id, trimmed)
 }

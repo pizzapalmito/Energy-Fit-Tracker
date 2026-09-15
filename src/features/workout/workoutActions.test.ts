@@ -1,8 +1,9 @@
-import { beforeEach, describe, expect, it } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 import type { Exercise } from '../../domain/models'
+import type { GeneratedWorkout, GeneratorInput } from '../../domain/contracts'
 import type { WorkoutTemplate } from '../../data/types'
 import { createDatabase, type RepwiseDatabase } from '../../data/db'
-import { ActiveWorkoutConflictError, DexieWorkoutRepository } from '../../data/repositories/workoutRepository'
+import { ActiveWorkoutConflictError, DexieWorkoutRepository, IllegalWorkoutTransitionError } from '../../data/repositories/workoutRepository'
 import { DexieWorkoutExerciseRepository } from '../../data/repositories/workoutExerciseRepository'
 import { DexieSetRepository } from '../../data/repositories/setRepository'
 import { DexieMetadataRepository } from '../../data/repositories/metadataRepository'
@@ -20,6 +21,7 @@ import {
   renameWorkout,
   saveSet,
   startWorkout,
+  startGeneratedWorkout,
   startWorkoutTemplate,
   uncompleteSet,
   updateSetFields,
@@ -218,6 +220,71 @@ describe('startWorkoutTemplate', () => {
   })
 })
 
+describe('startGeneratedWorkout', () => {
+  const input: GeneratorInput = {
+    goal: 'hypertrophy',
+    split: 'push',
+    durationMinutes: 45,
+    availableEquipment: ['barbell'],
+    excludedExerciseIds: [],
+    seed: 'generated-seed',
+  }
+
+  const plan: GeneratedWorkout = {
+    name: 'Generated Push',
+    exercises: [
+      { exerciseId: 'bench-press', sets: 2, repRange: [8, 12], restSeconds: 90, reasons: ['push match'], recommendedLoadKg: 60 },
+      { exerciseId: 'overhead-press', sets: 1, repRange: [6, 10], restSeconds: 120, reasons: ['shoulder match'] },
+    ],
+    engineVersion: 'generator-v1',
+    seed: 'generated-seed',
+    estimatedDurationSeconds: 1800,
+  }
+
+  it('persists the workout, snapshots, initialized sets, and audit record in one operation', async () => {
+    await db.exercises.bulkPut([
+      exercise(),
+      exercise({ id: 'overhead-press', name: 'Overhead Press', muscles: [{ muscleId: 'shoulders', weight: 1 }] }),
+    ])
+    await new DexieMetadataRepository(db).set(CATALOG_VERSION_METADATA_KEY, 'catalog-42')
+
+    const now = new Date('2026-01-10T08:30:00.000Z')
+    const workout = await startGeneratedWorkout(db, input, plan, 'Generated Push', now)
+
+    expect(workout).toMatchObject({ name: 'Generated Push', status: 'active', startTime: now.toISOString() })
+    const workoutExercises = await new DexieWorkoutExerciseRepository(db).listByWorkout(workout.id)
+    expect(workoutExercises.map((entry) => entry.snapshot.catalogVersion)).toEqual(['catalog-42', 'catalog-42'])
+    const sets = await db.sets.toArray()
+    expect(sets).toHaveLength(3)
+    expect(sets.filter((set) => set.reps === 8 && set.loadKg === 60)).toHaveLength(2)
+    expect(sets.filter((set) => set.reps === 6 && set.loadKg === undefined)).toHaveLength(1)
+    expect(await db.generatedPlans.count()).toBe(1)
+  })
+
+  it('rolls back every table when any planned exercise is unavailable', async () => {
+    await db.exercises.put(exercise())
+
+    await expect(startGeneratedWorkout(db, input, plan, 'Generated Push')).rejects.toThrow('overhead-press')
+
+    expect(await db.workouts.count()).toBe(0)
+    expect(await db.workoutExercises.count()).toBe(0)
+    expect(await db.sets.count()).toBe(0)
+    expect(await db.generatedPlans.count()).toBe(0)
+  })
+
+  it('does not write generated records when another workout is active', async () => {
+    await db.exercises.bulkPut([exercise(), exercise({ id: 'overhead-press' })])
+    await startWorkout(db, 'Existing')
+
+    await expect(startGeneratedWorkout(db, input, plan, 'Generated Push')).rejects.toThrow(ActiveWorkoutConflictError)
+
+    expect(await db.workouts.count()).toBe(1)
+    expect(await db.workoutExercises.count()).toBe(0)
+    expect(await db.sets.count()).toBe(0)
+    expect(await db.generatedPlans.count()).toBe(0)
+  })
+})
+
 describe('removeWorkoutExercise', () => {
   it('deletes the workout exercise and all of its sets', async () => {
     const workout = await startWorkout(db, 'Push Day')
@@ -228,6 +295,22 @@ describe('removeWorkoutExercise', () => {
 
     expect(await new DexieWorkoutExerciseRepository(db).listByWorkout(workout.id)).toHaveLength(0)
     expect(await new DexieSetRepository(db).listByWorkoutExercise(workoutExercise.id)).toHaveLength(0)
+  })
+
+  it('rolls back the child-set deletion when the parent delete fails, so nothing is left half-deleted', async () => {
+    const workout = await startWorkout(db, 'Push Day')
+    const workoutExercise = await addExerciseToWorkout(db, workout.id, exercise())
+    await addSet(db, workoutExercise.id, 'working', [])
+
+    const deleteSpy = vi.spyOn(db.workoutExercises, 'delete').mockRejectedValue(new Error('injected failure'))
+    try {
+      await expect(removeWorkoutExercise(db, workoutExercise.id)).rejects.toThrow('injected failure')
+    } finally {
+      deleteSpy.mockRestore()
+    }
+
+    expect(await new DexieWorkoutExerciseRepository(db).listByWorkout(workout.id)).toHaveLength(1)
+    expect(await new DexieSetRepository(db).listByWorkoutExercise(workoutExercise.id)).toHaveLength(1)
   })
 })
 
@@ -363,6 +446,38 @@ describe('finishWorkout / discardWorkout', () => {
     const next = await startWorkout(db, 'Pull Day')
     expect(next.status).toBe('active')
   })
+
+  it('finishing an already-finished (stale) workout throws instead of reactivating or clobbering lifecycle fields', async () => {
+    const workout = await startWorkout(db, 'Push Day')
+    const firstFinishTime = new Date('2026-01-10T10:00:00.000Z')
+    await finishWorkout(db, workout, firstFinishTime)
+
+    // `workout` is now stale: it still says status "active" in memory, simulating a second
+    // browser tab / rapid double-submit racing against the first finish.
+    await expect(finishWorkout(db, workout, new Date('2026-01-10T10:05:00.000Z'))).rejects.toThrow(IllegalWorkoutTransitionError)
+
+    const stored = await db.workouts.get(workout.id)
+    expect(stored?.status).toBe('completed')
+    expect(stored?.endTime).toBe(firstFinishTime.toISOString())
+  })
+
+  it('discarding an already-discarded (stale) workout throws instead of re-applying the transition', async () => {
+    const workout = await startWorkout(db, 'Push Day')
+    await discardWorkout(db, workout)
+
+    await expect(discardWorkout(db, workout)).rejects.toThrow(IllegalWorkoutTransitionError)
+    expect((await db.workouts.get(workout.id))?.status).toBe('discarded')
+  })
+
+  it('discarding a stale active-looking copy of an already-finished workout does not reactivate it', async () => {
+    const workout = await startWorkout(db, 'Push Day')
+    await finishWorkout(db, workout, new Date('2026-01-10T10:00:00.000Z'))
+
+    await expect(discardWorkout(db, workout)).rejects.toThrow(IllegalWorkoutTransitionError)
+
+    const stored = await db.workouts.get(workout.id)
+    expect(stored?.status).toBe('completed')
+  })
 })
 
 describe('renameWorkout', () => {
@@ -373,5 +488,31 @@ describe('renameWorkout', () => {
 
     await renameWorkout(db, { ...workout, name: 'Heavy Push Day' }, '   ')
     expect((await new DexieWorkoutRepository(db).getActive())?.name).toBe('Workout')
+  })
+
+  it('renaming a stale (still-active-in-memory) workout after a concurrent finish patches only the name, never reactivating it or overwriting endTime', async () => {
+    const workout = await startWorkout(db, 'Push Day')
+    // `workout` stays a stale in-memory snapshot with status "active" — simulating a rename
+    // that was in flight (e.g. a blur-triggered save) when another tab/action finished the workout.
+    const finishTime = new Date('2026-01-10T10:00:00.000Z')
+    await finishWorkout(db, workout, finishTime)
+
+    await renameWorkout(db, workout, 'Renamed After Finish')
+
+    const stored = await db.workouts.get(workout.id)
+    expect(stored?.name).toBe('Renamed After Finish')
+    expect(stored?.status).toBe('completed')
+    expect(stored?.endTime).toBe(finishTime.toISOString())
+  })
+
+  it('renaming a stale workout after a concurrent discard patches only the name, never reactivating it', async () => {
+    const workout = await startWorkout(db, 'Push Day')
+    await discardWorkout(db, workout)
+
+    await renameWorkout(db, workout, 'Renamed After Discard')
+
+    const stored = await db.workouts.get(workout.id)
+    expect(stored?.name).toBe('Renamed After Discard')
+    expect(stored?.status).toBe('discarded')
   })
 })

@@ -4,14 +4,13 @@ import { db as appDb } from '../../data/appDatabase'
 import type { RepwiseDatabase } from '../../data/db'
 import { useLiveQuery } from '../../data/useLiveQuery'
 import type { GeneratedWorkout, GeneratorInput, WorkoutSplit } from '../../domain/contracts'
-import type { TrainingGoal, WorkoutSet } from '../../domain/models'
+import type { TrainingGoal } from '../../domain/models'
 import { DeterministicWorkoutGenerator } from '../../engines/generator/generatorEngine'
 import { DeterministicRecoveryEngine } from '../../engines/recovery/recoveryEngine'
 import { useI18n } from '../../i18n/I18nContext'
 import { muscleLabel, trainingGoalLabel, splitLabel } from '../../i18n/enumLabels'
 import { formatGeneratorReason, formatPlanName } from '../../i18n/generatorPresentation'
-import { createId } from '../workout/id'
-import { addExerciseToWorkout, addSet, saveSet, startWorkout, updateWorkoutExercise } from '../workout/workoutActions'
+import { startGeneratedWorkout } from '../workout/workoutActions'
 import styles from './GeneratorPanel.module.css'
 
 async function loadInputs(db: RepwiseDatabase) {
@@ -69,20 +68,7 @@ export function GeneratorPanel({ db = appDb }: { db?: RepwiseDatabase }) {
     if (!plan || !input || source.status !== 'ready' || plan.exercises.length === 0) return
     setStarting(true)
     try {
-      const workout = await startWorkout(db, formatPlanName(t, plan.name))
-      for (const planned of plan.exercises) {
-        const exercise = catalogById.get(planned.exerciseId)
-        if (!exercise) continue
-        const workoutExercise = await addExerciseToWorkout(db, workout.id, exercise)
-        await updateWorkoutExercise(db, { ...workoutExercise, restSeconds: planned.restSeconds })
-        const createdSets: WorkoutSet[] = []
-        for (let index = 0; index < planned.sets; index += 1) {
-          const set = await addSet(db, workoutExercise.id, 'working', createdSets)
-          createdSets.push(set)
-          await saveSet(db, { ...set, reps: planned.repRange[0], ...(planned.recommendedLoadKg === undefined ? {} : { loadKg: planned.recommendedLoadKg }) })
-        }
-      }
-      await db.generatedPlans.put({ id: createId('plan'), createdAt: new Date().toISOString(), input, plan })
+      await startGeneratedWorkout(db, input, plan, formatPlanName(t, plan.name))
       void navigate('/workout')
     } finally {
       setStarting(false)

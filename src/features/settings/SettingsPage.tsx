@@ -36,15 +36,16 @@ export function SettingsPage({ db = appDb }: { db?: RepwiseDatabase }) {
   const [preferredSplit, setPreferredSplit] = useState<WorkoutSplit>('full_body')
   const [durationText, setDurationText] = useState('60')
   const [durationTouched, setDurationTouched] = useState(false)
+  const preferenceTouched = useRef({ trainingGoal: false, preferredSplit: false, duration: false })
   const preferencesInitialized = useRef(false)
   const current = settings.status === 'ready' ? settings.value : undefined
 
   useEffect(() => {
     if (settings.status !== 'ready' || preferencesInitialized.current) return
     preferencesInitialized.current = true
-    setTrainingGoal(settings.value?.trainingGoal ?? 'hypertrophy')
-    setPreferredSplit(settings.value?.preferredSplit ?? 'full_body')
-    setDurationText(String(settings.value?.defaultDurationMinutes ?? 60))
+    if (!preferenceTouched.current.trainingGoal) setTrainingGoal(settings.value?.trainingGoal ?? 'hypertrophy')
+    if (!preferenceTouched.current.preferredSplit) setPreferredSplit(settings.value?.preferredSplit ?? 'full_body')
+    if (!preferenceTouched.current.duration) setDurationText(String(settings.value?.defaultDurationMinutes ?? 60))
   }, [settings])
 
   async function saveSettings(changes: Partial<NonNullable<typeof current>>) {
@@ -106,9 +107,9 @@ export function SettingsPage({ db = appDb }: { db?: RepwiseDatabase }) {
       <section className={styles.card}><h2>{t('settings.languageTitle')}</h2><div className={styles.segment} role="group" aria-label={t('settings.languageTitle')}>{SUPPORTED_LOCALES.map((code) => <button key={code} type="button" aria-pressed={locale === code} onClick={() => setLocale(code)}>{LOCALE_NATIVE_NAMES[code]}</button>)}</div></section>
       <section className={styles.card}>
         <h2>{t('settings.workoutPreferencesTitle')}</h2>
-        <label>{t('settings.trainingGoalLabel')}<select value={trainingGoal} onChange={(event) => { setTrainingGoal(event.target.value as TrainingGoal); setMessage('') }}>{['strength', 'hypertrophy', 'general', 'endurance', 'maintenance'].map((value) => <option key={value} value={value}>{trainingGoalLabel(t, value)}</option>)}</select></label>
-        <label>{t('settings.preferredSplitLabel')}<select value={preferredSplit} onChange={(event) => { setPreferredSplit(event.target.value as WorkoutSplit); setMessage('') }}>{['full_body', 'upper', 'lower', 'push', 'pull', 'legs', 'recovery_adaptive', 'custom'].map((value) => <option key={value} value={value}>{splitLabel(t, value)}</option>)}</select></label>
-        <label>{t('settings.defaultDurationLabel')}<input type="number" min="15" max="180" step="5" value={durationText} aria-invalid={durationTouched && !durationValid ? 'true' : undefined} aria-describedby="settings-duration-help" onBlur={() => setDurationTouched(true)} onChange={(event) => { setDurationText(event.target.value); setMessage('') }} /></label>
+        <label>{t('settings.trainingGoalLabel')}<select value={trainingGoal} onChange={(event) => { preferenceTouched.current.trainingGoal = true; setTrainingGoal(event.target.value as TrainingGoal); setMessage('') }}>{['strength', 'hypertrophy', 'general', 'endurance', 'maintenance'].map((value) => <option key={value} value={value}>{trainingGoalLabel(t, value)}</option>)}</select></label>
+        <label>{t('settings.preferredSplitLabel')}<select value={preferredSplit} onChange={(event) => { preferenceTouched.current.preferredSplit = true; setPreferredSplit(event.target.value as WorkoutSplit); setMessage('') }}>{['full_body', 'upper', 'lower', 'push', 'pull', 'legs', 'recovery_adaptive', 'custom'].map((value) => <option key={value} value={value}>{splitLabel(t, value)}</option>)}</select></label>
+        <label>{t('settings.defaultDurationLabel')}<input type="number" min="15" max="180" step="5" value={durationText} aria-invalid={durationTouched && !durationValid ? 'true' : undefined} aria-describedby="settings-duration-help" onBlur={() => setDurationTouched(true)} onChange={(event) => { preferenceTouched.current.duration = true; setDurationText(event.target.value); setMessage('') }} /></label>
         <p id="settings-duration-help" className={durationTouched && !durationValid ? styles.fieldError : styles.fieldHint}>{t('settings.durationRange')}</p>
         <button type="button" className={styles.saveButton} disabled={!durationValid || !preferencesDirty} onClick={() => void saveWorkoutPreferences()}>{t('settings.saveSettings')}</button>
       </section>

@@ -15,6 +15,8 @@ npm run test:e2e
 
 The production build uses `/Energy-Fit-Tracker/` as its GitHub Pages base path. Override `BASE_PATH` only for local or custom-domain deployments.
 
+The staged product release checklist, real-iPhone acceptance gate, Swift conversion sequence, StoreKit/CloudKit design, and App Store operating instructions are in [`docs/release-and-apple-roadmap.md`](docs/release-and-apple-roadmap.md).
+
 ## Data and privacy
 
 Workout data stays in the browser unless the user explicitly downloads a backup or CSV export. Browser storage is not a substitute for backups; Energy Fit Tracker provides reminders and validated restore tools.
