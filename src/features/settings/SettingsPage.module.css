@@ -1,8 +1,8 @@
-.page { display: grid; gap: 1rem; padding-block: 1rem 3rem; }
-.page h1 { margin: 0; font-size: clamp(2.5rem, 9vw, 4.5rem); letter-spacing: -.055em; }
-.page h2 { margin-top: 0; }
-.eyebrow { margin: 0; color: var(--accent); text-transform: uppercase; letter-spacing: .16em; font-size: .75rem; font-weight: 800; }
-.card, .reminder { padding: 1rem; border: 1px solid var(--line); border-radius: 1rem; background: var(--surface); }
+.page { display: grid; gap: .9rem; padding-block: .6rem 3rem; }
+.page h1 { margin: 0; }
+.page h2 { margin-top: 0; font-size: 1rem; }
+.eyebrow { margin: 0; color: var(--accent); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: .14em; font-size: .68rem; font-weight: 500; }
+.card, .reminder { padding: .9rem; border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--surface); }
 .reminder { border-color: var(--accent); color: var(--accent); }
 .segment, .actions { display: flex; flex-wrap: wrap; gap: .5rem; }
 .page button { min-height: 2.75rem; padding: .65rem .9rem; border: 1px solid var(--line); border-radius: .7rem; color: var(--text); background: var(--surface-raised); }
@@ -16,3 +16,13 @@
 .page .saveButton { width: 100%; margin-top: 1rem; border-color: var(--neon-green); background: var(--neon-green); color: #032216; font-weight: 900; box-shadow: 0 0 1rem color-mix(in srgb, var(--neon-green) 18%, transparent); }
 .page .saveButton:disabled { border-color: var(--line); background: var(--surface-raised); color: var(--muted); box-shadow: none; opacity: .7; }
 .profile { display: block; width: 100%; margin-bottom: .5rem; text-align: left; }
+
+.segment { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.segment button { min-width: 0; overflow-wrap: anywhere; padding-inline: .4rem; font-size: .85rem; }
+
+.preferences label { grid-template-columns: minmax(0, 1fr) minmax(6rem, .9fr); align-items: center; gap: .6rem; padding-block: .25rem; border-top: 1px solid var(--line); font-size: .85rem; }
+.preferences input, .preferences select { min-width: 0; width: 100%; }
+
+.page { grid-template-columns: minmax(0, 1fr); }
+.page > *, .page label { min-width: 0; }
+.page input, .page select { min-width: 0; width: 100%; max-width: 100%; }

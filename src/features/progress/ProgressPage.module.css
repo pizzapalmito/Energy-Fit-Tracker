@@ -1,12 +1,16 @@
-.page { display: grid; gap: 1.25rem; padding-block: 1rem 3rem; }
-.page h1 { margin: 0; font-size: clamp(2.5rem, 9vw, 4.5rem); letter-spacing: -.055em; }
-.page h2, .page h3 { margin: 0 0 .75rem; }
-.eyebrow { margin: 0; color: var(--accent); text-transform: uppercase; letter-spacing: .16em; font-size: .75rem; font-weight: 800; }
-.metrics { display: grid; grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr)); gap: .65rem; }
-.metrics article, .card, .history article, .feedback { background: var(--surface); border: 1px solid var(--line); border-radius: 1rem; padding: 1rem; }
-.metrics strong { display: block; font-size: clamp(1.25rem, 5vw, 2rem); }
+.page { display: grid; gap: 1rem; padding-block: .6rem 3rem; }
+.page h1 { margin: 0; }
+.page h2 { margin: 0 0 .75rem; font-size: 1rem; }
+.page h3 { margin: 0 0 .75rem; }
+.eyebrow { margin: 0; color: var(--accent); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: .14em; font-size: .68rem; font-weight: 500; }
+.metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: .4rem; }
+.metrics article { padding: .6rem .5rem; }
+.card, .history article, .feedback { padding: .9rem; }
+.metrics article, .card, .history article, .feedback { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-card); }
+.metrics strong { display: block; font-family: var(--font-mono); font-size: clamp(1rem, 4.2vw, 1.35rem); }
+.metrics span { display: block; overflow-wrap: break-word; font-family: var(--font-mono); font-size: .58rem; letter-spacing: .03em; text-transform: uppercase; }
 .metrics span, .page p, .history span { color: var(--muted); }
-.chart { height: 15rem; }
+.chart { height: 11rem; }
 .columns { display: grid; gap: 1.25rem; }
 .history { display: grid; gap: .65rem; align-content: start; }
 .history article div { display: flex; justify-content: space-between; gap: 1rem; }
@@ -18,7 +22,11 @@
 .feedback button { min-height: 2.75rem; border: 1px solid var(--line); border-radius: .7rem; color: var(--text); background: var(--surface-raised); text-transform: capitalize; }
 @media (min-width: 800px) { .columns { grid-template-columns: minmax(18rem, .8fr) 1.2fr; } }
 .records { display: grid; gap: .55rem; }
-.records article { padding: .7rem; border: 1px solid var(--line); border-radius: .7rem; background: var(--surface-raised); }
-.records article div { display: flex; justify-content: space-between; gap: .75rem; }
-.records article span, .records article p { color: var(--muted); font-size: .8rem; }
-.records article p { margin: .3rem 0 0; }
+.recordButton { width: 100%; min-height: 2.75rem; text-align: left; padding: .7rem; border: 1px solid var(--line); border-radius: .7rem; background: var(--surface-raised); color: var(--text); }
+.recordButton:hover, .recordButton:focus-visible { border-color: var(--accent); }
+.recordButton div { display: flex; justify-content: space-between; gap: .75rem; }
+.recordButton span, .recordButton p { color: var(--muted); font-size: .8rem; }
+.recordButton p { margin: .3rem 0 0; }
+.recordDetailStatus { display: flex; align-items: center; justify-content: space-between; gap: .75rem; padding: .7rem .85rem; border: 1px solid var(--danger); border-radius: .7rem; background: var(--danger-soft); color: var(--text); }
+.recordDetailStatus p { margin: 0; }
+.recordDetailStatus button { min-height: 2.75rem; padding: 0 .9rem; border: 1px solid var(--line); border-radius: .6rem; background: var(--surface-raised); color: var(--text); flex: none; }

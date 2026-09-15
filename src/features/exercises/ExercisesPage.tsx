@@ -1,3 +1,4 @@
+import { CatalogImage } from '../../catalog/CatalogImage'
 import { useId, useMemo, useState } from 'react'
 import type { Exercise } from '../../domain/models'
 import type { Muscle } from '../../data/types'
@@ -13,6 +14,7 @@ import styles from './ExercisesPage.module.css'
 export function ExercisesPage({ db = appDb }: { db?: RepwiseDatabase }) {
   const { t } = useI18n()
   const catalog = useExerciseCatalog(db)
+  const [descending, setDescending] = useState(false)
   const [filters, setFilters] = useState<ExerciseFilters>(DEFAULT_FILTERS)
   const [selectedExerciseId, setSelectedExerciseId] = useState<string | undefined>()
 
@@ -25,7 +27,7 @@ export function ExercisesPage({ db = appDb }: { db?: RepwiseDatabase }) {
   const exercises = catalog.status === 'ready' ? catalog.exercises : []
   const muscles: Muscle[] = catalog.status === 'ready' ? catalog.muscles : []
   const filterOptions = useMemo(() => collectFilterOptions(exercises), [exercises])
-  const results = useMemo(() => filterExercises(exercises, filters), [exercises, filters])
+  const results = useMemo(() => { const matches = filterExercises(exercises, filters); return descending ? matches.reverse() : matches }, [exercises, filters, descending])
   const selectedExercise = useMemo(() => exercises.find((e) => e.id === selectedExerciseId), [exercises, selectedExerciseId])
 
   function update<K extends keyof ExerciseFilters>(key: K, value: ExerciseFilters[K]) {
@@ -122,9 +124,12 @@ export function ExercisesPage({ db = appDb }: { db?: RepwiseDatabase }) {
             )}
           </div>
 
+          <div className={styles.resultsBar}>
           <p role="status" aria-live="polite" className={styles.resultCount}>
             {t('exercises.resultCount', { shown: results.length, total: exercises.length })}
           </p>
+          <button type="button" className={styles.clearButton} aria-pressed={descending} onClick={() => setDescending((value) => !value)}>{descending ? 'Z–A ↓' : 'A–Z ↑'}</button>
+          </div>
 
           {results.length === 0 ? (
             <p className={styles.status}>{t('exercises.noResults')}</p>
@@ -133,17 +138,18 @@ export function ExercisesPage({ db = appDb }: { db?: RepwiseDatabase }) {
               {results.map((exercise) => (
                 <li key={exercise.id}>
                   <button type="button" className={styles.card} onClick={() => setSelectedExerciseId(exercise.id)}>
-                    <span className={styles.cardName}>{exercise.name}</span>
+                    <CatalogImage loading="lazy" relativePath={exercise.media[0]} alt="" fallbackClassName={styles.cardImageFallback} />
+                    <span className={styles.cardContent}><span className={styles.cardName}>{exercise.name}</span>
                     <span className={styles.cardMeta}>
                       {primaryMuscleNames(t, exercise)} · {equipmentLabel(t, exercise.equipment[0] ?? 'bodyweight')} · {difficultyLabel(t, exercise.difficulty)}
-                    </span>
+                    </span></span>
                   </button>
                 </li>
               ))}
             </ul>
           )}
 
-          {selectedExercise && <ExerciseDetail exercise={selectedExercise} onClose={() => setSelectedExerciseId(undefined)} />}
+          {selectedExercise && <ExerciseDetail db={db} exercise={selectedExercise} onClose={() => setSelectedExerciseId(undefined)} />}
         </>
       )}
     </section>

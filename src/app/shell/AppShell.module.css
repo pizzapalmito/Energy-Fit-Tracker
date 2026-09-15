@@ -1,10 +1,16 @@
 .shell { min-height: 100dvh; max-width: 76rem; margin: 0 auto; padding-bottom: calc(4.75rem + env(safe-area-inset-bottom)); }
 .header { position: relative; display: flex; align-items: center; gap: .75rem; padding: max(1rem, env(safe-area-inset-top)) 1rem 1.15rem; }
 .header::after { content: ""; position: absolute; right: 1rem; bottom: .35rem; left: 1rem; height: 1px; background: linear-gradient(90deg, transparent 0, color-mix(in srgb, var(--neon-magenta) 35%, transparent) 12%, var(--neon-magenta) 58%, var(--neon-green) 82%, var(--neon-orange) 94%, transparent 100%); box-shadow: -.9rem .06rem .45rem color-mix(in srgb, var(--neon-magenta) 38%, transparent), .2rem 0 .35rem color-mix(in srgb, var(--neon-green) 22%, transparent), .55rem 0 .4rem color-mix(in srgb, var(--neon-orange) 20%, transparent); opacity: .68; }
-.header small { display: block; color: var(--muted); margin-top: .1rem; }
-.mark { display: block; width: 2.5rem; height: 2.5rem; border-radius: .8rem; filter: drop-shadow(-.12rem .05rem .28rem color-mix(in srgb, var(--neon-green) 24%, transparent)) drop-shadow(.12rem -.04rem .28rem color-mix(in srgb, var(--neon-orange) 22%, transparent)) drop-shadow(0 0 .55rem color-mix(in srgb, var(--neon-magenta) 48%, transparent)); }
+.heroArt { position: absolute; top: .2rem; right: 0; z-index: 0; width: min(15rem, 60%); height: 9rem; opacity: .75; background-position: center; background-size: cover; border-radius: .5rem; mask-image: linear-gradient(90deg, transparent 0%, #000 62%); -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 62%); pointer-events: none; }
+.identity { position: relative; z-index: 1; }
+.header strong { font-size: .82rem; font-weight: 700; letter-spacing: .01em; }
+.header small { display: block; margin-top: .1rem; color: var(--muted); font-family: var(--font-mono); font-size: .62rem; font-weight: 500; letter-spacing: .09em; text-transform: uppercase; }
+.mark { position: relative; z-index: 1; display: block; width: 4.25rem; height: 2.8125rem; object-fit: contain; }
 .main { padding: 0 1rem 2rem; }
-.nav { position: fixed; z-index: 10; inset: auto 0 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: .25rem; padding: .55rem .5rem calc(.55rem + env(safe-area-inset-bottom)); background: color-mix(in srgb, var(--surface) 94%, transparent); border-top: 1px solid var(--line); backdrop-filter: blur(16px); }
-.nav a { min-height: 2.75rem; display: grid; place-items: center; border-radius: .7rem; color: var(--muted); font-size: .7rem; font-weight: 700; text-transform: uppercase; text-decoration: none; }
-.nav a.active { color: var(--accent); background: var(--accent-soft); text-shadow: -.04rem 0 color-mix(in srgb, var(--neon-green) 28%, transparent), .04rem 0 color-mix(in srgb, var(--neon-orange) 24%, transparent), 0 0 .7rem color-mix(in srgb, var(--neon-magenta) 45%, transparent); }
+.nav { position: fixed; z-index: 10; inset: auto 0 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .25rem; padding: .5rem .5rem calc(.4rem + env(safe-area-inset-bottom)); background: color-mix(in srgb, var(--surface) 94%, transparent); border-top: 1px solid var(--line); }
+.nav a { min-width: 0; min-height: 2.75rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: .3rem; padding: .3rem 0; border-radius: .7rem; text-decoration: none; }
+.navIcon { width: 1.3rem; height: 1.3rem; background-color: var(--muted); -webkit-mask-size: contain; mask-size: contain; -webkit-mask-repeat: no-repeat; mask-repeat: no-repeat; -webkit-mask-position: center; mask-position: center; transition: background-color .15s ease, filter .15s ease; }
+.navLabel { max-width: 100%; overflow-wrap: anywhere; text-align: center; line-height: 1.25; color: var(--muted); font-family: var(--font-mono); font-size: .54rem; font-weight: 500; letter-spacing: .02em; text-transform: uppercase; }
+.nav a.active .navIcon { background-color: var(--accent); }
+.nav a.active .navLabel { max-width: 100%; overflow-wrap: anywhere; text-align: center; line-height: 1.25; color: var(--accent); }
 @media (min-width: 760px) { .nav { left: 50%; right: auto; width: min(48rem, 100%); transform: translateX(-50%); border: 1px solid var(--line); border-bottom: 0; border-radius: 1rem 1rem 0 0; } }

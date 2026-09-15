@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useId, useState } from 'react'
 import { CatalogImage } from '../../catalog/CatalogImage'
 import { CATALOG_VERSION_METADATA_KEY } from '../../catalog/seedCatalog'
 import type { Exercise, WorkoutExercise, WorkoutSet } from '../../domain/models'
@@ -15,6 +15,7 @@ import { validateSetFields, type SetFieldErrors, type SetFieldInput } from './va
 import { addSet, completeSet, removeSet, removeWorkoutExercise, updateSetFields, uncompleteSet, updateWorkoutExercise } from './workoutActions'
 import { SetRow } from './SetRow'
 import { ConfirmDialog } from './ConfirmDialog'
+import { ExerciseDetail } from '../exercises/ExerciseDetail'
 import { ExerciseDemoDialog } from './ExerciseDemoDialog'
 import styles from './WorkoutExerciseCard.module.css'
 
@@ -23,6 +24,9 @@ export interface WorkoutExerciseCardProps {
   workoutExercise: WorkoutExercise
   sets: WorkoutSet[]
   unit: WeightUnit
+  position: number
+  total: number
+  defaultExpanded: boolean
   onSetCompleted: (restSeconds: number, workoutExerciseId: string) => void
 }
 
@@ -34,14 +38,18 @@ function conciseReason(t: Translator, source: Exercise, candidate: Exercise): st
   return t('workoutExerciseCard.reasonSimilarProfile')
 }
 
-export function WorkoutExerciseCard({ db, workoutExercise, sets, unit, onSetCompleted }: WorkoutExerciseCardProps) {
+export function WorkoutExerciseCard({ db, workoutExercise, sets, unit, position, total, defaultExpanded, onSetCompleted }: WorkoutExerciseCardProps) {
   const { t } = useI18n()
+  const detailId = useId()
   const previous = usePreviousPerformance(db, workoutExercise.exerciseId, workoutExercise.workoutId)
   const exercise = useLiveQuery(() => db.exercises.get(workoutExercise.exerciseId), [db, workoutExercise.exerciseId])
   const [confirmRemoveOpen, setConfirmRemoveOpen] = useState(false)
   const [substitutionsOpen, setSubstitutionsOpen] = useState(false)
+  const [detailOpen, setDetailOpen] = useState(false)
   const [demoOpen, setDemoOpen] = useState(false)
+  const [expanded, setExpanded] = useState(defaultExpanded)
   const substitutionLocked = sets.some((set) => set.completed)
+  const completedSetCount = sets.filter((set) => set.completed).length
 
   const substitutions = useLiveQuery(async () => {
     if (!substitutionsOpen) return []
@@ -102,14 +110,26 @@ export function WorkoutExerciseCard({ db, workoutExercise, sets, unit, onSetComp
       <button type="button" className={styles.thumbnailButton} onClick={() => setDemoOpen(true)} disabled={!sourceExercise} aria-label={t('workoutExerciseCard.viewDemoAriaLabel', { name: workoutExercise.snapshot.name })}>
         <CatalogImage relativePath={sourceExercise?.media[0]} alt="" fallbackClassName={styles.thumbnailFallback} />
       </button>
-      <div className={styles.exerciseTitle}>
-        <h3>{workoutExercise.snapshot.name}</h3>
-        {sourceExercise?.difficulty === 'advanced' && <span className={styles.cautionBadge} role="img" aria-label={t('workoutExerciseCard.advancedCaution')} title={t('workoutExerciseCard.advancedCaution')}>!</span>}
-      </div>
+      <button type="button" className={styles.toggleButton} aria-expanded={expanded} aria-controls={detailId} onClick={() => setExpanded((open) => !open)}>
+        <span className={styles.caret} data-open={expanded} aria-hidden="true">▸</span>
+        <span className={styles.exerciseTitle}>
+          <span className={styles.positionLabel}>{t('workoutExerciseCard.position', { index: position, total })}</span>
+          <span className={styles.titleRow}>
+            <span role="heading" aria-level={3} className={styles.title}>{workoutExercise.snapshot.name}</span>
+            {sourceExercise?.difficulty === 'advanced' && <span className={styles.cautionBadge} role="img" aria-label={t('workoutExerciseCard.advancedCaution')} title={t('workoutExerciseCard.advancedCaution')}>!</span>}
+          </span>
+        </span>
+        <span className={styles.setsProgress}>{t('workoutExerciseCard.setsProgress', { completed: completedSetCount, total: sets.length })}</span>
+      </button>
+
+    </header>
+    <div className={styles.exerciseActions}>
+      <button type="button" className={styles.substituteButton} onClick={() => setDetailOpen(true)} disabled={!sourceExercise}>{t('exerciseDetail.viewDetails')}</button>
       <button type="button" className={styles.substituteButton} onClick={() => setSubstitutionsOpen((open) => !open)} disabled={substitutionLocked}>
         {t('workoutExerciseCard.substitute')}
       </button>
-    </header>
+      <button type="button" className={styles.removeExerciseButton} onClick={() => setConfirmRemoveOpen(true)}>{t('workoutExerciseCard.removeExercise')}</button>
+    </div>
 
     {substitutionLocked && <p className={styles.locked}>{t('workoutExerciseCard.substitutionLocked')}</p>}
     {substitutionsOpen && substitutions.status === 'loading' && <p role="status" className={styles.compactStatus}>{t('workoutExerciseCard.findingSubstitutes')}</p>}
@@ -122,23 +142,26 @@ export function WorkoutExerciseCard({ db, workoutExercise, sets, unit, onSetComp
       </li>)}
     </ol>}
 
-    <div className={styles.columnHeaders} aria-hidden="true"><span>{t('workoutExerciseCard.setColumn')}</span><span>{t('workoutExerciseCard.previousColumn')}</span><span>{t('workoutExerciseCard.weightColumn')}<br /><small>{unit}</small></span><span>{t('workoutExerciseCard.repsColumn')}</span><span>{t('workoutExerciseCard.completeColumn')}</span></div>
-    <ul className={styles.setList}>
-      {sets.map((set, index) => <SetRow
-        key={set.id}
-        set={set}
-        index={index}
-        unit={unit}
-        previous={formatPreviousSet(previousSets[index], unit)}
-        onCommitField={(field, value) => handleCommitField(set, field, value)}
-        onToggleComplete={() => handleToggleComplete(set)}
-        onDelete={() => removeSet(db, set.id)}
-      />)}
-    </ul>
+    <div id={detailId} className={styles.detail} hidden={!expanded}>
+      <div className={styles.columnHeaders} aria-hidden="true"><span>{t('workoutExerciseCard.setColumn')}</span><span>{t('workoutExerciseCard.previousColumn')}</span><span>{t('workoutExerciseCard.weightColumn')}<br /><small>{unit}</small></span><span>{t('workoutExerciseCard.repsColumn')}</span><span>{t('workoutExerciseCard.completeColumn')}</span></div>
+      <ul className={styles.setList}>
+        {sets.map((set, index) => <SetRow
+          key={set.id}
+          set={set}
+          index={index}
+          unit={unit}
+          previous={formatPreviousSet(previousSets[index], unit)}
+          onCommitField={(field, value) => handleCommitField(set, field, value)}
+          onToggleComplete={() => handleToggleComplete(set)}
+          onDelete={() => removeSet(db, set.id)}
+        />)}
+      </ul>
 
-    <button type="button" className={styles.addSetButton} onClick={() => void addSet(db, workoutExercise.id, 'working', sets)}>{t('workoutExerciseCard.addSet')}</button>
-    <button type="button" className={styles.removeExerciseButton} onClick={() => setConfirmRemoveOpen(true)}>{t('workoutExerciseCard.removeExercise')}</button>
+      <button type="button" className={styles.addSetButton} onClick={() => void addSet(db, workoutExercise.id, 'working', sets)}>{t('workoutExerciseCard.addSet')}</button>
 
+    </div>
+
+    {detailOpen && sourceExercise && <ExerciseDetail db={db} exercise={sourceExercise} onClose={() => setDetailOpen(false)} />}
     {demoOpen && sourceExercise && <ExerciseDemoDialog exercise={sourceExercise} onClose={() => setDemoOpen(false)} />}
     {confirmRemoveOpen && <ConfirmDialog
       title={t('workoutExerciseCard.removeConfirmTitle', { name: workoutExercise.snapshot.name })}

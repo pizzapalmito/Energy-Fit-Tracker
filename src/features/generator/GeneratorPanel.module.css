@@ -1,8 +1,8 @@
-.panel { margin-top: 1.5rem; padding: 1.1rem; border: 1px solid var(--line); border-radius: 1rem; background: var(--surface); }
+.panel { margin-top: 1.25rem; padding: 1rem; border: 1px solid var(--line); border-radius: var(--radius-card); background: var(--surface); }
 .heading, .resultHeader { display: flex; justify-content: space-between; gap: 1rem; align-items: center; }
-.heading h2 { margin: .15rem 0 0; }
-.heading > span, .resultHeader span { color: var(--muted); font-size: .82rem; }
-.eyebrow { margin: 0; color: var(--accent); font-size: .72rem; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; }
+.heading h2 { margin: .15rem 0 0; font-size: 1.05rem; }
+.heading > span, .resultHeader span { color: var(--muted); font-family: var(--font-mono); font-size: .68rem; text-transform: uppercase; letter-spacing: .04em; }
+.eyebrow { margin: 0; color: var(--accent); font-family: var(--font-mono); font-size: .65rem; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; }
 .readiness { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .8rem; }
 .readiness span { padding: .35rem .55rem; border-radius: 999px; background: var(--surface-raised); color: var(--muted); font-size: .75rem; text-transform: capitalize; }
 .readiness strong { color: var(--success); }

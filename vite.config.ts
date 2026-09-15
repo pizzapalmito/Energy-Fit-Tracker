@@ -17,19 +17,17 @@ export default defineConfig({
         display: 'standalone',
         start_url: './#/today',
         scope: './',
-        background_color: '#0d0f12',
-        theme_color: '#0d0f12',
+        background_color: '#05050a',
+        theme_color: '#05050a',
         icons: [
-          { src: 'icons/icon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any' },
           { src: 'icons/icon-192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },
           { src: 'icons/icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'any' },
-          { src: 'icons/icon-maskable.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'maskable' },
-          { src: 'icons/icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' }
+          { src: 'icons/icon-maskable-512.png', sizes: '512x512', type: 'image/png', purpose: 'maskable' }
         ]
       },
       workbox: {
         navigateFallback: 'index.html',
-        globPatterns: ['**/*.{js,css,html,svg,png,webp,json}'],
+        globPatterns: ['**/*.{js,css,html,svg,png,webp,json,ttf}'],
         maximumFileSizeToCacheInBytes: MAX_ASSET_BYTES,
         cleanupOutdatedCaches: true
       }

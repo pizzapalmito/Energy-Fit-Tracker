@@ -3,9 +3,11 @@ import { Bar, BarChart, CartesianGrid, ResponsiveContainer, Tooltip, XAxis, YAxi
 import { db as appDb } from '../../data/appDatabase'
 import type { RepwiseDatabase } from '../../data/db'
 import { useLiveQuery } from '../../data/useLiveQuery'
+import { DexieExerciseRepository } from '../../data/repositories/exerciseRepository'
 import { DeterministicRecoveryEngine } from '../../engines/recovery/recoveryEngine'
 import { useI18n } from '../../i18n/I18nContext'
 import { muscleLabel, readinessLabel, subjectiveStateLabel } from '../../i18n/enumLabels'
+import { ExerciseDetail } from '../exercises/ExerciseDetail'
 import { MuscleMap } from './MuscleMap'
 import { readinessStatus } from './readinessPresentation'
 import { buildExerciseProgress, trainingConsistency, workoutDurationMinutes } from './progressMetrics'
@@ -39,6 +41,11 @@ export function ProgressPage({ db = appDb }: { db?: RepwiseDatabase }) {
   const { t, tn, formatNumber, formatDate } = useI18n()
   const data = useLiveQuery(() => readProgress(db), [db])
   const [selectedMuscle, setSelectedMuscle] = useState<string>()
+  const [selectedRecordExerciseId, setSelectedRecordExerciseId] = useState<string>()
+  const selectedRecordExercise = useLiveQuery(
+    () => selectedRecordExerciseId ? new DexieExerciseRepository(db).get(selectedRecordExerciseId) : Promise.resolve(undefined),
+    [db, selectedRecordExerciseId],
+  )
   const selectedRecovery = data.status === 'ready' ? data.value.recovery.find((entry) => entry.muscleId === selectedMuscle) : undefined
   const chartData = useMemo(() => {
     if (data.status !== 'ready') return []
@@ -74,14 +81,31 @@ export function ProgressPage({ db = appDb }: { db?: RepwiseDatabase }) {
             {chartData.length === 0 ? <p>{t('progress.noCompletedWorkouts')}</p> : (
               <div className={styles.chart} aria-label={t('progress.volumeChartAriaLabel')}>
                 <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={chartData}><CartesianGrid stroke="#2b323b" vertical={false} /><XAxis dataKey="date" stroke="#9ba4ae" tickFormatter={chartDateLabel} /><YAxis stroke="#9ba4ae" /><Tooltip labelFormatter={(label) => typeof label === 'string' || typeof label === 'number' ? chartDateLabel(String(label)) : ''} /><Bar dataKey="volume" name={t('progress.volumeSeriesLabel')} fill="#ffb05c" radius={[6, 6, 0, 0]} /></BarChart>
+                  <BarChart data={chartData}><CartesianGrid stroke="#25252f" vertical={false} /><XAxis dataKey="date" stroke="#9d99a6" tickFormatter={chartDateLabel} /><YAxis stroke="#9d99a6" /><Tooltip labelFormatter={(label) => typeof label === 'string' || typeof label === 'number' ? chartDateLabel(String(label)) : ''} /><defs><linearGradient id="volume-gradient" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="var(--neon-magenta)" /><stop offset="100%" stopColor="#26174a" /></linearGradient></defs><Bar isAnimationActive={false} dataKey="volume" name={t('progress.volumeSeriesLabel')} fill="url(#volume-gradient)" maxBarSize={60} radius={[4, 4, 0, 0]} /></BarChart>
                 </ResponsiveContainer>
               </div>
             )}
           </section>
           <section className={styles.card}>
             <h2>{t('progress.exerciseRecords')}</h2>
-            {exerciseProgress.length === 0 ? <p>{t('progress.noRecords')}</p> : <div className={styles.records}>{exerciseProgress.slice(0, 8).map((metric) => <article key={metric.exerciseId}><div><strong>{metric.name}</strong><span>{tn('progress.sessionsCount', metric.sessions)}</span></div><p>{t('progress.recordSummary', { best: formatNumber(metric.bestLoadKg), oneRepMax: formatNumber(metric.estimatedOneRepMaxKg), volume: formatNumber(Math.round(metric.totalVolumeKg)) })}</p></article>)}</div>}
+            {exerciseProgress.length === 0 ? <p>{t('progress.noRecords')}</p> : <div className={styles.records}>{exerciseProgress.slice(0, 8).map((metric) => (
+              <button type="button" key={metric.exerciseId} className={styles.recordButton} onClick={() => setSelectedRecordExerciseId(metric.exerciseId)}>
+                <div><strong>{metric.name}</strong><span>{tn('progress.sessionsCount', metric.sessions)}</span></div>
+                <p>{t('progress.recordSummary', { best: formatNumber(metric.bestLoadKg), oneRepMax: formatNumber(metric.estimatedOneRepMaxKg), volume: formatNumber(Math.round(metric.totalVolumeKg)) })}</p>
+              </button>
+            ))}</div>}
+            {selectedRecordExerciseId && selectedRecordExercise.status === 'loading' && (
+              <p role="status" className={styles.recordDetailStatus}>{t('progress.recordDetailLoading')}</p>
+            )}
+            {selectedRecordExerciseId && (selectedRecordExercise.status === 'error' || (selectedRecordExercise.status === 'ready' && !selectedRecordExercise.value)) && (
+              <div className={styles.recordDetailStatus} role="alert">
+                <p>{selectedRecordExercise.status === 'error' ? t('progress.recordDetailError', { message: selectedRecordExercise.message }) : t('progress.recordDetailMissing')}</p>
+                <button type="button" onClick={() => setSelectedRecordExerciseId(undefined)}>{t('progress.recordDetailClose')}</button>
+              </div>
+            )}
+            {selectedRecordExerciseId && selectedRecordExercise.status === 'ready' && selectedRecordExercise.value && (
+              <ExerciseDetail db={db} exercise={selectedRecordExercise.value} onClose={() => setSelectedRecordExerciseId(undefined)} />
+            )}
           </section>
           <div className={styles.columns}>
             <section>

@@ -1,7 +1,7 @@
 .notice { position: fixed; z-index: 20; right: 1rem; bottom: calc(5rem + env(safe-area-inset-bottom)); left: 1rem; display: flex; align-items: center; gap: .65rem; max-width: 42rem; margin-inline: auto; padding: .8rem; border: 1px solid var(--accent); border-radius: .8rem; background: var(--surface-raised); box-shadow: 0 12px 32px #0008; pointer-events: none; }
 .notice div { display: grid; flex: 1; }
 .notice span { color: var(--muted); font-size: .78rem; }
-.notice button { min-height: 2.5rem; padding: 0 .7rem; border: 0; border-radius: .55rem; background: var(--accent); color: #180413; font-weight: 700; box-shadow: var(--accent-glow); pointer-events: auto; }
+.notice button { min-height: 2.75rem; padding: 0 .7rem; border: 0; border-radius: .55rem; background: var(--accent); color: #180413; font-weight: 700; box-shadow: var(--accent-glow); pointer-events: auto; }
 .notice button:disabled { opacity: .5; pointer-events: none; }
 .notice .dismiss { border: 1px solid var(--line); background: transparent; color: var(--text); }
 @media (max-width: 600px) { .notice { gap: .45rem; padding: .65rem; } .notice div { min-width: 0; } .notice strong { font-size: .88rem; } }

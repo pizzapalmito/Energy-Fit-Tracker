@@ -15,6 +15,12 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    container:
+      image: mcr.microsoft.com/playwright:v1.55.1-noble
+      options: --ipc=host
+    defaults:
+      run:
+        shell: bash
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
@@ -32,8 +38,21 @@ jobs:
           git clone --filter=blob:none https://github.com/yuhonas/free-exercise-db.git "$RUNNER_TEMP/free-exercise-db"
           git -C "$RUNNER_TEMP/free-exercise-db" checkout a859101d633a01c4a1a920d6a8ce41dabba0705f
           npm run catalog:check -- --source "$RUNNER_TEMP/free-exercise-db"
-      - run: npx playwright install --with-deps chromium webkit
-      - run: npm run test:e2e
+      - run: npm run test:e2e -- --reporter=line,html
+        env:
+          DEBUG: pw:browser
+          LIBGL_ALWAYS_SOFTWARE: '1'
+          GALLIUM_DRIVER: llvmpipe
+      - name: Preserve failed browser evidence
+        if: failure()
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-failure-evidence
+          path: |
+            playwright-report/
+            test-results/
+          retention-days: 7
+          if-no-files-found: ignore
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

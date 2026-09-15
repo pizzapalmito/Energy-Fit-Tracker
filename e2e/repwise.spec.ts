@@ -7,7 +7,7 @@ test.describe('Energy Fit Tracker core offline workflow', () => {
     await expect(page.getByText('Energy Fit Tracker', { exact: true }).first()).toBeVisible()
     const appMark = page.locator('header img').first()
     await expect(appMark).toBeVisible()
-    await expect(appMark).toHaveAttribute('src', '/Energy-Fit-Tracker/icons/icon.svg')
+    await expect(appMark).toHaveAttribute('src', '/Energy-Fit-Tracker/brand/eft-logo.webp')
     await expect.poll(() => appMark.evaluate((image) => (image as HTMLImageElement).complete && (image as HTMLImageElement).naturalWidth > 0)).toBe(true)
     const energyTheme = await page.evaluate(() => {
       const probe = document.createElement('span')
@@ -31,6 +31,11 @@ test.describe('Energy Fit Tracker core offline workflow', () => {
     expect(energyTheme.scanlines).toContain('repeating-linear-gradient')
     expect(energyTheme.headerTrail).toContain('linear-gradient')
     await expect(page.getByText('876 of 876 exercises')).toBeVisible({ timeout: 30_000 })
+    const firstCatalogName = (await page.locator('main ul > li > button').first().textContent())!
+    await page.getByRole('button', { name: 'A–Z ↑' }).click()
+    await expect(page.locator('main ul > li > button').first()).not.toHaveText(firstCatalogName)
+    await page.getByRole('button', { name: 'Z–A ↓' }).click()
+    await expect(page.locator('main ul > li > button').first()).toHaveText(firstCatalogName)
     await page.getByLabel('Search').fill('Barbell Bench Press - Medium Grip')
     await expect(page.getByText('1 of 876 exercises')).toBeVisible()
     await page.getByRole('button', { name: /Barbell Bench Press - Medium Grip/ }).click()
@@ -44,6 +49,7 @@ test.describe('Energy Fit Tracker core offline workflow', () => {
   test('persists an interrupted workout, set facts, and rest timer', async ({ page }) => {
     await page.goto('./#/today')
     await expect(page.getByText(/Catalog:.*up to date/)).toBeVisible({ timeout: 30_000 })
+    await page.locator('main details > summary').first().click()
     await page.getByLabel('Workout name').fill('Offline Push')
     await page.getByRole('button', { name: 'Start workout' }).click()
     await expect(page).toHaveURL(/#\/workout$/)
@@ -61,6 +67,17 @@ test.describe('Energy Fit Tracker core offline workflow', () => {
     // latest value when the browser closes or reloads before a blur event.
     await page.reload()
     await expect(page.getByLabel('Load (kg)')).toHaveValue('70')
+    // Disclosure must preserve unsaved validation state, not remount the editor.
+    const disclosure = page.locator('article button[aria-expanded]').first()
+    await page.getByLabel('Load (kg)').fill('-2')
+    await expect(page.getByLabel('Load (kg)')).toHaveAttribute('aria-invalid', 'true')
+    await disclosure.click()
+    await expect(disclosure).toHaveAttribute('aria-expanded', 'false')
+    await disclosure.press('Enter')
+    await expect(disclosure).toHaveAttribute('aria-expanded', 'true')
+    await expect(page.getByLabel('Load (kg)')).toHaveValue('-2')
+    await expect(page.getByLabel('Load (kg)')).toHaveAttribute('aria-invalid', 'true')
+    await page.getByLabel('Load (kg)').fill('70')
     await page.getByLabel('Reps').fill('8')
     await page.getByRole('button', { name: '+ Add Set' }).click()
     await expect(page.getByLabel('Load (kg)')).toHaveCount(2)
@@ -104,9 +121,30 @@ test.describe('Energy Fit Tracker core offline workflow', () => {
     await expect(page.getByLabel('Reps')).toHaveValue('8')
     await expect(page.getByRole('button', { name: 'Completed' })).toBeVisible()
     await expect(page.getByRole('group', { name: 'Rest timer' })).toBeVisible()
+    await page.getByRole('link', { name: 'Exercises', exact: true }).click()
+    await page.getByLabel('Search').fill('Dumbbell Bench Press')
+    await page.getByRole('button', { name: /^Dumbbell Bench Press Chest/ }).click()
+    const catalogDetail = page.getByRole('dialog', { name: 'Dumbbell Bench Press', exact: true })
+    await catalogDetail.getByRole('button', { name: 'Add to workout', exact: true }).click()
+    await expect(catalogDetail.getByText('Added to your workout.')).toBeVisible()
+    await catalogDetail.getByRole('link', { name: 'Open workout' }).click()
+    await expect(page.getByLabel('Workout name')).toHaveValue('Offline Push')
+    await expect(page.locator('main article')).toHaveCount(2)
     await page.getByRole('button', { name: 'Finish workout' }).click()
+    await expect(page).toHaveURL(/#\/workout\/summary\//)
+    await expect(page.getByRole('heading', { name: /summary/i })).toBeVisible()
+    await expect(page.getByText('Offline Push', { exact: true })).toBeVisible()
+    await page.reload()
+    await expect(page.getByText('Offline Push', { exact: true })).toBeVisible()
+    await page.getByRole('button', { name: 'Done', exact: true }).click()
     await expect(page).toHaveURL(/#\/today$/)
     await expect(page.getByText('Offline Push')).toBeVisible()
+    await page.getByRole('link', { name: 'Progress', exact: true }).click()
+    await page.getByRole('button', { name: /^Barbell Bench Press - Medium Grip 1 session/ }).click()
+    const recordDetail = page.getByRole('dialog', { name: 'Barbell Bench Press - Medium Grip' })
+    await expect(recordDetail.getByRole('heading', { name: 'Recent performance' })).toBeVisible()
+    await expect(recordDetail.getByText(/70kg × 8/)).toBeVisible()
+    await recordDetail.getByRole('button', { name: 'Close exercise details' }).click()
   })
 
   test('starts the selected built-in rotation day as an editable active workout', async ({ page }) => {
@@ -146,6 +184,16 @@ test.describe('Energy Fit Tracker core offline workflow', () => {
     await context.setOffline(true)
     await page.reload()
     await expect(page.getByRole('heading', { name: 'Today' })).toBeVisible()
+    const offlineTypography = await page.evaluate(async () => {
+      await document.fonts.ready
+      const archivo = Array.from(document.fonts).filter((font) => font.family === 'Archivo')
+      return {
+        family: getComputedStyle(document.body).fontFamily,
+        loaded: archivo.length > 0 && archivo.every((font) => font.status === 'loaded'),
+      }
+    })
+    expect(offlineTypography.family).toContain('Archivo')
+    expect(offlineTypography.loaded).toBe(true)
     await page.getByRole('link', { name: 'Exercises' }).click()
     await expect(page.getByText('876 of 876 exercises')).toBeVisible({ timeout: 30_000 })
     await expect(page.getByText(/offline — using local data/)).toHaveCount(0)
@@ -182,5 +230,31 @@ test.describe('Energy Fit Tracker core offline workflow', () => {
     await page.getByRole('button', { name: 'English' }).click()
     await expect(page.getByRole('heading', { name: 'Settings' })).toBeVisible()
     await expect(page.getByRole('button', { name: 'English' })).toHaveAttribute('aria-pressed', 'true')
+  })
+
+  test('keeps primary screens and localized navigation within a narrow phone viewport', async ({ page }) => {
+    await page.setViewportSize({ width: 320, height: 740 })
+    await page.goto('./#/settings')
+    for (const [language, locale] of [['English', 'en'], ['Português (Brasil)', 'pt-BR'], ['Français', 'fr'], ['Español', 'es']]) {
+      await page.getByRole('button', { name: language, exact: true }).click()
+      await expect.poll(() => page.evaluate(() => document.documentElement.lang)).toBe(locale)
+      for (const route of ['settings', 'today', 'exercises', 'progress', 'workout']) {
+        await page.locator(`nav a[href="#/${route}"]`).click()
+        await expect(page.locator('main h1')).toBeVisible()
+        await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(true)
+        const tabs = await page.locator('nav a').evaluateAll((links) => links.map((link) => {
+          const rect = link.getBoundingClientRect()
+          return { width: rect.width, height: rect.height, left: rect.left, right: rect.right }
+        }))
+        expect(tabs).toHaveLength(5)
+        for (const tab of tabs) {
+          expect(tab.width).toBeGreaterThanOrEqual(44)
+          expect(tab.height).toBeGreaterThanOrEqual(44)
+          expect(tab.left).toBeGreaterThanOrEqual(0)
+          expect(tab.right).toBeLessThanOrEqual(321)
+        }
+      }
+      await page.locator('nav a[href="#/settings"]').click()
+    }
   })
 })
