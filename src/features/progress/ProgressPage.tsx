@@ -25,7 +25,7 @@ async function readProgress(db: RepwiseDatabase) {
     return { workout, exercises: workoutExercises, sets: workoutSets, volumeKg }
   })
   const recovery = new DeterministicRecoveryEngine().calculate(new Date().toISOString(), workouts, exercises, sets, feedback)
-  return { entries, recovery, exercises, sets }
+  return { entries, recovery, exercises, sets, workouts }
 }
 
 function localDate() {
@@ -45,7 +45,7 @@ export function ProgressPage({ db = appDb }: { db?: RepwiseDatabase }) {
     return data.value.entries.slice(0, 10).reverse().map((entry) => ({ date: entry.workout.date, volume: Math.round(entry.volumeKg) }))
   }, [data])
   const chartDateLabel = (value: string) => formatDate(value, { month: 'short', day: 'numeric' })
-  const exerciseProgress = useMemo(() => data.status === 'ready' ? buildExerciseProgress(data.value.exercises, data.value.sets) : [], [data])
+  const exerciseProgress = useMemo(() => data.status === 'ready' ? buildExerciseProgress(data.value.exercises, data.value.sets, data.value.workouts) : [], [data])
 
   async function saveFeedback(subjectiveState: 'very_sore' | 'sore' | 'normal' | 'fresh') {
     if (!selectedMuscle) return
@@ -63,7 +63,7 @@ export function ProgressPage({ db = appDb }: { db?: RepwiseDatabase }) {
         <>
           <div className={styles.metrics}>
             <article><strong>{formatNumber(data.value.entries.length)}</strong><span>{t('progress.workoutsMetric')}</span></article>
-            <article><strong>{formatNumber(data.value.sets.filter((set) => set.completed && set.type === 'working').length)}</strong><span>{t('progress.workingSetsMetric')}</span></article>
+            <article><strong>{formatNumber(data.value.entries.reduce((count, entry) => count + entry.sets.filter((set) => set.type === 'working').length, 0))}</strong><span>{t('progress.workingSetsMetric')}</span></article>
             <article><strong>{formatNumber(Math.round(data.value.entries.reduce((sum, entry) => sum + entry.volumeKg, 0)))}</strong><span>{t('progress.volumeMetric')}</span></article>
             <article><strong>{trainingConsistency(data.value.entries.map((entry) => entry.workout))}%</strong><span>{t('progress.consistencyMetric')}</span></article>
             <article><strong>{data.value.entries.length === 0 ? 0 : Math.round(data.value.entries.reduce((sum, entry) => sum + workoutDurationMinutes(entry.workout), 0) / data.value.entries.length)}</strong><span>{t('progress.avgMinutesMetric')}</span></article>

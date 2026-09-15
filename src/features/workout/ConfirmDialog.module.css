@@ -29,5 +29,5 @@
 .actions button { min-height: 2.75rem; min-width: 2.75rem; padding: 0 1.1rem; border-radius: .6rem; font-weight: 700; }
 
 .cancelButton { border: 1px solid var(--line); background: var(--surface-raised); color: var(--text); }
-.confirmButton { border: 1px solid var(--danger); background: var(--danger); color: #1a0808; }
+.confirmButton { border: 1px solid var(--danger); background: var(--danger); color: #1a0808; box-shadow: var(--danger-glow); }
 .confirmButtonNeutral { border: 1px solid var(--accent); background: var(--accent); color: #180413; box-shadow: var(--accent-glow); }

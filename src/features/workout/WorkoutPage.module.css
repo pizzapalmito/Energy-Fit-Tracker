@@ -16,7 +16,7 @@
 
 .headerActions { display: flex; gap: .6rem; flex-wrap: wrap; }
 .finishButton { min-height: 2.75rem; padding: 0 1.2rem; border-radius: .7rem; border: 1px solid var(--success); background: var(--success); color: #062015; font-weight: 800; }
-.discardButton { min-height: 2.75rem; padding: 0 1.2rem; border-radius: .7rem; border: 1px solid var(--danger); background: transparent; color: var(--danger); font-weight: 700; }
+.discardButton { min-height: 2.75rem; padding: 0 1.2rem; border-radius: .7rem; border: 1px solid var(--danger); background: var(--danger-soft); color: var(--danger); font-weight: 800; box-shadow: var(--danger-glow); }
 
 .exerciseList { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .85rem; }
 

@@ -7,8 +7,14 @@ export function estimatedOneRepMax(loadKg: number | undefined, reps: number | un
   return Math.round(loadKg * (1 + Math.min(reps, 30) / 30) * 10) / 10
 }
 
-export function buildExerciseProgress(exercises: WorkoutExercise[], sets: WorkoutSet[]): ExerciseProgressMetric[] {
-  const byInstance = new Map(exercises.map((exercise) => [exercise.id, exercise]))
+/**
+ * Historical records (personal bests, volume, session counts) must reflect only completed
+ * workouts — an active workout's in-progress sets or a discarded workout's sets must never
+ * contribute, even though their WorkoutSet rows are `completed: true`.
+ */
+export function buildExerciseProgress(exercises: WorkoutExercise[], sets: WorkoutSet[], workouts: Workout[]): ExerciseProgressMetric[] {
+  const completedWorkoutIds = new Set(workouts.filter((workout) => workout.status === 'completed').map((workout) => workout.id))
+  const byInstance = new Map(exercises.filter((exercise) => completedWorkoutIds.has(exercise.workoutId)).map((exercise) => [exercise.id, exercise]))
   const metrics = new Map<string, ExerciseProgressMetric & { sessionIds: Set<string> }>()
   for (const set of sets) {
     if (!set.completed || set.type !== 'working') continue
@@ -29,16 +35,51 @@ export function workoutDurationMinutes(workout: Workout): number {
   return Math.max(0, Math.round((Date.parse(workout.endTime) - Date.parse(workout.startTime)) / 60000))
 }
 
+/** Monday of the local calendar week containing `date` (Mon=1..Sun=7), as a YYYY-MM-DD key, ignoring time-of-day. */
+function localWeekStartKey(date: Date): string {
+  const monday = new Date(date.getFullYear(), date.getMonth(), date.getDate())
+  const day = monday.getDay() || 7
+  monday.setDate(monday.getDate() - day + 1)
+  const month = String(monday.getMonth() + 1).padStart(2, '0')
+  const dayOfMonth = String(monday.getDate()).padStart(2, '0')
+  return `${monday.getFullYear()}-${month}-${dayOfMonth}`
+}
+
+/** Parses a `YYYY-MM-DD` workout date as a local-midnight Date, matching how it was produced (see todayIsoDate). */
+function parseLocalIsoDate(isoDate: string): Date {
+  const [year, month, day] = isoDate.split('-').map(Number)
+  return new Date(year!, (month ?? 1) - 1, day)
+}
+
+/**
+ * Percentage of distinct Monday-based local/calendar weeks — the current week plus the
+ * previous `weeks - 1` weeks — that contain at least one completed workout. Only weeks
+ * within that fixed window count, so the result is always clamped to 0..100 regardless of
+ * how workout dates land relative to `now` (a rolling millisecond window could previously
+ * span more distinct weeks than `weeks`, pushing the percentage above 100). Workouts dated
+ * later than today (local date, compared date-only so time-of-day never excludes today's
+ * own workout) are excluded even when they fall inside the current calendar week.
+ */
 export function trainingConsistency(workouts: Workout[], now = new Date(), weeks = 8): number {
-  const activeWeeks = new Set<string>()
-  const cutoff = now.getTime() - weeks * 7 * 86400000
-  for (const workout of workouts) {
-    const time = Date.parse(`${workout.date}T00:00:00Z`)
-    if (workout.status !== 'completed' || time < cutoff || time > now.getTime()) continue
-    const date = new Date(time)
-    const day = date.getUTCDay() || 7
-    date.setUTCDate(date.getUTCDate() - day + 1)
-    activeWeeks.add(date.toISOString().slice(0, 10))
+  if (weeks <= 0) return 0
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate())
+  const currentWeekStart = parseLocalIsoDate(localWeekStartKey(now))
+  const allowedWeeks = new Set<string>()
+  for (let i = 0; i < weeks; i += 1) {
+    const weekStart = new Date(currentWeekStart)
+    weekStart.setDate(currentWeekStart.getDate() - i * 7)
+    allowedWeeks.add(localWeekStartKey(weekStart))
   }
-  return Math.round(activeWeeks.size / weeks * 100)
+
+  const activeWeeks = new Set<string>()
+  for (const workout of workouts) {
+    if (workout.status !== 'completed') continue
+    const workoutDate = parseLocalIsoDate(workout.date)
+    if (workoutDate.getTime() > today.getTime()) continue
+    const key = localWeekStartKey(workoutDate)
+    if (allowedWeeks.has(key)) activeWeeks.add(key)
+  }
+
+  const percent = (activeWeeks.size / weeks) * 100
+  return Math.round(Math.min(100, Math.max(0, percent)))
 }

@@ -1,4 +1,4 @@
-import { render, screen, waitFor } from '@testing-library/react'
+import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
 import { beforeEach, describe, expect, it } from 'vitest'
 import { createDatabase, type RepwiseDatabase } from '../../data/db'
@@ -108,6 +108,17 @@ describe('SettingsPage language control', () => {
 })
 
 describe('SettingsPage workout preferences', () => {
+  it('does not let late initial settings overwrite a duration the user already edited', async () => {
+    await db.settings.put({ id: SETTINGS_SINGLETON_ID, unit: 'kg', defaultDurationMinutes: 55 })
+    render(<SettingsPage db={db} />)
+
+    const duration = screen.getByLabelText('Default workout duration')
+    fireEvent.change(duration, { target: { value: '45' } })
+
+    await waitFor(() => expect(screen.getByRole('button', { name: 'Save settings' })).toBeEnabled())
+    expect(duration).toHaveValue(45)
+  })
+
   it('allows replacing the duration, blocks an empty value, and saves preferences explicitly', async () => {
     await db.settings.put({ id: SETTINGS_SINGLETON_ID, unit: 'kg', trainingGoal: 'hypertrophy', preferredSplit: 'full_body', defaultDurationMinutes: 55 })
     const user = userEvent.setup()

@@ -8,26 +8,59 @@ import styles from './SetRow.module.css'
 
 interface NumberFieldProps {
   id: string
+  draftKey: string
   label: string
   value: number | undefined
   error?: string
   min?: number
   max?: number
   inputMode?: 'decimal' | 'numeric'
-  onCommit: (value: number | undefined) => void
+  onCommit: (value: number | undefined) => Promise<boolean>
 }
 
-function NumberField({ id, label, value, error, min, max, inputMode = 'decimal', onCommit }: NumberFieldProps) {
-  const [text, setText] = useState(value === undefined ? '' : String(value))
+const DRAFT_PREFIX = 'energy-fit-tracker:set-draft:'
+
+function readDraft(key: string): string | undefined {
+  try { return localStorage.getItem(`${DRAFT_PREFIX}${key}`) ?? undefined } catch { return undefined }
+}
+
+function writeDraft(key: string, value: string) {
+  try { localStorage.setItem(`${DRAFT_PREFIX}${key}`, value) } catch { /* IndexedDB remains the primary persistence path. */ }
+}
+
+function clearDraft(key: string, expectedValue: string) {
+  try {
+    const storageKey = `${DRAFT_PREFIX}${key}`
+    if (localStorage.getItem(storageKey) === expectedValue) localStorage.removeItem(storageKey)
+  } catch { /* Ignore unavailable localStorage. */ }
+}
+
+function NumberField({ id, draftKey, label, value, error, min, max, inputMode = 'decimal', onCommit }: NumberFieldProps) {
+  const [text, setText] = useState(() => readDraft(draftKey) ?? (value === undefined ? '' : String(value)))
   const focused = useRef(false)
 
   useEffect(() => {
-    if (!focused.current) setText(value === undefined ? '' : String(value))
-  }, [value])
+    if (!focused.current && readDraft(draftKey) === undefined) setText(value === undefined ? '' : String(value))
+  }, [draftKey, value])
 
+  useEffect(() => {
+    const pendingDraft = readDraft(draftKey)
+    if (pendingDraft !== undefined) commit(pendingDraft)
+    // A persisted draft belongs to this stable set/field key. Prop changes do not
+    // re-run recovery while the same NumberField remains mounted.
+  }, [draftKey])
+
+  /** Commits empty and parseable values immediately; an unparseable in-progress keystroke (e.g. a lone "-") is left uncommitted rather than surfacing a premature error. */
   function commit(rawValue: string) {
     const trimmed = rawValue.trim()
-    onCommit(trimmed === '' ? undefined : Number(trimmed))
+    let write: Promise<boolean> | undefined
+    if (trimmed === '') {
+      write = onCommit(undefined)
+    } else {
+      const parsed = Number(trimmed)
+      if (!Number.isNaN(parsed)) write = onCommit(parsed)
+    }
+    if (write) void write.then((saved) => { if (saved) clearDraft(draftKey, rawValue) })
   }
 
   return (
@@ -41,7 +74,11 @@ function NumberField({ id, label, value, error, min, max, inputMode = 'decimal',
         max={max}
         step="any"
         value={text}
-        onChange={(e) => setText(e.target.value)}
+        onChange={(e) => {
+          writeDraft(draftKey, e.target.value)
+          setText(e.target.value)
+          commit(e.target.value)
+        }}
         onFocus={() => { focused.current = true }}
         onBlur={(event) => {
           focused.current = false
@@ -81,6 +118,7 @@ export function SetRow({ set, index, unit, previous, onCommitField, onToggleComp
   const [deleteRevealed, setDeleteRevealed] = useState(false)
   const [deleting, setDeleting] = useState(false)
   const pendingWrites = useRef(new Set<Promise<boolean>>())
+  const fieldWrites = useRef<Partial<Record<keyof SetFieldInput, { value: number | undefined; promise: Promise<boolean>; settled: boolean }>>>({})
   const pointerStart = useRef<{ x: number; y: number } | undefined>(undefined)
 
   function trackWrite(write: Promise<boolean>) {
@@ -88,16 +126,28 @@ export function SetRow({ set, index, unit, previous, onCommitField, onToggleComp
     void write.finally(() => pendingWrites.current.delete(write))
   }
 
-  function commitAndTrack(field: keyof SetFieldInput, value: number | undefined) {
+  /**
+   * Skips re-requesting a value that's already in flight for the same field (e.g. an immediate on-change
+   * commit followed by a blur with the same text), and otherwise chains onto any still-pending write for
+   * that field so an older write can never start after — and overwrite — a newer one.
+   */
+  function commitAndTrack(field: keyof SetFieldInput, value: number | undefined): Promise<boolean> {
+    const existing = fieldWrites.current[field]
+    if (existing && !existing.settled && existing.value === value) return existing.promise
     setSaveError(undefined)
-    const write = onCommitField(field, value).then((fieldErrors) => {
+    const runWrite = (): Promise<boolean> => onCommitField(field, value).then((fieldErrors) => {
       setErrors((prev) => ({ ...prev, [field]: fieldErrors[field] }))
       return !fieldErrors[field]
     }).catch(() => {
       setSaveError(t('setRow.saveError'))
       return false
     })
+    const write = existing && !existing.settled ? existing.promise.then(runWrite) : runWrite()
+    const state = { value, promise: write, settled: false }
+    fieldWrites.current[field] = state
     trackWrite(write)
+    void write.finally(() => { state.settled = true })
+    return write
   }
 
   async function toggleComplete() {
@@ -154,6 +204,7 @@ export function SetRow({ set, index, unit, previous, onCommitField, onToggleComp
         <div className={styles.weightField}>
           <NumberField
             id={`${baseId}-load`}
+            draftKey={`${set.id}:load:${unit}`}
             label={t('setRow.loadLabel', { unit })}
             value={set.loadKg === undefined ? undefined : kgToDisplayWeight(set.loadKg, unit)}
             error={errors.loadKg}
@@ -162,7 +213,7 @@ export function SetRow({ set, index, unit, previous, onCommitField, onToggleComp
           />
         </div>
         <div className={styles.repsField}>
-          <NumberField id={`${baseId}-reps`} label={t('setRow.repsLabel')} value={set.reps} error={errors.reps} min={0} inputMode="numeric" onCommit={(value) => commitAndTrack('reps', value)} />
+          <NumberField id={`${baseId}-reps`} draftKey={`${set.id}:reps`} label={t('setRow.repsLabel')} value={set.reps} error={errors.reps} min={0} inputMode="numeric" onCommit={(value) => commitAndTrack('reps', value)} />
         </div>
         <button type="button" className={styles.completeButton} aria-label={set.completed ? t('setRow.completed') : t('setRow.markComplete')} aria-pressed={set.completed} onClick={() => void toggleComplete()}>{set.completed ? '✓' : '○'}</button>
         {saveError && <p className={styles.fieldError} role="alert">{saveError}</p>}

@@ -57,6 +57,10 @@ test.describe('Energy Fit Tracker core offline workflow', () => {
     await expect(page.getByRole('dialog', { name: 'Barbell Bench Press - Medium Grip' })).toBeVisible()
     await page.getByRole('button', { name: 'Close demonstration' }).click()
     await page.getByLabel('Load (kg)').fill('70')
+    // Reload while the edited field still owns focus. This guards against losing the
+    // latest value when the browser closes or reloads before a blur event.
+    await page.reload()
+    await expect(page.getByLabel('Load (kg)')).toHaveValue('70')
     await page.getByLabel('Reps').fill('8')
     await page.getByRole('button', { name: '+ Add Set' }).click()
     await expect(page.getByLabel('Load (kg)')).toHaveCount(2)
@@ -73,6 +77,26 @@ test.describe('Energy Fit Tracker core offline workflow', () => {
 
     await page.getByRole('button', { name: 'Mark complete' }).click()
     await expect(page.getByRole('group', { name: 'Rest timer' })).toBeVisible()
+    const completedSetDelete = page.getByRole('button', { name: 'Delete set 1' })
+    const completedSetRow = completedSetDelete.locator('..')
+    await expect(completedSetRow).toHaveAttribute('data-revealed', 'false')
+    expect(await completedSetDelete.evaluate((button) => {
+      const bounds = button.getBoundingClientRect()
+      const topElement = document.elementFromPoint(bounds.right - 8, bounds.top + bounds.height / 2)
+      return topElement === button || button.contains(topElement)
+    })).toBe(false)
+    const neonOrange = await page.evaluate(() => {
+      const probe = document.createElement('span')
+      probe.style.color = 'var(--neon-orange)'
+      probe.style.boxShadow = 'var(--danger-glow)'
+      document.body.append(probe)
+      const style = getComputedStyle(probe)
+      const result = { color: style.color, glow: style.boxShadow }
+      probe.remove()
+      return result
+    })
+    expect(neonOrange.color).toBe('rgb(255, 172, 0)')
+    expect(neonOrange.glow).not.toBe('none')
 
     await page.reload()
     await expect(page.getByLabel('Workout name')).toHaveValue('Offline Push')
@@ -109,6 +133,12 @@ test.describe('Energy Fit Tracker core offline workflow', () => {
     await page.getByRole('button', { name: 'Generate' }).click()
     await expect(page.getByRole('button', { name: 'Start this workout' })).toBeVisible()
     await expect(page.locator('section').filter({ hasText: 'Build a workout' }).locator('ol > li').first()).toBeVisible()
+    await page.getByRole('button', { name: 'Start this workout' }).click()
+    await expect(page).toHaveURL(/#\/workout$/)
+    await expect(page.getByRole('button', { name: '+ Add Set' }).first()).toBeVisible()
+    await page.getByRole('button', { name: 'Discard' }).click()
+    await page.getByRole('button', { name: 'Discard' }).last().click()
+    await expect(page).toHaveURL(/#\/today$/)
 
     await page.evaluate(async () => { await navigator.serviceWorker.ready })
     await page.reload()
