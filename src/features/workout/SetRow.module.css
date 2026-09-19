@@ -13,6 +13,6 @@
 .field input:focus { border-color: var(--accent); outline: 2px solid var(--accent-soft); }
 .field input[aria-invalid="true"] { border-color: var(--danger); }
 .completeButton { min-width: 2.75rem; min-height: 2.75rem; padding: 0; border: 1px solid var(--line); border-radius: 50%; background: var(--surface-raised); color: var(--muted); font-size: 1.25rem; font-weight: 900; }
-.completeButton[aria-pressed="true"] { border-color: var(--success); background: var(--success); color: #062015; }
+.completeButton[aria-pressed="true"] { border-color: var(--success); background: var(--success); color: var(--bg); }
 .fieldError { grid-column: 2 / -1; margin: 0; color: var(--danger); font-size: .72rem; }
 @media (max-width: 370px) { .row { grid-template-columns: 1.5rem minmax(3rem, 1fr) minmax(3.7rem, .85fr) minmax(3rem, .7fr) 2.75rem; gap: .25rem; } .previous { font-size: .68rem; } }

@@ -1,4 +1,4 @@
-.page { display: grid; gap: 1rem; padding-block: .6rem 3rem; }
+.page { display: grid; gap: 1rem; padding: 1rem 1.125rem 3rem; }
 .page h1 { margin: 0; }
 .page h2 { margin: 0 0 .75rem; font-size: 1rem; }
 .page h3 { margin: 0 0 .75rem; }

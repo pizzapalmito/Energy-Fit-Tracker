@@ -1,4 +1,4 @@
-.page { display: grid; gap: .9rem; padding-block: .6rem 3rem; }
+.page { display: grid; gap: .9rem; padding: 1rem 1.125rem 3rem; }
 .page h1 { margin: 0; }
 .page h2 { margin-top: 0; font-size: 1rem; }
 .eyebrow { margin: 0; color: var(--accent); font-family: var(--font-mono); text-transform: uppercase; letter-spacing: .14em; font-size: .68rem; font-weight: 500; }
@@ -13,7 +13,7 @@
 .fieldHint, .fieldError { margin: .35rem 0 0; font-size: .75rem; }
 .fieldHint { color: var(--muted); }
 .fieldError { color: var(--danger); font-weight: 700; }
-.page .saveButton { width: 100%; margin-top: 1rem; border-color: var(--neon-green); background: var(--neon-green); color: #032216; font-weight: 900; box-shadow: 0 0 1rem color-mix(in srgb, var(--neon-green) 18%, transparent); }
+.page .saveButton { width: 100%; margin-top: 1rem; border-color: var(--neon-green); background: var(--neon-green); color: var(--bg); font-weight: 900; box-shadow: 0 0 1rem color-mix(in srgb, var(--neon-green) 18%, transparent); }
 .page .saveButton:disabled { border-color: var(--line); background: var(--surface-raised); color: var(--muted); box-shadow: none; opacity: .7; }
 .profile { display: block; width: 100%; margin-bottom: .5rem; text-align: left; }
 

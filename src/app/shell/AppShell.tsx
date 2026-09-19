@@ -26,8 +26,9 @@ export function AppShell() {
       </header>
       <main className={styles.main}><Suspense fallback={<p role="status">{t('app.loading')}</p>}><Outlet /></Suspense></main>
       <nav className={styles.nav} aria-label={t('nav.primary')}>
-        {routes.map((route) => (
+        {routes.map((route, index) => (
           <NavLink key={route} to={`/${route}`} className={({ isActive }) => isActive ? styles.active : undefined}>
+            <span className={styles.navIndex} aria-hidden="true">{String(index + 1).padStart(2, '0')}</span>
             <span className={styles.navIcon} aria-hidden="true" style={{ WebkitMaskImage: `url(${base}icons/${NAV_ICON_FILES[route]})`, maskImage: `url(${base}icons/${NAV_ICON_FILES[route]})` }} />
             <span className={styles.navLabel}>{t(`nav.${route}`)}</span>
           </NavLink>

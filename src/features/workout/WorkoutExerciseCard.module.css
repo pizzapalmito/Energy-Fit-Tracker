@@ -28,7 +28,7 @@
 .substitutions div { display: grid; min-width: 0; }
 .substitutions strong { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: .82rem; }
 .substitutions span { color: var(--muted); font-size: .68rem; }
-.substitutions button { min-height: 2.75rem; padding: 0 .65rem; border: 1px solid var(--accent); border-radius: .55rem; background: var(--accent); color: #180413; font-weight: 800; box-shadow: var(--accent-glow); }
+.substitutions button { min-height: 2.75rem; padding: 0 .65rem; border: 1px solid var(--accent); border-radius: .55rem; background: var(--accent); color: var(--bg); font-weight: 800; box-shadow: var(--accent-glow); }
 @media (max-width: 370px) { .header { grid-template-columns: 3rem minmax(0, 1fr); gap: .45rem; } .thumbnailButton { width: 3rem; height: 3rem; } .substituteButton { padding: 0 .4rem; font-size: .72rem; } .columnHeaders { grid-template-columns: 1.5rem minmax(3rem, 1fr) minmax(3.7rem, .85fr) minmax(3rem, .7fr) 2.75rem; gap: .25rem; } }
 
 .exerciseActions { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .5rem; }
