@@ -2,13 +2,13 @@ import type { ScoredExercise, SubstitutionEngine } from '../../domain/contracts'
 import type { Exercise } from '../../domain/models'
 import { PRIMARY_WEIGHT_THRESHOLD } from '../shared/muscleContribution'
 
-export const SUBSTITUTION_ENGINE_VERSION = 'substitution-v1'
+export const SUBSTITUTION_ENGINE_VERSION = 'substitution-v2'
 
 /** Point budget for each scoring factor; must total 100. */
 export const SUBSTITUTION_WEIGHTS = {
   primarySimilarity: 40,
   exactMovement: 30,
-  equipmentOverlap: 10,
+  differentEquipment: 10,
   difficultyProximity: 10,
   secondarySimilarity: 10,
 } as const
@@ -38,10 +38,22 @@ function isEquipmentAvailable(exercise: Exercise, availableEquipment: readonly s
   return exercise.equipment.every((eq) => eq === ALWAYS_AVAILABLE_EQUIPMENT || available.has(eq))
 }
 
+function hasSharedPrimaryMuscle(source: Set<string>, candidate: Set<string>): boolean {
+  for (const muscleId of source) if (candidate.has(muscleId)) return true
+  return false
+}
+
+function usesDifferentEquipment(source: Set<string>, candidate: readonly string[]): boolean {
+  return candidate.every((equipment) => !source.has(equipment))
+}
+
 /**
  * Deterministic, pure substitution engine. Scores candidates 0-100 across
  * five weighted factors and filters out the current exercise, exercises
- * flagged `excluded`, and exercises requiring unavailable equipment.
+ * flagged `excluded`, exercises requiring unavailable equipment, candidates
+ * without a shared primary muscle, and candidates that reuse any source
+ * equipment. This keeps the trained area stable while moving the user to a
+ * genuinely different equipment station.
  * Ties are broken by exercise id (ascending) for stable, reproducible order.
  */
 export class WeightedSubstitutionEngine implements SubstitutionEngine {
@@ -59,10 +71,12 @@ export class WeightedSubstitutionEngine implements SubstitutionEngine {
 
       const candidatePrimary = primaryMuscleIds(candidate)
       const candidateSecondary = secondaryMuscleIds(candidate)
+      if (!hasSharedPrimaryMuscle(sourcePrimary, candidatePrimary)) continue
+      if (!usesDifferentEquipment(sourceEquipment, candidate.equipment)) continue
 
       const primaryScore = jaccard(sourcePrimary, candidatePrimary) * SUBSTITUTION_WEIGHTS.primarySimilarity
       const movementScore = candidate.movementPattern === source.movementPattern ? SUBSTITUTION_WEIGHTS.exactMovement : 0
-      const equipmentScore = jaccard(sourceEquipment, new Set(candidate.equipment)) * SUBSTITUTION_WEIGHTS.equipmentOverlap
+      const equipmentScore = SUBSTITUTION_WEIGHTS.differentEquipment
       const difficultyDistance = Math.abs(DIFFICULTY_ORDER[source.difficulty] - DIFFICULTY_ORDER[candidate.difficulty])
       const difficultyScore = (1 - difficultyDistance / MAX_DIFFICULTY_DISTANCE) * SUBSTITUTION_WEIGHTS.difficultyProximity
       const secondaryScore = jaccard(sourceSecondary, candidateSecondary) * SUBSTITUTION_WEIGHTS.secondarySimilarity
@@ -74,7 +88,7 @@ export class WeightedSubstitutionEngine implements SubstitutionEngine {
         movementScore > 0
           ? `exact movement pattern match "${candidate.movementPattern}": ${movementScore}/${SUBSTITUTION_WEIGHTS.exactMovement}`
           : `movement pattern differs ("${candidate.movementPattern}" vs "${source.movementPattern}"): 0/${SUBSTITUTION_WEIGHTS.exactMovement}`,
-        `equipment overlap: ${equipmentScore.toFixed(1)}/${SUBSTITUTION_WEIGHTS.equipmentOverlap}`,
+        `different equipment (${source.equipment.join(', ') || 'none'} -> ${candidate.equipment.join(', ') || 'none'}): ${equipmentScore}/${SUBSTITUTION_WEIGHTS.differentEquipment}`,
         `difficulty proximity (${source.difficulty} vs ${candidate.difficulty}): ${difficultyScore.toFixed(1)}/${SUBSTITUTION_WEIGHTS.difficultyProximity}`,
         `secondary muscle similarity: ${secondaryScore.toFixed(1)}/${SUBSTITUTION_WEIGHTS.secondarySimilarity}`,
       ]
