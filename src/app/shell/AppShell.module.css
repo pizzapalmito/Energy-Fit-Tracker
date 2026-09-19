@@ -1,4 +1,4 @@
-.shell { min-height: 100dvh; max-width: 48rem; margin: 0 auto; padding-bottom: calc(4rem + env(safe-area-inset-bottom)); background: var(--bg); border-inline: 1px solid var(--line); }
+.shell { min-height: 100dvh; max-width: 48rem; margin: 0 auto; padding-bottom: calc(4rem + env(safe-area-inset-bottom)); background: var(--bg); }
 .header { position: relative; display: flex; align-items: center; gap: .5rem; min-height: 3.25rem; padding: max(.8rem, env(safe-area-inset-top)) 1.125rem .55rem; border-bottom: 1px solid var(--line); }
 .header::after { content: ""; position: absolute; inset: auto 0 -1px; height: 1px; background: linear-gradient(90deg, transparent, var(--text) 18%, var(--text) 82%, transparent); opacity: .18; }
 .heroArt { position: absolute; top: 100%; right: 0; z-index: 0; width: 11.625rem; height: 8.25rem; opacity: .62; background-position: center; background-size: cover; filter: grayscale(1) contrast(1.35); mix-blend-mode: multiply; mask-image: linear-gradient(90deg, transparent 0%, #000 55%); -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 55%); pointer-events: none; }
@@ -15,4 +15,4 @@
 .navLabel { overflow-wrap: anywhere; color: inherit; font-family: var(--font-mono); font-size: .5rem; font-weight: 600; letter-spacing: .08em; text-align: left; text-transform: uppercase; }
 .nav a.active { background: var(--text); color: var(--bg); }
 .nav a.active .navLabel { color: inherit; }
-@media (min-width: 48rem) { .nav { left: 50%; right: auto; transform: translateX(-50%); border-inline: 1px solid var(--line); } }
+@media (min-width: 48rem) { .shell { border-inline: 1px solid var(--line); } .nav { left: 50%; right: auto; transform: translateX(-50%); border-inline: 1px solid var(--line); } }
