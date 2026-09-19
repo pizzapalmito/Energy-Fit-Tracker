@@ -1,6 +1,6 @@
 .panel { margin-top: 0; padding: 1rem 1.125rem; border: 0; border-bottom: 1px solid var(--line); background: var(--surface); }
 .heading, .resultHeader { display: flex; justify-content: space-between; gap: 1rem; align-items: center; }
-.heading h2 { margin: .15rem 0 0; font-family: var(--font-display); font-size: 1.4rem; font-weight: 400; text-transform: uppercase; }
+.heading h2 { margin: .15rem 0 0; font-family: var(--font-display); font-size: 1.4rem; font-weight: 800; text-transform: uppercase; }
 .heading > span, .resultHeader span { color: var(--muted); font-family: var(--font-mono); font-size: .68rem; text-transform: uppercase; letter-spacing: .04em; }
 .eyebrow { margin: 0; color: var(--text); font-family: var(--font-mono); font-size: .56rem; font-weight: 600; letter-spacing: .16em; text-transform: uppercase; }
 .readiness { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .8rem; }
