@@ -20,6 +20,10 @@ const candidate: Exercise = {
   media: ['media/dumbbell-bench-press/start.webp', 'media/dumbbell-bench-press/end.webp'],
 }
 
+const sameEquipmentCandidate: Exercise = {
+  ...source, id: 'incline-barbell-bench-press', name: 'Incline Barbell Bench Press', equipment: ['barbell'],
+}
+
 const workoutExercise: WorkoutExercise = {
   id: 'we-1', workoutId: 'workout-1', exerciseId: source.id, order: 0, notes: '', restSeconds: 120,
   snapshot: { name: source.name, equipment: source.equipment, movementPattern: source.movementPattern, muscles: source.muscles, catalogVersion: 'test' },
@@ -29,7 +33,7 @@ beforeEach(async () => {
   counter += 1
   db = createDatabase(`workout-exercise-card-${counter}`)
   await db.open()
-  await db.exercises.bulkPut([source, candidate])
+  await db.exercises.bulkPut([source, candidate, sameEquipmentCandidate])
   await db.workoutExercises.put(workoutExercise)
 })
 
@@ -46,6 +50,7 @@ describe('WorkoutExerciseCard', () => {
 
     await user.click(screen.getByRole('button', { name: /Substitute/ }))
     expect(await screen.findByText(candidate.name)).toBeVisible()
+    expect(screen.queryByText(sameEquipmentCandidate.name)).not.toBeInTheDocument()
     await user.click(screen.getByRole('button', { name: `Use ${candidate.name}` }))
     await waitFor(async () => expect((await db.workoutExercises.get(workoutExercise.id))?.exerciseId).toBe(candidate.id))
   })
