@@ -1,14 +1,10 @@
 * { box-sizing: border-box; }
-html { background: var(--bg); }
+html { background: #c9c5bc; }
 body {
   margin: 0;
   min-width: 320px;
   min-height: 100dvh;
-  background:
-    radial-gradient(circle at 85% -8%, color-mix(in srgb, var(--neon-magenta) 7%, transparent) 0, transparent 24rem),
-    radial-gradient(circle at -10% 40%, color-mix(in srgb, var(--neon-green) 3%, transparent) 0, transparent 20rem),
-    radial-gradient(circle at 108% 90%, color-mix(in srgb, var(--neon-orange) 3%, transparent) 0, transparent 18rem),
-    var(--bg);
+  background: repeating-linear-gradient(90deg, #c9c5bc 0 23px, #c4c0b7 23px 24px);
   color: var(--text);
 }
 body::before {
@@ -17,21 +13,26 @@ body::before {
   z-index: 100;
   inset: 0;
   pointer-events: none;
-  background: repeating-linear-gradient(180deg, transparent 0 3px, rgb(0 0 0 / 12%) 3px 4px);
-  opacity: .16;
-  mix-blend-mode: soft-light;
+  background: repeating-linear-gradient(180deg, transparent 0 3px, rgb(17 17 17 / 10%) 3px 4px);
+  opacity: .03;
 }
 h1 {
-  font-size: 2.125rem;
+  font-family: var(--font-display);
+  max-width: 100%;
+  font-size: clamp(2.25rem, 12vw, 3.4rem);
   font-weight: 800;
-  letter-spacing: -.02em;
+  line-height: .95;
+  letter-spacing: -.015em;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
 }
-::selection { color: #180413; background: var(--neon-magenta); }
+::selection { color: var(--bg); background: var(--text); }
 button, input, select, textarea { font: inherit; }
 button, a { -webkit-tap-highlight-color: transparent; }
-:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+:focus-visible { outline: 2px solid var(--text); outline-offset: -2px; }
+button, input, select, textarea { border-radius: 0 !important; }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; } }
 
 /* Screen titles precede the compact metadata, matching the selected mobile layout. */
 main > section > h1 { order: -2; line-height: 1.05; }
-main > section > p:first-child { order: -1; margin: -.45rem 0 .2rem; }
+main > section > p:first-child { order: -1; }
