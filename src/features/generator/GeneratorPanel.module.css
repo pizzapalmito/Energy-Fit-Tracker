@@ -23,4 +23,4 @@
 .result li div { display: flex; justify-content: space-between; gap: 1rem; }
 .result li span, .result li p { color: var(--muted); font-size: .82rem; }
 .result li p { margin: .2rem 0 0; }
-@media (max-width: 720px) { .controls { grid-template-columns: 1fr 1fr; } .controls button { grid-column: 1 / -1; } .resultHeader, .result li div { align-items: stretch; flex-direction: column; } }
+@media (max-width: 720px) { .heading, .resultHeader, .result li div { align-items: stretch; flex-direction: column; } .heading { gap: .45rem; } .controls { grid-template-columns: 1fr 1fr; } .controls button { grid-column: 1 / -1; } }
