@@ -90,17 +90,32 @@ const priorityIds = [
   'kettlebell-windmill',
 ]
 const priorityRank = new Map(priorityIds.map((id, index) => [id, index]))
-const exercises = [...catalog.exercises]
-  .sort((left, right) => {
-    const leftRank = priorityRank.get(left.id)
-    const rightRank = priorityRank.get(right.id)
-    if (leftRank !== undefined || rightRank !== undefined) {
-      return (leftRank ?? Number.MAX_SAFE_INTEGER) - (rightRank ?? Number.MAX_SAFE_INTEGER)
-    }
-    const leftKey = `${left.equipment.join('|')}|${left.category}|${left.name}`
-    const rightKey = `${right.equipment.join('|')}|${right.category}|${right.name}`
-    return leftKey.localeCompare(rightKey)
-  })
+const compareExercises = (left, right) => {
+  const leftRank = priorityRank.get(left.id)
+  const rightRank = priorityRank.get(right.id)
+  if (leftRank !== undefined || rightRank !== undefined) {
+    return (leftRank ?? Number.MAX_SAFE_INTEGER) - (rightRank ?? Number.MAX_SAFE_INTEGER)
+  }
+  const leftKey = `${left.equipment.join('|')}|${left.category}|${left.name}`
+  const rightKey = `${right.equipment.join('|')}|${right.category}|${right.name}`
+  return leftKey.localeCompare(rightKey)
+}
+
+// A reviewed sheet is an accepted image-to-exercise contract. Keep its tile
+// assignments stable when the catalog grows; only new exercises are queued at
+// the end of the plan so a regenerated manifest cannot remap approved art.
+let priorIds = []
+try {
+  const priorPlan = JSON.parse(await readFile(outputPath, 'utf8'))
+  priorIds = priorPlan.sheets.flatMap((sheet) => sheet.exerciseIds)
+} catch {
+  // First plan generation has no previous manifest to preserve.
+}
+const exerciseById = new Map(catalog.exercises.map((exercise) => [exercise.id, exercise]))
+const retainedExercises = priorIds.map((id) => exerciseById.get(id)).filter(Boolean)
+const retainedIds = new Set(retainedExercises.map((exercise) => exercise.id))
+const newExercises = catalog.exercises.filter((exercise) => !retainedIds.has(exercise.id)).sort(compareExercises)
+const exercises = [...retainedExercises, ...newExercises]
 
 const sheets = Array.from({ length: Math.ceil(exercises.length / 9) }, (_, index) => ({
   id: `sheet-${String(index + 1).padStart(3, '0')}`,
