@@ -55,7 +55,11 @@ export function loadRealImporter(repoRoot) {
     if (typeof mod.importCatalog !== 'function') {
       throw new Error('Compiled importer module did not export importCatalog as expected.')
     }
-    return { importCatalog: mod.importCatalog, CATALOG_IMPORTER_VERSION: mod.CATALOG_IMPORTER_VERSION }
+    return {
+      importCatalog: mod.importCatalog,
+      CATALOG_IMPORTER_VERSION: mod.CATALOG_IMPORTER_VERSION,
+      CATALOG_CURATION_VERSION: mod.CATALOG_CURATION_VERSION,
+    }
   } finally {
     rmSync(tmpRoot, { recursive: true, force: true })
   }

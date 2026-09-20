@@ -3,7 +3,9 @@ import type { Muscle } from '../data/types'
 import { PRIMARY_CONTRIBUTION_WEIGHT, SECONDARY_CONTRIBUTION_WEIGHT } from '../engines/shared/muscleContribution'
 import type { ImportResult, RawExerciseRecord } from './types'
 
-export const CATALOG_IMPORTER_VERSION = 'catalog-importer-v2'
+export const CATALOG_IMPORTER_VERSION = 'catalog-importer-v3'
+export const CATALOG_CURATION_VERSION = 'focused-strength-v1'
+export const FOCUSED_STRENGTH_EXERCISE_COUNT = 438
 
 const DIFFICULTY_MAP: Record<string, Exercise['difficulty']> = {
   beginner: 'beginner',
@@ -35,6 +37,15 @@ const DEFAULT_REST_SECONDS_BY_CATEGORY: Record<string, number> = {
   cardio: 45,
 }
 const FALLBACK_DEFAULT_REST_SECONDS = 90
+
+const EQUIPMENT_PRIORITY: Record<string, number> = {
+  barbell: 8, dumbbell: 8, machine: 7, cable: 7, bodyweight: 6,
+  'ez-curl-bar': 6, kettlebell: 5, other: 3, bands: 1, 'exercise-ball': 0, 'medicine-ball': 0,
+}
+
+// These labels identify technical, balance, rehabilitation, or novelty variants.
+// They are deliberately deprioritized below the broadly useful resistance movements.
+const SPECIALTY_NAME_MARKER = /\b(with bands?|with chains?|exercise ball|medicine ball|smith machine|bosu|swiss ball|foam roll|trx|suspension|windmill|turkish get-up|pirate ships|side bend|neck|external rotation|internal rotation|hip abduction|hip adduction|wrist|finger|forearm|shrug behind|guillotine|jefferson|zercher|frankenstein|pistol|sissy|wall squat|downward facing|clapping|plyo|jump|sprints?|handstand|weighted ball|clean|snatch|jerk)\b/i
 
 /** Canonical free-exercise-db muscle vocabulary mapped to a coarse body-region grouping. */
 const MUSCLE_GROUPS: Record<string, string> = {
@@ -104,6 +115,30 @@ function toStringArray(value: unknown): string[] {
   return value.filter((item): item is string => typeof item === 'string' && item.trim() !== '')
 }
 
+function curationScore(exercise: Exercise): number {
+  const equipmentScore = EQUIPMENT_PRIORITY[exercise.equipment[0] ?? ''] ?? 0
+  const mechanicScore = exercise.mechanic === 'compound' ? 5 : exercise.mechanic === 'isolation' ? 2 : 0
+  const difficultyScore = exercise.difficulty === 'beginner' ? 3 : exercise.difficulty === 'intermediate' ? 2 : 1
+  return equipmentScore + mechanicScore + difficultyScore + (SPECIALTY_NAME_MARKER.test(exercise.name) ? -20 : 0)
+}
+
+/**
+ * Keeps a compact, gym-focused library. Categories that are not conventional
+ * resistance training (stretching, cardio, plyometrics, strongman, Olympic and
+ * powerlifting-specialist variants) are removed before choosing the most
+ * broadly applicable strength movements. Ties are name-sorted so builds are
+ * deterministic.
+ */
+function curateFocusedStrengthLibrary(exercises: Exercise[]): Exercise[] {
+  // Unit callers and small imports use the normalizer without unexpectedly
+  // losing records. The shipped upstream source is well above this limit.
+  if (exercises.length <= FOCUSED_STRENGTH_EXERCISE_COUNT) return exercises
+  return exercises
+    .filter((exercise) => exercise.category.toLowerCase() === 'strength')
+    .sort((a, b) => curationScore(b) - curationScore(a) || a.name.localeCompare(b.name))
+    .slice(0, FOCUSED_STRENGTH_EXERCISE_COUNT)
+}
+
 /**
  * Normalizes free-exercise-db-shaped JSON into the domain Exercise model.
  * Invalid records are quarantined into `rejected` (with the original raw
@@ -121,7 +156,7 @@ export function importCatalog(raw: unknown): ImportResult {
 
   if (!Array.isArray(raw)) {
     rejected.push({ index: -1, reason: 'root value is not an array', raw })
-    return { exercises: [], muscles: [], rejected }
+    return { exercises: [], muscles: [], rejected, curatedOutCount: 0 }
   }
 
   const exercises: Exercise[] = []
@@ -206,5 +241,12 @@ export function importCatalog(raw: unknown): ImportResult {
     })
   })
 
-  return { exercises, muscles: [...musclesById.values()], rejected }
+  const curatedExercises = curateFocusedStrengthLibrary(exercises)
+  const includedMuscleIds = new Set(curatedExercises.flatMap((exercise) => exercise.muscles.map((muscle) => muscle.muscleId)))
+  return {
+    exercises: curatedExercises,
+    muscles: [...musclesById.values()].filter((muscle) => includedMuscleIds.has(muscle.id)),
+    rejected,
+    curatedOutCount: exercises.length - curatedExercises.length,
+  }
 }

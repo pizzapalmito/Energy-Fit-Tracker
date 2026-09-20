@@ -63,7 +63,7 @@ describe('BUILT_IN_PROGRAM', () => {
   it('preserves plan set counts and rep ranges for representative rep-based exercises', () => {
     const w1a = BUILT_IN_PROGRAM.find((t) => t.id === 'w1-day-a')!
     expect(w1a.exercises[0]).toMatchObject({ exerciseId: 'leverage-incline-chest-press', displayName: 'Incline Chest Press Machine', sets: 3, repRange: [8, 12] })
-    expect(w1a.exercises[7]).toMatchObject({ exerciseId: 'seated-dumbbell-palms-down-wrist-curl', displayName: 'Reverse Wrist Curl', sets: 2, repRange: [15, 20] })
+    expect(w1a.exercises[7]).toMatchObject({ exerciseId: 'repwise-reverse-wrist-curl', displayName: 'Reverse Wrist Curl', sets: 2, repRange: [15, 20] })
 
     const w1b = BUILT_IN_PROGRAM.find((t) => t.id === 'w1-day-b')!
     expect(w1b.exercises[7]).toMatchObject({ exerciseId: 'repwise-tibialis-raise', displayName: 'Tibialis Raise', sets: 2, repRange: [15, 25] })
@@ -84,7 +84,7 @@ describe('BUILT_IN_PROGRAM', () => {
     const dayDTemplates = BUILT_IN_PROGRAM.filter((t) => t.id.endsWith('day-d'))
     expect(dayDTemplates).toHaveLength(3)
     for (const template of dayDTemplates) {
-      const farmerCarry = template.exercises.find((e) => e.exerciseId === 'farmers-walk')
+      const farmerCarry = template.exercises.find((e) => e.exerciseId === 'repwise-farmer-carry')
       expect(farmerCarry, template.id).toMatchObject({ displayName: 'Farmer Carry', sets: 2, durationRangeSeconds: [30, 45] })
       expect(farmerCarry?.repRange).toBeUndefined()
     }
@@ -113,15 +113,14 @@ describe('BUILT_IN_PROGRAM', () => {
     }
   })
 
-  it('attaches bundled custom exercise definitions only to the templates that reference them', () => {
+  it('attaches every bundled custom exercise only to templates that reference it', () => {
     for (const template of BUILT_IN_PROGRAM) {
-      const usesTibialis = template.exercises.some((e) => e.exerciseId === 'repwise-tibialis-raise')
-      const usesPushUpPlus = template.exercises.some((e) => e.exerciseId === 'repwise-push-up-plus')
-      const bundledIds = (template.customExercises ?? []).map((e) => e.id)
-
-      expect(bundledIds.includes('repwise-tibialis-raise'), template.id).toBe(usesTibialis)
-      expect(bundledIds.includes('repwise-push-up-plus'), template.id).toBe(usesPushUpPlus)
-      expect(template.customExercises?.length ?? 0, template.id).toBe((usesTibialis ? 1 : 0) + (usesPushUpPlus ? 1 : 0))
+      const expectedCustomIds = template.exercises
+        .map((entry) => entry.exerciseId)
+        .filter((id) => !catalogById.has(id))
+        .sort()
+      const bundledIds = (template.customExercises ?? []).map((exercise) => exercise.id).sort()
+      expect(bundledIds, template.id).toEqual(expectedCustomIds)
     }
   })
 

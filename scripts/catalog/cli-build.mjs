@@ -2,6 +2,7 @@ import { fileURLToPath } from 'node:url'
 import { dirname, join } from 'node:path'
 import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs'
 import { buildCatalog, writeCatalogOutput } from './buildCatalog.mjs'
+import { integrateGreekInkMedia } from './integrate-greek-ink-media.mjs'
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), '..', '..')
 
@@ -28,6 +29,7 @@ async function main() {
   const publicCatalogDir = join(repoRoot, 'public', 'catalog')
   const auditReportPath = join(repoRoot, 'docs', 'catalog', 'audit-report.json')
   writeCatalogOutput(result, { publicCatalogDir, auditReportPath })
+  const overlay = await integrateGreekInkMedia({ repoRoot, publicCatalogDir, auditReportPath })
 
   const licenseSrc = join(source, 'LICENSE.md')
   if (existsSync(licenseSrc)) {
@@ -36,7 +38,7 @@ async function main() {
     writeFileSync(join(licenseOutDir, 'free-exercise-db-LICENSE.txt'), readFileSync(licenseSrc, 'utf8'), 'utf8')
   }
 
-  const { audit } = result
+  const audit = JSON.parse(readFileSync(auditReportPath, 'utf8'))
   console.log(`Catalog version: ${audit.catalogVersion}`)
   console.log(`Source commit:   ${audit.sourceCommit}`)
   console.log(`Input records:   ${audit.counts.inputRecords}`)
@@ -50,6 +52,7 @@ async function main() {
   console.log(`catalog.json:    ${audit.catalogJsonBytes} bytes`)
   console.log(`Wrote catalog + media to ${publicCatalogDir}`)
   console.log(`Wrote audit report to ${auditReportPath}`)
+  console.log(`Greek-ink overlay: ${overlay.integratedExerciseTiles} exercise tiles`)
 }
 
 main().catch((error) => {

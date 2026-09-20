@@ -99,6 +99,14 @@ describe('seedCatalog', () => {
     expect(await new DexieMetadataRepository(db).get(CATALOG_VERSION_METADATA_KEY)).toBe('catalog-bbbb')
   })
 
+  it('marks catalog rows removed by a later focused catalog as excluded without touching custom exercises', async () => {
+    await seedCatalog(db, () => Promise.resolve(catalog({ exercises: [squat(), squat({ id: 'legacy-stretch', name: 'Legacy Stretch' })] })))
+    await new DexieExerciseRepository(db).bulkUpsert([customExercise()])
+    await seedCatalog(db, () => Promise.resolve(catalog({ version: 'catalog-focused', exercises: [squat()] })))
+    expect((await new DexieExerciseRepository(db).get('legacy-stretch'))?.excluded).toBe(true)
+    expect((await new DexieExerciseRepository(db).get('my-custom-move'))?.excluded).toBe(false)
+  })
+
   it('exposes seeding failure clearly when the catalog fails to load, and does not touch the database', async () => {
     await expect(seedCatalog(db, () => Promise.reject(new Error('network down')))).rejects.toBeInstanceOf(CatalogSeedError)
     expect(await new DexieMetadataRepository(db).get(CATALOG_VERSION_METADATA_KEY)).toBeUndefined()

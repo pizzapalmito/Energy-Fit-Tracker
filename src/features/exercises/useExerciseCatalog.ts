@@ -33,7 +33,7 @@ export function useExerciseCatalog(db: RepwiseDatabase): ExerciseCatalogState {
     const muscleRepo = new DexieMuscleRepository(db)
     Promise.all([exerciseRepo.list(), muscleRepo.list()])
       .then(([exercises, muscles]) => {
-        if (!cancelled) setDexieState({ loaded: true, exercises, muscles })
+        if (!cancelled) setDexieState({ loaded: true, exercises: exercises.filter((exercise) => !exercise.excluded), muscles })
       })
       .catch((error: unknown) => {
         if (!cancelled) {

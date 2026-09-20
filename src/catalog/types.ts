@@ -26,4 +26,6 @@ export interface ImportResult {
   exercises: Exercise[]
   muscles: Muscle[]
   rejected: ImportRejection[]
+  /** Records that were structurally valid, but intentionally outside EFT's focused strength catalog. */
+  curatedOutCount: number
 }
