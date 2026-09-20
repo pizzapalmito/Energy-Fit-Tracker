@@ -8254,7 +8254,10 @@
         }
       ],
       "defaultRestSeconds": 90,
-      "media": [],
+      "media": [
+        "media/kettlebell-halo-with-overhead-extension/start.webp",
+        "media/kettlebell-halo-with-overhead-extension/end.webp"
+      ],
       "source": "catalog",
       "excluded": false
     },

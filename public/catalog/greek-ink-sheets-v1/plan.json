@@ -741,46 +741,46 @@
         "suspended-push-up",
         "suspended-row",
         "svend-press",
-        "trap-bar-deadlift",
-        "kettlebell-dead-clean",
-        "kettlebell-hang-clean",
-        "kettlebell-windmill"
+        "trap-bar-deadlift"
       ]
     },
     {
       "id": "sheet-050",
       "status": "planned",
       "exerciseIds": [
+        "kettlebell-dead-clean",
+        "kettlebell-hang-clean",
+        "kettlebell-windmill",
         "advanced-kettlebell-windmill",
         "alternating-hang-clean",
         "alternating-kettlebell-row",
         "bottoms-up-clean-from-the-hang-position",
         "double-kettlebell-alternating-hang-clean",
-        "double-kettlebell-jerk",
-        "double-kettlebell-snatch",
-        "double-kettlebell-windmill",
-        "kettlebell-figure-8"
+        "double-kettlebell-jerk"
       ]
     },
     {
       "id": "sheet-051",
       "status": "planned",
       "exerciseIds": [
+        "double-kettlebell-snatch",
+        "double-kettlebell-windmill",
+        "kettlebell-figure-8",
         "kettlebell-pirate-ships",
         "kettlebell-pistol-squat",
         "kettlebell-turkish-get-up-lunge-style",
         "kettlebell-turkish-get-up-squat-style",
         "one-arm-kettlebell-clean",
-        "one-arm-kettlebell-clean-and-jerk",
-        "one-arm-kettlebell-jerk",
-        "one-arm-kettlebell-snatch",
-        "one-arm-kettlebell-split-jerk"
+        "one-arm-kettlebell-clean-and-jerk"
       ]
     },
     {
       "id": "sheet-052",
       "status": "planned",
       "exerciseIds": [
+        "one-arm-kettlebell-jerk",
+        "one-arm-kettlebell-snatch",
+        "one-arm-kettlebell-split-jerk",
         "one-arm-kettlebell-split-snatch",
         "one-arm-open-palm-kettlebell-clean",
         "open-palm-kettlebell-clean",
