@@ -4,8 +4,9 @@ import { PRIMARY_CONTRIBUTION_WEIGHT, SECONDARY_CONTRIBUTION_WEIGHT } from '../e
 import type { ImportResult, RawExerciseRecord } from './types'
 
 export const CATALOG_IMPORTER_VERSION = 'catalog-importer-v3'
-export const CATALOG_CURATION_VERSION = 'focused-strength-v1'
-export const FOCUSED_STRENGTH_EXERCISE_COUNT = 438
+export const CATALOG_CURATION_VERSION = 'focused-strength-v2'
+export const CORE_STRENGTH_EXERCISE_COUNT = 438
+export const FOCUSED_STRENGTH_EXERCISE_COUNT = 465
 
 const DIFFICULTY_MAP: Record<string, Exercise['difficulty']> = {
   beginner: 'beginner',
@@ -132,11 +133,23 @@ function curationScore(exercise: Exercise): number {
 function curateFocusedStrengthLibrary(exercises: Exercise[]): Exercise[] {
   // Unit callers and small imports use the normalizer without unexpectedly
   // losing records. The shipped upstream source is well above this limit.
-  if (exercises.length <= FOCUSED_STRENGTH_EXERCISE_COUNT) return exercises
-  return exercises
-    .filter((exercise) => exercise.category.toLowerCase() === 'strength')
+  if (exercises.length <= CORE_STRENGTH_EXERCISE_COUNT) return exercises
+  const strengthExercises = exercises.filter((exercise) => exercise.category.toLowerCase() === 'strength')
+  const scoreSorted = [...strengthExercises]
     .sort((a, b) => curationScore(b) - curationScore(a) || a.name.localeCompare(b.name))
-    .slice(0, FOCUSED_STRENGTH_EXERCISE_COUNT)
+  const coreIds = new Set(scoreSorted.slice(0, CORE_STRENGTH_EXERCISE_COUNT).map((exercise) => exercise.id))
+  // Kettlebells are a complete section by product decision. Preserve every
+  // source movement, including advanced clean, jerk, snatch, and get-up work,
+  // while keeping the non-kettlebell catalog at the focused core size.
+  const preservedCoreAndKettlebells = new Set([
+    ...coreIds,
+    ...strengthExercises.filter((exercise) => exercise.equipment.includes('kettlebell')).map((exercise) => exercise.id),
+  ])
+
+  return scoreSorted
+    .filter((exercise) => preservedCoreAndKettlebells.has(exercise.id))
+    .concat(scoreSorted.filter((exercise) => !preservedCoreAndKettlebells.has(exercise.id)))
+    .slice(0, preservedCoreAndKettlebells.size)
 }
 
 /**

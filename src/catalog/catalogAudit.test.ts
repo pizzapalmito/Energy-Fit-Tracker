@@ -41,7 +41,7 @@ describe('generated catalog audit invariants', () => {
   })
 
   it('accepted-exercise count matches the audit report and every id is unique', () => {
-    expect(catalog.exercises.length).toBe(438)
+    expect(catalog.exercises.length).toBe(465)
     expect(catalog.exercises.length).toBe(auditReport.counts.acceptedExercises)
     expect(new Set(catalog.exercises.map((e) => e.id)).size).toBe(catalog.exercises.length)
   })
