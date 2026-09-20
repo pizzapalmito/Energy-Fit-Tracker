@@ -155,4 +155,44 @@ describe('importCatalog', () => {
     const result = importCatalog([{ name: 'Squat', primaryMuscles: ['quadriceps'], images: ['Squat/0.jpg', 'Squat/1.jpg'] }])
     expect(result.exercises[0]?.media).toEqual(['Squat/0.jpg', 'Squat/1.jpg'])
   })
+
+  it('keeps every kettlebell movement when curating the focused library', () => {
+    const broadLibrary = Array.from({ length: 465 }, (_, index) => ({
+      id: `barbell-move-${index}`,
+      name: `Barbell move ${index}`,
+      category: 'strength',
+      equipment: 'barbell',
+      primaryMuscles: ['chest'],
+    }))
+    broadLibrary.push(
+      {
+        id: 'Kettlebell_Dead_Clean',
+        name: 'Kettlebell Dead Clean',
+        category: 'strength',
+        equipment: 'kettlebells',
+        primaryMuscles: ['shoulders'],
+      },
+      {
+        id: 'Advanced_Kettlebell_Windmill',
+        name: 'Advanced Kettlebell Windmill',
+        category: 'strength',
+        equipment: 'kettlebells',
+        primaryMuscles: ['abdominals'],
+      },
+      {
+        id: 'One-Arm_Kettlebell_Snatch',
+        name: 'One-Arm Kettlebell Snatch',
+        category: 'strength',
+        equipment: 'kettlebells',
+        primaryMuscles: ['shoulders'],
+      },
+    )
+
+    const result = importCatalog(broadLibrary)
+
+    expect(result.exercises).toHaveLength(441)
+    expect(result.exercises.map((exercise) => exercise.id)).toEqual(
+      expect.arrayContaining(['kettlebell-dead-clean', 'advanced-kettlebell-windmill', 'one-arm-kettlebell-snatch']),
+    )
+  })
 })

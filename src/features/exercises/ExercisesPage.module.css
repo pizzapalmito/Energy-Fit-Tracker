@@ -58,5 +58,5 @@
 @media (min-width: 760px) { .controls { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
 
 .card { display: grid; grid-template-columns: 2.75rem minmax(0, 1fr); gap: .75rem; align-items: center; padding: .65rem .75rem; }
-.card > img, .cardImageFallback { width: 2.75rem; height: 2.75rem; border: 1px solid var(--line); border-radius: .45rem; object-fit: cover; background: var(--bg); }
+.card > img, .cardImageFallback { width: 2.75rem; height: 2.75rem; border: .2rem solid #b08a43; border-radius: .45rem; object-fit: contain; background: linear-gradient(135deg, #c5b48f, #ece7db 46%, #a98544); }
 .cardContent { display: flex; flex-direction: column; gap: .2rem; }
