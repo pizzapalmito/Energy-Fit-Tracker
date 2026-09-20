@@ -104,24 +104,38 @@ const compareExercises = (left, right) => {
 // A reviewed sheet is an accepted image-to-exercise contract. Keep its tile
 // assignments stable when the catalog grows; only new exercises are queued at
 // the end of the plan so a regenerated manifest cannot remap approved art.
-let priorIds = []
+let priorSheets = []
 try {
   const priorPlan = JSON.parse(await readFile(outputPath, 'utf8'))
-  priorIds = priorPlan.sheets.flatMap((sheet) => sheet.exerciseIds)
+  priorSheets = priorPlan.sheets
 } catch {
   // First plan generation has no previous manifest to preserve.
 }
+const priorIds = priorSheets.flatMap((sheet) => sheet.exerciseIds)
 const exerciseById = new Map(catalog.exercises.map((exercise) => [exercise.id, exercise]))
 const retainedExercises = priorIds.map((id) => exerciseById.get(id)).filter(Boolean)
 const retainedIds = new Set(retainedExercises.map((exercise) => exercise.id))
 const newExercises = catalog.exercises.filter((exercise) => !retainedIds.has(exercise.id)).sort(compareExercises)
 const exercises = [...retainedExercises, ...newExercises]
 
-const sheets = Array.from({ length: Math.ceil(exercises.length / 9) }, (_, index) => ({
-  id: `sheet-${String(index + 1).padStart(3, '0')}`,
-  status: 'planned',
-  exerciseIds: exercises.slice(index * 9, index * 9 + 9).map((exercise) => exercise.id),
-}))
+// Preserve each pre-existing sheet as a whole. In particular, a short final
+// sheet must remain short: filling it with new exercises would remap the
+// reviewed source image's tile positions.
+const sheets = priorSheets
+  .map((sheet) => ({
+    id: sheet.id,
+    status: sheet.status ?? 'planned',
+    exerciseIds: sheet.exerciseIds.filter((id) => exerciseById.has(id)),
+  }))
+  .filter((sheet) => sheet.exerciseIds.length > 0)
+const nextSheetNumber = sheets.length + 1
+for (let index = 0; index < newExercises.length; index += 9) {
+  sheets.push({
+    id: `sheet-${String(nextSheetNumber + index / 9).padStart(3, '0')}`,
+    status: 'planned',
+    exerciseIds: newExercises.slice(index, index + 9).map((exercise) => exercise.id),
+  })
+}
 
 const plan = {
   version: 1,
