@@ -32,8 +32,9 @@ function isWellFormedCatalog(value: unknown): value is GeneratedCatalog {
  * Idempotently seeds the generated exercise/muscle catalog into Dexie, keyed
  * by the catalog's content-hash version stored in metadata. Re-running with
  * an unchanged version is a cheap no-op past the version check. Only
- * upserts `source: 'catalog'` rows by id; never deletes any row, so custom
- * exercises and all other user data are always preserved.
+ * upserts the focused catalog. Superseded catalog rows are retained but marked
+ * excluded, so the smaller library takes effect without deleting custom
+ * exercises, workout records, or historical exercise snapshots.
  */
 export async function seedCatalog(db: RepwiseDatabase, loadCatalog: () => Promise<GeneratedCatalog>): Promise<SeedOutcome> {
   let catalog: GeneratedCatalog
@@ -59,6 +60,12 @@ export async function seedCatalog(db: RepwiseDatabase, loadCatalog: () => Promis
 
   try {
     await db.transaction('rw', db.exercises, db.muscles, db.metadata, async () => {
+      const includedCatalogIds = new Set(catalog.exercises.map((exercise) => exercise.id))
+      const priorCatalogExercises = await db.exercises.where('source').equals('catalog').toArray()
+      const superseded = priorCatalogExercises
+        .filter((exercise) => !includedCatalogIds.has(exercise.id))
+        .map((exercise) => ({ ...exercise, excluded: true }))
+      if (superseded.length > 0) await exerciseRepo.bulkUpsert(superseded)
       await exerciseRepo.bulkUpsert(catalog.exercises)
       await muscleRepo.bulkUpsert(catalog.muscles)
       await metadataRepo.set(CATALOG_VERSION_METADATA_KEY, catalog.version)

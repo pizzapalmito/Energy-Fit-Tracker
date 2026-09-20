@@ -55,6 +55,45 @@ export const CUSTOM_PUSH_UP_PLUS: Exercise = {
   excluded: false,
 }
 
+export const CUSTOM_REVERSE_WRIST_CURL: Exercise = {
+  id: 'repwise-reverse-wrist-curl', name: 'Reverse Wrist Curl', aliases: [], category: 'strength', movementPattern: 'pull', difficulty: 'beginner', mechanic: 'isolation', equipment: ['dumbbell'],
+  instructions: ['Sit with your forearm supported and your palm facing down while holding a dumbbell.', 'Extend your wrist to lift the back of your hand, then lower slowly with control.'],
+  muscles: [{ muscleId: 'forearms', weight: 1 }], defaultRestSeconds: 90, media: [], source: 'custom', excluded: false,
+}
+
+export const CUSTOM_BARBELL_HIP_THRUST: Exercise = {
+  id: 'repwise-barbell-hip-thrust', name: 'Barbell Hip Thrust', aliases: [], category: 'strength', movementPattern: 'push', difficulty: 'intermediate', mechanic: 'compound', equipment: ['barbell'],
+  instructions: ['Rest your upper back on a bench with a padded barbell across your hips.', 'Drive through your feet to extend your hips, pause with your glutes engaged, then lower under control.'],
+  muscles: [{ muscleId: 'glutes', weight: 1 }, { muscleId: 'hamstrings', weight: 0.5 }], defaultRestSeconds: 90, media: [], source: 'custom', excluded: false,
+}
+
+export const CUSTOM_EXTERNAL_ROTATION: Exercise = {
+  id: 'repwise-external-rotation', name: 'External Shoulder Rotation', aliases: [], category: 'strength', movementPattern: 'pull', difficulty: 'beginner', mechanic: 'isolation', equipment: ['cable'],
+  instructions: ['Set a cable at elbow height and hold the handle with your elbow tucked at your side.', 'Rotate your forearm away from your body without moving your elbow, then return slowly.'],
+  muscles: [{ muscleId: 'shoulders', weight: 1 }], defaultRestSeconds: 90, media: [], source: 'custom', excluded: false,
+}
+
+export const CUSTOM_INTERNAL_ROTATION: Exercise = {
+  id: 'repwise-internal-rotation', name: 'Internal Shoulder Rotation', aliases: [], category: 'strength', movementPattern: 'push', difficulty: 'beginner', mechanic: 'isolation', equipment: ['cable'],
+  instructions: ['Set a cable at elbow height and hold the handle with your elbow tucked at your side.', 'Rotate your forearm across your body without moving your elbow, then return slowly.'],
+  muscles: [{ muscleId: 'shoulders', weight: 1 }], defaultRestSeconds: 90, media: [], source: 'custom', excluded: false,
+}
+
+export const CUSTOM_FARMER_CARRY: Exercise = {
+  id: 'repwise-farmer-carry', name: 'Farmer Carry', aliases: [], category: 'strength', movementPattern: 'static', difficulty: 'beginner', mechanic: 'compound', equipment: ['dumbbell'],
+  instructions: ['Stand tall holding a heavy dumbbell in each hand with your shoulders set.', 'Walk forward with short controlled steps while maintaining a neutral torso and a firm grip.'],
+  muscles: [{ muscleId: 'traps', weight: 1 }, { muscleId: 'forearms', weight: 0.5 }], defaultRestSeconds: 90, media: [], source: 'custom', excluded: false,
+}
+
+export const CUSTOM_SMITH_INCLINE_PRESS: Exercise = {
+  id: 'repwise-smith-incline-press', name: 'Smith Incline Press', aliases: [], category: 'strength', movementPattern: 'push', difficulty: 'intermediate', mechanic: 'compound', equipment: ['machine'],
+  instructions: ['Set an incline bench beneath a Smith machine bar and position the bar above your upper chest.', 'Press the bar upward until your arms are extended, then lower it slowly to the upper chest.'],
+  muscles: [{ muscleId: 'chest', weight: 1 }, { muscleId: 'shoulders', weight: 0.5 }, { muscleId: 'triceps', weight: 0.5 }], defaultRestSeconds: 90, media: [], source: 'custom', excluded: false,
+}
+
+const BUNDLED_CUSTOM_EXERCISES = [CUSTOM_TIBIALIS_RAISE, CUSTOM_PUSH_UP_PLUS, CUSTOM_REVERSE_WRIST_CURL, CUSTOM_BARBELL_HIP_THRUST, CUSTOM_EXTERNAL_ROTATION, CUSTOM_INTERNAL_ROTATION, CUSTOM_FARMER_CARRY, CUSTOM_SMITH_INCLINE_PRESS]
+const customExerciseById = new Map(BUNDLED_CUSTOM_EXERCISES.map((exercise) => [exercise.id, exercise]))
+
 /** Rep-based planned exercise; the set is initialized to the lower rep bound while retaining the full repRange. */
 function reps(exerciseId: string, displayName: string, sets: number, repRange: [number, number]): WorkoutTemplateExercise {
   return { exerciseId, displayName, sets, repRange, restSeconds: DEFAULT_REST_SECONDS }
@@ -65,8 +104,16 @@ function duration(exerciseId: string, displayName: string, sets: number, duratio
   return { exerciseId, displayName, sets, durationRangeSeconds, restSeconds: DEFAULT_REST_SECONDS }
 }
 
-function template(id: string, name: string, exercises: WorkoutTemplateExercise[], customExercises?: Exercise[]): WorkoutTemplate {
-  return { id, name, createdAt: PROGRAM_TIMESTAMP, updatedAt: PROGRAM_TIMESTAMP, exercises, ...(customExercises ? { customExercises } : {}) }
+function template(id: string, name: string, exercises: WorkoutTemplateExercise[], explicitCustomExercises?: Exercise[]): WorkoutTemplate {
+  const detectedCustomExercises = exercises.flatMap((entry) => {
+    const exercise = customExerciseById.get(entry.exerciseId)
+    return exercise ? [[entry.exerciseId, exercise] as const] : []
+  })
+  const customExercises = [...new Map<string, Exercise>([
+    ...(explicitCustomExercises ?? []).map((exercise) => [exercise.id, exercise] as const),
+    ...detectedCustomExercises,
+  ]).values()]
+  return { id, name, createdAt: PROGRAM_TIMESTAMP, updatedAt: PROGRAM_TIMESTAMP, exercises, ...(customExercises.length ? { customExercises } : {}) }
 }
 
 export const BUILT_IN_PROGRAM: readonly WorkoutTemplate[] = [
@@ -78,19 +125,19 @@ export const BUILT_IN_PROGRAM: readonly WorkoutTemplate[] = [
     reps('preacher-curl', 'Preacher Curl', 3, [8, 12]),
     reps('hammer-curls', 'Hammer Curl', 2, [10, 15]),
     reps('standing-calf-raises', 'Standing Calf Raise', 2, [12, 15]),
-    reps('seated-dumbbell-palms-down-wrist-curl', 'Reverse Wrist Curl', 2, [15, 20]),
+    reps('repwise-reverse-wrist-curl', 'Reverse Wrist Curl', 2, [15, 20]),
     reps('dead-bug', 'Dead Bug (/side)', 2, [8, 12]),
   ]),
   template('w1-day-b', 'Week 1 Day B — Back + Glutes Emphasis', [
     reps('v-bar-pulldown', 'Neutral-Grip Lat Pulldown', 3, [8, 12]),
     reps('leverage-iso-row', 'Chest-Supported Row Machine', 3, [8, 12]),
-    reps('barbell-hip-thrust', 'Hip Thrust Machine', 3, [8, 12]),
+    reps('repwise-barbell-hip-thrust', 'Hip Thrust Machine', 3, [8, 12]),
     reps('seated-leg-curl', 'Seated Leg Curl', 2, [10, 15]),
     reps('leverage-shoulder-press', 'Shoulder Press Machine', 2, [8, 12]),
     reps('leverage-chest-press', 'Chest Press Machine', 2, [10, 15]),
     reps('dumbbell-shrug', 'Dumbbell Shrug', 2, [10, 15]),
     reps('repwise-tibialis-raise', 'Tibialis Raise', 2, [15, 25]),
-    reps('external-rotation', 'External Shoulder Rotation (/side)', 2, [12, 20]),
+    reps('repwise-external-rotation', 'External Shoulder Rotation (/side)', 2, [12, 20]),
   ], [CUSTOM_TIBIALIS_RAISE]),
   template('w1-day-c', 'Week 1 Day C — Chest + Triceps Emphasis', [
     reps('leverage-chest-press', 'Flat Chest Press Machine', 3, [8, 12]),
@@ -104,15 +151,15 @@ export const BUILT_IN_PROGRAM: readonly WorkoutTemplate[] = [
     reps('repwise-push-up-plus', 'Push-Up Plus / Serratus Cable Punch', 2, [12, 15]),
   ], [CUSTOM_PUSH_UP_PLUS]),
   template('w1-day-d', 'Week 1 Day D — Shoulders + Glutes Emphasis', [
-    reps('cable-internal-rotation', 'Internal Rotation Machine (/side)', 2, [12, 15]),
+    reps('repwise-internal-rotation', 'Internal Rotation Machine (/side)', 2, [12, 15]),
     reps('standing-dumbbell-straight-arm-front-delt-raise-above-head', 'Straight-Arm Shoulder Flexion Machine', 2, [12, 15]),
     reps('leverage-shoulder-press', 'Shoulder Press Machine', 3, [8, 12]),
     reps('cable-seated-lateral-raise', 'Machine Lateral Raise', 3, [10, 15]),
     reps('reverse-machine-flyes', 'Reverse Pec Deck', 2, [12, 15]),
-    reps('barbell-hip-thrust', 'Hip Thrust Machine', 3, [8, 12]),
+    reps('repwise-barbell-hip-thrust', 'Hip Thrust Machine', 3, [8, 12]),
     reps('romanian-deadlift', 'Romanian Deadlift', 2, [8, 12]),
     reps('leverage-chest-press', 'Chest Press Machine', 2, [10, 15]),
-    duration('farmers-walk', 'Farmer Carry', 2, [30, 45]),
+    duration('repwise-farmer-carry', 'Farmer Carry', 2, [30, 45]),
     reps('face-pull', 'Face Pull', 2, [12, 20]),
     reps('pallof-press', 'Pallof Press (/side)', 2, [10, 15]),
   ]),
@@ -124,19 +171,19 @@ export const BUILT_IN_PROGRAM: readonly WorkoutTemplate[] = [
     reps('ez-bar-curl', 'EZ-Bar Curl', 3, [8, 12]),
     reps('incline-dumbbell-curl', 'Incline Dumbbell Curl', 2, [10, 15]),
     reps('standing-calf-raises', 'Standing Calf Raise', 2, [12, 15]),
-    reps('seated-dumbbell-palms-down-wrist-curl', 'Reverse Wrist Curl', 2, [15, 20]),
+    reps('repwise-reverse-wrist-curl', 'Reverse Wrist Curl', 2, [15, 20]),
     reps('dead-bug', 'Dead Bug (/side)', 2, [8, 12]),
   ]),
   template('w2-day-b', 'Week 2 Day B — Back + Glutes Emphasis', [
     reps('band-assisted-pull-up', 'Assisted Pull-Up', 3, [8, 12]),
     reps('t-bar-row-with-handle', 'T-Bar / Chest-Supported Row', 3, [8, 12]),
-    reps('barbell-hip-thrust', 'Barbell Hip Thrust', 3, [8, 12]),
+    reps('repwise-barbell-hip-thrust', 'Barbell Hip Thrust', 3, [8, 12]),
     reps('lying-leg-curls', 'Lying Leg Curl', 2, [10, 15]),
     reps('dumbbell-shoulder-press', 'Dumbbell Shoulder Press', 2, [8, 12]),
     reps('dumbbell-bench-press', 'Push-Up or Dumbbell Bench Press', 2, [10, 15]),
     reps('dumbbell-shrug', 'Dumbbell Shrug', 2, [10, 15]),
     reps('repwise-tibialis-raise', 'Tibialis Raise', 2, [15, 25]),
-    reps('external-rotation', 'External Shoulder Rotation (/side)', 2, [12, 20]),
+    reps('repwise-external-rotation', 'External Shoulder Rotation (/side)', 2, [12, 20]),
   ], [CUSTOM_TIBIALIS_RAISE]),
   template('w2-day-c', 'Week 2 Day C — Chest + Triceps Emphasis', [
     reps('dumbbell-bench-press', 'Flat Dumbbell Press', 3, [8, 12]),
@@ -150,7 +197,7 @@ export const BUILT_IN_PROGRAM: readonly WorkoutTemplate[] = [
     reps('repwise-push-up-plus', 'Push-Up Plus / Serratus Cable Punch', 2, [12, 15]),
   ], [CUSTOM_PUSH_UP_PLUS]),
   template('w2-day-d', 'Week 2 Day D — Shoulders + Glutes Emphasis', [
-    reps('cable-internal-rotation', 'Internal Rotation Machine (/side)', 2, [12, 15]),
+    reps('repwise-internal-rotation', 'Internal Rotation Machine (/side)', 2, [12, 15]),
     reps('standing-dumbbell-straight-arm-front-delt-raise-above-head', 'Straight-Arm Shoulder Flexion Machine', 2, [12, 15]),
     reps('dumbbell-shoulder-press', 'Dumbbell Shoulder Press', 3, [8, 12]),
     reps('cable-seated-lateral-raise', 'Cable Lateral Raise', 3, [10, 15]),
@@ -158,19 +205,19 @@ export const BUILT_IN_PROGRAM: readonly WorkoutTemplate[] = [
     reps('split-squat-with-dumbbells', 'Bulgarian Split Squat, Long Stride (/leg)', 3, [8, 12]),
     reps('stiff-legged-dumbbell-deadlift', 'Dumbbell Romanian Deadlift', 2, [8, 12]),
     reps('straight-arm-pulldown', 'Straight-Arm Pulldown', 2, [10, 15]),
-    duration('farmers-walk', 'Farmer Carry', 2, [30, 45]),
+    duration('repwise-farmer-carry', 'Farmer Carry', 2, [30, 45]),
     reps('face-pull', 'Face Pull', 2, [12, 20]),
     reps('pallof-press', 'Pallof Press (/side)', 2, [10, 15]),
   ]),
   template('w3-day-a', 'Week 3 Day A — Chest + Biceps Emphasis', [
-    reps('smith-machine-incline-bench-press', 'Smith Incline Press', 3, [8, 12]),
+    reps('repwise-smith-incline-press', 'Smith Incline Press', 3, [8, 12]),
     reps('dumbbell-flyes', 'Flat Dumbbell Fly', 2, [10, 15]),
     reps('seated-one-arm-cable-pulley-rows', 'One-Arm Cable Row', 2, [8, 12]),
     reps('split-squat-with-dumbbells', 'Bulgarian Split Squat (/leg)', 2, [8, 12]),
     reps('dumbbell-alternate-bicep-curl', 'Alternating Dumbbell Curl', 3, [8, 12]),
     reps('cross-body-hammer-curl', 'Cross-Body Hammer Curl', 2, [10, 15]),
     reps('standing-calf-raises', 'Standing Calf Raise', 2, [12, 15]),
-    reps('seated-dumbbell-palms-down-wrist-curl', 'Reverse Wrist Curl', 2, [15, 20]),
+    reps('repwise-reverse-wrist-curl', 'Reverse Wrist Curl', 2, [15, 20]),
     reps('dead-bug', 'Dead Bug (/side)', 2, [8, 12]),
   ]),
   template('w3-day-b', 'Week 3 Day B — Back + Glutes Emphasis', [
@@ -182,7 +229,7 @@ export const BUILT_IN_PROGRAM: readonly WorkoutTemplate[] = [
     reps('leverage-chest-press', 'Chest Press Machine', 2, [10, 15]),
     reps('dumbbell-shrug', 'Dumbbell Shrug', 2, [10, 15]),
     reps('repwise-tibialis-raise', 'Tibialis Raise', 2, [15, 25]),
-    reps('external-rotation', 'External Shoulder Rotation (/side)', 2, [12, 20]),
+    reps('repwise-external-rotation', 'External Shoulder Rotation (/side)', 2, [12, 20]),
   ], [CUSTOM_TIBIALIS_RAISE]),
   template('w3-day-c', 'Week 3 Day C — Chest + Triceps Emphasis', [
     reps('decline-dumbbell-bench-press', 'Slight-Decline Dumbbell Press', 3, [8, 12]),
@@ -196,7 +243,7 @@ export const BUILT_IN_PROGRAM: readonly WorkoutTemplate[] = [
     reps('repwise-push-up-plus', 'Push-Up Plus / Serratus Cable Punch', 2, [12, 15]),
   ], [CUSTOM_PUSH_UP_PLUS]),
   template('w3-day-d', 'Week 3 Day D — Shoulders + Glutes Emphasis', [
-    reps('cable-internal-rotation', 'Internal Rotation Machine (/side)', 2, [12, 15]),
+    reps('repwise-internal-rotation', 'Internal Rotation Machine (/side)', 2, [12, 15]),
     reps('standing-dumbbell-straight-arm-front-delt-raise-above-head', 'Straight-Arm Shoulder Flexion Machine', 2, [12, 15]),
     reps('arnold-dumbbell-press', 'Arnold Press', 3, [8, 12]),
     reps('side-lateral-raise', 'Lean-Away Dumbbell Lateral Raise', 3, [10, 15]),
@@ -204,7 +251,7 @@ export const BUILT_IN_PROGRAM: readonly WorkoutTemplate[] = [
     reps('bodyweight-walking-lunge', 'Walking Lunge, Long Stride (/leg)', 3, [10, 12]),
     reps('romanian-deadlift', 'Barbell Romanian Deadlift', 2, [8, 12]),
     reps('dumbbell-bench-press', 'Dumbbell Chest Press', 2, [10, 15]),
-    duration('farmers-walk', 'Farmer Carry', 2, [30, 45]),
+    duration('repwise-farmer-carry', 'Farmer Carry', 2, [30, 45]),
     reps('face-pull', 'Face Pull', 2, [12, 20]),
     reps('pallof-press', 'Pallof Press (/side)', 2, [10, 15]),
   ]),

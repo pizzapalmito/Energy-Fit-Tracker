@@ -3,6 +3,7 @@ import { dirname, join, relative, sep } from 'node:path'
 import { existsSync, readFileSync, readdirSync, mkdtempSync, rmSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { buildCatalog, writeCatalogOutput } from './buildCatalog.mjs'
+import { integrateGreekInkMedia } from './integrate-greek-ink-media.mjs'
 import { sha256OfFile, stableStringify } from './hash.mjs'
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), '..', '..')
@@ -58,19 +59,27 @@ async function main() {
     const freshCatalogDir = join(tmpRoot, 'public-catalog')
     const freshAuditPath = join(tmpRoot, 'audit-report.json')
     writeCatalogOutput(fresh, { publicCatalogDir: freshCatalogDir, auditReportPath: freshAuditPath })
+    await integrateGreekInkMedia({ repoRoot, publicCatalogDir: freshCatalogDir, auditReportPath: freshAuditPath })
+
+    const freshCatalogJson = readFileSync(join(freshCatalogDir, 'catalog.json'), 'utf8')
+    const freshAudit = JSON.parse(readFileSync(freshAuditPath, 'utf8'))
 
     const committedCatalogJson = readFileSync(join(committedCatalogDir, 'catalog.json'), 'utf8')
-    if (committedCatalogJson !== fresh.catalogJsonText) {
+    if (committedCatalogJson !== freshCatalogJson) {
       failures.push('catalog.json content differs from a fresh regeneration of the pinned source.')
     }
 
     const committedAudit = JSON.parse(readFileSync(committedAuditPath, 'utf8'))
-    if (stableStringify(committedAudit) !== stableStringify(fresh.audit)) {
+    if (stableStringify(committedAudit) !== stableStringify(freshAudit)) {
       failures.push('audit-report.json differs from a fresh regeneration of the pinned source.')
     }
 
-    const committedMediaFiles = walkFiles(committedCatalogDir).filter((f) => f !== 'catalog.json')
-    const freshMediaFiles = walkFiles(freshCatalogDir).filter((f) => f !== 'catalog.json')
+    // `public/catalog` may also hold separate, user-authored catalog artwork.
+    // The generated bundle owns only `catalog.json` and `media/**`.
+    const committedMediaDir = join(committedCatalogDir, 'media')
+    const freshMediaDir = join(freshCatalogDir, 'media')
+    const committedMediaFiles = walkFiles(committedMediaDir)
+    const freshMediaFiles = walkFiles(freshMediaDir)
     const committedSet = new Set(committedMediaFiles)
     const freshSet = new Set(freshMediaFiles)
 
@@ -83,8 +92,8 @@ async function main() {
     let firstMismatch
     for (const relPath of committedMediaFiles) {
       if (!freshSet.has(relPath)) continue
-      const committedHash = sha256OfFile(join(committedCatalogDir, relPath))
-      const freshHash = sha256OfFile(join(freshCatalogDir, relPath))
+      const committedHash = sha256OfFile(join(committedMediaDir, relPath))
+      const freshHash = sha256OfFile(join(freshMediaDir, relPath))
       if (committedHash !== freshHash) {
         mismatchedCount += 1
         firstMismatch ??= relPath
@@ -94,7 +103,7 @@ async function main() {
 
     if (failures.length === 0) {
       console.log('PASS: committed catalog.json, audit-report.json, and all media files match a fresh regeneration of the pinned source.')
-      console.log(`Catalog version: ${fresh.audit.catalogVersion}`)
+      console.log(`Catalog version: ${freshAudit.catalogVersion}`)
     } else {
       console.error('FAIL: committed generated catalog data does not match the pinned source.')
       for (const f of failures) console.error(`  - ${f}`)

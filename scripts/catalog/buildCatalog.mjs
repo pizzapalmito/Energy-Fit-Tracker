@@ -1,4 +1,4 @@
-import { existsSync, readFileSync, readdirSync, statSync, mkdirSync, writeFileSync } from 'node:fs'
+import { existsSync, readFileSync, readdirSync, statSync, mkdirSync, writeFileSync, rmSync } from 'node:fs'
 import { dirname, extname, join } from 'node:path'
 import sharp from 'sharp'
 import { resolveGitHead } from './gitHead.mjs'
@@ -92,8 +92,8 @@ export async function buildCatalog({ sourceDir, repoRoot }) {
   }
   const inputRecordCount = Array.isArray(raw) ? raw.length : 0
 
-  const { importCatalog, CATALOG_IMPORTER_VERSION } = loadRealImporter(repoRoot)
-  const { exercises, muscles, rejected } = importCatalog(raw)
+  const { importCatalog, CATALOG_IMPORTER_VERSION, CATALOG_CURATION_VERSION } = loadRealImporter(repoRoot)
+  const { exercises, muscles, rejected, curatedOutCount } = importCatalog(raw)
 
   const fatalRejections = rejected.filter((r) => isSchemaBreaking(r.reason) || isDuplicateId(r.reason))
   if (fatalRejections.length > 0) {
@@ -154,6 +154,7 @@ export async function buildCatalog({ sourceDir, repoRoot }) {
   const catalogPayload = {
     sourceCommit: PINNED_UPSTREAM_COMMIT,
     importerVersion: CATALOG_IMPORTER_VERSION,
+    curationVersion: CATALOG_CURATION_VERSION,
     exercises,
     muscles,
   }
@@ -181,7 +182,9 @@ export async function buildCatalog({ sourceDir, repoRoot }) {
     observedUpstreamInventory: observedInventory,
     counts: {
       inputRecords: inputRecordCount,
+      normalizedExercises: exercises.length + curatedOutCount,
       acceptedExercises: exercises.length,
+      curatedOutExercises: curatedOutCount,
       rejectedRecords: rejected.length,
       musclesDiscovered: muscles.length,
     },
@@ -206,6 +209,9 @@ export async function buildCatalog({ sourceDir, repoRoot }) {
 
 export function writeCatalogOutput({ catalogJsonText, mediaFiles, audit }, { publicCatalogDir, auditReportPath }) {
   mkdirSync(publicCatalogDir, { recursive: true })
+  // The media tree is generated exclusively from this catalog. Replacing it
+  // prevents media for removed exercises from remaining in the shipped PWA.
+  rmSync(join(publicCatalogDir, 'media'), { recursive: true, force: true })
   writeFileSync(join(publicCatalogDir, 'catalog.json'), catalogJsonText, 'utf8')
   for (const file of mediaFiles) {
     const absPath = join(publicCatalogDir, file.relPath)

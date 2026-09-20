@@ -9,7 +9,7 @@ const repoRoot = join(dirname(fileURLToPath(import.meta.url)), '..', '..')
 interface AuditReport {
   sourceCommit: string
   catalogVersion: string
-  counts: { inputRecords: number; acceptedExercises: number; rejectedRecords: number; musclesDiscovered: number }
+  counts: { inputRecords: number; normalizedExercises: number; acceptedExercises: number; curatedOutExercises: number; rejectedRecords: number; musclesDiscovered: number }
   rejected: Array<{ index: number; reason: string }>
   media: { referencedImagePaths: number; convertedImages: number; missingImages: unknown[] }
   maxAssetBytes: number
@@ -41,13 +41,18 @@ describe('generated catalog audit invariants', () => {
   })
 
   it('accepted-exercise count matches the audit report and every id is unique', () => {
-    expect(catalog.exercises.length).toBeGreaterThan(800)
+    expect(catalog.exercises.length).toBe(438)
     expect(catalog.exercises.length).toBe(auditReport.counts.acceptedExercises)
     expect(new Set(catalog.exercises.map((e) => e.id)).size).toBe(catalog.exercises.length)
   })
 
+  it('contains only the focused strength category', () => {
+    expect(new Set(catalog.exercises.map((exercise) => exercise.category))).toEqual(new Set(['strength']))
+  })
+
   it('input/accepted/rejected counts are internally consistent', () => {
-    expect(auditReport.counts.inputRecords).toBe(auditReport.counts.acceptedExercises + auditReport.counts.rejectedRecords)
+    expect(auditReport.counts.inputRecords).toBe(auditReport.counts.normalizedExercises + auditReport.counts.rejectedRecords)
+    expect(auditReport.counts.normalizedExercises).toBe(auditReport.counts.acceptedExercises + auditReport.counts.curatedOutExercises)
     expect(auditReport.rejected.length).toBe(auditReport.counts.rejectedRecords)
   })
 
