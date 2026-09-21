@@ -106,7 +106,7 @@ describe('ExercisesPage', () => {
     expect(screen.getByText('Push-Up')).toBeInTheDocument()
   })
 
-  it('opens an exercise detail view with instructions and a start/end media toggle', async () => {
+  it('opens an exercise detail view with instructions and one image', async () => {
     await new DexieMuscleRepository(db).bulkUpsert(musclesFixture)
     await new DexieExerciseRepository(db).bulkUpsert([exercise()])
     const user = userEvent.setup()
@@ -115,10 +115,8 @@ describe('ExercisesPage', () => {
     await user.click(await screen.findByText('Bench Press'))
     const dialog = await screen.findByRole('dialog')
     expect(within(dialog).getByText('Lie on the bench.')).toBeInTheDocument()
-    expect(within(dialog).getByRole('img')).toHaveAttribute('alt', expect.stringContaining('starting position'))
-
-    await user.click(within(dialog).getByRole('button', { name: 'End' }))
-    expect(within(dialog).getByRole('img')).toHaveAttribute('alt', expect.stringContaining('ending position'))
+    expect(within(dialog).getByRole('img', { name: 'Bench Press' })).toBeInTheDocument()
+    expect(within(dialog).queryByRole('button', { name: 'End' })).not.toBeInTheDocument()
 
     await user.click(within(dialog).getByRole('button', { name: 'Close exercise details' }))
     expect(screen.queryByRole('dialog')).not.toBeInTheDocument()

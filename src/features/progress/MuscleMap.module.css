@@ -5,11 +5,11 @@
 .region { cursor: pointer; stroke: color-mix(in srgb, #0d0f12 65%, transparent); stroke-width: 1.25; transition: opacity .15s ease, filter .15s ease, stroke .15s ease; }
 .region:hover, .region[data-selected] { filter: brightness(1.12); stroke: #fff; stroke-width: 2; }
 .region:focus-visible { outline: none; filter: brightness(1.15); stroke: #fff; stroke-width: 2.5; }
-.legend { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .45rem; margin-top: .35rem; }
+.legend { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 1fr)); gap: .45rem; margin-top: .35rem; }
 .legendItem { display: flex; align-items: center; gap: .45rem; min-width: 0; padding: .5rem; border: 1px solid var(--line); border-radius: .7rem; background: color-mix(in srgb, var(--surface-raised) 70%, transparent); }
 .legendItem > span:last-child { display: grid; min-width: 0; }
-.legendItem strong { color: var(--text); font-size: .72rem; }
-.legendItem small { color: var(--muted); font-size: .65rem; white-space: nowrap; }
+.legendItem strong { color: var(--text); font-size: .72rem; overflow-wrap: anywhere; }
+.legendItem small { color: var(--muted); font-size: .65rem; overflow-wrap: anywhere; }
 .swatch { flex: 0 0 auto; width: 1.25rem; height: 1.25rem; border: 1px solid #ffffff55; border-radius: .35rem; }
 .swatch[data-status="fatigued"] { background: repeating-linear-gradient(45deg, #e86670 0 4px, #8f303a 4px 6px); }
 .swatch[data-status="recovering"] { background-color: #e9b85f; background-image: radial-gradient(#855f27 1.5px, transparent 1.5px); background-size: 7px 7px; }
