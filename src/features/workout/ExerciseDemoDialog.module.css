@@ -3,7 +3,7 @@
 .sheet header { display: flex; align-items: center; justify-content: space-between; gap: .75rem; margin-bottom: .75rem; }
 .sheet h2 { margin: 0; font-size: 1.05rem; }
 .sheet header button { min-width: 2.75rem; min-height: 2.75rem; border: 1px solid var(--line); border-radius: .6rem; background: var(--surface-raised); color: var(--text); font-size: 1.2rem; }
-.sheet img, .fallback { display: grid; width: 100%; aspect-ratio: 4 / 3; place-items: center; border: .5rem solid #b08a43; outline: 1px solid #6c5225; outline-offset: -.75rem; border-radius: .75rem; background: linear-gradient(135deg, #c5b48f, #ece7db 46%, #a98544); color: var(--muted); object-fit: contain; }
+.sheet img, .fallback { display: grid; width: 100%; aspect-ratio: 1 / 1; place-items: center; border: .5rem solid #b08a43; outline: 1px solid #6c5225; outline-offset: -.75rem; border-radius: .75rem; background: linear-gradient(135deg, #c5b48f, #ece7db 46%, #a98544); color: var(--muted); object-fit: contain; }
 .toggle { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem; margin-top: .65rem; }
 .toggle button { min-height: 2.75rem; border: 1px solid var(--line); border-radius: .6rem; background: var(--surface-raised); color: var(--muted); font-weight: 800; }
 .toggle button[aria-pressed="true"] { border-color: var(--accent); background: var(--accent); color: var(--bg); }

@@ -48,7 +48,10 @@
     "sheet-046",
     "sheet-047",
     "sheet-048",
-    "sheet-049"
+    "sheet-049",
+    "sheet-050",
+    "sheet-051",
+    "sheet-052"
   ],
   "sources": {
     "sheet-001": "sheet-001.webp",
@@ -99,6 +102,9 @@
     "sheet-046": "sheet-046.webp",
     "sheet-047": "sheet-047.webp",
     "sheet-048": "sheet-048.webp",
-    "sheet-049": "sheet-049.webp"
+    "sheet-049": "sheet-049.webp",
+    "sheet-050": "sheet-050.webp",
+    "sheet-051": "sheet-051.webp",
+    "sheet-052": "sheet-052.webp"
   }
 }
