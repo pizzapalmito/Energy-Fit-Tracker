@@ -6,7 +6,7 @@
 .reminder { border-color: var(--accent); color: var(--accent); }
 .segment, .actions { display: flex; flex-wrap: wrap; gap: .5rem; }
 .page button { min-height: 2.75rem; padding: .65rem .9rem; border: 1px solid var(--line); border-radius: .7rem; color: var(--text); background: var(--surface-raised); }
-.page button[aria-pressed=true] { border-color: var(--accent); color: var(--accent); }
+.page button[aria-pressed=true] { border-color: var(--accent); background: var(--accent); color: var(--bg); font-weight: 800; box-shadow: var(--accent-glow); }
 .page label { display: grid; gap: .35rem; margin-top: .75rem; color: var(--muted); }
 .page input, .page select { min-height: 2.75rem; padding: .65rem; border: 1px solid var(--line); border-radius: .7rem; background: var(--bg); color: var(--text); }
 .page input[aria-invalid="true"] { border-color: var(--danger); }

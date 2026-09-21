@@ -35,7 +35,6 @@ export function ExerciseDetail({ db = appDb, exercise, onClose }: { db?: Repwise
   const [duplicateWorkoutId, setDuplicateWorkoutId] = useState<string>()
   const [addedTarget, setAddedTarget] = useState<{ exerciseId: string; workoutId: string }>()
   const closeButtonRef = useRef<HTMLButtonElement>(null)
-  const [frame, setFrame] = useState<'start' | 'end'>('start')
   const [duplicateConfirmOpen, setDuplicateConfirmOpen] = useState(false)
   const [addState, setAddState] = useState<'idle' | 'adding' | 'added' | 'error'>('idle')
   const [addErrorMessage, setAddErrorMessage] = useState<string>()
@@ -66,7 +65,6 @@ export function ExerciseDetail({ db = appDb, exercise, onClose }: { db?: Repwise
   useEffect(() => {
     setAddedTarget(undefined)
     setDuplicateWorkoutId(undefined)
-    setFrame('start')
     setAddState('idle')
     setAddErrorMessage(undefined)
     setDuplicateConfirmOpen(false)
@@ -103,11 +101,6 @@ export function ExerciseDetail({ db = appDb, exercise, onClose }: { db?: Repwise
 
   const addedForCurrent = active.status === 'ready' && active.value?.workoutId === addedTarget?.workoutId && exercise.id === addedTarget?.exerciseId
 
-  const startMedia = exercise.media[0]
-  const endMedia = exercise.media[1]
-  const hasBothFrames = Boolean(startMedia && endMedia)
-  const activeMedia = frame === 'end' ? (endMedia ?? startMedia) : startMedia
-
   return (
     <div className={styles.backdrop} role="presentation" onClick={onClose}>
       <div ref={dialogRef} onKeyDown={(event) => {
@@ -126,17 +119,7 @@ export function ExerciseDetail({ db = appDb, exercise, onClose }: { db?: Repwise
         </div>
 
         <figure className={styles.media}>
-            <CatalogImage relativePath={activeMedia} alt={`${exercise.name} — ${frame === 'end' ? t('exerciseDetail.endingPosition') : t('exerciseDetail.startingPosition')}`} fallbackClassName={styles.mediaFallback} />
-            {hasBothFrames && (
-              <figcaption className={styles.mediaToggle} role="group" aria-label={t('exerciseDetail.frameGroupAriaLabel')}>
-                <button type="button" aria-pressed={frame === 'start'} onClick={() => setFrame('start')}>
-                  {t('exerciseDetail.start')}
-                </button>
-                <button type="button" aria-pressed={frame === 'end'} onClick={() => setFrame('end')}>
-                  {t('exerciseDetail.end')}
-                </button>
-              </figcaption>
-            )}
+            <CatalogImage relativePath={exercise.media[0]} alt={exercise.name} fallbackClassName={styles.mediaFallback} />
           </figure>
 
         <div className={styles.addSection}>

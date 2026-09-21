@@ -79,12 +79,11 @@ describe('ExerciseDetail', () => {
     expect(screen.getByText('Set up the bar.')).toBeInTheDocument()
   })
 
-  it('defaults to the starting-position image and toggles to the ending position', async () => {
-    const user = userEvent.setup()
+  it('shows the exercise image without a start/end selector', () => {
     renderDetail()
-    expect(screen.getByRole('img')).toHaveAttribute('alt', expect.stringContaining('starting position'))
-    await user.click(screen.getByRole('button', { name: 'End' }))
-    expect(screen.getByRole('img')).toHaveAttribute('alt', expect.stringContaining('ending position'))
+    expect(screen.getByRole('img', { name: 'Squat' })).toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: 'Start' })).not.toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: 'End' })).not.toBeInTheDocument()
   })
 
   it('calls onClose when Escape is pressed', async () => {
@@ -108,15 +107,15 @@ describe('ExerciseDetail', () => {
     expect(screen.getByRole('button', { name: 'Close exercise details' })).toHaveFocus()
   })
 
-  it('omits the media toggle when only one demonstration frame is available', () => {
+  it('uses the first image when only one demonstration frame is available', () => {
     renderDetail({ media: ['media/squat/start.webp'] })
-    expect(screen.queryByRole('button', { name: 'End' })).not.toBeInTheDocument()
+    expect(screen.getByRole('img', { name: 'Squat' })).toBeInTheDocument()
   })
 
   it('shows a clean fallback instead of a broken image', () => {
     renderDetail()
-    fireEvent.error(screen.getByRole('img', { name: /starting position/ }))
-    expect(screen.getByRole('img', { name: /starting position unavailable/ })).toHaveTextContent('No image')
+    fireEvent.error(screen.getByRole('img', { name: 'Squat' }))
+    expect(screen.getByRole('img', { name: 'Squat unavailable' })).toHaveTextContent('No image')
   })
 
   it('shows a no-active-workout affordance and recent-performance empty state when there is no history', async () => {
