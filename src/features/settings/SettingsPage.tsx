@@ -7,6 +7,7 @@ import { useLiveQuery } from '../../data/useLiveQuery'
 import { SETTINGS_SINGLETON_ID } from '../../data/repositories/settingsRepository'
 import { exportBackup, exportWorkoutCsv, restoreBackup, validateBackup, type BackupValidation } from '../../services/backupService'
 import { useI18n } from '../../i18n/I18nContext'
+import { ScreenTitle } from '../../app/shell/ScreenTitle'
 import { equipmentLabel, equipmentProfileNameLabel, splitLabel, trainingGoalLabel } from '../../i18n/enumLabels'
 import { formatBackupValidationError } from '../../i18n/backupValidationPresentation'
 import { LOCALE_NATIVE_NAMES, SUPPORTED_LOCALES } from '../../i18n/locale'
@@ -101,7 +102,7 @@ export function SettingsPage({ db = appDb }: { db?: RepwiseDatabase }) {
   const daysSinceBackup = current?.lastBackupAt ? Math.floor((Date.now() - Date.parse(current.lastBackupAt)) / 86400000) : undefined
   return (
     <section className={styles.page}>
-      <p className={styles.eyebrow}>{t('settings.eyebrow')}</p><h1>{t('settings.title')}</h1>
+      <p className={styles.eyebrow}>{t('settings.eyebrow')}</p><ScreenTitle index={5}>{t('settings.title')}</ScreenTitle>
 
       <section className={styles.card}><h2>{t('settings.unitsTitle')}</h2><div className={styles.segment}><button aria-pressed={(current?.unit ?? 'kg') === 'kg'} onClick={() => void setUnit('kg')}>{t('settings.kilograms')}</button><button aria-pressed={current?.unit === 'lb'} onClick={() => void setUnit('lb')}>{t('settings.pounds')}</button></div></section>
       <section className={styles.card}><h2>{t('settings.languageTitle')}</h2><div className={styles.segment} role="group" aria-label={t('settings.languageTitle')}>{SUPPORTED_LOCALES.map((code) => <button key={code} type="button" aria-pressed={locale === code} onClick={() => setLocale(code)}>{LOCALE_NATIVE_NAMES[code]}</button>)}</div></section>

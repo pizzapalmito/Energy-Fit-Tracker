@@ -106,6 +106,20 @@ describe('ExercisesPage', () => {
     expect(screen.getByText('Push-Up')).toBeInTheDocument()
   })
 
+  it('exposes lower-priority filters through a labelled disclosure that reports active filters', async () => {
+    await new DexieMuscleRepository(db).bulkUpsert(musclesFixture)
+    await new DexieExerciseRepository(db).bulkUpsert([exercise(), exercise({ id: 'push-up', name: 'Push-Up', difficulty: 'beginner' })])
+    const user = userEvent.setup()
+    render(<ExercisesPage db={db} />)
+    await screen.findByText('Bench Press')
+    const toggle = screen.getByRole('button', { name: 'More filters' })
+    expect(toggle).toHaveAttribute('aria-expanded', 'false')
+    await user.click(toggle)
+    expect(toggle).toHaveAttribute('aria-expanded', 'true')
+    await user.selectOptions(screen.getByLabelText('Difficulty'), 'beginner')
+    expect(screen.getByRole('button', { name: 'More filters 1' })).toBeInTheDocument()
+  })
+
   it('opens an exercise detail view with instructions and one image', async () => {
     await new DexieMuscleRepository(db).bulkUpsert(musclesFixture)
     await new DexieExerciseRepository(db).bulkUpsert([exercise()])

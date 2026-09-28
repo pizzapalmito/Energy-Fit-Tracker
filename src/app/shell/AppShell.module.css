@@ -1,18 +1,21 @@
 .shell { min-height: 100dvh; max-width: 48rem; margin: 0 auto; padding-bottom: calc(4rem + env(safe-area-inset-bottom)); background: var(--bg); }
-.header { position: relative; display: flex; align-items: center; gap: .5rem; min-height: 3.25rem; padding: max(.8rem, env(safe-area-inset-top)) 1.125rem .55rem; border-bottom: 1px solid var(--line); }
-.header::after { content: ""; position: absolute; inset: auto 0 -1px; height: 1px; background: linear-gradient(90deg, transparent, var(--text) 18%, var(--text) 82%, transparent); opacity: .18; }
-.heroArt { position: absolute; top: 100%; right: 0; z-index: 0; width: 13rem; height: 9.75rem; opacity: .72; background-position: right top; background-repeat: no-repeat; background-size: contain; filter: grayscale(1) contrast(1.2); mix-blend-mode: multiply; mask-image: linear-gradient(90deg, transparent 0%, #000 48%); -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 48%); pointer-events: none; }
-.identity { position: relative; z-index: 1; }
+.header { position: relative; display: flex; align-items: center; gap: .5rem; min-height: 3.25rem; padding: max(.8rem, env(safe-area-inset-top)) var(--gutter) .55rem; border-bottom: 1px solid var(--line); }
+/* Watermark stays inside the header band, clear of the identity and of every screen title. */
+.heroArt { position: absolute; inset: 0 0 0 auto; z-index: 0; width: min(42%, 15rem); opacity: .3; background-position: 62% 18%; background-repeat: no-repeat; background-size: cover; filter: grayscale(1) contrast(1.1); mix-blend-mode: multiply; mask-image: linear-gradient(90deg, transparent 0%, #000 55%); -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 55%); pointer-events: none; }
+.identity { position: relative; z-index: 1; min-width: 0; }
 .header strong { font-family: var(--font-mono); font-size: .56rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; }
 .header small { display: block; margin-top: .15rem; color: var(--muted); font-family: var(--font-mono); font-size: .5rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; }
-.mark { position: relative; z-index: 1; display: block; width: 2.7rem; height: 2.7rem; object-fit: contain; }
+.mark { position: relative; z-index: 1; display: block; flex: none; width: 2.25rem; height: 1.5rem; object-fit: contain; filter: grayscale(1) contrast(2); mix-blend-mode: multiply; }
 .main { padding: 0; }
 .nav { position: fixed; z-index: 10; inset: auto 0 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); width: min(48rem, 100%); margin-inline: auto; padding-bottom: env(safe-area-inset-bottom); background: var(--bg); border-top: 1px solid var(--line); }
-.nav a { min-width: 0; min-height: 3.75rem; display: grid; grid-template-columns: auto 1fr; align-items: center; gap: .35rem; padding: .45rem .35rem; border-right: 1px solid var(--line); color: var(--text); text-decoration: none; }
+.nav a { min-width: 0; min-height: 3.75rem; display: flex; flex-direction: column; justify-content: center; gap: .25rem; padding: .45rem .4rem; border-right: 1px solid var(--line); color: var(--text); text-decoration: none; }
 .nav a:last-child { border-right: 0; }
-.navIndex { font-family: var(--font-mono); font-size: .52rem; opacity: .65; }
+.navIndex { font-family: var(--font-mono); font-size: .56rem; font-weight: 500; line-height: 1; opacity: .6; }
 .navIcon { display: none; }
-.navLabel { overflow-wrap: anywhere; color: inherit; font-family: var(--font-mono); font-size: .5rem; font-weight: 600; letter-spacing: .08em; text-align: left; text-transform: uppercase; }
+.navLabel { overflow-wrap: anywhere; color: inherit; font-family: var(--font-sans); font-size: .66rem; font-stretch: var(--display-stretch); font-weight: 700; letter-spacing: .04em; line-height: 1.1; text-align: left; text-transform: uppercase; }
 .nav a.active { background: var(--text); color: var(--bg); }
+.nav a.active .navIndex { opacity: .8; }
 .nav a.active .navLabel { color: inherit; }
-@media (min-width: 48rem) { .shell { border-inline: 1px solid var(--line); } .nav { left: 50%; right: auto; transform: translateX(-50%); border-inline: 1px solid var(--line); } }
+/* Long localized labels (Configurações, Exercícios, Aujourd'hui) fit whole on 320-380px phones. */
+@media (max-width: 380px) { .nav a { padding-inline: .25rem; } .navLabel { font-size: .58rem; font-stretch: 62%; letter-spacing: 0; } }
+@media (min-width: 48rem) { .shell { border-inline: 1px solid var(--line); } .nav { left: 50%; right: auto; transform: translateX(-50%); border-inline: 1px solid var(--line); } .nav a { padding-inline: .75rem; } .navLabel { font-size: .75rem; } }

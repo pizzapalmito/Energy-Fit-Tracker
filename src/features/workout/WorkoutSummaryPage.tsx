@@ -2,6 +2,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import { db as appDb } from '../../data/appDatabase'
 import type { RepwiseDatabase } from '../../data/db'
 import { useI18n } from '../../i18n/I18nContext'
+import { ScreenTitle } from '../../app/shell/ScreenTitle'
 import { formatDuration } from './useElapsedSeconds'
 import { kgToDisplayWeight } from './units'
 import { useUnit } from './useUnit'
@@ -25,7 +26,7 @@ export function WorkoutSummaryPage({ db = appDb }: { db?: RepwiseDatabase }) {
   return (
     <section className={styles.page}>
       <p className={styles.eyebrow}>{t('workoutSummary.eyebrow')}</p>
-      <h1>{t('workoutSummary.title')}</h1>
+      <ScreenTitle index={2}>{t('workoutSummary.title')}</ScreenTitle>
 
       {summary.status === 'loading' && (
         <p role="status" aria-live="polite" className={styles.status}>{t('workoutSummary.loading')}</p>

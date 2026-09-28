@@ -4,6 +4,7 @@ import type { Exercise } from '../../domain/models'
 import { db as appDb } from '../../data/appDatabase'
 import type { RepwiseDatabase } from '../../data/db'
 import { useI18n } from '../../i18n/I18nContext'
+import { ScreenTitle } from '../../app/shell/ScreenTitle'
 import { useActiveWorkoutData } from './useActiveWorkoutData'
 import { useRestTimer } from './useRestTimer'
 import { useUnit } from './useUnit'
@@ -104,7 +105,7 @@ export function WorkoutPage({ db = appDb }: { db?: RepwiseDatabase }) {
   return (
     <section className={styles.page}>
       <p className={styles.eyebrow}>{t('workout.eyebrow')}</p>
-      <h1>{t('workout.title')}</h1>
+      <ScreenTitle index={2}>{t('workout.title')}</ScreenTitle>
 
       {data.status === 'loading' && (
         <p role="status" aria-live="polite" className={styles.status}>
