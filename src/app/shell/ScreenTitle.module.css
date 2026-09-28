@@ -1,0 +1,4 @@
+.title { position: relative; z-index: 1; display: flex; align-items: stretch; max-width: none; min-height: 4.5rem; margin: 0 calc(-1 * var(--page-inset, 0px)); font-size: clamp(2.1rem, 10.5vw, 3.6rem); padding: 0; border-bottom: 3px solid var(--line); }
+.index { flex: none; display: grid; width: 2.75rem; place-items: end center; padding-bottom: .6rem; border-right: 1px solid var(--line); font-family: var(--font-mono); font-size: .68rem; font-stretch: normal; font-weight: 600; letter-spacing: .06em; line-height: 1; }
+.text { flex: 1; align-self: end; min-width: 0; padding: .7rem var(--gutter) .5rem .875rem; }
+@media (max-width: 360px) { .text { padding-inline: .7rem .875rem; } }

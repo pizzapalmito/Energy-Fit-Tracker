@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { ScreenTitle } from '../../app/shell/ScreenTitle'
 import { db as appDb } from '../../data/appDatabase'
 import type { RepwiseDatabase } from '../../data/db'
 import type { WorkoutTemplate } from '../../data/types'
@@ -73,7 +74,7 @@ export function TodayPage({ db = appDb }: { db?: RepwiseDatabase }) {
   return (
     <section className={styles.page}>
       <p className={styles.eyebrow}>{t('today.weekLabel')} {programWeek} · {t('today.dayLabel', { letter: String.fromCharCode(65 + boundedDayIndex) })}</p>
-      <h1>{t('today.title')}</h1>
+      <ScreenTitle index={1}>{t('today.title')}</ScreenTitle>
 
       {data.status === 'loading' && (
         <p role="status" aria-live="polite" className={styles.status}>

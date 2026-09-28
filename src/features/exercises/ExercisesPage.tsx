@@ -5,6 +5,7 @@ import type { Muscle } from '../../data/types'
 import { db as appDb } from '../../data/appDatabase'
 import type { RepwiseDatabase } from '../../data/db'
 import { useI18n } from '../../i18n/I18nContext'
+import { ScreenTitle } from '../../app/shell/ScreenTitle'
 import { equipmentLabel, difficultyLabel, movementPatternLabel, muscleLabel, type Translator } from '../../i18n/enumLabels'
 import { useExerciseCatalog } from './useExerciseCatalog'
 import { DEFAULT_FILTERS, collectFilterOptions, filterExercises, hasActiveFilters, type ExerciseFilters } from './filterExercises'
@@ -23,6 +24,9 @@ export function ExercisesPage({ db = appDb }: { db?: RepwiseDatabase }) {
   const equipmentId = useId()
   const difficultyId = useId()
   const movementId = useId()
+  const moreFiltersId = useId()
+  const [moreFiltersOpen, setMoreFiltersOpen] = useState(false)
+  const secondaryFilterCount = (filters.difficulty !== 'all' ? 1 : 0) + (filters.movementPattern !== 'all' ? 1 : 0)
 
   const exercises = catalog.status === 'ready' ? catalog.exercises : []
   const muscles: Muscle[] = catalog.status === 'ready' ? catalog.muscles : []
@@ -37,7 +41,7 @@ export function ExercisesPage({ db = appDb }: { db?: RepwiseDatabase }) {
   return (
     <section className={styles.page}>
       <p className={styles.eyebrow}>{t('exercises.eyebrow')}</p>
-      <h1>{t('exercises.title')}</h1>
+      <ScreenTitle index={3}>{t('exercises.title')}</ScreenTitle>
 
       {catalog.status === 'loading' && (
         <p role="status" aria-live="polite" className={styles.status}>
@@ -95,26 +99,33 @@ export function ExercisesPage({ db = appDb }: { db?: RepwiseDatabase }) {
               </select>
             </div>
 
-            <div className={styles.field}>
-              <label htmlFor={difficultyId}>{t('exercises.difficultyLabel')}</label>
-              <select id={difficultyId} value={filters.difficulty} onChange={(e) => update('difficulty', e.target.value as ExerciseFilters['difficulty'])}>
-                <option value="all">{t('exercises.allDifficulties')}</option>
-                <option value="beginner">{t('difficulty.beginner')}</option>
-                <option value="intermediate">{t('difficulty.intermediate')}</option>
-                <option value="advanced">{t('difficulty.advanced')}</option>
-              </select>
-            </div>
+            <button type="button" className={styles.moreToggle} aria-expanded={moreFiltersOpen} aria-controls={moreFiltersId} onClick={() => setMoreFiltersOpen((open) => !open)}>
+              <span>{t('exercises.moreFilters')}</span>{' '}
+              {secondaryFilterCount > 0 && <span className={styles.moreCount}>{secondaryFilterCount}</span>}
+            </button>
 
-            <div className={styles.field}>
-              <label htmlFor={movementId}>{t('exercises.movementLabel')}</label>
-              <select id={movementId} value={filters.movementPattern} onChange={(e) => update('movementPattern', e.target.value)}>
-                <option value="all">{t('exercises.allMovements')}</option>
-                {filterOptions.movementPatterns.map((m) => (
-                  <option key={m} value={m}>
-                    {movementPatternLabel(t, m)}
-                  </option>
-                ))}
-              </select>
+            <div id={moreFiltersId} className={styles.moreFilters} data-open={moreFiltersOpen}>
+              <div className={styles.field}>
+                <label htmlFor={difficultyId}>{t('exercises.difficultyLabel')}</label>
+                <select id={difficultyId} value={filters.difficulty} onChange={(e) => update('difficulty', e.target.value as ExerciseFilters['difficulty'])}>
+                  <option value="all">{t('exercises.allDifficulties')}</option>
+                  <option value="beginner">{t('difficulty.beginner')}</option>
+                  <option value="intermediate">{t('difficulty.intermediate')}</option>
+                  <option value="advanced">{t('difficulty.advanced')}</option>
+                </select>
+              </div>
+
+              <div className={styles.field}>
+                <label htmlFor={movementId}>{t('exercises.movementLabel')}</label>
+                <select id={movementId} value={filters.movementPattern} onChange={(e) => update('movementPattern', e.target.value)}>
+                  <option value="all">{t('exercises.allMovements')}</option>
+                  {filterOptions.movementPatterns.map((m) => (
+                    <option key={m} value={m}>
+                      {movementPatternLabel(t, m)}
+                    </option>
+                  ))}
+                </select>
+              </div>
             </div>
 
             {hasActiveFilters(filters) && (

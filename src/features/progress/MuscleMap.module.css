@@ -1,25 +1,25 @@
-.wrap { background: linear-gradient(180deg, color-mix(in srgb, var(--surface-raised) 38%, var(--surface)), var(--surface)); border: 1px solid var(--line); border-radius: var(--radius-card); padding: .9rem; }
+.wrap { padding: .75rem 0 0; border-top: 0; }
 .wrap svg { display: block; width: min(100%, 28rem); margin: auto; }
-.wrap text { fill: var(--muted); font-family: var(--font-mono); font-size: 9.5px; font-weight: 500; text-transform: uppercase; letter-spacing: 1.6px; }
-.body, .outline { fill: #1b2026; stroke: #48515c; stroke-width: 1.5; }
-.region { cursor: pointer; stroke: color-mix(in srgb, #0d0f12 65%, transparent); stroke-width: 1.25; transition: opacity .15s ease, filter .15s ease, stroke .15s ease; }
-.region:hover, .region[data-selected] { filter: brightness(1.12); stroke: #fff; stroke-width: 2; }
-.region:focus-visible { outline: none; filter: brightness(1.15); stroke: #fff; stroke-width: 2.5; }
-.legend { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 1fr)); gap: .45rem; margin-top: .35rem; }
-.legendItem { display: flex; align-items: center; gap: .45rem; min-width: 0; padding: .5rem; border: 1px solid var(--line); border-radius: .7rem; background: color-mix(in srgb, var(--surface-raised) 70%, transparent); }
+.wrap text { fill: var(--muted); font-family: var(--font-mono); font-size: 9.5px; font-weight: 500; letter-spacing: 1.6px; text-transform: uppercase; }
+.body, .outline { fill: #d8d2c5; stroke: #8a847a; stroke-width: 1.25; }
+.region { cursor: pointer; stroke: #111111; stroke-opacity: .45; stroke-width: 1; transition: opacity .15s ease, stroke-opacity .15s ease, stroke-width .15s ease; }
+.region:hover, .region[data-selected] { stroke-opacity: 1; stroke-width: 2; }
+.region:focus-visible { outline: none; stroke-opacity: 1; stroke-width: 2.75; }
+/* Legend reads as a three-cell ledger strip. */
+.legend { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); margin-top: .5rem; border: 1px solid var(--line); }
+.legendItem { display: flex; align-items: center; gap: .45rem; min-width: 0; padding: .5rem; }
+.legendItem + .legendItem { border-left: 1px solid var(--line); }
 .legendItem > span:last-child { display: grid; min-width: 0; }
-.legendItem strong { color: var(--text); font-size: .72rem; overflow-wrap: anywhere; }
-.legendItem small { color: var(--muted); font-size: .65rem; overflow-wrap: anywhere; }
-.swatch { flex: 0 0 auto; width: 1.25rem; height: 1.25rem; border: 1px solid #ffffff55; border-radius: .35rem; }
-.swatch[data-status="fatigued"] { background: repeating-linear-gradient(45deg, #e86670 0 4px, #8f303a 4px 6px); }
-.swatch[data-status="recovering"] { background-color: #e9b85f; background-image: radial-gradient(#855f27 1.5px, transparent 1.5px); background-size: 7px 7px; }
-.swatch[data-status="ready"] { background: #63d49a; }
-.hint { margin: .65rem .2rem 0; color: var(--muted); font-size: .7rem; line-height: 1.45; }
+.legendItem strong { color: var(--text); font-family: var(--font-mono); font-size: .6rem; font-weight: 600; letter-spacing: .06em; overflow-wrap: anywhere; text-transform: uppercase; }
+.legendItem small { color: var(--muted); font-family: var(--font-mono); font-size: .6rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+.swatch { flex: 0 0 auto; width: 1.1rem; height: 1.1rem; border: 1px solid var(--line); }
+.swatch[data-status="fatigued"] { background: repeating-linear-gradient(45deg, #d2692c 0 4px, #8a3a10 4px 6px); }
+.swatch[data-status="recovering"] { background-color: #ffac00; background-image: radial-gradient(#8a5d00 1.5px, transparent 1.5px); background-size: 7px 7px; }
+.swatch[data-status="ready"] { background: var(--green); }
+.hint { margin: .6rem 0 0; color: var(--muted); font-size: .7rem; line-height: 1.45; }
 @media (max-width: 390px) {
-  .wrap { padding: .7rem; }
-  .legendItem { gap: .35rem; padding: .4rem; }
-  .swatch { width: 1rem; height: 1rem; }
-  .legendItem strong { font-size: .66rem; }
-  .legendItem small { font-size: .6rem; }
+  .legendItem { gap: .3rem; padding: .4rem .35rem; }
+  .swatch { width: .9rem; height: .9rem; }
+  .legendItem strong, .legendItem small { font-size: .54rem; }
 }
 @media (prefers-reduced-motion: reduce) { .region { transition: none; } }

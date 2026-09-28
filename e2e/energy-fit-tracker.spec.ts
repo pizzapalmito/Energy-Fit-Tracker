@@ -9,27 +9,30 @@ test.describe('Energy Fit Tracker core offline workflow', () => {
     await expect(appMark).toBeVisible()
     await expect(appMark).toHaveAttribute('src', '/Energy-Fit-Tracker/brand/eft-logo.webp')
     await expect.poll(() => appMark.evaluate((image) => (image as HTMLImageElement).complete && (image as HTMLImageElement).naturalWidth > 0)).toBe(true)
-    const energyTheme = await page.evaluate(() => {
+    const stoneTheme = await page.evaluate(() => {
       const probe = document.createElement('span')
-      probe.style.color = 'var(--accent)'
-      probe.style.border = '1px solid var(--neon-magenta)'
-      probe.style.backgroundColor = 'var(--danger)'
-      probe.style.outlineColor = 'var(--neon-orange)'
       document.body.append(probe)
-      const probeStyles = getComputedStyle(probe)
+      const resolve = (token: string) => { probe.style.color = `var(${token})`; return getComputedStyle(probe).color }
       const theme = {
-        accentMatchesMagenta: probeStyles.color === probeStyles.borderTopColor,
-        dangerMatchesOrange: probeStyles.backgroundColor === probeStyles.outlineColor,
-        scanlines: getComputedStyle(document.body, '::before').backgroundImage,
-        headerTrail: getComputedStyle(document.querySelector('header')!, '::after').backgroundImage,
+        accent: resolve('--accent'),
+        success: resolve('--success'),
+        amber: resolve('--amber'),
+        caution: resolve('--caution'),
+        legacyTokens: ['--neon-green', '--neon-orange', '--neon-magenta', '--accent-glow', '--danger-glow']
+          .filter((token) => getComputedStyle(document.documentElement).getPropertyValue(token).trim() !== ''),
+        scanlines: getComputedStyle(document.body, '::before').content,
+        headerTrail: getComputedStyle(document.querySelector('header')!, '::after').content,
       }
       probe.remove()
       return theme
     })
-    expect(energyTheme.accentMatchesMagenta).toBe(true)
-    expect(energyTheme.dangerMatchesOrange).toBe(true)
-    expect(energyTheme.scanlines).toContain('repeating-linear-gradient')
-    expect(energyTheme.headerTrail).toContain('linear-gradient')
+    expect(stoneTheme.accent).toBe('rgb(17, 17, 17)')
+    expect(stoneTheme.success).toBe('rgb(49, 91, 68)')
+    expect(stoneTheme.amber).toBe('rgb(255, 172, 0)')
+    expect(stoneTheme.caution).toBe('rgb(163, 71, 15)')
+    expect(stoneTheme.legacyTokens).toEqual([])
+    expect(stoneTheme.scanlines).toBe('none')
+    expect(stoneTheme.headerTrail).toBe('none')
     await expect(page.getByText('465 of 465 exercises')).toBeVisible({ timeout: 30_000 })
     const firstCatalogName = (await page.locator('main ul > li > button').first().textContent())!
     await page.getByRole('button', { name: 'A–Z ↑' }).click()
@@ -102,18 +105,16 @@ test.describe('Energy Fit Tracker core offline workflow', () => {
       const topElement = document.elementFromPoint(bounds.right - 8, bounds.top + bounds.height / 2)
       return topElement === button || button.contains(topElement)
     })).toBe(false)
-    const neonOrange = await page.evaluate(() => {
-      const probe = document.createElement('span')
-      probe.style.color = 'var(--neon-orange)'
-      probe.style.boxShadow = 'var(--danger-glow)'
-      document.body.append(probe)
-      const style = getComputedStyle(probe)
-      const result = { color: style.color, glow: style.boxShadow }
-      probe.remove()
-      return result
+    const completedSetSignal = await page.evaluate(() => {
+      const complete = document.querySelector('button[aria-pressed="true"]')!
+      const completeStyle = getComputedStyle(complete)
+      const deleteStyle = getComputedStyle(document.querySelector('button[aria-label="Delete set 1"]')!)
+      return { completeBackground: completeStyle.backgroundColor, completeShadow: completeStyle.boxShadow, deleteBackground: deleteStyle.backgroundColor, deleteShadow: deleteStyle.boxShadow }
     })
-    expect(neonOrange.color).toBe('rgb(255, 172, 0)')
-    expect(neonOrange.glow).not.toBe('none')
+    expect(completedSetSignal.completeBackground).toBe('rgb(49, 91, 68)')
+    expect(completedSetSignal.completeShadow).toBe('none')
+    expect(completedSetSignal.deleteBackground).toBe('rgb(255, 172, 0)')
+    expect(completedSetSignal.deleteShadow).toBe('none')
 
     await page.reload()
     await expect(page.getByLabel('Workout name')).toHaveValue('Offline Push')

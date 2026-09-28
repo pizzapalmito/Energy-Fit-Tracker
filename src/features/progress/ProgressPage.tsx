@@ -11,7 +11,15 @@ import { ExerciseDetail } from '../exercises/ExerciseDetail'
 import { MuscleMap } from './MuscleMap'
 import { readinessStatus } from './readinessPresentation'
 import { buildExerciseProgress, trainingConsistency, workoutDurationMinutes } from './progressMetrics'
+import { ScreenTitle } from '../../app/shell/ScreenTitle'
 import styles from './ProgressPage.module.css'
+
+/* SVG chart colors mirror the stone/ink tokens; literal values keep SVG attributes portable. */
+const CHART_INK = '#111111'
+const CHART_MUTED = '#6b665e'
+const CHART_RULE = '#c3bdb1'
+const CHART_CURSOR = '#ded9ce'
+const CHART_PAPER = '#ece7db'
 
 async function readProgress(db: RepwiseDatabase) {
   const workouts = await db.workouts.toArray()
@@ -63,25 +71,30 @@ export function ProgressPage({ db = appDb }: { db?: RepwiseDatabase }) {
   return (
     <section className={styles.page}>
       <p className={styles.eyebrow}>{t('progress.eyebrow')}</p>
-      <h1>{t('progress.title')}</h1>
+      <ScreenTitle index={4}>{t('progress.title')}</ScreenTitle>
       {data.status === 'loading' && <p role="status">{t('progress.loading')}</p>}
       {data.status === 'error' && <p role="alert">{t('progress.loadError', { message: data.message })}</p>}
       {data.status === 'ready' && (
         <>
           <div className={styles.metrics}>
-            <article><strong>{formatNumber(data.value.entries.length)}</strong><span>{t('progress.workoutsMetric')}</span></article>
+            <article className={styles.metricLead}><strong>{formatNumber(data.value.entries.length)}</strong><span>{t('progress.workoutsMetric')}</span></article>
+            <article className={styles.metricLead}><strong>{formatNumber(Math.round(data.value.entries.reduce((sum, entry) => sum + entry.volumeKg, 0)))}</strong><span>{t('progress.volumeMetric')}</span></article>
             <article><strong>{formatNumber(data.value.entries.reduce((count, entry) => count + entry.sets.filter((set) => set.type === 'working').length, 0))}</strong><span>{t('progress.workingSetsMetric')}</span></article>
-            <article><strong>{formatNumber(Math.round(data.value.entries.reduce((sum, entry) => sum + entry.volumeKg, 0)))}</strong><span>{t('progress.volumeMetric')}</span></article>
             <article><strong>{trainingConsistency(data.value.entries.map((entry) => entry.workout))}%</strong><span>{t('progress.consistencyMetric')}</span></article>
             <article><strong>{data.value.entries.length === 0 ? 0 : Math.round(data.value.entries.reduce((sum, entry) => sum + workoutDurationMinutes(entry.workout), 0) / data.value.entries.length)}</strong><span>{t('progress.avgMinutesMetric')}</span></article>
             <article><strong>{formatNumber(exerciseProgress.length)}</strong><span>{t('progress.trackedExercisesMetric')}</span></article>
           </div>
           <section className={styles.card}>
             <h2>{t('progress.volumeTrend')}</h2>
-            {chartData.length === 0 ? <p>{t('progress.noCompletedWorkouts')}</p> : (
+            {chartData.length === 0 ? <p>{t('progress.noCompletedWorkouts')}</p> : chartData.length === 1 ? (
+              <div className={styles.singlePoint}>
+                <p className={styles.singleValue}><strong>{formatNumber(chartData[0]!.volume)}</strong><span>{t('progress.volumeSeriesLabel')} · {chartDateLabel(chartData[0]!.date)}</span></p>
+                <p className={styles.sparseNote}>{t('progress.sparseTrend')}</p>
+              </div>
+            ) : (
               <div className={styles.chart} aria-label={t('progress.volumeChartAriaLabel')}>
                 <ResponsiveContainer width="100%" height="100%">
-                  <BarChart data={chartData}><CartesianGrid stroke="#25252f" vertical={false} /><XAxis dataKey="date" stroke="#9d99a6" tickFormatter={chartDateLabel} /><YAxis stroke="#9d99a6" /><Tooltip labelFormatter={(label) => typeof label === 'string' || typeof label === 'number' ? chartDateLabel(String(label)) : ''} /><defs><linearGradient id="volume-gradient" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stopColor="var(--neon-magenta)" /><stop offset="100%" stopColor="#26174a" /></linearGradient></defs><Bar isAnimationActive={false} dataKey="volume" name={t('progress.volumeSeriesLabel')} fill="url(#volume-gradient)" maxBarSize={60} radius={[4, 4, 0, 0]} /></BarChart>
+                  <BarChart data={chartData} margin={{ top: 8, right: 4, bottom: 0, left: -12 }}><CartesianGrid stroke={CHART_RULE} vertical={false} /><XAxis dataKey="date" stroke={CHART_MUTED} tick={{ fontSize: 10, fontFamily: 'IBM Plex Mono, monospace' }} tickLine={false} tickFormatter={chartDateLabel} /><YAxis stroke={CHART_MUTED} tick={{ fontSize: 10, fontFamily: 'IBM Plex Mono, monospace' }} tickLine={false} axisLine={false} /><Tooltip cursor={{ fill: CHART_CURSOR }} contentStyle={{ border: `1px solid ${CHART_INK}`, borderRadius: 0, background: CHART_PAPER }} labelFormatter={(label) => typeof label === 'string' || typeof label === 'number' ? chartDateLabel(String(label)) : ''} /><Bar isAnimationActive={false} dataKey="volume" name={t('progress.volumeSeriesLabel')} fill={CHART_INK} maxBarSize={28} /></BarChart>
                 </ResponsiveContainer>
               </div>
             )}

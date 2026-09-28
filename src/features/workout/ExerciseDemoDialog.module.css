@@ -1,7 +1,11 @@
-.backdrop { position: fixed; inset: 0; z-index: 30; display: flex; align-items: flex-end; justify-content: center; background: rgb(0 0 0 / 68%); }
-.sheet { width: 100%; max-width: 30rem; padding: 1rem 1rem calc(1rem + env(safe-area-inset-bottom)); border: 1px solid var(--line); border-radius: 1rem 1rem 0 0; background: var(--surface); }
+.backdrop { position: fixed; inset: 0; z-index: 30; display: flex; align-items: flex-end; justify-content: center; background: rgb(17 17 17 / 62%); }
+.sheet { width: 100%; max-width: 30rem; padding: 1rem var(--gutter) calc(1rem + env(safe-area-inset-bottom)); border: 1px solid var(--line); border-top-width: 3px; background: var(--surface); }
 .sheet header { display: flex; align-items: center; justify-content: space-between; gap: .75rem; margin-bottom: .75rem; }
-.sheet h2 { margin: 0; font-size: 1.05rem; }
-.sheet header button { min-width: 2.75rem; min-height: 2.75rem; border: 1px solid var(--line); border-radius: .6rem; background: var(--surface-raised); color: var(--text); font-size: 1.2rem; }
-.sheet img, .fallback { display: grid; width: 100%; aspect-ratio: 1 / 1; place-items: center; border: .5rem solid #b08a43; outline: 1px solid #6c5225; outline-offset: -.75rem; border-radius: .75rem; background: linear-gradient(135deg, #c5b48f, #ece7db 46%, #a98544); color: var(--muted); object-fit: contain; }
-@media (min-width: 640px) { .backdrop { align-items: center; padding: 1.5rem; } .sheet { border-radius: 1rem; } }
+.sheet h2 { margin: 0; font-family: var(--font-display); font-size: 1.45rem; font-stretch: var(--display-stretch); font-weight: 800; line-height: 1; overflow-wrap: anywhere; text-transform: uppercase; }
+.sheet header button { flex: none; min-width: 2.75rem; min-height: 2.75rem; border: 1px solid var(--line); background: transparent; color: var(--text); font-size: 1.2rem; }
+.sheet img, .fallback { display: grid; width: 100%; aspect-ratio: 4 / 3; place-items: center; border: 1px solid var(--line); border-radius: var(--radius-media); background: var(--surface-raised); color: var(--muted); object-fit: cover; }
+.toggle { display: grid; grid-template-columns: 1fr 1fr; margin-top: .65rem; border: 1px solid var(--line); }
+.toggle button { min-height: 2.75rem; border: 0; background: transparent; color: var(--muted); font-family: var(--font-mono); font-size: .68rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+.toggle button + button { border-left: 1px solid var(--line); }
+.toggle button[aria-pressed="true"] { background: var(--text); color: var(--bg); }
+@media (min-width: 640px) { .backdrop { align-items: center; padding: 1.5rem; } }

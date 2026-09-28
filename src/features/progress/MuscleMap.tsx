@@ -102,13 +102,13 @@ export function MuscleMap({ recovery, selected, onSelect }: { recovery: MuscleMa
     <svg viewBox="0 0 320 310" role="img" aria-label={t('muscleMap.mapAriaLabel')}>
       <defs>
         <pattern id="readiness-fatigued" width="7" height="7" patternUnits="userSpaceOnUse" patternTransform="rotate(45)">
-          <rect width="7" height="7" fill="#e86670" /><path d="M0 0V7" stroke="#8f303a" strokeWidth="2.4" />
+          <rect width="7" height="7" fill="#d2692c" /><path d="M0 0V7" stroke="#8a3a10" strokeWidth="2.4" />
         </pattern>
         <pattern id="readiness-recovering" width="9" height="9" patternUnits="userSpaceOnUse">
-          <rect width="9" height="9" fill="#e9b85f" /><circle cx="4.5" cy="4.5" r="1.6" fill="#855f27" />
+          <rect width="9" height="9" fill="#ffac00" /><circle cx="4.5" cy="4.5" r="1.6" fill="#8a5d00" />
         </pattern>
         <pattern id="readiness-ready" width="8" height="8" patternUnits="userSpaceOnUse">
-          <rect width="8" height="8" fill="#63d49a" />
+          <rect width="8" height="8" fill="#315b44" />
         </pattern>
       </defs>
       <text x="80" y="14" textAnchor="middle">{t('muscleMap.frontLabel')}</text><text x="240" y="14" textAnchor="middle">{t('muscleMap.backLabel')}</text>
