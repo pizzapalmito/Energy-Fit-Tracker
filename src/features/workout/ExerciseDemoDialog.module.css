@@ -3,7 +3,7 @@
 .sheet header { display: flex; align-items: center; justify-content: space-between; gap: .75rem; margin-bottom: .75rem; }
 .sheet h2 { margin: 0; font-family: var(--font-display); font-size: 1.45rem; font-stretch: var(--display-stretch); font-weight: 800; line-height: 1; overflow-wrap: anywhere; text-transform: uppercase; }
 .sheet header button { flex: none; min-width: 2.75rem; min-height: 2.75rem; border: 1px solid var(--line); background: transparent; color: var(--text); font-size: 1.2rem; }
-.sheet img, .fallback { display: grid; width: 100%; aspect-ratio: 4 / 3; place-items: center; border: 1px solid var(--line); border-radius: var(--radius-media); background: var(--surface-raised); color: var(--muted); object-fit: cover; }
+.sheet img, .fallback { display: grid; width: 100%; aspect-ratio: 3 / 2; place-items: center; border: 1px solid var(--line); border-radius: var(--radius-media); background: var(--surface-raised); color: var(--muted); object-fit: contain; }
 .toggle { display: grid; grid-template-columns: 1fr 1fr; margin-top: .65rem; border: 1px solid var(--line); }
 .toggle button { min-height: 2.75rem; border: 0; background: transparent; color: var(--muted); font-family: var(--font-mono); font-size: .68rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
 .toggle button + button { border-left: 1px solid var(--line); }

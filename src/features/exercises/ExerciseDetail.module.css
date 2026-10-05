@@ -31,8 +31,8 @@
 .closeButton { flex-shrink: 0; min-width: 2.75rem; min-height: 2.75rem; border: 1px solid var(--line); background: transparent; color: var(--text); font-size: 1.25rem; line-height: 1; }
 
 .media { margin: 0; display: flex; flex-direction: column; gap: .6rem; align-items: center; }
-.media img { width: 100%; max-width: 22rem; aspect-ratio: 1 / 1; border: 1px solid var(--line); border-radius: var(--radius-media); background: var(--surface-raised); object-fit: contain; }
-.mediaFallback { width: 100%; max-width: 22rem; aspect-ratio: 1 / 1; display: grid; place-items: center; border: 1px dashed var(--line); border-radius: var(--radius-media); background: var(--surface-raised); color: var(--muted); }
+.media img { width: 100%; max-width: 22rem; aspect-ratio: 3 / 2; border: 1px solid var(--line); border-radius: var(--radius-media); background: var(--surface-raised); object-fit: contain; }
+.mediaFallback { width: 100%; max-width: 22rem; aspect-ratio: 3 / 2; display: grid; place-items: center; border: 1px dashed var(--line); border-radius: var(--radius-media); background: var(--surface-raised); color: var(--muted); }
 
 .factList { display: grid; grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr)); gap: 0; margin: 0; border-top: 1px solid var(--line); }
 .factList > div { padding: .5rem 0; border-bottom: 1px solid var(--rule); }

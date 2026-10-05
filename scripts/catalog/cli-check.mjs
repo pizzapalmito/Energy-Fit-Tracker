@@ -4,6 +4,7 @@ import { existsSync, readFileSync, readdirSync, mkdtempSync, rmSync } from 'node
 import { tmpdir } from 'node:os'
 import { buildCatalog, writeCatalogOutput } from './buildCatalog.mjs'
 import { integrateGreekInkMedia } from './integrate-greek-ink-media.mjs'
+import { integrateMuscleImages } from './integrate-muscle-images.mjs'
 import { sha256OfFile, stableStringify } from './hash.mjs'
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), '..', '..')
@@ -60,6 +61,7 @@ async function main() {
     const freshAuditPath = join(tmpRoot, 'audit-report.json')
     writeCatalogOutput(fresh, { publicCatalogDir: freshCatalogDir, auditReportPath: freshAuditPath })
     await integrateGreekInkMedia({ repoRoot, publicCatalogDir: freshCatalogDir, auditReportPath: freshAuditPath })
+    await integrateMuscleImages({ repoRoot, publicCatalogDir: freshCatalogDir, auditReportPath: freshAuditPath })
 
     const freshCatalogJson = readFileSync(join(freshCatalogDir, 'catalog.json'), 'utf8')
     const freshAudit = JSON.parse(readFileSync(freshAuditPath, 'utf8'))
