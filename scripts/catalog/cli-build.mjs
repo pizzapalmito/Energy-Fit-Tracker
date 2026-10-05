@@ -3,6 +3,7 @@ import { dirname, join } from 'node:path'
 import { existsSync, readFileSync, writeFileSync, mkdirSync } from 'node:fs'
 import { buildCatalog, writeCatalogOutput } from './buildCatalog.mjs'
 import { integrateGreekInkMedia } from './integrate-greek-ink-media.mjs'
+import { integrateMuscleImages } from './integrate-muscle-images.mjs'
 
 const repoRoot = join(dirname(fileURLToPath(import.meta.url)), '..', '..')
 
@@ -30,6 +31,7 @@ async function main() {
   const auditReportPath = join(repoRoot, 'docs', 'catalog', 'audit-report.json')
   writeCatalogOutput(result, { publicCatalogDir, auditReportPath })
   const overlay = await integrateGreekInkMedia({ repoRoot, publicCatalogDir, auditReportPath })
+  await integrateMuscleImages({ repoRoot, publicCatalogDir, auditReportPath })
 
   const licenseSrc = join(source, 'LICENSE.md')
   if (existsSync(licenseSrc)) {
