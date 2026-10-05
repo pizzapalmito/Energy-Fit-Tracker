@@ -2,6 +2,7 @@ import type { Messages } from './en'
 
 export const ptBR: Messages = {
   app: {
+    imageDevelopmentNotice: 'Imagens em desenvolvimento. Use com cautela.',
     name: 'Energy Fit Tracker',
     tagline: 'Treine com intenção',
     loading: 'Carregando o Energy Fit Tracker…',

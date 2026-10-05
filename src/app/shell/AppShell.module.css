@@ -7,6 +7,7 @@
 .header small { display: block; margin-top: .15rem; color: var(--muted); font-family: var(--font-mono); font-size: .5rem; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; }
 .mark { position: relative; z-index: 1; display: block; flex: none; width: 2.25rem; height: 1.5rem; object-fit: contain; filter: grayscale(1) contrast(2); mix-blend-mode: multiply; }
 .main { padding: 0; }
+.imageNotice { padding: .65rem var(--gutter); border-bottom: 1px solid var(--rule); }
 .nav { position: fixed; z-index: 10; inset: auto 0 0; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); width: min(48rem, 100%); margin-inline: auto; padding-bottom: env(safe-area-inset-bottom); background: var(--bg); border-top: 1px solid var(--line); }
 .nav a { min-width: 0; min-height: 3.75rem; display: flex; flex-direction: column; justify-content: center; gap: .25rem; padding: .45rem .4rem; border-right: 1px solid var(--line); color: var(--text); text-decoration: none; }
 .nav a:last-child { border-right: 0; }

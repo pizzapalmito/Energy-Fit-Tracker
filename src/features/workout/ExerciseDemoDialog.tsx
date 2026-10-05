@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { CatalogImage } from '../../catalog/CatalogImage'
+import { ImageDevelopmentNotice } from '../../catalog/ImageDevelopmentNotice'
 import type { Exercise } from '../../domain/models'
 import { useI18n } from '../../i18n/I18nContext'
 import styles from './ExerciseDemoDialog.module.css'
@@ -19,6 +20,7 @@ export function ExerciseDemoDialog({ exercise, onClose }: { exercise: Exercise; 
     <section className={styles.sheet} role="dialog" aria-modal="true" aria-labelledby="workout-demo-title" onClick={(event) => event.stopPropagation()}>
       <header><h2 id="workout-demo-title">{exercise.name}</h2><button ref={closeRef} type="button" onClick={onClose} aria-label={t('exerciseDemoDialog.closeAriaLabel')}>×</button></header>
       <CatalogImage relativePath={exercise.media[0]} alt={exercise.name} fallbackClassName={styles.fallback} />
+      <div className={styles.imageNotice}><ImageDevelopmentNotice /></div>
     </section>
   </div>
 }

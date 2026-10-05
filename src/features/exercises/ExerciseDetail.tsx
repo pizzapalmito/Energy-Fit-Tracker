@@ -6,6 +6,7 @@ import { useLiveQuery } from '../../data/useLiveQuery'
 import { DexieWorkoutExerciseRepository } from '../../data/repositories/workoutExerciseRepository'
 import { DexieWorkoutRepository } from '../../data/repositories/workoutRepository'
 import { CatalogImage } from '../../catalog/CatalogImage'
+import { ImageDevelopmentNotice } from '../../catalog/ImageDevelopmentNotice'
 import { PRIMARY_WEIGHT_THRESHOLD } from '../../engines/shared/muscleContribution'
 import { useI18n } from '../../i18n/I18nContext'
 import { difficultyLabel, equipmentLabel, movementPatternLabel, muscleLabel } from '../../i18n/enumLabels'
@@ -120,6 +121,7 @@ export function ExerciseDetail({ db = appDb, exercise, onClose }: { db?: Repwise
 
         <figure className={styles.media}>
             <CatalogImage relativePath={exercise.media[0]} alt={exercise.name} fallbackClassName={styles.mediaFallback} />
+            <figcaption className={styles.imageNotice}><ImageDevelopmentNotice /></figcaption>
           </figure>
 
         <div className={styles.addSection}>

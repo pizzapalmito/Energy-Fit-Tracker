@@ -63,6 +63,7 @@ test.describe('Energy Fit Tracker core offline workflow', () => {
     await page.getByRole('button', { name: /Barbell Bench Press - Medium Grip/ }).click()
     await page.getByRole('button', { name: '+ Add Set' }).click()
     await page.getByRole('button', { name: /View Barbell Bench Press - Medium Grip demonstration/ }).click()
+    await expect(page.getByRole('dialog', { name: 'Barbell Bench Press - Medium Grip' }).getByText('Images under development. Use with caution.', { exact: true })).toBeVisible()
     await expect(page.getByRole('dialog', { name: 'Barbell Bench Press - Medium Grip' })).toBeVisible()
     await page.getByRole('button', { name: 'Close demonstration' }).click()
     await page.getByLabel('Load (kg)').fill('70')

@@ -7,6 +7,7 @@ export const en = {
   app: {
     name: 'Energy Fit Tracker',
     tagline: 'Train with intent',
+    imageDevelopmentNotice: 'Images under development. Use with caution.',
     loading: 'Loading Energy Fit Tracker…',
   },
   nav: {
