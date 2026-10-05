@@ -3,6 +3,7 @@ import { NavLink, Outlet } from 'react-router-dom'
 import { useI18n } from '../../i18n/I18nContext'
 import styles from './AppShell.module.css'
 import { PwaStatus } from './PwaStatus'
+import { ImageDevelopmentNotice } from '../../catalog/ImageDevelopmentNotice'
 
 const routes = ['today', 'workout', 'exercises', 'progress', 'settings'] as const
 
@@ -24,6 +25,7 @@ export function AppShell() {
         <img className={styles.mark} src={`${base}brand/eft-logo.webp`} alt="" aria-hidden="true" />
         <div className={styles.identity}><strong>{t('app.name')}</strong><small>{t('app.tagline')}</small></div>
       </header>
+      <div className={styles.imageNotice}><ImageDevelopmentNotice /></div>
       <main className={styles.main}><Suspense fallback={<p role="status">{t('app.loading')}</p>}><Outlet /></Suspense></main>
       <nav className={styles.nav} aria-label={t('nav.primary')}>
         {routes.map((route, index) => (

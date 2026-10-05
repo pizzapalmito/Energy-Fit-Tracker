@@ -4,6 +4,7 @@ export const fr: Messages = {
   app: {
     name: 'Energy Fit Tracker',
     tagline: 'Entraînez-vous avec intention',
+    imageDevelopmentNotice: 'Images en cours de développement. À utiliser avec prudence.',
     loading: 'Chargement d’Energy Fit Tracker…',
   },
   nav: {

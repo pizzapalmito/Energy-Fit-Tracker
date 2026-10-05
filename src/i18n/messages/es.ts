@@ -2,6 +2,7 @@ import type { Messages } from './en'
 
 export const es: Messages = {
   app: {
+    imageDevelopmentNotice: 'Imágenes en desarrollo. Úsalas con precaución.',
     name: 'Energy Fit Tracker',
     tagline: 'Entrena con intención',
     loading: 'Cargando Energy Fit Tracker…',

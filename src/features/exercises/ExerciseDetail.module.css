@@ -31,6 +31,7 @@
 .closeButton { flex-shrink: 0; min-width: 2.75rem; min-height: 2.75rem; border: 1px solid var(--line); background: transparent; color: var(--text); font-size: 1.25rem; line-height: 1; }
 
 .media { margin: 0; display: flex; flex-direction: column; gap: .6rem; align-items: center; }
+.imageNotice { width: 100%; max-width: 22rem; }
 .media img { width: 100%; max-width: 22rem; aspect-ratio: 3 / 2; border: 1px solid var(--line); border-radius: var(--radius-media); background: var(--surface-raised); object-fit: contain; }
 .mediaFallback { width: 100%; max-width: 22rem; aspect-ratio: 3 / 2; display: grid; place-items: center; border: 1px dashed var(--line); border-radius: var(--radius-media); background: var(--surface-raised); color: var(--muted); }
 
