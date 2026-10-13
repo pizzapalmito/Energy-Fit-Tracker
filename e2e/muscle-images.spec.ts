@@ -1,11 +1,14 @@
 import { createHash } from 'node:crypto'
-import { readFileSync } from 'node:fs'
+import { readFileSync, writeFileSync } from 'node:fs'
 import { expect, test } from '@playwright/test'
 
 const release = JSON.parse(readFileSync('docs/catalog/muscle-images/manifest.json', 'utf8')) as { exercises: Array<{ id: string; candidateId: string; outputSha256: string }> }
+const missing = JSON.parse(readFileSync('docs/catalog/muscle-images/missing-batch.json', 'utf8')) as { exercises: Array<{ id: string; candidateId: string; outputSha256: string }> }
+const coverage = release.exercises
 const catalog = JSON.parse(readFileSync('public/catalog/catalog.json', 'utf8')) as { version: string; exercises: Array<{ id: string; name: string }> }
 const selectedIds = new Set(['lying-close-grip-barbell-triceps-press-to-chin', 'lying-triceps-press', 'zottman-preacher-curl', 'upright-cable-row', 'wide-stance-barbell-squat', 'kettlebell-halo-with-overhead-extension'])
-const selected = release.exercises.filter(e => selectedIds.has(e.id)).map(e => ({ ...e, output: { sha256: e.outputSha256 } }))
+for (const entry of missing.exercises) selectedIds.add(entry.id)
+const selected = coverage.filter(e => selectedIds.has(e.id)).map(e => ({ ...e, output: { sha256: e.outputSha256 } }))
 const target = { exercises: selected }
 
 test(`shows the ${target.exercises.length} approved composites without cropping or obsolete frame controls`, async ({ page, context, browserName }, testInfo) => {
@@ -22,7 +25,7 @@ test(`shows the ${target.exercises.length} approved composites without cropping 
   await expect(page.getByText(`${catalog.exercises.length} of ${catalog.exercises.length} exercises`)).toBeVisible()
   // Windows WebKit offline emulation is unreliable; Chromium proves cached bytes.
   if (browserName === 'chromium') await context.setOffline(true)
-  // Verify both displayed slots for the entire 347-image release, offline in Chromium.
+  // Verify both displayed slots for all 374 composites, offline in Chromium.
   const mismatches = await page.evaluate(async entries => {
     const failures: string[] = []
     const jobs = entries.flatMap(entry => ['start', 'end'].map(frame => ({ ...entry, frame })))
@@ -39,9 +42,12 @@ test(`shows the ${target.exercises.length} approved composites without cropping 
       }
     }))
     return failures
-  }, release.exercises)
-  expect(release.exercises).toHaveLength(347)
+  }, coverage)
+  expect(missing.exercises).toHaveLength(27)
+  expect(coverage).toHaveLength(374)
+  for (const entry of missing.exercises) expect(coverage.find(existing => existing.id === entry.id)).toMatchObject(entry)
   expect(mismatches).toEqual([])
+  const evidence: Array<{ id: string; candidateId: string; outputSha256: string; screenshot: string; complete: boolean; contain: boolean; horizontalOverflow: boolean }> = []
 
   for (const candidate of selected) {
     const exercise = catalog.exercises.find((entry) => entry.id === candidate.id)!
@@ -60,10 +66,13 @@ test(`shows the ${target.exercises.length} approved composites without cropping 
     expect(bounds!.x + bounds!.width).toBeLessThanOrEqual(391)
     const bytes = await image.evaluate(async (element: HTMLImageElement) => Array.from(new Uint8Array(await (await fetch(element.currentSrc)).arrayBuffer())))
     expect(createHash('sha256').update(Buffer.from(bytes)).digest('hex')).toBe(candidate.output.sha256)
-    await page.screenshot({ path: testInfo.outputPath(`${candidate.id}-390.png`) })
+    const screenshot = testInfo.outputPath(`${candidate.id}-390.png`)
+    await page.screenshot({ path: screenshot })
+    evidence.push({ id: candidate.id, candidateId: candidate.candidateId, outputSha256: candidate.output.sha256, screenshot, complete: true, contain: true, horizontalOverflow: false })
     await dialog.getByRole('button', { name: 'Close exercise details' }).click()
   }
   await context.setOffline(false)
+  writeFileSync(testInfo.outputPath('missing-image-evidence.json'), JSON.stringify({ browser: testInfo.project.name, viewport: { width: 390, height: 844 }, imageSlotsVerified: coverage.length * 2, offline: browserName === 'chromium', exercises: evidence }, null, 2))
 })
 
 if (selected.some((entry) => entry.id === 'kettlebell-halo-with-overhead-extension')) {
