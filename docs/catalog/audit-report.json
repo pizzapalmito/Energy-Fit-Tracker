@@ -24,7 +24,7 @@
     "convertedImages": 930,
     "missingImages": [],
     "inputBytesJpg": 57504680,
-    "outputBytesWebp": 26751984,
+    "outputBytesWebp": 26742304,
     "conversionSettings": {
       "format": "webp",
       "quality": 78,
@@ -44,7 +44,7 @@
       "sourceFormat": "webp",
       "compositeSlots": true,
       "sourceCommit": "a859101d633a01c4a1a920d6a8ce41dabba0705f",
-      "manifestSha256": "0b7d3c9a3e726ea9940c1df8cf2d708100d2b5a4327feca173b09c684702ae86",
+      "manifestSha256": "2c983cc6c157cc153890a010c8e84f8ca162b478d064a811898918faf470f95b",
       "candidates": [
         {
           "id": "ab-crunch-machine",
@@ -3016,9 +3016,9 @@
         },
         {
           "id": "plyo-kettlebell-pushups",
-          "candidateId": "plyo-kettlebell-pushups-missing-v2",
-          "sourcePngSha256": "b68a50ba3dcbb65683054897a856acf6836e7a8d445e46807343201277f4058f",
-          "outputSha256": "b1863602485613e6464498d847b8c536c5a7cb5212f6dfd3f94c8305b9db2b4c",
+          "candidateId": "plyo-kettlebell-pushups-missing-v5",
+          "sourcePngSha256": "05194618eb067a01048922a6226126d72900caf099f7decaf4cb913e5f55d0ea",
+          "outputSha256": "c8b1d386846129fbd165947caeb244ae4c4c1555f1e941c5616fc2a63911f68b",
           "specificationSha256": "34ee218d65f20c884ed4eadfb28bdf7e001cb540f628520b7b7eed7550229f11",
           "muscleMappingSha256": "32ec2686f8e86a1d592981b93b0fe4f5d7def1d81ef3312211c0f7bad6fb1770"
         },
@@ -4319,8 +4319,8 @@
       "end": "09de70576b47c2b6359875a4a986e5d8984e82d0cb60f9a23d92eb87ff70fb63"
     },
     "plyo-kettlebell-pushups": {
-      "start": "b1863602485613e6464498d847b8c536c5a7cb5212f6dfd3f94c8305b9db2b4c",
-      "end": "b1863602485613e6464498d847b8c536c5a7cb5212f6dfd3f94c8305b9db2b4c"
+      "start": "c8b1d386846129fbd165947caeb244ae4c4c1555f1e941c5616fc2a63911f68b",
+      "end": "c8b1d386846129fbd165947caeb244ae4c4c1555f1e941c5616fc2a63911f68b"
     },
     "power-partials": {
       "start": "eb1f5966cfb6be979835b77e77cbe26465a59e719b45525b20e1c19fe41699ff",

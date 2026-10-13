@@ -15914,15 +15914,15 @@
     },
     {
       "id": "plyo-kettlebell-pushups",
-      "candidateId": "plyo-kettlebell-pushups-missing-v2",
+      "candidateId": "plyo-kettlebell-pushups-missing-v5",
       "asset": "assets/plyo-kettlebell-pushups.webp",
-      "outputSha256": "b1863602485613e6464498d847b8c536c5a7cb5212f6dfd3f94c8305b9db2b4c",
-      "sourcePngSha256": "b68a50ba3dcbb65683054897a856acf6836e7a8d445e46807343201277f4058f",
+      "outputSha256": "c8b1d386846129fbd165947caeb244ae4c4c1555f1e941c5616fc2a63911f68b",
+      "sourcePngSha256": "05194618eb067a01048922a6226126d72900caf099f7decaf4cb913e5f55d0ea",
       "specificationSha256": "34ee218d65f20c884ed4eadfb28bdf7e001cb540f628520b7b7eed7550229f11",
       "muscleMappingSha256": "32ec2686f8e86a1d592981b93b0fe4f5d7def1d81ef3312211c0f7bad6fb1770",
       "tool": "built-in image_gen",
-      "prompt": "Correct this three-panel PLYOMETRIC KETTLEBELL PUSHUP illustration so it shows a TRUE SIDE-TO-SIDE HAND SWITCH, not a mirrored athlete turning around. Preserve the warm stone studio, gray matte anatomical athlete, charcoal clothes, perfectly blank EARLESS OVAL heads, pectoral-only amber cutaways, one bell per panel and complete full-body framing. Use the SAME elevated FRONT three-quarter camera as the current CENTER panel for ALL THREE panels. In every pose the head is toward the foreground and both toes extend BACKWARD away from viewer in the SAME direction; do not reverse head/toe direction or mirror the whole athlete in final panel. The single gray kettlebell stays upright on the FLOOR at the SAME CENTER location within EACH panel, with matching size and handle orientation. LEFT PANEL: athlete's torso is on LEFT SIDE of bell, straight plank body low in pushup, RIGHT hand grips that stationary bell handle, LEFT palm on floor to LEFT of bell, both elbows bent and toes planted behind. CENTER PANEL: straight plank body transitioning laterally OVER same bell after explosive push, BOTH hands just off supports/above floor, no hand currently touches bell, toes planted behind, exactly two hands. RIGHT PANEL: SAME athlete/camera/body direction, torso shifted to RIGHT SIDE of same bell; LEFT hand now grips stationary handle, RIGHT palm on floor to RIGHT of bell, low pushup and bent elbows, toes remain behind. Exactly two connected arms/two hands/two legs per pose, no duplicate hands/weight. Clear continuous floor contacts and hand switch. Keep chest cutaway amber, arms/shoulders/legs gray. Whole heads, shoes, toes, both hands and bell inside own panels with margins. No text, arrows, motion ghosts or changing camera. The last pose must keep the same body-facing direction while showing the opposite support hand.\n",
-      "promptSha256": "0dda335684697fdd4229b3e7ea384f0597f3af5aabd06d5bd1c104f420b45bdd",
+      "prompt": "Precise composition edit of the supplied three-panel plyometric kettlebell pushup illustration. The frontal body direction is now correct: KEEP every pose, arm/hand identity, straight plank anatomy, blank oval heads, charcoal clothing, pectoral-only amber highlights, gray/stone materials and lighting unchanged. NO mirroring, rotation or turning of any athlete.\nFix ONLY panel placement and framing so the STATIONARY BELL occupies the EXACT SAME centered floor position in ALL THREE panels. Uniformly scale each complete panel group (athlete plus bell) to about 70 percent of current size, preserving all internal hand-bell contacts and proportions. Translate each scaled GROUP as one rigid composition so its bell center lies on the horizontal MIDPOINT of its own equal-width panel, with all bell bottoms at the same floor baseline. Left group therefore shifts left, right group shifts right, center group stays centered. The athlete in the LEFT endpoint is now visibly LEFT of the CENTERED bell, center airborne athlete OVER the same centered bell, and RIGHT endpoint athlete visibly RIGHT of the CENTERED bell. Hands alternate bell grip; the ground hand lands on the outside.\nPreserve identical front camera and parallel head-forward/toes-back body axes. Keep the complete athletes, both shoes, all hands/palms/fingers and bell within their panels with generous margins; the modest scale reduction provides room for lateral body shift without cropping. Do not shift a bell independently of its gripping hand. Do not add limbs, equipment, text or arrows. Preserve wide 3:1 three-panel layout and thin dividers. This is a camera-position consistency correction only: all three bells must line up at equivalent centered coordinates, and only the athlete translates sideways around the fixed bell.\n",
+      "promptSha256": "0d91fc6cee50a4bf27c699f0b6e3fb9cc5466e315c49d351df230b4d3462ebf6",
       "exportSettings": {
         "width": 768,
         "quality": 90,
@@ -15935,22 +15935,24 @@
         "primaryMuscleLocalization": true,
         "anatomyMapping": true,
         "appVerified": true,
-        "notes": "Native, 768 and 390 exports inspected. Fixed upright bell, same head-forward camera, right-hand then left-hand support with intermediate hands clear of supports; complete framing and pectoral-only amber cutaways. Smooth oval heads. Static phases do not verify jump timing or stability. Actual app screenshots at 390 CSS px inspected in Chromium and mobile WebKit; complete images with contain, expected hashes and no horizontal overflow.",
+        "notes": "Native, 768px and 390px exports inspected against canonical instructions. All three poses retain the same frontal heading: heads face the foreground and toes extend rearward, without the previous diagonal reversal. The first endpoint uses anatomical left-hand bell support and right grounded palm; the final endpoint uses right-hand bell support and left grounded palm. Intermediate hands are clear of supports. One upright floor-supported bell per phase, full framing, featureless oval heads and pectoral-only amber tissue. Panels are independently framed, so bell pixel centers differ; this is not proof of equipment movement. Static artwork does not certify jump timing, grip contacts or stability. Actual 390 CSS px Chromium app capture inspected: full image with contain framing, unchanged caution notice, no horizontal overflow and expected checksum.",
+        "runtime": "PASS: Chromium 390px app framing and offline checks for all 748 approved slots",
+        "physicalIPhone": "NOT VERIFIED",
+        "physicalMotion": "NOT VERIFIED",
         "browsers": [
           {
-            "browser": "chromium",
-            "captureSha256": "a33935559fb6d3cccb9da83f798a92a616454594af941bdc9fc336c40e330601",
-            "inspected": true
-          },
-          {
-            "browser": "mobile-webkit",
-            "captureSha256": "d042c7aa498b885970098d14f5c2191dc4149ee77f8cc6bd75faf8aaeeaa6006",
+            "browser": "chromium-existing-1248",
+            "captureSha256": "7b9f386f32d8955ee09d417b80e4e6a12d57aeef4a2f8d3d939ccb7c9811466d",
             "inspected": true
           }
         ],
         "chromiumOffline": "PASS",
         "windowsWebKitOffline": "NOT VERIFIED",
-        "physicalIPhone": "NOT VERIFIED"
+        "supersedes": {
+          "candidateId": "plyo-kettlebell-pushups-missing-v2",
+          "outputSha256": "b1863602485613e6464498d847b8c536c5a7cb5212f6dfd3f94c8305b9db2b4c",
+          "reason": "Endpoint heading reversed; independent pixel review contradicted prior notes"
+        }
       }
     },
     {
