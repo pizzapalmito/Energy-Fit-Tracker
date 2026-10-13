@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 1,
+  "status": "approved and integrated locally; publication NOT RUN",
+  "exercises": [
+    {
+      "id": "advanced-kettlebell-windmill",
+      "candidateId": "advanced-kettlebell-windmill-missing-v2",
+      "outputSha256": "12f33093c0f35933f0d20f49dc53ff83fc62bf61aac7051091ca8536485120c4"
+    },
+    {
+      "id": "alternating-hang-clean",
+      "candidateId": "alternating-hang-clean-missing-v2",
+      "outputSha256": "cf1ebf5677db94fcb650d1df927682c5f74bbe625eeb7059509b32c8aef063a0"
+    },
+    {
+      "id": "alternating-kettlebell-row",
+      "candidateId": "alternating-kettlebell-row-missing-v2",
+      "outputSha256": "025a99fb63319193a5ca0d8aa4eb4f1c0e4d88938ce5be2d1d942dcaa4289ed0"
+    },
+    {
+      "id": "bottoms-up-clean-from-the-hang-position",
+      "candidateId": "bottoms-up-clean-from-the-hang-position-missing-v1",
+      "outputSha256": "e8f5202edc40d8ed3fd388d2f606613943d67e8f77bdc4b85f149bc4c5a27d70"
+    },
+    {
+      "id": "double-kettlebell-alternating-hang-clean",
+      "candidateId": "double-kettlebell-alternating-hang-clean-missing-v2",
+      "outputSha256": "60213dac578c3a1ebe3124b07b63ac2284bbe2b52da34e2acef0e97e429c7b92"
+    },
+    {
+      "id": "double-kettlebell-jerk",
+      "candidateId": "double-kettlebell-jerk-missing-v2",
+      "outputSha256": "155fbfc6d4b120d85b190b2526fc1ddd69f6b7f2b375fc813d73b0859c820f16"
+    },
+    {
+      "id": "double-kettlebell-snatch",
+      "candidateId": "double-kettlebell-snatch-missing-v2",
+      "outputSha256": "b866e0a88002c7d27785c419371d655f9db5ee191614206a204121d0c49fd638"
+    },
+    {
+      "id": "double-kettlebell-windmill",
+      "candidateId": "double-kettlebell-windmill-missing-v1",
+      "outputSha256": "aad72a2f1a813bf04ada0ae9f48ea62063aa35ee8e9e3e65eeaa355a0e11fdd1"
+    },
+    {
+      "id": "kettlebell-dead-clean",
+      "candidateId": "kettlebell-dead-clean-missing-v2",
+      "outputSha256": "66742bda999dcdd1881427a7361708a3cf1358bd37d9323c63ace26c5458d5e0"
+    },
+    {
+      "id": "kettlebell-figure-8",
+      "candidateId": "kettlebell-figure-8-missing-v3",
+      "outputSha256": "88519b180b2ca869c38ef67a042e34f8af2808378cae9e00886a3b1acbcce4ef"
+    },
+    {
+      "id": "kettlebell-hang-clean",
+      "candidateId": "kettlebell-hang-clean-missing-v2",
+      "outputSha256": "23f1c02297797916cd037fa7f65ec24015c1b809f5e104086145aebd6745c349"
+    },
+    {
+      "id": "kettlebell-pirate-ships",
+      "candidateId": "kettlebell-pirate-ships-missing-v2",
+      "outputSha256": "da4e01234c1a619ae4ddffb5c156a4d8b48424276678035eeab254670fa80455"
+    },
+    {
+      "id": "kettlebell-pistol-squat",
+      "candidateId": "kettlebell-pistol-squat-missing-v1",
+      "outputSha256": "bc8c6dda6a6fc914544ddd12dea08f864bd1f94b76536f6ef6456715cf44af8d"
+    },
+    {
+      "id": "kettlebell-turkish-get-up-lunge-style",
+      "candidateId": "kettlebell-turkish-get-up-lunge-style-missing-v4",
+      "outputSha256": "d6627779481d3454766956ee5a25736a7ed38594deede0eecd3f599842f75f3b"
+    },
+    {
+      "id": "kettlebell-turkish-get-up-squat-style",
+      "candidateId": "kettlebell-turkish-get-up-squat-style-missing-v3",
+      "outputSha256": "ab4986ea66970ab4a008b1ec74f5a7870bb6d463dbdea7b9bceea720a4ea4795"
+    },
+    {
+      "id": "kettlebell-windmill",
+      "candidateId": "kettlebell-windmill-missing-v1",
+      "outputSha256": "118c758cc8002c1fa9fefaebb73540d546c1ab3ff4b24aa58786805049f2ac4c"
+    },
+    {
+      "id": "one-arm-kettlebell-clean",
+      "candidateId": "one-arm-kettlebell-clean-missing-v2",
+      "outputSha256": "f99084129d3bc4b2523f35fe510ad3ca7a49fbb7125b7398f7cb7b572bbb5cc0"
+    },
+    {
+      "id": "one-arm-kettlebell-clean-and-jerk",
+      "candidateId": "one-arm-kettlebell-clean-and-jerk-missing-v2",
+      "outputSha256": "45a22cd6b76aabdb7136b558992e203ab206fef280d4234ef288073cec65628e"
+    },
+    {
+      "id": "one-arm-kettlebell-jerk",
+      "candidateId": "one-arm-kettlebell-jerk-missing-v2",
+      "outputSha256": "4fa3e46e1a5eb0cb107dd5a18ed04c809120355b9e46dd872340a34a38a38796"
+    },
+    {
+      "id": "one-arm-kettlebell-snatch",
+      "candidateId": "one-arm-kettlebell-snatch-missing-v3",
+      "outputSha256": "22cce71df732b138630ce8b3793b7cb91c78340fa50f40cd7881e8e1e3837d63"
+    },
+    {
+      "id": "one-arm-kettlebell-split-jerk",
+      "candidateId": "one-arm-kettlebell-split-jerk-missing-v2",
+      "outputSha256": "b7688c541a1df6c6b66144bb04d9b985ffd1cd956a5390d2ac89d86c285c5e8b"
+    },
+    {
+      "id": "one-arm-kettlebell-split-snatch",
+      "candidateId": "one-arm-kettlebell-split-snatch-missing-v2",
+      "outputSha256": "50e51b78c8b3bb8444a99768f62c2af48d008fbb7c41cb6c00ff6f8b7bfc1ff4"
+    },
+    {
+      "id": "one-arm-open-palm-kettlebell-clean",
+      "candidateId": "one-arm-open-palm-kettlebell-clean-missing-v1",
+      "outputSha256": "3a3cfb475f1558308ee27ceacadffd85f428602449ddacf0200e13218bdacc23"
+    },
+    {
+      "id": "open-palm-kettlebell-clean",
+      "candidateId": "open-palm-kettlebell-clean-missing-v2",
+      "outputSha256": "7a9ad39a2f9a5726c4536a39f022c2df3a4c12bcf3f056faae063151e419a239"
+    },
+    {
+      "id": "plyo-kettlebell-pushups",
+      "candidateId": "plyo-kettlebell-pushups-missing-v2",
+      "outputSha256": "b1863602485613e6464498d847b8c536c5a7cb5212f6dfd3f94c8305b9db2b4c"
+    },
+    {
+      "id": "two-arm-kettlebell-clean",
+      "candidateId": "two-arm-kettlebell-clean-missing-v1",
+      "outputSha256": "5f9d035172e1b31261a1eef568e56c5c28ea00e934abc63ef654785031aeefad"
+    },
+    {
+      "id": "two-arm-kettlebell-jerk",
+      "candidateId": "two-arm-kettlebell-jerk-missing-v1",
+      "outputSha256": "db746395e45ec1930e19b5c569e5ced77f948c50294b258494028f0383ac2458"
+    }
+  ]
+}

@@ -14927,6 +14927,1113 @@
         "chromiumOffline": "PASS",
         "windowsWebKitOffline": "NOT VERIFIED"
       }
+    },
+    {
+      "id": "advanced-kettlebell-windmill",
+      "candidateId": "advanced-kettlebell-windmill-missing-v2",
+      "asset": "assets/advanced-kettlebell-windmill.webp",
+      "outputSha256": "12f33093c0f35933f0d20f49dc53ff83fc62bf61aac7051091ca8536485120c4",
+      "sourcePngSha256": "e5eabb4aee5b1dbbd6af6c7fd38540318d77ef16a61a8b304b49fd7c5643125d",
+      "specificationSha256": "edebabe685b2ab842d97747e2f351c81089d3e8d0f72a8b4f5f57ae92125e331",
+      "muscleMappingSha256": "7cc9c2fc11cb575fed2b24811de0c86b1871934a97f9b450a3d9a71659811e0b",
+      "tool": "built-in image_gen",
+      "prompt": "Edit the supplied Advanced Kettlebell Windmill illustration. Preserve the LEFT starting pose exactly, preserve both featureless oval heads, matte gray 3D style, warm stone background, charcoal clothes, sole kettlebell per pose, abdominal amber cutaways, divider, full-body framing and margin. Change ONLY the RIGHT endpoint pose to a DEEP HIP-HINGE WINDMILL rather than shallow spinal side bending. Shift hips noticeably toward the overhead-arm side; rotate pelvis/torso and hinge AT THE HIP until the torso slopes strongly down toward the opposite front shoe, approximately 60 to 70 degrees from upright, approaching horizontal. Keep a LONG STRAIGHT neutral spine from pelvis through shoulders rather than a curled waist. Both feet stay in the exact same positions as the starting pose, turned away from overhead arm; knees soft, no squat. Raised RIGHT arm remains fully straight and approximately VERTICAL upward above the hinged shoulder, gray kettlebell held securely behind the wrist. The overhead arm follows the lowered shoulder, so the bell can be lower on the canvas while still directly above it; do not keep shoulder at its old high location. Free LEFT hand remains unmistakably behind lower back/hip and does NOT reach to floor. Head remains featureless and turned toward raised bell. Keep exactly two arms, two legs and one kettlebell per figure; whole athlete/bell/shoes completely visible with margins. Only abdominal rectus and lateral oblique muscle tissue amber; shoulders/arms/legs gray. No labels, words, arrows, extra props or facial features. This correction must visibly deepen hip flexion and lower torso while preserving long spine and the behind-back hand.\n",
+      "promptSha256": "3e4601b8bca7c69de3d97c2d9c73526b0566e8b258fddd2fc6f090e23a4b1741",
+      "exportSettings": {
+        "width": 768,
+        "quality": 90,
+        "effort": 6,
+        "background": "#ece7db"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex",
+        "primaryMuscleLocalization": true,
+        "anatomyMapping": true,
+        "appVerified": true,
+        "notes": "Native source and 768/390 WebP exports inspected against canonical instructions: one right overhead kettlebell, extended vertical arm, free left hand behind back in both poses, planted feet, deep hip hinge with long spine. Full bodies/bells/shoes framed; smooth featureless heads and abdominal-only amber tissue. Fine joint/grip projection and head orientation illustrative; movement timing not verified. Actual app screenshots at 390 CSS px inspected in Chromium and mobile WebKit; complete images with contain, expected hashes and no horizontal overflow.",
+        "browsers": [
+          {
+            "browser": "chromium",
+            "captureSha256": "5fb50b38cd1db35191864c44e7a300edf23b963494773565659d03a07755d108",
+            "inspected": true
+          },
+          {
+            "browser": "mobile-webkit",
+            "captureSha256": "a6b5d7de571afe5f96cf4213284c45671703947da24ffa44d12cad95cc368edf",
+            "inspected": true
+          }
+        ],
+        "chromiumOffline": "PASS",
+        "windowsWebKitOffline": "NOT VERIFIED",
+        "physicalIPhone": "NOT VERIFIED"
+      }
+    },
+    {
+      "id": "alternating-hang-clean",
+      "candidateId": "alternating-hang-clean-missing-v2",
+      "asset": "assets/alternating-hang-clean.webp",
+      "outputSha256": "cf1ebf5677db94fcb650d1df927682c5f74bbe625eeb7059509b32c8aef063a0",
+      "sourcePngSha256": "bd526e119c5e05d5c941cb0f41e3226ef8d2f511a3eea26b49e35f4166dcd105",
+      "specificationSha256": "1b19232f9580a0def718682441dad2220a6c2ac3a0172675e06484270d0a897a",
+      "muscleMappingSha256": "37728b1d086ddbacfa5982b1d819cbfc1d920fb160672bf680c62706d9267e99",
+      "tool": "built-in image_gen",
+      "prompt": "Edit ONLY the THIRD (rightmost) panel of this Alternating Hang Clean illustration. The first and second panels must remain unchanged. Third panel must show the OPPOSITE ARM CLEANED compared with middle panel. Same rear-three-quarter camera and same feet/torso/head identity: LOWER the currently bent, camera-near RIGHT ARM into a straight downward hang, with its right hand gripping one kettlebell low BESIDE THE RIGHT THIGH on viewer-right. RAISE the camera-far LEFT ARM into LEFT SHOULDER RACK on viewer-left, left elbow bent and left hand/handle at left shoulder, bell ball resting against outside LEFT forearm. Make both weights and both hand contacts visible: one at left shoulder and one at right thigh. It is critical that panel 2 shows right shoulder rack/left hang and panel 3 shows LEFT shoulder rack/RIGHT hang. Do NOT mirror the whole figure, change camera, repeat the same right-arm shoulder rack, put both bells at shoulders, add a third arm or a third bell. Maintain long neutral spine, standing hip extension, unchanged bilateral posterior-hamstring amber cutaways, gray secondary tissue, charcoal clothing, perfectly smooth oval head, full-body framing and stone background. Only third panel arm/hand/bell positions change.\n",
+      "promptSha256": "55ba642092d403d04ba461245d8dfcc033aef671eb05541c08dab15c8b1d37f8",
+      "exportSettings": {
+        "width": 768,
+        "quality": 90,
+        "effort": 6,
+        "background": "#ece7db"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex",
+        "primaryMuscleLocalization": true,
+        "anatomyMapping": true,
+        "appVerified": true,
+        "notes": "Native and 768/390 exports inspected: two bells with one gripped per hand, initial hinged hang then distinct right-rack/left-hang and left-rack/right-hang. Posterior thigh hamstrings only amber; whole bodies and bells, smooth heads, consistent foot locations. Exact explosive timing and fine hand projection remain illustrative. Actual app screenshots at 390 CSS px inspected in Chromium and mobile WebKit; complete images with contain, expected hashes and no horizontal overflow.",
+        "browsers": [
+          {
+            "browser": "chromium",
+            "captureSha256": "4a66f1a20db7a36e2828f275e1751d9429f6ebadec10baaf9338289e28046278",
+            "inspected": true
+          },
+          {
+            "browser": "mobile-webkit",
+            "captureSha256": "e0a143fa75bddea73c6c78d3ffca3870fd52f8c8703644d6626dd45a9b152f1e",
+            "inspected": true
+          }
+        ],
+        "chromiumOffline": "PASS",
+        "windowsWebKitOffline": "NOT VERIFIED",
+        "physicalIPhone": "NOT VERIFIED"
+      }
+    },
+    {
+      "id": "alternating-kettlebell-row",
+      "candidateId": "alternating-kettlebell-row-missing-v2",
+      "asset": "assets/alternating-kettlebell-row.webp",
+      "outputSha256": "025a99fb63319193a5ca0d8aa4eb4f1c0e4d88938ce5be2d1d942dcaa4289ed0",
+      "sourcePngSha256": "8da9fb0d33e5f9427ba939a2df91cda0e3ea454520892ec6aa4815934c7ae0cd",
+      "specificationSha256": "5c63b59814c3a635136831457bb74ca8e4d672d8ac3273ed78d478971d7b010c",
+      "muscleMappingSha256": "91072e48a2e67bda1aca1d0314c0800c8f063337eeab1a652ef0a2c318c98dd4",
+      "tool": "built-in image_gen",
+      "prompt": "Correct ONLY the MIDDLE panel of the supplied Alternating Kettlebell Row image. Preserve first and third panels, style, frame, smooth oval heads, gray materials and the middle-back amber cutaway. The middle panel currently hides the working left hand and its kettlebell behind the torso. Make the WORKING LEFT HAND AND COMPLETE LEFT KETTLEBELL plainly visible just OUTSIDE THE LEFT SILHOUETTE OF THE TORSO at lower-rib/waist height. Left elbow remains bent about 90 degrees and drawn back; slightly open the left upper arm outward so the bent forearm, wrist, fingers wrapped around single loop handle and full gray weighted ball can all be seen to the viewer-left of the body, close to ribs. Keep the opposite RIGHT arm long, right hand gripping its SECOND bell planted on floor. Keep body in same deep flat-back hinge, knees soft and same planted feet; do not stand up, invent extra arms/weights or move the nonworking floor bell. Exactly TWO clearly visible kettlebells in middle panel, one elevated at left ribs, the other on floor in right hand. Full apparatus/body/shoes with margins. No text, arrows, third bell or extra orange muscle patches.\n",
+      "promptSha256": "bb0e7d489becddbc36108573184fab1c2dee66f3a19e001b2aef2fbc5a30bece",
+      "exportSettings": {
+        "width": 768,
+        "quality": 90,
+        "effort": 6,
+        "background": "#ece7db"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex",
+        "primaryMuscleLocalization": true,
+        "anatomyMapping": true,
+        "appVerified": true,
+        "notes": "Native and 768/390 exports inspected: initial two floor bells, left row then right row with visible working bells and grips, opposite hand retained on floor bell, fixed hinged torso and feet. Middle-back scapular tissue only amber, smooth heads and complete framing. Fine projected grip/scapular anatomy and motion timing illustrative. Actual app screenshots at 390 CSS px inspected in Chromium and mobile WebKit; complete images with contain, expected hashes and no horizontal overflow.",
+        "browsers": [
+          {
+            "browser": "chromium",
+            "captureSha256": "b31dfbb775dc4cc974e593828538a4b38cf8e68cbd0d3c85df0cd1e9121ffd82",
+            "inspected": true
+          },
+          {
+            "browser": "mobile-webkit",
+            "captureSha256": "517e9feb0cccdf006d8f711c923b0dd3dff3c7cc66915f83bfc26941f9f675a3",
+            "inspected": true
+          }
+        ],
+        "chromiumOffline": "PASS",
+        "windowsWebKitOffline": "NOT VERIFIED",
+        "physicalIPhone": "NOT VERIFIED"
+      }
+    },
+    {
+      "id": "bottoms-up-clean-from-the-hang-position",
+      "candidateId": "bottoms-up-clean-from-the-hang-position-missing-v1",
+      "asset": "assets/bottoms-up-clean-from-the-hang-position.webp",
+      "outputSha256": "e8f5202edc40d8ed3fd388d2f606613943d67e8f77bdc4b85f149bc4c5a27d70",
+      "sourcePngSha256": "eff4fcb2f6dae41a4bbf9845d5190a67fe89e49d29851d789cbafcddc27b4827",
+      "specificationSha256": "26e27bd15512fe5a745e4dbde3e5bfef2d65a9b8e041b932c974d96c378a4c67",
+      "muscleMappingSha256": "d32d2351ff78804d3b945f41b42a9a69eaa6c8b7549f3410253945f1c736a55a",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: scientific-educational. Asset: Bottoms-Up Clean From The Hang Position.\nLandscape 1536 x 1024 exercise illustration for Energy Fit Tracker. Warm stone seamless background #ece7db, soft studio light, restrained contact shadows, crisp premium matte GRAY 3D anatomical mannequin, fitted charcoal sleeveless shirt, charcoal knee-length shorts and gray training shoes. Same adult athlete identity, scale, camera and floor baseline within each asset. Head is a perfectly smooth featureless OVAL: no eyes, brows, nose, mouth, ears, facial contours or hair. Each pose has exactly two arms/two legs/two hands with natural joints. Keep ENTIRE bodies, every shoe, head, full overhead bell, all equipment and grips inside their own panels with generous empty margins and subtle thin dividers. No words, labels, arrows, numbers, UI, branding, watermarks, decorative props, duplicate motion ghosts or cropped limbs. Gray kettlebells with one connected closed loop handle and one weighted ball each, plausible secure contacts.\nRequired exercise mechanics: TWO equal panels, front-side three-quarter camera. Only ONE kettlebell, right hand throughout. Panel 1 hip hinge, soft knees, right arm long and bell swung back between legs in a hanging backswing, bell sphere BELOW handle. Panel 2 stand tall and receive bell at RIGHT SHOULDER in BOTTOMS-UP rack: elbow bent, forearm almost vertical, fist forcefully grips handle BELOW sphere, spherical weight directly ABOVE hand and handle. Clearly inverted bell, not ordinary rack against forearm and not overhead press. Left arm free, not touching bell. Both right grips visible and physically plausible.\nPrimary muscle highlight ONLY: localized right forearm flexor muscle fibers in a small inside-forearm cutaway below elbow and above wrist; never upper arm, biceps, deltoids or hand. Use anatomically shaped warm amber/orange MUSCLE FIBERS in small educational cutaways. All secondary tissue, joints and remaining skin stay gray; muted cyan/gray supporting anatomy, no glow, gore or blanket painted clothing. Muscle target is bound to the canonical catalog; do not invent another primary target.\nCanonical recorded instructions, for identity and sequence (do not draw text):\n1. Initiate the exercise by standing upright with a kettlebell in one hand.\n2. Swing the kettlebell back forcefully and then reverse the motion forcefully. Crush the kettlebell handle as hard as possible and raise the kettlebell to your shoulder.\nPreserve complete framing and physical hand/equipment contacts. Distinct phase geometry and accurate muscle localization take priority over decoration. Static endpoints are illustrative; do not add claims of certified movement timing.\n",
+      "promptSha256": "e4de736dcb75a0700fc716e453c3084e0254a715ad8e9852017d78e11324a8cf",
+      "exportSettings": {
+        "width": 768,
+        "quality": 90,
+        "effort": 6,
+        "background": "#ece7db"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex",
+        "primaryMuscleLocalization": true,
+        "anatomyMapping": true,
+        "appVerified": true,
+        "notes": "Native and 768/390 exports inspected: one right-hand bell, hinged low hang and upright shoulder-height inverted bottoms-up receive, sphere above gripped handle and wrist. Local right forearm tissue only amber; full figure, both hands/shoes and featureless heads. Low-hang and catch endpoints readable; backswing trajectory and explosive timing illustrative. Actual app screenshots at 390 CSS px inspected in Chromium and mobile WebKit; complete images with contain, expected hashes and no horizontal overflow.",
+        "browsers": [
+          {
+            "browser": "chromium",
+            "captureSha256": "cdb9a0ff62fbfe3f4ba071aa256d846014c88afbcca4ca2d282d8aa27106fd36",
+            "inspected": true
+          },
+          {
+            "browser": "mobile-webkit",
+            "captureSha256": "1fdbb4360a2b7db2afac947a8b6dd5c93d7d1d653cd303ded51f9626fc8f3e92",
+            "inspected": true
+          }
+        ],
+        "chromiumOffline": "PASS",
+        "windowsWebKitOffline": "NOT VERIFIED",
+        "physicalIPhone": "NOT VERIFIED"
+      }
+    },
+    {
+      "id": "double-kettlebell-alternating-hang-clean",
+      "candidateId": "double-kettlebell-alternating-hang-clean-missing-v2",
+      "asset": "assets/double-kettlebell-alternating-hang-clean.webp",
+      "outputSha256": "60213dac578c3a1ebe3124b07b63ac2284bbe2b52da34e2acef0e97e429c7b92",
+      "sourcePngSha256": "c904d0619278850a40481bd2ab9493bf10b1e29ab11df5543964b993eb7c978b",
+      "specificationSha256": "335d67d4faa5dde72226c598645ade0c95235a72ab6f55a727569d8314259b99",
+      "muscleMappingSha256": "bcfb1f042427244e31f2ab1c7cf85bf2fb34c5b35d6e95a7145269fb181b91bb",
+      "tool": "built-in image_gen",
+      "prompt": "Correct the supplied three-panel DOUBLE KETTLEBELL ALTERNATING HANG CLEAN illustration. Keep the FIRST panel exactly unchanged: camera-near RIGHT bell at right shoulder, camera-far LEFT bell hanging. Keep style, body identity, camera, feet, featureless oval heads, hamstring-only amber tissue and all framing. TWO precise corrections. (1) MIDDLE panel must show BOTH complete kettlebells and both gripped handles at opposite sides of the waist: retain visible near RIGHT bell at viewer-right waist; reveal the far LEFT hand and its second bell just outside viewer-left body silhouette at left-waist height. Elbows softly bent, hip/knee dip, secure grips, no floating third bell. (2) THIRD panel must be the OPPOSITE rack arrangement from first: camera-far LEFT arm bent and LEFT bell racked beside LEFT SHOULDER on viewer-left, clearly visible complete sphere and handle; camera-near RIGHT arm STRAIGHT DOWN with RIGHT hand gripping bell beside RIGHT THIGH on viewer-right. No repeat of right shoulder rack in third panel. Do not mirror entire figure, change camera, add an arm or a third bell. The three stages must clearly read RIGHT RACK/LEFT HANG -> BOTH WAIST EXCHANGE -> LEFT RACK/RIGHT HANG. Whole feet, heads and bells stay visible inside own panels. Preserve gray matte materials, charcoal clothing and warm stone studio; no words, arrows or extra orange patches.\n",
+      "promptSha256": "e2fd3821cbcf7129f38fb5217254cb83ebaa9e0b85c05e3e97dde4728105792e",
+      "exportSettings": {
+        "width": 768,
+        "quality": 90,
+        "effort": 6,
+        "background": "#ece7db"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex",
+        "primaryMuscleLocalization": true,
+        "anatomyMapping": true,
+        "appVerified": true,
+        "notes": "Native and 768/390 exports inspected: right rack/left hang, two visible secured bells during waist-height exchange with knee/hip flexion, then left rack/right hang. Smooth heads, full bodies/bells/shoes, posterior hamstrings only amber. Static exchange implies alternation; fluid timing and detailed hand contacts remain illustrative. Actual app screenshots at 390 CSS px inspected in Chromium and mobile WebKit; complete images with contain, expected hashes and no horizontal overflow.",
+        "browsers": [
+          {
+            "browser": "chromium",
+            "captureSha256": "9a7198fffe69c25bd2b8040461003ccb5b28de81d6972ba8a4d5349796ddc138",
+            "inspected": true
+          },
+          {
+            "browser": "mobile-webkit",
+            "captureSha256": "8aba63bd7ac9b13c910c7f88cb16eb4cc5fa40e86df60347d0d8a2cb1ae08579",
+            "inspected": true
+          }
+        ],
+        "chromiumOffline": "PASS",
+        "windowsWebKitOffline": "NOT VERIFIED",
+        "physicalIPhone": "NOT VERIFIED"
+      }
+    },
+    {
+      "id": "double-kettlebell-jerk",
+      "candidateId": "double-kettlebell-jerk-missing-v2",
+      "asset": "assets/double-kettlebell-jerk.webp",
+      "outputSha256": "155fbfc6d4b120d85b190b2526fc1ddd69f6b7f2b375fc813d73b0859c820f16",
+      "sourcePngSha256": "14797818e23461e2f1a50a3ca1f904c608f5576d5be1917c0cf1370dccebd1e4",
+      "specificationSha256": "4c74da838e877d41308d8a49ba12f102dcbc3995317cb34b8a2a0b91f804897e",
+      "muscleMappingSha256": "9866606915ec9781406646741a7bc5ce2644db281d56868210732a54be40721c",
+      "tool": "built-in image_gen",
+      "prompt": "Change ONLY the HEADS in EVERY pose of this own approved exercise illustration. Magnified review detected small EAR SHAPES or EAR-LIKE SIDE CONTOURS. Replace each head with a perfectly smooth continuous featureless OVAL concept-manikin head: NO ears, ear nubs, ear circles, eyes, brows, nose, mouth, lips, cheek structures, facial contours or hair. Smooth egg/oval outline, uninterrupted sides, matte gray shading. Preserve head sizes, positions, tilts and neck connections. Everything BELOW NECK stays EXACTLY unchanged: every exercise phase, arm/hand/finger/grip and bell position/orientation, leg/knee/foot/floor contact, gray anatomical body, correctly localized existing amber muscle tissue, charcoal clothes, warm stone background, panel arrangement and full margins. No pose/equipment/color changes, no labels, arrows, additional people or objects. This is exclusively smooth oval head refinement.\n",
+      "promptSha256": "18b454fa8597b2557ee90f52726b7cb426cbd097480644bcfc6ab5bc4579b367",
+      "exportSettings": {
+        "width": 768,
+        "quality": 90,
+        "effort": 6,
+        "background": "#ece7db"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex",
+        "primaryMuscleLocalization": true,
+        "anatomyMapping": true,
+        "appVerified": true,
+        "notes": "Native and 768/390 exports inspected: two shoulder-racked bells with knee dip, two-arm overhead split catch, then feet-together standing lockout. Bells and both secure handles visible, gray secondary muscles and shoulder-deltoid amber cutaways, featureless heads and complete feet/hardware. Top margin narrow but uncut; precise grip, deltoid projection and ballistic timing illustrative. Rechecked new native source, enlarged head-recheck boards and both 768/390 exports: all heads now smooth continuous featureless ovals without ears or facial features; previously checked phase geometry, muscle localization and framing preserved. Actual app screenshots at 390 CSS px inspected in Chromium and mobile WebKit; complete images with contain, expected hashes and no horizontal overflow.",
+        "browsers": [
+          {
+            "browser": "chromium",
+            "captureSha256": "f3f3b7123a7af5ed11a35aed3a85723d5d29476e1c3da31b4a12b3ba57dbb0a3",
+            "inspected": true
+          },
+          {
+            "browser": "mobile-webkit",
+            "captureSha256": "f751335212869cfb46c01bad656b3f49a5db99897ce51cbd490ff256ca931437",
+            "inspected": true
+          }
+        ],
+        "chromiumOffline": "PASS",
+        "windowsWebKitOffline": "NOT VERIFIED",
+        "physicalIPhone": "NOT VERIFIED"
+      }
+    },
+    {
+      "id": "double-kettlebell-snatch",
+      "candidateId": "double-kettlebell-snatch-missing-v2",
+      "asset": "assets/double-kettlebell-snatch.webp",
+      "outputSha256": "b866e0a88002c7d27785c419371d655f9db5ee191614206a204121d0c49fd638",
+      "sourcePngSha256": "ac360aef78233336565430021f309588def8e9f5f29c3dd2d8eb110125eac2ab",
+      "specificationSha256": "586e73bcfb5d8745da974fa9835ce251a61c1c285f7058158120b084d16c0323",
+      "muscleMappingSha256": "900dc01c4e73b861f4e915ebe7dbd2848f9dd9ddd524f5f43e90838c841b51de",
+      "tool": "built-in image_gen",
+      "prompt": "Change ONLY the HEADS in EVERY pose of this own approved exercise illustration. Magnified review detected small EAR SHAPES or EAR-LIKE SIDE CONTOURS. Replace each head with a perfectly smooth continuous featureless OVAL concept-manikin head: NO ears, ear nubs, ear circles, eyes, brows, nose, mouth, lips, cheek structures, facial contours or hair. Smooth egg/oval outline, uninterrupted sides, matte gray shading. Preserve head sizes, positions, tilts and neck connections. Everything BELOW NECK stays EXACTLY unchanged: every exercise phase, arm/hand/finger/grip and bell position/orientation, leg/knee/foot/floor contact, gray anatomical body, correctly localized existing amber muscle tissue, charcoal clothes, warm stone background, panel arrangement and full margins. No pose/equipment/color changes, no labels, arrows, additional people or objects. This is exclusively smooth oval head refinement.\n",
+      "promptSha256": "18b454fa8597b2557ee90f52726b7cb426cbd097480644bcfc6ab5bc4579b367",
+      "exportSettings": {
+        "width": 768,
+        "quality": 90,
+        "effort": 6,
+        "background": "#ece7db"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex",
+        "primaryMuscleLocalization": true,
+        "anatomyMapping": true,
+        "appVerified": true,
+        "notes": "Native and 768/390 exports inspected: two gripped bells in hinged low backswing, then two fully extended overhead arms with upright hips/knees. Shoulder-deltoid cutaways only amber; smooth heads, full shoes and overhead grips. Far backswing bell partly occluded by leg and top margin narrow but complete; exact trajectories/timing and fine anatomical projection illustrative. Rechecked new native source, enlarged head-recheck boards and both 768/390 exports: all heads now smooth continuous featureless ovals without ears or facial features; previously checked phase geometry, muscle localization and framing preserved. Actual app screenshots at 390 CSS px inspected in Chromium and mobile WebKit; complete images with contain, expected hashes and no horizontal overflow.",
+        "browsers": [
+          {
+            "browser": "chromium",
+            "captureSha256": "6126c8377c0fbcea6fb963fc0eb950a8bc1d1809e47ae89a538a10cc57c5cd1e",
+            "inspected": true
+          },
+          {
+            "browser": "mobile-webkit",
+            "captureSha256": "29e99e8a68f36e5dd86525be54ae4738c50d0445b00e683c140b340bd66e67f0",
+            "inspected": true
+          }
+        ],
+        "chromiumOffline": "PASS",
+        "windowsWebKitOffline": "NOT VERIFIED",
+        "physicalIPhone": "NOT VERIFIED"
+      }
+    },
+    {
+      "id": "double-kettlebell-windmill",
+      "candidateId": "double-kettlebell-windmill-missing-v1",
+      "asset": "assets/double-kettlebell-windmill.webp",
+      "outputSha256": "aad72a2f1a813bf04ada0ae9f48ea62063aa35ee8e9e3e65eeaa355a0e11fdd1",
+      "sourcePngSha256": "0a973273f51015098384dff722ea2a5458dcd0468fe0622ef989afafe44ed86a",
+      "specificationSha256": "9c3e341b913fc178097911a7c801f4d0655fb04dbe1cdf8eadf607c5ac092f74",
+      "muscleMappingSha256": "c638d86cb739c1e258ac359f1b8cdaa6d5c1d15d183fb4f4462fd64472ea2883",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: scientific-educational. Asset: Double Kettlebell Windmill.\nLandscape 1536 x 1024 exercise illustration for Energy Fit Tracker. Warm stone seamless background #ece7db, soft studio light, restrained contact shadows, crisp premium matte GRAY 3D anatomical mannequin, fitted charcoal sleeveless shirt, charcoal knee-length shorts and gray training shoes. Same adult athlete identity, scale, camera and floor baseline within each asset. Head is a perfectly smooth featureless OVAL: no eyes, brows, nose, mouth, ears, facial contours or hair. Each pose has exactly two arms/two legs/two hands with natural joints. Keep ENTIRE bodies, every shoe, head, full overhead bell, all equipment and grips inside their own panels with generous empty margins and subtle thin dividers. No words, labels, arrows, numbers, UI, branding, watermarks, decorative props, duplicate motion ghosts or cropped limbs. Gray kettlebells with one connected closed loop handle and one weighted ball each, plausible secure contacts.\nRequired exercise mechanics: TWO equal panels, front three-quarter camera. Exactly TWO kettlebells with distinct roles. RIGHT arm fully straight and vertical, one bell overhead THROUGHOUT. Panel 1 stand tall, LEFT hand holds second bell hanging by thigh. Panel 2 hips shifted toward overhead-arm side and torso deeply HIP-HINGED down toward opposite shoe, long neutral spine approaching horizontal, right arm still vertical. LEFT straight arm reaches second bell down to floor at lead foot and grips its handle, showing retrieval contact. Feet fixed and turned about 45 degrees away from overhead arm. Head featureless oriented toward overhead bell. Do not put free hand behind back, do not hold both bells overhead.\nPrimary muscle highlight ONLY: localized rectus abdominis and lateral abdominal oblique muscle fibers through a small abdominal shirt cutaway. Use anatomically shaped warm amber/orange MUSCLE FIBERS in small educational cutaways. All secondary tissue, joints and remaining skin stay gray; muted cyan/gray supporting anatomy, no glow, gore or blanket painted clothing. Muscle target is bound to the canonical catalog; do not invent another primary target.\nCanonical recorded instructions, for identity and sequence (do not draw text):\n1. Place a kettlebell in front of your front foot and clean and press a kettlebell overhead with your opposite arm. Clean the kettlebell to your shoulder by extending through the legs and hips as you pull the kettlebell towards your shoulders. Rotate your wrist as you do so, so that the palm faces forward.\n2. Keeping the kettlebell locked out at all times, push your butt out in the direction of the locked out kettlebell. Turn your feet out at a forty-five degree angle from the arm with the locked out kettlebell.\n3. Bending at the hip to one side, sticking your butt out, slowly lean until you can retrieve the kettlebell from the floor. Keep your eyes on the kettlebell that you hold over your head at all times.\n4. Pause for a second after retrieving the kettlebell from the ground and reverse the motion back to the starting position.\nPreserve complete framing and physical hand/equipment contacts. Distinct phase geometry and accurate muscle localization take priority over decoration. Static endpoints are illustrative; do not add claims of certified movement timing.\n",
+      "promptSha256": "bcc6bf6144c72857e9b2e7145a7ec372df4b33061248e12b0c1226b52fdfdfa3",
+      "exportSettings": {
+        "width": 768,
+        "quality": 90,
+        "effort": 6,
+        "background": "#ece7db"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex",
+        "primaryMuscleLocalization": true,
+        "anatomyMapping": true,
+        "appVerified": true,
+        "notes": "Native and 768/390 exports inspected: right overhead locked-out bell throughout, left second bell hanging then gripped at lead-foot floor, deep windmill hip hinge with long spine and fixed planted feet. Smooth heads, complete figures/bells/shoes and localized abdomen-only amber with gray supporting tissue. Exact hip rotation, projected foot angles and grip mechanics illustrative. Actual app screenshots at 390 CSS px inspected in Chromium and mobile WebKit; complete images with contain, expected hashes and no horizontal overflow.",
+        "browsers": [
+          {
+            "browser": "chromium",
+            "captureSha256": "bd4564bf05f8b2f20c6d675c556d00084648e32627f808b98c45426124456170",
+            "inspected": true
+          },
+          {
+            "browser": "mobile-webkit",
+            "captureSha256": "b6983335a0c19eb8e97cf501e088e2375a714e1fbbcc82d6aad1f56aa463cb66",
+            "inspected": true
+          }
+        ],
+        "chromiumOffline": "PASS",
+        "windowsWebKitOffline": "NOT VERIFIED",
+        "physicalIPhone": "NOT VERIFIED"
+      }
+    },
+    {
+      "id": "kettlebell-dead-clean",
+      "candidateId": "kettlebell-dead-clean-missing-v2",
+      "asset": "assets/kettlebell-dead-clean.webp",
+      "outputSha256": "66742bda999dcdd1881427a7361708a3cf1358bd37d9323c63ace26c5458d5e0",
+      "sourcePngSha256": "c086a4fb2322f40be538699c89b12392fee71760df566ffc6077f0c0250d1b2e",
+      "specificationSha256": "80eb889518a17a42cd353fac9a23083805be4b33545d0a1213a0b0e9d3c387cd",
+      "muscleMappingSha256": "9870166beffce277b1be50a839102db79a708dbcc95cb82a45ce7dcfd491dd91",
+      "tool": "built-in image_gen",
+      "prompt": "Correct ONLY the LEFT starting panel of this Kettlebell Dead Clean artwork. Keep the right shoulder-rack finish panel unchanged; preserve gray matte athlete, featureless oval heads, warm stone background, posterior hamstring-only amber cutaways, charcoal clothes, feet positions, long hip-hinged spine and complete framing. The starting kettlebell is incorrectly OUTSIDE the right foot. Move the SAME SINGLE kettlebell onto the FLOOR IN THE GAP BETWEEN BOTH FEET, on the athlete's sagittal centerline. Both feet must visibly flank it: bell sits between the inner edges of the shoes, never to the outside of either shoe. Give the weight a little forward clearance so the full sphere/handle is visible without overlapping a shin. Adjust only the RIGHT reaching forearm/hand to reach inward and grip the relocated single closed-loop handle securely; knees soft, hip hinge retained, free LEFT hand stays away. One bell only, not an additional central bell. Show sphere resting on floor between feet, continuous right-hand handle contact, plausible neutral wrist and exactly two arms/hands. Keep shoulder-rack final bell and all other elements unchanged. No words, arrows, extra orange tissue or added equipment.\n",
+      "promptSha256": "5eae2bd163ac59a5b0d617c0f3a60d906128624a54e4a63bd413a4d003844e12",
+      "exportSettings": {
+        "width": 768,
+        "quality": 90,
+        "effort": 6,
+        "background": "#ece7db"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex",
+        "primaryMuscleLocalization": true,
+        "anatomyMapping": true,
+        "appVerified": true,
+        "notes": "Native and 768/390 exports inspected: single right-hand bell now resting on floor between both feet before clean, then shoulder rack after hip/knee extension. Visible connected grips, long hinged spine, posterior hamstring tissue only amber, whole bodies/bell/shoes and smooth heads. Fine scale/hand projection and ballistic timing remain illustrative. Actual app screenshots at 390 CSS px inspected in Chromium and mobile WebKit; complete images with contain, expected hashes and no horizontal overflow.",
+        "browsers": [
+          {
+            "browser": "chromium",
+            "captureSha256": "a7a5dcdb1fd66897b660befb84f00f11991ee910b751f280b7b2e25a75e851d2",
+            "inspected": true
+          },
+          {
+            "browser": "mobile-webkit",
+            "captureSha256": "3117ba9bd899c9f9a99f7ec33472e64b92a699c4d8f3ffd76f366012261f3c71",
+            "inspected": true
+          }
+        ],
+        "chromiumOffline": "PASS",
+        "windowsWebKitOffline": "NOT VERIFIED",
+        "physicalIPhone": "NOT VERIFIED"
+      }
+    },
+    {
+      "id": "kettlebell-figure-8",
+      "candidateId": "kettlebell-figure-8-missing-v3",
+      "asset": "assets/kettlebell-figure-8.webp",
+      "outputSha256": "88519b180b2ca869c38ef67a042e34f8af2808378cae9e00886a3b1acbcce4ef",
+      "sourcePngSha256": "3eec7cb11976e1ae2357a9fcd5680d7e17ffb9a432baf575d4b7011d28fe08f8",
+      "specificationSha256": "da4091da550fde0c55af3770a932546b5e884021006872f02701b8e55b2fc507",
+      "muscleMappingSha256": "f54e8e82eb46bc6abc0049222908a0d25f55dcbb91aec67728b86f1fbd38ed47",
+      "tool": "built-in image_gen",
+      "prompt": "Refine ONLY the CENTER handoff pose in this figure-eight illustration; outer panels and overall style unchanged. Keep the existing LEFT upper arm running behind left hip/thigh, but COMPLETE ITS VISIBLE ANATOMICAL CONNECTION TO THE BELL. Show a short segment of LEFT forearm emerging from BEHIND the inner LEFT thigh into the gap between legs, with a clearly drawn LEFT WRIST AND LEFT HAND grasping the BACK/LEFT HALF of the SAME kettlebell handle. The right donor arm remains in front and RIGHT HAND grips front/right half of that handle. Both distinct wrists and both hands must be identifiable, not just an unexplained extra thumb next to the donor fist. Move this single bell farther BACK INTO THE LEG GAP so sphere is between lower legs, with recipient hand approaching from rear; it must not be a centered two-hand hold in front of both knees. Slightly deepen hip hinge and widen thigh gap if needed to reveal actual forearm path. Exactly two connected upper arms, two forearms and two hands, one bell only. No third arm or detached hand. Keep posterior recipient-arm occlusion by thigh plausible but make the emerging forearm/wrist/hand visible. Preserve abdomen-only amber highlights, featureless heads, all shoes and full frame, stone studio and charcoal clothing. The result must plainly illustrate transfer to a hand reaching from BEHIND the legs.\n",
+      "promptSha256": "235dc407d8add10b457110206969d3480076504f9859c0fda84778a0ea7efd6a",
+      "exportSettings": {
+        "width": 768,
+        "quality": 90,
+        "effort": 6,
+        "background": "#ece7db"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex",
+        "primaryMuscleLocalization": true,
+        "anatomyMapping": true,
+        "appVerified": true,
+        "notes": "Native and 768/390 exports inspected: right outer carry, low single-bell handoff through leg gap to left hand approaching from behind left thigh, then left outer carry. Receiver forearm partly occluded by thigh but emerging wrist/hand at rear of same handle is visible; no third arm or bell. Abdomen only amber, smooth heads, full shoes and wide hinged stance. Complete figure-eight trajectory, fine occluded contacts and timing remain illustrative. Actual app screenshots at 390 CSS px inspected in Chromium and mobile WebKit; complete images with contain, expected hashes and no horizontal overflow.",
+        "browsers": [
+          {
+            "browser": "chromium",
+            "captureSha256": "40e60af36cf206ba27d0d3996c649f442d408f61ed2e73d66ff03d897dcfa496",
+            "inspected": true
+          },
+          {
+            "browser": "mobile-webkit",
+            "captureSha256": "18dbc95de8f378fe101895cec389d1f50dd0ef01d02b7f874b6fd527f8e2c2b8",
+            "inspected": true
+          }
+        ],
+        "chromiumOffline": "PASS",
+        "windowsWebKitOffline": "NOT VERIFIED",
+        "physicalIPhone": "NOT VERIFIED"
+      }
+    },
+    {
+      "id": "kettlebell-hang-clean",
+      "candidateId": "kettlebell-hang-clean-missing-v2",
+      "asset": "assets/kettlebell-hang-clean.webp",
+      "outputSha256": "23f1c02297797916cd037fa7f65ec24015c1b809f5e104086145aebd6745c349",
+      "sourcePngSha256": "16c9ad559d22030eebd43f3ff58f48667e4290f26ce50941e755495f9412432c",
+      "specificationSha256": "c90594b9dc94a25ce58e1128b1913cc2ca6cf43f1fd306890c3c9e232f57b438",
+      "muscleMappingSha256": "b46245051819802b24a74d0d9222ff62f686a695c20ab064a8eb889bebee723e",
+      "tool": "built-in image_gen",
+      "prompt": "Correct ONLY the LEFT hinged hanging-start panel of this Kettlebell Hang Clean image. Preserve right shoulder-rack finish and all figure identity, gray matte style, featureless oval heads, posterior hamstring amber cutaways, warm stone background, feet positions and clothing. The bell currently hangs OUTSIDE the right leg. Move the SAME SINGLE bell into the GAP BETWEEN BOTH LEGS on the athlete's centerline, visibly inside the inner edges of both feet. Bell must be HANGING about 15 to 25 cm ABOVE THE FLOOR, not resting on floor; it is a hang clean, not dead clean. Adjust only the reaching RIGHT forearm/wrist/hand inward to grip its one loop handle securely between knees. Keep long neutral hip-hinged spine, soft knees and free LEFT hand away from bell. Both feet visibly flank the suspended bell, visible floor gap beneath its sphere, no bell outside either foot, no additional central bell. Preserve full bodies/bells/shoes and correct plain oval heads. No labels, arrows, third hand, detached fingers or extra orange tissue.\n",
+      "promptSha256": "ddb9172ed44a791d46f71626fb75e605d1d94c7c8252e8acee5b2c0e66dd90dc",
+      "exportSettings": {
+        "width": 768,
+        "quality": 90,
+        "effort": 6,
+        "background": "#ece7db"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex",
+        "primaryMuscleLocalization": true,
+        "anatomyMapping": true,
+        "appVerified": true,
+        "notes": "Native and 768/390 exports inspected: single right-hand bell hangs on centerline between legs with clear floor gap before upright shoulder-rack clean. Long neutral hip hinge, visible grips and whole feet/bell/head, posterior hamstring-only amber and smooth featureless heads. Reaching forearm partly occluded by thigh, connection and wrist visible; explosive timing illustrative. Actual app screenshots at 390 CSS px inspected in Chromium and mobile WebKit; complete images with contain, expected hashes and no horizontal overflow.",
+        "browsers": [
+          {
+            "browser": "chromium",
+            "captureSha256": "d43cda28cbe40655c7a153eebb1d1ebae5f3eb14fd4d685b72bebe5e187e3c2d",
+            "inspected": true
+          },
+          {
+            "browser": "mobile-webkit",
+            "captureSha256": "73196328979f83fc0491d9588307124eebec52e4636c2e9cfcbad4ff6eaa6a65",
+            "inspected": true
+          }
+        ],
+        "chromiumOffline": "PASS",
+        "windowsWebKitOffline": "NOT VERIFIED",
+        "physicalIPhone": "NOT VERIFIED"
+      }
+    },
+    {
+      "id": "kettlebell-pirate-ships",
+      "candidateId": "kettlebell-pirate-ships-missing-v2",
+      "asset": "assets/kettlebell-pirate-ships.webp",
+      "outputSha256": "da4e01234c1a619ae4ddffb5c156a4d8b48424276678035eeab254670fa80455",
+      "sourcePngSha256": "f0ca388b1212cefdcc07821fdaa39a348c1c62aa9d12aa322125d2455a572f85",
+      "specificationSha256": "a6c1bc76feed962c0c2d9e36e69fa120b5856b2aad0dde147ce4e17a5baa4e07",
+      "muscleMappingSha256": "a31d9f194e1a09bbc3b920e7f64d16ae3e5ea8a3c9acafa2973a52854333a165",
+      "tool": "built-in image_gen",
+      "prompt": "Change ONLY the HEADS in EVERY pose of this own approved exercise illustration. Magnified review detected small EAR SHAPES or EAR-LIKE SIDE CONTOURS. Replace each head with a perfectly smooth continuous featureless OVAL concept-manikin head: NO ears, ear nubs, ear circles, eyes, brows, nose, mouth, lips, cheek structures, facial contours or hair. Smooth egg/oval outline, uninterrupted sides, matte gray shading. Preserve head sizes, positions, tilts and neck connections. Everything BELOW NECK stays EXACTLY unchanged: every exercise phase, arm/hand/finger/grip and bell position/orientation, leg/knee/foot/floor contact, gray anatomical body, correctly localized existing amber muscle tissue, charcoal clothes, warm stone background, panel arrangement and full margins. No pose/equipment/color changes, no labels, arrows, additional people or objects. This is exclusively smooth oval head refinement.\n",
+      "promptSha256": "18b454fa8597b2557ee90f52726b7cb426cbd097480644bcfc6ab5bc4579b367",
+      "exportSettings": {
+        "width": 768,
+        "quality": 90,
+        "effort": 6,
+        "background": "#ece7db"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex",
+        "primaryMuscleLocalization": true,
+        "anatomyMapping": true,
+        "appVerified": true,
+        "notes": "Native and 768/390 exports inspected: one bell held by both hands throughout, left head-height diagonal rise, low center pass, right head-height rise with torso rotation and wide planted stance. Arms long and connected, shoulder-deltoid-only amber, smooth oval heads and complete bell/body/shoes. Exact swing path, pause timing and fine projected grips illustrative. Rechecked new native source, enlarged head-recheck boards and both 768/390 exports: all heads now smooth continuous featureless ovals without ears or facial features; previously checked phase geometry, muscle localization and framing preserved. Actual app screenshots at 390 CSS px inspected in Chromium and mobile WebKit; complete images with contain, expected hashes and no horizontal overflow.",
+        "browsers": [
+          {
+            "browser": "chromium",
+            "captureSha256": "f98b624da3d2c336647e5a21b33e565fcc6aabdb7b540d7f11213c8dce45b79b",
+            "inspected": true
+          },
+          {
+            "browser": "mobile-webkit",
+            "captureSha256": "cbfd6e0d77c6f120b65ea5ccc7596d8de0b06ecf08f6d882c323791c31b426e7",
+            "inspected": true
+          }
+        ],
+        "chromiumOffline": "PASS",
+        "windowsWebKitOffline": "NOT VERIFIED",
+        "physicalIPhone": "NOT VERIFIED"
+      }
+    },
+    {
+      "id": "kettlebell-pistol-squat",
+      "candidateId": "kettlebell-pistol-squat-missing-v1",
+      "asset": "assets/kettlebell-pistol-squat.webp",
+      "outputSha256": "bc8c6dda6a6fc914544ddd12dea08f864bd1f94b76536f6ef6456715cf44af8d",
+      "sourcePngSha256": "17def0267c9e81f3ec2f0c532d97a5945b11ca782cb404d8e3a94ee5f286016d",
+      "specificationSha256": "abd1076c0d114719b30d9b49a5700754854ca9d90ad01447c76787302c898e09",
+      "muscleMappingSha256": "ca9b603847eccd915121441c7e00246fc9ad2a260f84e790b23467f0ac81d350",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: scientific-educational. Asset: Kettlebell Pistol Squat.\nLandscape 1536 x 1024 exercise illustration for Energy Fit Tracker. Warm stone seamless background #ece7db, soft studio light, restrained contact shadows, crisp premium matte GRAY 3D anatomical mannequin, fitted charcoal sleeveless shirt, charcoal knee-length shorts and gray training shoes. Same adult athlete identity, scale, camera and floor baseline within each asset. Head is a perfectly smooth featureless OVAL: no eyes, brows, nose, mouth, ears, facial contours or hair. Each pose has exactly two arms/two legs/two hands with natural joints. Keep ENTIRE bodies, every shoe, head, full overhead bell, all equipment and grips inside their own panels with generous empty margins and subtle thin dividers. No words, labels, arrows, numbers, UI, branding, watermarks, decorative props, duplicate motion ghosts or cropped limbs. Gray kettlebells with one connected closed loop handle and one weighted ball each, plausible secure contacts.\nRequired exercise mechanics: TWO equal panels, front-side three-quarter camera, ONE bell held by BOTH HORNS at chest with both hands throughout. Panel 1 balance standing on RIGHT foot, LEFT leg held straight forward off floor; shoulders level, torso tall. Panel 2 deep SINGLE-LEG squat on same RIGHT foot with right knee flexed and heel planted, hips near ankle, LEFT leg stays straight forward hovering off floor. Chest up, bell remains chest height. Both knees/ankles/hands believable; no second foot floor contact and no change of supporting leg. Amber highlight in quadriceps only, especially anterior supporting thigh.\nPrimary muscle highlight ONLY: localized anterior thigh quadriceps muscle fibers through small shorts cutaways, especially working supporting thigh; no glutes, rear hamstrings, knee or calf. Use anatomically shaped warm amber/orange MUSCLE FIBERS in small educational cutaways. All secondary tissue, joints and remaining skin stay gray; muted cyan/gray supporting anatomy, no glow, gore or blanket painted clothing. Muscle target is bound to the canonical catalog; do not invent another primary target.\nCanonical recorded instructions, for identity and sequence (do not draw text):\n1. Pick up a kettlebell with two hands and hold it by the horns. Hold one leg off of the floor and squat down on the other.\n2. Squat down by flexing the knee and sitting back with the hips, holding the kettlebell up in front of you.\n3. Hold the bottom position for a second and then reverse the motion, driving through the heel and keeping your head and chest up.\n4. Lower yourself again and repeat.\nPreserve complete framing and physical hand/equipment contacts. Distinct phase geometry and accurate muscle localization take priority over decoration. Static endpoints are illustrative; do not add claims of certified movement timing.\n",
+      "promptSha256": "877ed02a3c4d23bb67865a07cc1b23c01d21438c771f64e140f61d44fbda6e71",
+      "exportSettings": {
+        "width": 768,
+        "quality": 90,
+        "effort": 6,
+        "background": "#ece7db"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex",
+        "primaryMuscleLocalization": true,
+        "anatomyMapping": true,
+        "appVerified": true,
+        "notes": "Native and 768/390 exports inspected: same right supporting foot planted, opposite left leg extended off floor, one bell held by both horns at chest; upright single-leg balance then seated-back single-leg squat with knee flexion. Right anterior quadriceps only amber, whole feet/body/bell and smooth heads. Depicted knee depth and fine balance/contact projection illustrative, not certified end-range motion. Actual app screenshots at 390 CSS px inspected in Chromium and mobile WebKit; complete images with contain, expected hashes and no horizontal overflow.",
+        "browsers": [
+          {
+            "browser": "chromium",
+            "captureSha256": "18f9f1ea4a2bf95ecb137e9cfbdc8e7a9e1a6e4cf40ded86a1d2527942a1f79b",
+            "inspected": true
+          },
+          {
+            "browser": "mobile-webkit",
+            "captureSha256": "a5f45ebf34a41b6d3cd5ba7e18889da4fee9287c299b5d8e3b3eee3a2401575d",
+            "inspected": true
+          }
+        ],
+        "chromiumOffline": "PASS",
+        "windowsWebKitOffline": "NOT VERIFIED",
+        "physicalIPhone": "NOT VERIFIED"
+      }
+    },
+    {
+      "id": "kettlebell-turkish-get-up-lunge-style",
+      "candidateId": "kettlebell-turkish-get-up-lunge-style-missing-v4",
+      "asset": "assets/kettlebell-turkish-get-up-lunge-style.webp",
+      "outputSha256": "d6627779481d3454766956ee5a25736a7ed38594deede0eecd3f599842f75f3b",
+      "sourcePngSha256": "132d7ab06f5af80161cef6793498fcba9c1004906675c2aac98c0b75d33b34aa",
+      "specificationSha256": "5ed1cc257fe0e08256a0291cf5d2c8880411dabb261a7fea65a5553b06820ef1",
+      "muscleMappingSha256": "3bffa2ed70e1d698d1126884204615588b4c3058f3bbbb0de792e924aa6af846",
+      "tool": "built-in image_gen",
+      "prompt": "Change ONLY the HEADS in EVERY pose of this own approved exercise illustration. Magnified review detected small EAR SHAPES or EAR-LIKE SIDE CONTOURS. Replace each head with a perfectly smooth continuous featureless OVAL concept-manikin head: NO ears, ear nubs, ear circles, eyes, brows, nose, mouth, lips, cheek structures, facial contours or hair. Smooth egg/oval outline, uninterrupted sides, matte gray shading. Preserve head sizes, positions, tilts and neck connections. Everything BELOW NECK stays EXACTLY unchanged: every exercise phase, arm/hand/finger/grip and bell position/orientation, leg/knee/foot/floor contact, gray anatomical body, correctly localized existing amber muscle tissue, charcoal clothes, warm stone background, panel arrangement and full margins. No pose/equipment/color changes, no labels, arrows, additional people or objects. This is exclusively smooth oval head refinement.\n",
+      "promptSha256": "18b454fa8597b2557ee90f52726b7cb426cbd097480644bcfc6ab5bc4579b367",
+      "exportSettings": {
+        "width": 768,
+        "quality": 90,
+        "effort": 6,
+        "background": "#ece7db"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex",
+        "primaryMuscleLocalization": true,
+        "anatomyMapping": true,
+        "appVerified": true,
+        "notes": "Native and 768/390 exports inspected: same right overhead working arm and right bent/planted knee in supine and seated poses, opposite support palm on floor; right-foot-forward left-knee-down half lunge then standing lockout. Shoulder-only amber, smooth heads, complete grips/feet. Supine free arm and parts of seated support arm occluded, standing panel scaled smaller for full framing; exact transitions/timing and fine joint contacts illustrative. Rechecked new native source, enlarged head-recheck boards and both 768/390 exports: all heads now smooth continuous featureless ovals without ears or facial features; previously checked phase geometry, muscle localization and framing preserved. Actual app screenshots at 390 CSS px inspected in Chromium and mobile WebKit; complete images with contain, expected hashes and no horizontal overflow.",
+        "browsers": [
+          {
+            "browser": "chromium",
+            "captureSha256": "47f4bf5980e1af594ee0a8080eed8cd72b327581737b6d2d8d8e668be99ddfb6",
+            "inspected": true
+          },
+          {
+            "browser": "mobile-webkit",
+            "captureSha256": "588dc727fd59ef7def477aa5345536fb318e192eb4b66381aca236482374e6f9",
+            "inspected": true
+          }
+        ],
+        "chromiumOffline": "PASS",
+        "windowsWebKitOffline": "NOT VERIFIED",
+        "physicalIPhone": "NOT VERIFIED"
+      }
+    },
+    {
+      "id": "kettlebell-turkish-get-up-squat-style",
+      "candidateId": "kettlebell-turkish-get-up-squat-style-missing-v3",
+      "asset": "assets/kettlebell-turkish-get-up-squat-style.webp",
+      "outputSha256": "ab4986ea66970ab4a008b1ec74f5a7870bb6d463dbdea7b9bceea720a4ea4795",
+      "sourcePngSha256": "585731b1e686438ab0754f8407ceb6841a931d224ccb52de0d83b9d0af619a0c",
+      "specificationSha256": "c227a72b70608e6b7bf4d7fe9d835c2270a50dfc48257a1ee2a7c954d5d6ae2b",
+      "muscleMappingSha256": "c5929db4995ffb8be609daa5f3517c90fac0f5ab797599677a59c7eae4b059ab",
+      "tool": "built-in image_gen",
+      "prompt": "Change ONLY the HEADS in EVERY pose of this own approved exercise illustration. Magnified review detected small EAR SHAPES or EAR-LIKE SIDE CONTOURS. Replace each head with a perfectly smooth continuous featureless OVAL concept-manikin head: NO ears, ear nubs, ear circles, eyes, brows, nose, mouth, lips, cheek structures, facial contours or hair. Smooth egg/oval outline, uninterrupted sides, matte gray shading. Preserve head sizes, positions, tilts and neck connections. Everything BELOW NECK stays EXACTLY unchanged: every exercise phase, arm/hand/finger/grip and bell position/orientation, leg/knee/foot/floor contact, gray anatomical body, correctly localized existing amber muscle tissue, charcoal clothes, warm stone background, panel arrangement and full margins. No pose/equipment/color changes, no labels, arrows, additional people or objects. This is exclusively smooth oval head refinement.\n",
+      "promptSha256": "18b454fa8597b2557ee90f52726b7cb426cbd097480644bcfc6ab5bc4579b367",
+      "exportSettings": {
+        "width": 768,
+        "quality": 90,
+        "effort": 6,
+        "background": "#ece7db"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex",
+        "primaryMuscleLocalization": true,
+        "anatomyMapping": true,
+        "appVerified": true,
+        "notes": "Native and 768/390 exports inspected: own approved common supine/seated/standing poses retained with same-side right working arm/right knee; third pose now two planted feet in deep overhead squat with left support palm on floor, no knee floor contact. Smooth heads, full scene and shoulder-only amber. Variant-name squat transition interpretation retained in evidence/get-up-specification-review.json; exact intervening path and fine contacts illustrative. Rechecked new native source, enlarged head-recheck boards and both 768/390 exports: all heads now smooth continuous featureless ovals without ears or facial features; previously checked phase geometry, muscle localization and framing preserved. Actual app screenshots at 390 CSS px inspected in Chromium and mobile WebKit; complete images with contain, expected hashes and no horizontal overflow.",
+        "browsers": [
+          {
+            "browser": "chromium",
+            "captureSha256": "b83f519a91031f67c55fb5a2e655b3722caf873563538f3f6f5bf744a852e1b6",
+            "inspected": true
+          },
+          {
+            "browser": "mobile-webkit",
+            "captureSha256": "bc76e8b3e54232fdbf9854a9bd0c149c6cec163776f672de6c74cfde2c619ef9",
+            "inspected": true
+          }
+        ],
+        "chromiumOffline": "PASS",
+        "windowsWebKitOffline": "NOT VERIFIED",
+        "physicalIPhone": "NOT VERIFIED"
+      }
+    },
+    {
+      "id": "kettlebell-windmill",
+      "candidateId": "kettlebell-windmill-missing-v1",
+      "asset": "assets/kettlebell-windmill.webp",
+      "outputSha256": "118c758cc8002c1fa9fefaebb73540d546c1ab3ff4b24aa58786805049f2ac4c",
+      "sourcePngSha256": "72a2d228a85a31eba3a7be981fc0509eca650d0d01e3469b0f04fa038554e739",
+      "specificationSha256": "e75533d1f792ba75e3c897239256c4d5f058374f91e5acddfc85a394310a6bb7",
+      "muscleMappingSha256": "c638d86cb739c1e258ac359f1b8cdaa6d5c1d15d183fb4f4462fd64472ea2883",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: scientific-educational. Asset: Kettlebell Windmill.\nLandscape 1536 x 1024 exercise illustration for Energy Fit Tracker. Warm stone seamless background #ece7db, soft studio light, restrained contact shadows, crisp premium matte GRAY 3D anatomical mannequin, fitted charcoal sleeveless shirt, charcoal knee-length shorts and gray training shoes. Same adult athlete identity, scale, camera and floor baseline within each asset. Head is a perfectly smooth featureless OVAL: no eyes, brows, nose, mouth, ears, facial contours or hair. Each pose has exactly two arms/two legs/two hands with natural joints. Keep ENTIRE bodies, every shoe, head, full overhead bell, all equipment and grips inside their own panels with generous empty margins and subtle thin dividers. No words, labels, arrows, numbers, UI, branding, watermarks, decorative props, duplicate motion ghosts or cropped limbs. Gray kettlebells with one connected closed loop handle and one weighted ball each, plausible secure contacts.\nRequired exercise mechanics: TWO equal panels, front-side three-quarter camera. ONE bell in RIGHT hand overhead throughout, right elbow fully straight and arm vertical. Panel 1 upright start, free LEFT arm down by side. Panel 2 deep hip hinge/torso rotation down toward LEFT foot, long neutral spine approaching horizontal, hips shift toward raised-arm side, RIGHT arm remains vertical. Free LEFT hand reaches the floor immediately inside LEFT lead foot with fingers touching floor; it must NOT stay behind back or grip a second bell. Feet fixed, slightly wide and turned 45 degrees away from overhead-arm side. Featureless head oriented toward overhead bell.\nPrimary muscle highlight ONLY: localized rectus abdominis and lateral abdominal oblique muscle fibers through a small abdominal shirt cutaway. Use anatomically shaped warm amber/orange MUSCLE FIBERS in small educational cutaways. All secondary tissue, joints and remaining skin stay gray; muted cyan/gray supporting anatomy, no glow, gore or blanket painted clothing. Muscle target is bound to the canonical catalog; do not invent another primary target.\nCanonical recorded instructions, for identity and sequence (do not draw text):\n1. Place a kettlebell in front of your lead foot and clean and press it overhead with your opposite arm. Clean the kettlebell to your shoulder by extending through the legs and hips as you pull the kettlebell towards your shoulders. Rotate your wrist as you do so, so that the palm faces forward. Press it overhead by extending the elbow.\n2. Keeping the kettlebell locked out at all times, push your butt out in the direction of the locked out kettlebell. Turn your feet out at a forty-five degree angle from the arm with the locked out kettlebell. Bending at the hip to one side, sticking your butt out, slowly lean until you can touch the floor with your free hand. Keep your eyes on the kettlebell that you hold over your head at all times.\n3. Pause for a second after reaching the ground and reverse the motion back to the starting position.\nPreserve complete framing and physical hand/equipment contacts. Distinct phase geometry and accurate muscle localization take priority over decoration. Static endpoints are illustrative; do not add claims of certified movement timing.\n",
+      "promptSha256": "7238767c36d004ddce7bf3ed7ec5695f54a76646ff0ce2bbf84c4702c88c3ed8",
+      "exportSettings": {
+        "width": 768,
+        "quality": 90,
+        "effort": 6,
+        "background": "#ece7db"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex",
+        "primaryMuscleLocalization": true,
+        "anatomyMapping": true,
+        "appVerified": true,
+        "notes": "Native and 768/390 exports inspected: one right overhead bell with extended vertical arm, standing start then deep hip hinge and free left fingers contacting floor by lead foot. Distinct from behind-back and two-bell variants; abdomen-only amber, smooth heads, complete body/bell/shoes. Fine projected foot orientation, grip and exact floor contacts illustrative. Actual app screenshots at 390 CSS px inspected in Chromium and mobile WebKit; complete images with contain, expected hashes and no horizontal overflow.",
+        "browsers": [
+          {
+            "browser": "chromium",
+            "captureSha256": "52599991f58b050e6d49c79367912828268323fb845e50167c233a42171e96b2",
+            "inspected": true
+          },
+          {
+            "browser": "mobile-webkit",
+            "captureSha256": "6e968153cc5a45425c5f87e2a71436fb5c1f8eb5a1247065d767ee427bf0fdbc",
+            "inspected": true
+          }
+        ],
+        "chromiumOffline": "PASS",
+        "windowsWebKitOffline": "NOT VERIFIED",
+        "physicalIPhone": "NOT VERIFIED"
+      }
+    },
+    {
+      "id": "one-arm-kettlebell-clean",
+      "candidateId": "one-arm-kettlebell-clean-missing-v2",
+      "asset": "assets/one-arm-kettlebell-clean.webp",
+      "outputSha256": "f99084129d3bc4b2523f35fe510ad3ca7a49fbb7125b7398f7cb7b572bbb5cc0",
+      "sourcePngSha256": "07c85be935aa8a0711639f2ec751ab5ec19641c0eb490903252af4f1a348fa63",
+      "specificationSha256": "88cd3b525dae3eb30e772b230707a6b706d053edcaebde9b28524716ac7a4da6",
+      "muscleMappingSha256": "0fe8c755aa22f4e6df8b076b39fe130bde52327daf94e87f7730db0f47de4ceb",
+      "tool": "built-in image_gen",
+      "prompt": "Correct ONLY the LEFT starting panel of this One-Arm Kettlebell Clean artwork. Keep the right shoulder-rack finish panel unchanged; preserve gray matte athlete, featureless oval heads, warm stone background, posterior hamstring-only amber cutaways, charcoal clothes, feet positions, long hip-hinged spine and complete framing. The starting kettlebell is incorrectly OUTSIDE the right foot. Move the SAME SINGLE kettlebell onto the FLOOR IN THE GAP BETWEEN BOTH FEET, on the athlete's sagittal centerline. Both feet must visibly flank it: bell sits between the inner edges of the shoes, never to the outside of either shoe. Give the weight a little forward clearance so the full sphere/handle is visible without overlapping a shin. Adjust only the RIGHT reaching forearm/hand to reach inward and grip the relocated single closed-loop handle securely; knees soft, hip hinge retained, free LEFT hand stays away. One bell only, not an additional central bell. Show sphere resting on floor between feet, continuous right-hand handle contact, plausible neutral wrist and exactly two arms/hands. Keep shoulder-rack final bell and all other elements unchanged. No words, arrows, extra orange tissue or added equipment.\n",
+      "promptSha256": "c49239413e30960558ed772ac4ec1f0e04a1583adf60d44740e857410664f374",
+      "exportSettings": {
+        "width": 768,
+        "quality": 90,
+        "effort": 6,
+        "background": "#ece7db"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex",
+        "primaryMuscleLocalization": true,
+        "anatomyMapping": true,
+        "appVerified": true,
+        "notes": "Native and 768/390 exports inspected: single right gripped bell on floor between both feet with neutral hinged back, then upright right shoulder rack after hip/leg extension. Local posterior hamstrings only amber; whole figures, bell, shoes and blank heads. Reaching arm partly occluded by thigh but connected grip visible; fine projection and motion timing illustrative. Actual app screenshots at 390 CSS px inspected in Chromium and mobile WebKit; complete images with contain, expected hashes and no horizontal overflow.",
+        "browsers": [
+          {
+            "browser": "chromium",
+            "captureSha256": "4747396ac371d5a058e30f81c5b342e5c5af98ba8525d608c54d0c5f4849cc26",
+            "inspected": true
+          },
+          {
+            "browser": "mobile-webkit",
+            "captureSha256": "6024b54b1a124326c2c78412d5c59e0ec75a33e0fa60ee62568bd542dd104794",
+            "inspected": true
+          }
+        ],
+        "chromiumOffline": "PASS",
+        "windowsWebKitOffline": "NOT VERIFIED",
+        "physicalIPhone": "NOT VERIFIED"
+      }
+    },
+    {
+      "id": "one-arm-kettlebell-clean-and-jerk",
+      "candidateId": "one-arm-kettlebell-clean-and-jerk-missing-v2",
+      "asset": "assets/one-arm-kettlebell-clean-and-jerk.webp",
+      "outputSha256": "45a22cd6b76aabdb7136b558992e203ab206fef280d4234ef288073cec65628e",
+      "sourcePngSha256": "039dfa11d5b66d86afc398c26922552556384f52a26e07d1bfbbfbfd96339613",
+      "specificationSha256": "c0711faa93047557033f452c8b63c6bf250afe30eb05add2448e25d155f30c87",
+      "muscleMappingSha256": "6ed9f8c7bb4726f35978fe038b4e8dae7795f593368b6b6c25158c23cc3a2c69",
+      "tool": "built-in image_gen",
+      "prompt": "Change ONLY the HEADS in EVERY pose of this own approved exercise illustration. Magnified review detected small EAR SHAPES or EAR-LIKE SIDE CONTOURS. Replace each head with a perfectly smooth continuous featureless OVAL concept-manikin head: NO ears, ear nubs, ear circles, eyes, brows, nose, mouth, lips, cheek structures, facial contours or hair. Smooth egg/oval outline, uninterrupted sides, matte gray shading. Preserve head sizes, positions, tilts and neck connections. Everything BELOW NECK stays EXACTLY unchanged: every exercise phase, arm/hand/finger/grip and bell position/orientation, leg/knee/foot/floor contact, gray anatomical body, correctly localized existing amber muscle tissue, charcoal clothes, warm stone background, panel arrangement and full margins. No pose/equipment/color changes, no labels, arrows, additional people or objects. This is exclusively smooth oval head refinement.\n",
+      "promptSha256": "18b454fa8597b2557ee90f52726b7cb426cbd097480644bcfc6ab5bc4579b367",
+      "exportSettings": {
+        "width": 768,
+        "quality": 90,
+        "effort": 6,
+        "background": "#ece7db"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex",
+        "primaryMuscleLocalization": true,
+        "anatomyMapping": true,
+        "appVerified": true,
+        "notes": "Native and 768/390 exports inspected: one right-hand floor bell between feet, right shoulder rack and right overhead jerk received with two-foot knee re-bend; no split stance. Gray secondary tissues and deltoid-only amber, smooth heads, full shoes/bell/grips. Top margin narrow but uncut; exact clean-to-jerk timing and final standing recovery are conveyed by instructions rather than certified motion. Rechecked new native source, enlarged head-recheck boards and both 768/390 exports: all heads now smooth continuous featureless ovals without ears or facial features; previously checked phase geometry, muscle localization and framing preserved. Actual app screenshots at 390 CSS px inspected in Chromium and mobile WebKit; complete images with contain, expected hashes and no horizontal overflow.",
+        "browsers": [
+          {
+            "browser": "chromium",
+            "captureSha256": "869941e341d58f7e50a137077cfb67466733840664c8696ce81ece83acd87c19",
+            "inspected": true
+          },
+          {
+            "browser": "mobile-webkit",
+            "captureSha256": "8346fb2cbfcebd941f2ef3497d98c7da4d012e06a49ee5a2f2ca16d8839cea1c",
+            "inspected": true
+          }
+        ],
+        "chromiumOffline": "PASS",
+        "windowsWebKitOffline": "NOT VERIFIED",
+        "physicalIPhone": "NOT VERIFIED"
+      }
+    },
+    {
+      "id": "one-arm-kettlebell-jerk",
+      "candidateId": "one-arm-kettlebell-jerk-missing-v2",
+      "asset": "assets/one-arm-kettlebell-jerk.webp",
+      "outputSha256": "4fa3e46e1a5eb0cb107dd5a18ed04c809120355b9e46dd872340a34a38a38796",
+      "sourcePngSha256": "98ac8047a8fdb8cc846430241380cd778e602b05edb1cffba4d82e517d5f7494",
+      "specificationSha256": "6f8ba3158c55e15e0308541b818624020c9e60f5c0350ddd418344c385b0ddb2",
+      "muscleMappingSha256": "9866606915ec9781406646741a7bc5ce2644db281d56868210732a54be40721c",
+      "tool": "built-in image_gen",
+      "prompt": "Change ONLY the HEADS in EVERY pose of this own approved exercise illustration. Magnified review detected small EAR SHAPES or EAR-LIKE SIDE CONTOURS. Replace each head with a perfectly smooth continuous featureless OVAL concept-manikin head: NO ears, ear nubs, ear circles, eyes, brows, nose, mouth, lips, cheek structures, facial contours or hair. Smooth egg/oval outline, uninterrupted sides, matte gray shading. Preserve head sizes, positions, tilts and neck connections. Everything BELOW NECK stays EXACTLY unchanged: every exercise phase, arm/hand/finger/grip and bell position/orientation, leg/knee/foot/floor contact, gray anatomical body, correctly localized existing amber muscle tissue, charcoal clothes, warm stone background, panel arrangement and full margins. No pose/equipment/color changes, no labels, arrows, additional people or objects. This is exclusively smooth oval head refinement.\n",
+      "promptSha256": "18b454fa8597b2557ee90f52726b7cb426cbd097480644bcfc6ab5bc4579b367",
+      "exportSettings": {
+        "width": 768,
+        "quality": 90,
+        "effort": 6,
+        "background": "#ece7db"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex",
+        "primaryMuscleLocalization": true,
+        "anatomyMapping": true,
+        "appVerified": true,
+        "notes": "Native and 768/390 exports inspected: right shoulder rack with knee dip, right overhead lockout received in a two-foot knee re-bend, then tall standing recovery; no split stance. One bell, connected grip and free opposite arm, deltoid-only amber, smooth heads and full framing. Exact re-dip/extension timing and detailed joints illustrative. Rechecked new native source, enlarged head-recheck boards and both 768/390 exports: all heads now smooth continuous featureless ovals without ears or facial features; previously checked phase geometry, muscle localization and framing preserved. Actual app screenshots at 390 CSS px inspected in Chromium and mobile WebKit; complete images with contain, expected hashes and no horizontal overflow.",
+        "browsers": [
+          {
+            "browser": "chromium",
+            "captureSha256": "f0ad0f30d523d4809221b4045a9de7d4062707aae9be5a4ca07755f8cddb2cf8",
+            "inspected": true
+          },
+          {
+            "browser": "mobile-webkit",
+            "captureSha256": "15a720c0d3826a662c69148010659f910e2deaa99c94b5cad9aeb56a0bc2ed8d",
+            "inspected": true
+          }
+        ],
+        "chromiumOffline": "PASS",
+        "windowsWebKitOffline": "NOT VERIFIED",
+        "physicalIPhone": "NOT VERIFIED"
+      }
+    },
+    {
+      "id": "one-arm-kettlebell-snatch",
+      "candidateId": "one-arm-kettlebell-snatch-missing-v3",
+      "asset": "assets/one-arm-kettlebell-snatch.webp",
+      "outputSha256": "22cce71df732b138630ce8b3793b7cb91c78340fa50f40cd7881e8e1e3837d63",
+      "sourcePngSha256": "85ff3e4a4e33e5659ad7d9d0bbe2478231cc3dfa4a9776864456096bdc7bc43a",
+      "specificationSha256": "ce8057a33934fedca5dbc2be170e42eb2448d8570ef2a3a02b287622d8f1886e",
+      "muscleMappingSha256": "7ba666e9e9f0ac46b18350745442e01d7664fcbfc6730cc53633f25662073de6",
+      "tool": "built-in image_gen",
+      "prompt": "Change ONLY the HEADS in EVERY pose of this own approved exercise illustration. Magnified review detected small EAR SHAPES or EAR-LIKE SIDE CONTOURS. Replace each head with a perfectly smooth continuous featureless OVAL concept-manikin head: NO ears, ear nubs, ear circles, eyes, brows, nose, mouth, lips, cheek structures, facial contours or hair. Smooth egg/oval outline, uninterrupted sides, matte gray shading. Preserve head sizes, positions, tilts and neck connections. Everything BELOW NECK stays EXACTLY unchanged: every exercise phase, arm/hand/finger/grip and bell position/orientation, leg/knee/foot/floor contact, gray anatomical body, correctly localized existing amber muscle tissue, charcoal clothes, warm stone background, panel arrangement and full margins. No pose/equipment/color changes, no labels, arrows, additional people or objects. This is exclusively smooth oval head refinement.\n",
+      "promptSha256": "18b454fa8597b2557ee90f52726b7cb426cbd097480644bcfc6ab5bc4579b367",
+      "exportSettings": {
+        "width": 768,
+        "quality": 90,
+        "effort": 6,
+        "background": "#ece7db"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex",
+        "primaryMuscleLocalization": true,
+        "anatomyMapping": true,
+        "appVerified": true,
+        "notes": "Native and 768/390 exports inspected: one right-hand bell now visibly in leg gap above floor with hinged hips/soft knees, then straight right overhead arm with standing hip/knee extension. No rack phase; working shoulder tissue only amber, smooth heads, whole bodies/shoes/grips. Static low swing endpoint and projected rearward path illustrative, exact snatch timing not verified. Rechecked new native source, enlarged head-recheck boards and both 768/390 exports: all heads now smooth continuous featureless ovals without ears or facial features; previously checked phase geometry, muscle localization and framing preserved. Actual app screenshots at 390 CSS px inspected in Chromium and mobile WebKit; complete images with contain, expected hashes and no horizontal overflow.",
+        "browsers": [
+          {
+            "browser": "chromium",
+            "captureSha256": "fbbb139a261ff8e2af0ae331b88c00ee674e3efb953d9e74245d90f60a0817ae",
+            "inspected": true
+          },
+          {
+            "browser": "mobile-webkit",
+            "captureSha256": "bc4be4a694801f6b2733dc093365d599695f2dc87b2a6135ce60d587b316fe15",
+            "inspected": true
+          }
+        ],
+        "chromiumOffline": "PASS",
+        "windowsWebKitOffline": "NOT VERIFIED",
+        "physicalIPhone": "NOT VERIFIED"
+      }
+    },
+    {
+      "id": "one-arm-kettlebell-split-jerk",
+      "candidateId": "one-arm-kettlebell-split-jerk-missing-v2",
+      "asset": "assets/one-arm-kettlebell-split-jerk.webp",
+      "outputSha256": "b7688c541a1df6c6b66144bb04d9b985ffd1cd956a5390d2ac89d86c285c5e8b",
+      "sourcePngSha256": "0cc6ce071559c956c9fc56971a717aea1eae6abbcd28bb246921bfddd313840a",
+      "specificationSha256": "446f0a7b3a8e1afedd8855db335ef4c6ecaea9a8ef87ef67c959bb03c6c6a68a",
+      "muscleMappingSha256": "d297c1665782e4c250e67473a3e43d87cb579d59b8a6d563411d330582219891",
+      "tool": "built-in image_gen",
+      "prompt": "Change ONLY the HEADS in all THREE poses of this own exercise illustration. Current heads have visible EAR SHAPES/nubs, which are forbidden. Replace each head with a perfectly smooth, continuous, featureless OVAL concept-manikin head: NO ears or ear bumps on either side, no eyes, brows, nose, mouth, lips, cheek structures, facial contour, hair or other facial details. Smooth egg/oval outline with clean uninterrupted sides and matte gray shading. Preserve original head size, position, tilt and neck connection. Everything below the neck must stay EXACTLY unchanged: same right-hand kettlebell rack, split-lunge overhead catch, standing overhead finish, all hands/fingers/grips, one bell per pose, feet, gray anatomical body, shoulder-only amber highlights, charcoal clothes, stone background, three panels and complete margins. No labels, arrows or new objects. This is exclusively ear removal and smooth oval head refinement, no pose or equipment change.\n",
+      "promptSha256": "4b0f6a73d42d9d0e1fe5e593ea95d66235554275b6cebbf669648c42c7932552",
+      "exportSettings": {
+        "width": 768,
+        "quality": 90,
+        "effort": 6,
+        "background": "#ece7db"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex",
+        "primaryMuscleLocalization": true,
+        "anatomyMapping": true,
+        "appVerified": true,
+        "notes": "Native and 768/390 exports inspected after ear removal: three plain continuous oval heads, right rack/dip then split overhead catch and feet-together standing recovery preserved. One bell/right grip, shoulder-deltoid amber only, complete feet/equipment and margins. Ballistic timing and fine joints illustrative. Actual app screenshots at 390 CSS px inspected in Chromium and mobile WebKit; complete images with contain, expected hashes and no horizontal overflow.",
+        "browsers": [
+          {
+            "browser": "chromium",
+            "captureSha256": "6a16b9195591fa7e7a4c35d4a7bf5d70cc0e3c7975c1bf4beed0b44d9bd18422",
+            "inspected": true
+          },
+          {
+            "browser": "mobile-webkit",
+            "captureSha256": "218d5f6d5a0fac2c9f2b0855b6b3b047c7ece6c993e8bd9c3cd1ff5d893e6b65",
+            "inspected": true
+          }
+        ],
+        "chromiumOffline": "PASS",
+        "windowsWebKitOffline": "NOT VERIFIED",
+        "physicalIPhone": "NOT VERIFIED"
+      }
+    },
+    {
+      "id": "one-arm-kettlebell-split-snatch",
+      "candidateId": "one-arm-kettlebell-split-snatch-missing-v2",
+      "asset": "assets/one-arm-kettlebell-split-snatch.webp",
+      "outputSha256": "50e51b78c8b3bb8444a99768f62c2af48d008fbb7c41cb6c00ff6f8b7bfc1ff4",
+      "sourcePngSha256": "f2d1ba8626b19a5a6077f003ce6f8c935a20b9595db37775fa17e0777b22010d",
+      "specificationSha256": "206f4c3241097da28909b39d21de8c314e8b525d96ff235ac96ebcd0cdd37d50",
+      "muscleMappingSha256": "44096d8e7d92e5b55baa16a3940b97b38c05ea0b8d7080f5b5b3d4d0dc746970",
+      "tool": "built-in image_gen",
+      "prompt": "Change ONLY the HEADS in EVERY pose of this own approved exercise illustration. Magnified review detected small EAR SHAPES or EAR-LIKE SIDE CONTOURS. Replace each head with a perfectly smooth continuous featureless OVAL concept-manikin head: NO ears, ear nubs, ear circles, eyes, brows, nose, mouth, lips, cheek structures, facial contours or hair. Smooth egg/oval outline, uninterrupted sides, matte gray shading. Preserve head sizes, positions, tilts and neck connections. Everything BELOW NECK stays EXACTLY unchanged: every exercise phase, arm/hand/finger/grip and bell position/orientation, leg/knee/foot/floor contact, gray anatomical body, correctly localized existing amber muscle tissue, charcoal clothes, warm stone background, panel arrangement and full margins. No pose/equipment/color changes, no labels, arrows, additional people or objects. This is exclusively smooth oval head refinement.\n",
+      "promptSha256": "18b454fa8597b2557ee90f52726b7cb426cbd097480644bcfc6ab5bc4579b367",
+      "exportSettings": {
+        "width": 768,
+        "quality": 90,
+        "effort": 6,
+        "background": "#ece7db"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex",
+        "primaryMuscleLocalization": true,
+        "anatomyMapping": true,
+        "appVerified": true,
+        "notes": "Native and 768/390 exports inspected after head refinement: centered low one-right-hand start, unchanged right overhead split catch and standing finish, no shoulder-rack stage. Smooth earless oval heads, shoulder-only amber, complete shoes/body/grips and one bell. Floor-to-overhead trajectory, split timing and fine contacts illustrative. Actual app screenshots at 390 CSS px inspected in Chromium and mobile WebKit; complete images with contain, expected hashes and no horizontal overflow.",
+        "browsers": [
+          {
+            "browser": "chromium",
+            "captureSha256": "a0da4593d08dd3a668b5199503c56319608641c9994f4388dbb8666627d85879",
+            "inspected": true
+          },
+          {
+            "browser": "mobile-webkit",
+            "captureSha256": "d9dc9bbd4f7a9f59472d4e537898f405335e1c0a71f601c242cebe2e655977ba",
+            "inspected": true
+          }
+        ],
+        "chromiumOffline": "PASS",
+        "windowsWebKitOffline": "NOT VERIFIED",
+        "physicalIPhone": "NOT VERIFIED"
+      }
+    },
+    {
+      "id": "one-arm-open-palm-kettlebell-clean",
+      "candidateId": "one-arm-open-palm-kettlebell-clean-missing-v1",
+      "asset": "assets/one-arm-open-palm-kettlebell-clean.webp",
+      "outputSha256": "3a3cfb475f1558308ee27ceacadffd85f428602449ddacf0200e13218bdacc23",
+      "sourcePngSha256": "6cf4ad08b76c59534c283c8a39b141029f16c395b4bf167b9c30859a3654da92",
+      "specificationSha256": "2a870e97ff7a3c5b30d4d512fca7f18bfac89d6f823340d2bad4085e93295fd0",
+      "muscleMappingSha256": "bddf42b4d92778772484d16dd761d578ed39578af173e872be5f985689a5cba7",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: scientific-educational. Asset: One-Arm Open Palm Kettlebell Clean.\nLandscape 1536 x 1024 exercise illustration for Energy Fit Tracker. Warm stone seamless background #ece7db, soft studio light, restrained contact shadows, crisp premium matte GRAY 3D anatomical mannequin, fitted charcoal sleeveless shirt, charcoal knee-length shorts and gray training shoes. Same adult athlete identity, scale, camera and floor baseline within each asset. Head is a perfectly smooth featureless OVAL: no eyes, brows, nose, mouth, ears, facial contours or hair. Each pose has exactly two arms/two legs/two hands with natural joints. Keep ENTIRE bodies, every shoe, head, full overhead bell, all equipment and grips inside their own panels with generous empty margins and subtle thin dividers. No words, labels, arrows, numbers, UI, branding, watermarks, decorative props, duplicate motion ghosts or cropped limbs. Gray kettlebells with one connected closed loop handle and one weighted ball each, plausible secure contacts.\nRequired exercise mechanics: THREE equal panels, rear-side three-quarter camera allowing clear right hand and posterior thighs. ONE bell throughout. Panel 1 hips back, knees bent, right hand gripping bell handle near floor between feet. Panel 2 stand tall and receive SPHERICAL BODY of inverted bell resting on OPEN RIGHT PALM at shoulder height, fingers visibly supporting sphere from below and HANDLE POINTING UPWARD above sphere; left hand does not touch. Panel 3 right hand catches normal upright bell by HANDLE in front of waist, arm extended downward for return; sphere below handle. Show handle grip versus open-palm sphere support distinctly, no extra floating weight.\nPrimary muscle highlight ONLY: localized bilateral POSTERIOR THIGH hamstring muscle fibers, anatomically below glutes and above knees, revealed through small posterior/outer-back thigh shorts cutaways; never quadriceps, glutes or calves. Use anatomically shaped warm amber/orange MUSCLE FIBERS in small educational cutaways. All secondary tissue, joints and remaining skin stay gray; muted cyan/gray supporting anatomy, no glow, gore or blanket painted clothing. Muscle target is bound to the canonical catalog; do not invent another primary target.\nCanonical recorded instructions, for identity and sequence (do not draw text):\n1. Place one kettlebell between your feet.\n2. Grab the handle with one hand and raise the kettlebell rapidly, let it flip so that the ball of the kettlebell lands in the palm of your hand.\n3. Throw the kettlebell out in front of you and catch the handle with one hand.\n4. Take the kettlebell to the floor and repeat. Make sure to work both arms.\nPreserve complete framing and physical hand/equipment contacts. Distinct phase geometry and accurate muscle localization take priority over decoration. Static endpoints are illustrative; do not add claims of certified movement timing.\n\nCritical: ALL HEADS are smooth continuous egg-like OVALS with NO EARS, ear nubs/circles or facial features. Catch panel: OPEN RIGHT PALM supports BOTTOM of the weighted SPHERE, while EMPTY handle points UP above sphere; hand is NOT gripping that handle. First bell rests BETWEEN inner shoe edges; both feet flank single bell.\n",
+      "promptSha256": "786c3c5f8b8d9aca3b36e580dc6898b81d0b4b11395a0ff496e03bb2ee019c18",
+      "exportSettings": {
+        "width": 768,
+        "quality": 90,
+        "effort": 6,
+        "background": "#ece7db"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex",
+        "primaryMuscleLocalization": true,
+        "anatomyMapping": true,
+        "appVerified": true,
+        "notes": "Native and 768/390 exports inspected: one right-hand floor bell between feet, sphere supported on open right palm at shoulder height with empty handle upward, then normal handle regrip with sphere below handle for return. Left hand never supports bell; posterior hamstrings only amber, smooth earless heads, complete feet/grips. Throw/flip trajectory and timing illustrative; final lowered regrip represents recovery rather than airborne catch. Actual app screenshots at 390 CSS px inspected in Chromium and mobile WebKit; complete images with contain, expected hashes and no horizontal overflow.",
+        "browsers": [
+          {
+            "browser": "chromium",
+            "captureSha256": "cd9d888d0f386ec5ae28af53c75ceaf2a3c5929792f882e4770321af28412937",
+            "inspected": true
+          },
+          {
+            "browser": "mobile-webkit",
+            "captureSha256": "3544cf67431685c1c455dc419dd3b95d0255425c1ee6d13e73037e691e3c4c0f",
+            "inspected": true
+          }
+        ],
+        "chromiumOffline": "PASS",
+        "windowsWebKitOffline": "NOT VERIFIED",
+        "physicalIPhone": "NOT VERIFIED"
+      }
+    },
+    {
+      "id": "open-palm-kettlebell-clean",
+      "candidateId": "open-palm-kettlebell-clean-missing-v2",
+      "asset": "assets/open-palm-kettlebell-clean.webp",
+      "outputSha256": "7a9ad39a2f9a5726c4536a39f022c2df3a4c12bcf3f056faae063151e419a239",
+      "sourcePngSha256": "500de91c10e01502984140e14ec547c15717dffb927c1a36ef79ada48e1334dd",
+      "specificationSha256": "beb1c6148ee253a311b8dee219f9f42b4e63f0ea897b28aa305881b62bfbefc4",
+      "muscleMappingSha256": "a3a7c779e3e211d810fe3ab8f8ccff51c147270d06591758401678bd6ec1e215",
+      "tool": "built-in image_gen",
+      "prompt": "Correct ONLY the RIGHTMOST return/regrip panel of this TWO-HAND OPEN-PALM kettlebell clean illustration. Leave the first floor-start and middle open-palm catch panels EXACTLY unchanged. The rightmost pose incorrectly uses a rear camera; redraw that ONE pose in the SAME FRONT-SIDE THREE-QUARTER camera and torso/foot orientation as the MIDDLE pose, with the chest/front of shirt visible. Same adult gray body, charcoal clothing and plain smooth OVAL head with NO EARS or facial contours. Athlete stands upright, BOTH arms extend down IN FRONT of torso and BOTH hands grip the SAME single kettlebell LOOP HANDLE at lower waist/thigh level for return; weighted sphere hangs BELOW handle. Bell centered in front of waist, not behind/outside right hip. Both wrists and two connected forearms/hand contacts clearly visible. Same knees/feet and matching standing scale. Preserve canonical HAMSTRINGS-only amber tissue at lateral-posterior edges of thighs as in first/middle panels; front quadriceps, glutes, arms and shoulders gray. No second bell, extra fingers/limbs, text or arrows. Keep whole head, hands, single bell and shoes inside original rightmost panel margins. This correction must make all THREE panels use the SAME camera, while contrasting handle grip -> BOTH open palms support sphere -> BOTH hands regrip handle.\n",
+      "promptSha256": "2f813edce2e5169ef9a940618563a94490065da8b162682f2a92b27ee1827b34",
+      "exportSettings": {
+        "width": 768,
+        "quality": 90,
+        "effort": 6,
+        "background": "#ece7db"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex",
+        "primaryMuscleLocalization": true,
+        "anatomyMapping": true,
+        "appVerified": true,
+        "notes": "Native and 768/390 exports inspected: one bell in two-hand floor grip between feet, both open palms cup/support sphere at chest with empty handle above, then two-hand loop regrip in front of waist with sphere below handle. Final camera now matches earlier front-side views, hamstring tissue localized at posterior-lateral thigh edges and anterior quads gray, smooth heads and full frame. Flip/release/catch trajectory and fine contacts illustrative. Actual app screenshots at 390 CSS px inspected in Chromium and mobile WebKit; complete images with contain, expected hashes and no horizontal overflow.",
+        "browsers": [
+          {
+            "browser": "chromium",
+            "captureSha256": "a5d73d685d15e47b601d2242513f7a768b0ab57135331c0bfd3a72cc3ca92f7b",
+            "inspected": true
+          },
+          {
+            "browser": "mobile-webkit",
+            "captureSha256": "5b952dadf63797423aedc76580654806825b07dc35cb975afc2fd22a0f3d0a0a",
+            "inspected": true
+          }
+        ],
+        "chromiumOffline": "PASS",
+        "windowsWebKitOffline": "NOT VERIFIED",
+        "physicalIPhone": "NOT VERIFIED"
+      }
+    },
+    {
+      "id": "plyo-kettlebell-pushups",
+      "candidateId": "plyo-kettlebell-pushups-missing-v2",
+      "asset": "assets/plyo-kettlebell-pushups.webp",
+      "outputSha256": "b1863602485613e6464498d847b8c536c5a7cb5212f6dfd3f94c8305b9db2b4c",
+      "sourcePngSha256": "b68a50ba3dcbb65683054897a856acf6836e7a8d445e46807343201277f4058f",
+      "specificationSha256": "34ee218d65f20c884ed4eadfb28bdf7e001cb540f628520b7b7eed7550229f11",
+      "muscleMappingSha256": "32ec2686f8e86a1d592981b93b0fe4f5d7def1d81ef3312211c0f7bad6fb1770",
+      "tool": "built-in image_gen",
+      "prompt": "Correct this three-panel PLYOMETRIC KETTLEBELL PUSHUP illustration so it shows a TRUE SIDE-TO-SIDE HAND SWITCH, not a mirrored athlete turning around. Preserve the warm stone studio, gray matte anatomical athlete, charcoal clothes, perfectly blank EARLESS OVAL heads, pectoral-only amber cutaways, one bell per panel and complete full-body framing. Use the SAME elevated FRONT three-quarter camera as the current CENTER panel for ALL THREE panels. In every pose the head is toward the foreground and both toes extend BACKWARD away from viewer in the SAME direction; do not reverse head/toe direction or mirror the whole athlete in final panel. The single gray kettlebell stays upright on the FLOOR at the SAME CENTER location within EACH panel, with matching size and handle orientation. LEFT PANEL: athlete's torso is on LEFT SIDE of bell, straight plank body low in pushup, RIGHT hand grips that stationary bell handle, LEFT palm on floor to LEFT of bell, both elbows bent and toes planted behind. CENTER PANEL: straight plank body transitioning laterally OVER same bell after explosive push, BOTH hands just off supports/above floor, no hand currently touches bell, toes planted behind, exactly two hands. RIGHT PANEL: SAME athlete/camera/body direction, torso shifted to RIGHT SIDE of same bell; LEFT hand now grips stationary handle, RIGHT palm on floor to RIGHT of bell, low pushup and bent elbows, toes remain behind. Exactly two connected arms/two hands/two legs per pose, no duplicate hands/weight. Clear continuous floor contacts and hand switch. Keep chest cutaway amber, arms/shoulders/legs gray. Whole heads, shoes, toes, both hands and bell inside own panels with margins. No text, arrows, motion ghosts or changing camera. The last pose must keep the same body-facing direction while showing the opposite support hand.\n",
+      "promptSha256": "0dda335684697fdd4229b3e7ea384f0597f3af5aabd06d5bd1c104f420b45bdd",
+      "exportSettings": {
+        "width": 768,
+        "quality": 90,
+        "effort": 6,
+        "background": "#ece7db"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex",
+        "primaryMuscleLocalization": true,
+        "anatomyMapping": true,
+        "appVerified": true,
+        "notes": "Native, 768 and 390 exports inspected. Fixed upright bell, same head-forward camera, right-hand then left-hand support with intermediate hands clear of supports; complete framing and pectoral-only amber cutaways. Smooth oval heads. Static phases do not verify jump timing or stability. Actual app screenshots at 390 CSS px inspected in Chromium and mobile WebKit; complete images with contain, expected hashes and no horizontal overflow.",
+        "browsers": [
+          {
+            "browser": "chromium",
+            "captureSha256": "a33935559fb6d3cccb9da83f798a92a616454594af941bdc9fc336c40e330601",
+            "inspected": true
+          },
+          {
+            "browser": "mobile-webkit",
+            "captureSha256": "d042c7aa498b885970098d14f5c2191dc4149ee77f8cc6bd75faf8aaeeaa6006",
+            "inspected": true
+          }
+        ],
+        "chromiumOffline": "PASS",
+        "windowsWebKitOffline": "NOT VERIFIED",
+        "physicalIPhone": "NOT VERIFIED"
+      }
+    },
+    {
+      "id": "two-arm-kettlebell-clean",
+      "candidateId": "two-arm-kettlebell-clean-missing-v1",
+      "asset": "assets/two-arm-kettlebell-clean.webp",
+      "outputSha256": "5f9d035172e1b31261a1eef568e56c5c28ea00e934abc63ef654785031aeefad",
+      "sourcePngSha256": "d4d05958ced272d15bc85a75513216b4a533936bf806b524ac2f4d9cd4536d5a",
+      "specificationSha256": "36c5d5bd811d0083a4bca35f0e150026606992ca728f394855924426849f03ff",
+      "muscleMappingSha256": "6cdc59cef06fd916deb64afed0ebf474e35806e2a66f74965c74045b923510e1",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: scientific-educational. Asset: Two-Arm Kettlebell Clean.\nLandscape 1536 x 1024 exercise illustration for Energy Fit Tracker. Warm stone seamless background #ece7db, soft studio light, restrained contact shadows, crisp premium matte GRAY 3D anatomical mannequin, fitted charcoal sleeveless shirt, charcoal knee-length shorts and gray training shoes. Same adult athlete identity, scale, camera and floor baseline within each asset. Head is a perfectly smooth featureless OVAL: no eyes, brows, nose, mouth, ears, facial contours or hair. Each pose has exactly two arms/two legs/two hands with natural joints. Keep ENTIRE bodies, every shoe, head, full overhead bell, all equipment and grips inside their own panels with generous empty margins and subtle thin dividers. No words, labels, arrows, numbers, UI, branding, watermarks, decorative props, duplicate motion ghosts or cropped limbs. Gray kettlebells with one connected closed loop handle and one weighted ball each, plausible secure contacts.\nRequired exercise mechanics: TWO equal panels, front-side three-quarter camera. Exactly TWO bells, ONE gripped in EACH hand. Panel 1 hip hinge, knees bent, long spine, both long arms holding bells between feet near floor. Panel 2 stand tall and receive BOTH bells simultaneously at shoulders in symmetric rack, elbows bent and balls outside forearms. The exercise name does NOT mean two hands on one bell. No alternating rack heights, no overhead press. Shoulder deltoid tissue only amber, posterior thigh and arms gray.\nPrimary muscle highlight ONLY: localized deltoid muscle fibers over shoulder caps only; no orange chest, arms, back or legs. Use anatomically shaped warm amber/orange MUSCLE FIBERS in small educational cutaways. All secondary tissue, joints and remaining skin stay gray; muted cyan/gray supporting anatomy, no glow, gore or blanket painted clothing. Muscle target is bound to the canonical catalog; do not invent another primary target.\nCanonical recorded instructions, for identity and sequence (do not draw text):\n1. Place two kettlebells between your feet. To get in the starting position, push your butt back and look straight ahead.\n2. Clean the kettlebells to your shoulders by extending through the legs and hips as you raise the kettlebells towards your shoulders. Rotate your wrists as you do so.\n3. Lower the kettlebells back to the starting position and repeat.\nPreserve complete framing and physical hand/equipment contacts. Distinct phase geometry and accurate muscle localization take priority over decoration. Static endpoints are illustrative; do not add claims of certified movement timing.\n",
+      "promptSha256": "cf98c12cc858b096b5e94cc18eed10ab3ece9bb450be3fcb251f6ac76c82b070",
+      "exportSettings": {
+        "width": 768,
+        "quality": 90,
+        "effort": 6,
+        "background": "#ece7db"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex",
+        "primaryMuscleLocalization": true,
+        "anatomyMapping": true,
+        "appVerified": true,
+        "notes": "Native and 768/390 exports inspected. Two separate centered bells gripped individually, floor hinge to simultaneous shoulder rack; shoulder-only amber mapping, full bodies and smooth featureless heads. Static stages do not certify lift timing or fine joint mechanics. Actual app screenshots at 390 CSS px inspected in Chromium and mobile WebKit; complete images with contain, expected hashes and no horizontal overflow.",
+        "browsers": [
+          {
+            "browser": "chromium",
+            "captureSha256": "9fe30955e41764b55d8707f20e7594d3e21953416f24cf65bbc7f12d516048d5",
+            "inspected": true
+          },
+          {
+            "browser": "mobile-webkit",
+            "captureSha256": "95f86f0ca836fe5e6d8455859a68e6a5386a50f2147c8566a237a3d31cca11f2",
+            "inspected": true
+          }
+        ],
+        "chromiumOffline": "PASS",
+        "windowsWebKitOffline": "NOT VERIFIED",
+        "physicalIPhone": "NOT VERIFIED"
+      }
+    },
+    {
+      "id": "two-arm-kettlebell-jerk",
+      "candidateId": "two-arm-kettlebell-jerk-missing-v1",
+      "asset": "assets/two-arm-kettlebell-jerk.webp",
+      "outputSha256": "db746395e45ec1930e19b5c569e5ced77f948c50294b258494028f0383ac2458",
+      "sourcePngSha256": "2e82826fd3546316f1fadbf7b96e55e946be3eecc429254b303526bd3ed38b2d",
+      "specificationSha256": "a1a6b36897923a4e99228bee4fc7f6ebad8211180f231411b8db97b922d4d48a",
+      "muscleMappingSha256": "9866606915ec9781406646741a7bc5ce2644db281d56868210732a54be40721c",
+      "tool": "built-in image_gen",
+      "prompt": "Use case: scientific-educational. Asset: Two-Arm Kettlebell Jerk.\nLandscape 1536 x 1024 exercise illustration for Energy Fit Tracker. Warm stone seamless background #ece7db, soft studio light, restrained contact shadows, crisp premium matte GRAY 3D anatomical mannequin, fitted charcoal sleeveless shirt, charcoal knee-length shorts and gray training shoes. Same adult athlete identity, scale, camera and floor baseline within each asset. Head is a perfectly smooth featureless OVAL: no eyes, brows, nose, mouth, ears, facial contours or hair. Each pose has exactly two arms/two legs/two hands with natural joints. Keep ENTIRE bodies, every shoe, head, full overhead bell, all equipment and grips inside their own panels with generous empty margins and subtle thin dividers. No words, labels, arrows, numbers, UI, branding, watermarks, decorative props, duplicate motion ghosts or cropped limbs. Gray kettlebells with one connected closed loop handle and one weighted ball each, plausible secure contacts.\nRequired exercise mechanics: THREE equal panels, front-side three-quarter camera. TWO bells one per hand. Panel 1 both bells shoulder-racked, knees shallow dip and torso tall. Panel 2 receive BOTH bells overhead with fully extended elbows and BOTH knees re-bent into shallow two-foot squat catch, feet parallel, upright torso. Panel 3 finish tall with knees extended, feet parallel and both bells overhead. No split lunge: distinguish TWO-ARM squat-catch jerk from Double Kettlebell Jerk split variant. Clear two secure grips and ball positions behind wrists.\nPrimary muscle highlight ONLY: localized deltoid muscle fibers over shoulder caps only; no orange chest, arms, back or legs. Use anatomically shaped warm amber/orange MUSCLE FIBERS in small educational cutaways. All secondary tissue, joints and remaining skin stay gray; muted cyan/gray supporting anatomy, no glow, gore or blanket painted clothing. Muscle target is bound to the canonical catalog; do not invent another primary target.\nCanonical recorded instructions, for identity and sequence (do not draw text):\n1. Clean two kettlebells to your shoulders. Clean the kettlebells to your shoulders by extending through the legs and hips as you swing the kettlebells towards your shoulders. Rotate your wrists as you do so, so that the palms face forward. Squat down a few inches and reverse the motion rapidly driving both kettlebells overhead. Immediately after the initial push, squat down again and get under the kettlebells. Once the kettlebells are locked out, stand upright to complete the exercise.\nPreserve complete framing and physical hand/equipment contacts. Distinct phase geometry and accurate muscle localization take priority over decoration. Static endpoints are illustrative; do not add claims of certified movement timing.\n",
+      "promptSha256": "796ed238ed3ee452871ecd9aab655195036d39a911fde2e0aa46b03f0e8d96d4",
+      "exportSettings": {
+        "width": 768,
+        "quality": 90,
+        "effort": 6,
+        "background": "#ece7db"
+      },
+      "review": {
+        "status": "approved",
+        "reviewer": "Codex",
+        "primaryMuscleLocalization": true,
+        "anatomyMapping": true,
+        "appVerified": true,
+        "notes": "Native and 768/390 exports inspected. Two bells and secure overhead grips, shoulder rack/dip, parallel-foot knee-rebend catch, tall parallel-foot lockout. Shoulder-only amber, complete framing and smooth earless oval heads. Static panels do not verify dynamic timing. Actual app screenshots at 390 CSS px inspected in Chromium and mobile WebKit; complete images with contain, expected hashes and no horizontal overflow.",
+        "browsers": [
+          {
+            "browser": "chromium",
+            "captureSha256": "b3cd60e3c96ab40ef018fa638c1f8810cb66f01b7a2363ff50463ce5469f9fc9",
+            "inspected": true
+          },
+          {
+            "browser": "mobile-webkit",
+            "captureSha256": "e83a94e9743a90a91d13a48ec5bef9b8184a6b2873818006751755cbb6d85cca",
+            "inspected": true
+          }
+        ],
+        "chromiumOffline": "PASS",
+        "windowsWebKitOffline": "NOT VERIFIED",
+        "physicalIPhone": "NOT VERIFIED"
+      }
     }
   ]
 }
