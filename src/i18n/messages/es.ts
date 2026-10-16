@@ -45,6 +45,7 @@ export const es: Messages = {
     startWorkout: 'Iniciar entrenamiento',
     manualWorkoutSummary: 'Entrenamiento manual',
     startErrorManual: 'No se pudo iniciar este entrenamiento.',
+    retiredProgram: "Este programa incluye ejercicios retirados. Inicia una sesión manual o genera una con el catálogo actual.",
     startErrorTemplate: 'No se pudo iniciar este entrenamiento del programa.',
     rotationEyebrow: 'Rotación de 3 semanas',
     myProgram: 'Mi programa',

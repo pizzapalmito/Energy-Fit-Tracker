@@ -31,7 +31,7 @@ describe('importCatalog', () => {
       defaultRestSeconds: 90,
       media: ['3_4_Sit-Up/0.jpg'],
       source: 'catalog',
-      excluded: false,
+      excluded: true,
     })
     expect(ex!.muscles).toEqual([{ muscleId: 'abdominals', weight: 1 }])
   })

@@ -4903,8 +4903,13 @@
       "end": "219f923427dc8bc312cce86dcc1977b08acf922b4d288645845919af99c54020"
     }
   },
-  "catalogVersion": "catalog-99a47148d2822af6",
-  "catalogJsonSha256": "35e6417d1982d7cd2650c238ac6a73003c170055b9e9b9e0f93c576bded9d7bc",
-  "catalogJsonBytes": 712961,
-  "maxAssetBytes": 2097152
+  "catalogVersion": "catalog-40a0e6ffd2a6cbf2",
+  "catalogJsonSha256": "bb5f76f8c8640646282e4e3d615baa5bae063d39a5749578a69b8716fe247e53",
+  "catalogJsonBytes": 712923,
+  "maxAssetBytes": 2097152,
+  "selectionPolicy": {
+    "version": "modern-muscle-374-v1",
+    "selectable": 374,
+    "retired": 91
+  }
 }

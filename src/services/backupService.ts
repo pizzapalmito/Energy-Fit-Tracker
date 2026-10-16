@@ -1,3 +1,4 @@
+import { enforceStoredExercisePolicy } from '../catalog/storedExercisePolicy'
 import { DB_SCHEMA_VERSION, type RepwiseDatabase } from '../data/db'
 import { normalizeLocale, SUPPORTED_LOCALES } from '../i18n/locale'
 
@@ -341,6 +342,7 @@ export async function restoreBackup(db: RepwiseDatabase, file: Blob): Promise<nu
       const rows = tables[table.name] ?? []
       if (rows.length > 0) await table.bulkPut(rows)
     }
+    await enforceStoredExercisePolicy(db)
     const settings = await db.settings.get('default')
     if (settings) await db.settings.put({ trainingGoal: 'hypertrophy', preferredSplit: 'full_body', defaultDurationMinutes: 60, ...settings, locale: normalizeLocale(settings.locale) })
   })

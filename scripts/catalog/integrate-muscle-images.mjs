@@ -1,3 +1,4 @@
+import { loadSelectionPolicy, validateSelectionPolicy } from './selection-policy.mjs'
 import { readFile, mkdir, writeFile } from 'node:fs/promises'
 import { resolve, dirname, relative, isAbsolute } from 'node:path'
 import { stableStringify, sha256Hex as sha256 } from './hash.mjs'
@@ -26,6 +27,8 @@ export async function integrateMuscleImages({ repoRoot = process.cwd(), publicCa
   const catalog = JSON.parse(await readFile(catalogPath, 'utf8'))
   const audit = JSON.parse(await readFile(auditReportPath, 'utf8'))
   if (manifest.schemaVersion !== 1 || manifest.style !== 'matte-3d-muscle-cutaway-v1' || manifest.sourceCommit !== catalog.sourceCommit || !manifest.exercises?.length) throw new Error('Invalid muscle-image manifest or source commit')
+  const policy = await loadSelectionPolicy(repoRoot)
+  const selectable = validateSelectionPolicy(policy, manifest, catalog)
   const catalogById = new Map(catalog.exercises.map(e => [e.id, e])), ids = new Set(), ready = []
   // Fail before changing any files if approval, mechanics, mapping or artwork drifted.
   for (const entry of manifest.exercises) {
@@ -43,6 +46,9 @@ export async function integrateMuscleImages({ repoRoot = process.cwd(), publicCa
     for (const frame of ['start', 'end']) await writeIfChanged(resolve(publicCatalogDir, `media/${entry.id}/${frame}.webp`), bytes)
     exercise.media = [`media/${entry.id}/start.webp`, `media/${entry.id}/end.webp`]
   }
+  for (const exercise of catalog.exercises) exercise.excluded = !selectable.has(exercise.id)
+  catalog.selectionPolicyVersion = policy.version
+  audit.selectionPolicy = { version: policy.version, selectable: selectable.size, retired: policy.retiredCatalog.length }
   const payload = Object.fromEntries(Object.entries(catalog).filter(([key]) => key !== 'version'))
   catalog.version = `catalog-${sha256(stableStringify(payload)).slice(0, 16)}`
   const catalogText = `${JSON.stringify(catalog, null, 2)}\n`

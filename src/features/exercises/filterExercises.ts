@@ -1,3 +1,4 @@
+import { isExerciseSelectable } from '../../catalog/selectionPolicy'
 import type { Exercise } from '../../domain/models'
 
 export interface ExerciseFilters {
@@ -33,6 +34,7 @@ function matchesQuery(exercise: Exercise, query: string): boolean {
 
 export function filterExercises(exercises: Exercise[], filters: ExerciseFilters): Exercise[] {
   return exercises.filter((exercise) => {
+    if (!isExerciseSelectable(exercise)) return false
     if (!matchesQuery(exercise, filters.query)) return false
     if (filters.muscleId !== ALL && !exercise.muscles.some((m) => m.muscleId === filters.muscleId)) return false
     if (filters.equipment !== ALL && !exercise.equipment.includes(filters.equipment)) return false
@@ -50,7 +52,7 @@ export interface FilterOptions {
 export function collectFilterOptions(exercises: Exercise[]): FilterOptions {
   const equipment = new Set<string>()
   const movementPatterns = new Set<string>()
-  for (const exercise of exercises) {
+  for (const exercise of exercises.filter(isExerciseSelectable)) {
     for (const item of exercise.equipment) equipment.add(item)
     movementPatterns.add(exercise.movementPattern)
   }

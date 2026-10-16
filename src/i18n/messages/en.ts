@@ -48,6 +48,7 @@ export const en = {
     startWorkout: 'Start workout',
     manualWorkoutSummary: 'Manual workout',
     startErrorManual: 'Could not start this workout.',
+    retiredProgram: "This program includes retired exercises. Start a manual workout or generate one from the current catalog.",
     startErrorTemplate: 'Could not start this program workout.',
     rotationEyebrow: '3-week rotation',
     myProgram: 'My Program',

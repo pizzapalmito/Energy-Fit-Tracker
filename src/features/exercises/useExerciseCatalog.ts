@@ -1,3 +1,4 @@
+import { isExerciseSelectable } from '../../catalog/selectionPolicy'
 import { useEffect, useState } from 'react'
 import type { Exercise } from '../../domain/models'
 import type { Muscle } from '../../data/types'
@@ -33,7 +34,7 @@ export function useExerciseCatalog(db: RepwiseDatabase): ExerciseCatalogState {
     const muscleRepo = new DexieMuscleRepository(db)
     Promise.all([exerciseRepo.list(), muscleRepo.list()])
       .then(([exercises, muscles]) => {
-        if (!cancelled) setDexieState({ loaded: true, exercises: exercises.filter((exercise) => !exercise.excluded), muscles })
+        if (!cancelled) setDexieState({ loaded: true, exercises: exercises.filter(isExerciseSelectable), muscles })
       })
       .catch((error: unknown) => {
         if (!cancelled) {

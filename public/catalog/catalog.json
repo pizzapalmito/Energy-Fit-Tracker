@@ -1,8 +1,8 @@
 {
-  "version": "catalog-99a47148d2822af6",
+  "version": "catalog-40a0e6ffd2a6cbf2",
   "sourceCommit": "a859101d633a01c4a1a920d6a8ce41dabba0705f",
   "importerVersion": "catalog-importer-v3",
-  "curationVersion": "focused-strength-v2",
+  "curationVersion": "modern-muscle-374-v1",
   "exercises": [
     {
       "id": "3-4-sit-up",
@@ -34,7 +34,7 @@
         "media/3-4-sit-up/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "ab-crunch-machine",
@@ -100,7 +100,7 @@
         "media/ab-roller/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "advanced-kettlebell-windmill",
@@ -176,7 +176,7 @@
         "media/air-bike/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "alternate-hammer-curl",
@@ -245,7 +245,7 @@
         "media/alternate-heel-touchers/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "alternate-incline-dumbbell-curl",
@@ -761,7 +761,7 @@
         "media/band-assisted-pull-up/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "barbell-ab-rollout",
@@ -1721,7 +1721,7 @@
         "media/bench-dips/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "bent-arm-barbell-pullover",
@@ -1842,7 +1842,7 @@
         "media/bent-knee-hip-raise/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "bent-over-barbell-row",
@@ -2219,7 +2219,7 @@
         "media/body-tricep-press/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "body-up",
@@ -2258,7 +2258,7 @@
         "media/body-up/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "bodyweight-flyes",
@@ -2302,7 +2302,7 @@
         "media/bodyweight-flyes/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "bodyweight-mid-row",
@@ -2340,7 +2340,7 @@
         "media/bodyweight-mid-row/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "bodyweight-squat",
@@ -2378,7 +2378,7 @@
         "media/bodyweight-squat/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "bodyweight-walking-lunge",
@@ -2421,7 +2421,7 @@
         "media/bodyweight-walking-lunge/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "bottoms-up",
@@ -2451,7 +2451,7 @@
         "media/bottoms-up/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "bottoms-up-clean-from-the-hang-position",
@@ -2559,7 +2559,7 @@
         "media/butt-lift-bridge/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "butt-ups",
@@ -2591,7 +2591,7 @@
         "media/butt-ups/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "butterfly",
@@ -3604,7 +3604,7 @@
         "media/chin-up/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "clock-push-up",
@@ -3645,7 +3645,7 @@
         "media/clock-push-up/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "close-grip-barbell-bench-press",
@@ -3889,7 +3889,7 @@
         "media/close-grip-push-up-off-of-a-dumbbell/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "close-grip-standing-barbell-curl",
@@ -3955,7 +3955,7 @@
         "media/cocoons/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "concentration-curls",
@@ -4023,7 +4023,7 @@
         "media/cross-body-crunch/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "cross-body-hammer-curl",
@@ -4090,7 +4090,7 @@
         "media/crunch-hands-overhead/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "crunches",
@@ -4123,7 +4123,7 @@
         "media/crunches/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "cuban-press",
@@ -4193,7 +4193,7 @@
         "media/dead-bug/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "decline-barbell-bench-press",
@@ -4309,7 +4309,7 @@
         "media/decline-crunch/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "decline-dumbbell-bench-press",
@@ -4479,7 +4479,7 @@
         "media/decline-oblique-crunch/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "decline-push-up",
@@ -4518,7 +4518,7 @@
         "media/decline-push-up/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "decline-reverse-crunch",
@@ -4550,7 +4550,7 @@
         "media/decline-reverse-crunch/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "decline-smith-press",
@@ -4669,7 +4669,7 @@
         "media/dips-chest-version/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "dips-triceps-version",
@@ -4708,7 +4708,7 @@
         "media/dips-triceps-version/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "double-kettlebell-alternating-hang-clean",
@@ -5976,7 +5976,7 @@
         "media/elbow-to-knee/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "elevated-back-lunge",
@@ -6259,7 +6259,7 @@
         "media/flat-bench-leg-pull-in/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "flat-bench-lying-leg-raise",
@@ -6290,7 +6290,7 @@
         "media/flat-bench-lying-leg-raise/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "flexor-incline-dumbbell-curls",
@@ -6362,7 +6362,7 @@
         "media/floor-glute-ham-raise/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "flutter-kicks",
@@ -6398,7 +6398,7 @@
         "media/flutter-kicks/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "frog-sit-ups",
@@ -6432,7 +6432,7 @@
         "media/frog-sit-ups/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "front-barbell-squat",
@@ -6812,7 +6812,7 @@
         "media/gironda-sternum-chins/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "glute-kickback",
@@ -6847,7 +6847,7 @@
         "media/glute-kickback/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "goblet-squat",
@@ -6933,7 +6933,7 @@
         "media/gorilla-chin-crunch/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "hack-squat",
@@ -7085,7 +7085,7 @@
         "media/hanging-pike/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "high-cable-curls",
@@ -7156,7 +7156,7 @@
         "media/hyperextensions-with-no-hyperextension-bench/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "incline-barbell-triceps-extension",
@@ -7599,7 +7599,7 @@
         "media/incline-push-up/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "incline-push-up-close-grip",
@@ -7639,7 +7639,7 @@
         "media/incline-push-up-close-grip/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "incline-push-up-medium",
@@ -7683,7 +7683,7 @@
         "media/incline-push-up-medium/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "incline-push-up-reverse-grip",
@@ -7727,7 +7727,7 @@
         "media/incline-push-up-reverse-grip/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "incline-push-up-wide",
@@ -7771,7 +7771,7 @@
         "media/incline-push-up-wide/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "inverted-row",
@@ -7807,7 +7807,7 @@
         "media/inverted-row/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "inverted-row-with-straps",
@@ -7846,7 +7846,7 @@
         "media/inverted-row-with-straps/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "iron-cross",
@@ -7939,7 +7939,7 @@
         "media/isometric-wipers/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "jackknife-sit-up",
@@ -7970,7 +7970,7 @@
         "media/jackknife-sit-up/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "janda-sit-up",
@@ -8001,7 +8001,7 @@
         "media/janda-sit-up/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "jm-press",
@@ -8868,7 +8868,7 @@
         "media/kipping-muscle-up/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "kneeling-cable-crunch-with-alternating-oblique-twists",
@@ -9182,7 +9182,7 @@
         "media/leg-lift/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "leg-over-floor-press",
@@ -9295,7 +9295,7 @@
         "media/leg-pull-in/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "leverage-chest-press",
@@ -9633,7 +9633,7 @@
         "media/london-bridges/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "low-cable-crossover",
@@ -10496,7 +10496,7 @@
         "media/muscle-up/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "narrow-stance-hack-squats",
@@ -10678,7 +10678,7 @@
         "media/natural-glute-ham-raise/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "oblique-crunches",
@@ -10712,7 +10712,7 @@
         "media/oblique-crunches/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "oblique-crunches-on-the-floor",
@@ -10744,7 +10744,7 @@
         "media/oblique-crunches-on-the-floor/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "one-arm-dumbbell-bench-press",
@@ -12162,7 +12162,7 @@
         "media/parallel-bar-dip/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "plank",
@@ -12191,7 +12191,7 @@
         "media/plank/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "plate-twist",
@@ -12481,7 +12481,7 @@
         "media/prone-manual-hamstring/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "pull-through",
@@ -12558,7 +12558,7 @@
         "media/pullups/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "push-up-to-side-plank",
@@ -12602,7 +12602,7 @@
         "media/push-up-to-side-plank/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "push-up-wide",
@@ -12645,7 +12645,7 @@
         "media/push-up-wide/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "push-ups-close-triceps-position",
@@ -12684,7 +12684,7 @@
         "media/push-ups-close-triceps-position/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "push-ups-with-feet-elevated",
@@ -12724,7 +12724,7 @@
         "media/push-ups-with-feet-elevated/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "pushups",
@@ -12763,7 +12763,7 @@
         "media/pushups/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "pushups-close-and-wide-hand-positions",
@@ -12802,7 +12802,7 @@
         "media/pushups-close-and-wide-hand-positions/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "reverse-barbell-curl",
@@ -12940,7 +12940,7 @@
         "media/reverse-crunch/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "reverse-flyes",
@@ -13159,7 +13159,7 @@
         "media/ring-dips/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "rocking-standing-calf-raise",
@@ -13239,7 +13239,7 @@
         "media/rocky-pull-ups-pulldowns/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "romanian-deadlift",
@@ -13331,7 +13331,7 @@
         "media/rope-climb/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "rope-crunch",
@@ -13430,7 +13430,7 @@
         "media/russian-twist/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "scapular-pull-up",
@@ -13468,7 +13468,7 @@
         "media/scapular-pull-up/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "seated-barbell-military-press",
@@ -13914,7 +13914,7 @@
         "media/seated-flat-bench-leg-pull-in/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "seated-leg-curl",
@@ -13977,7 +13977,7 @@
         "media/seated-leg-tucks/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "seated-one-arm-cable-pulley-rows",
@@ -14189,7 +14189,7 @@
         "media/side-jackknife/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "side-lateral-raise",
@@ -14307,7 +14307,7 @@
         "media/side-to-side-chins/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "single-arm-cable-crossover",
@@ -14417,7 +14417,7 @@
         "media/single-arm-push-up/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "single-dumbbell-raise",
@@ -14490,7 +14490,7 @@
         "media/single-leg-glute-bridge/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "single-leg-high-box-squat",
@@ -14528,7 +14528,7 @@
         "media/single-leg-high-box-squat/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "single-leg-leg-extension",
@@ -14591,7 +14591,7 @@
         "media/sit-up/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "sled-overhead-backward-walk",
@@ -14885,7 +14885,7 @@
         "media/spider-crawl/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "spider-curl",
@@ -16094,7 +16094,7 @@
         "media/standing-towel-triceps-extension/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "step-up-with-knee-raise",
@@ -16132,7 +16132,7 @@
         "media/step-up-with-knee-raise/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "stiff-leg-barbell-good-morning",
@@ -16442,7 +16442,7 @@
         "media/suspended-push-up/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "suspended-row",
@@ -16480,7 +16480,7 @@
         "media/suspended-row/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "svend-press",
@@ -16907,7 +16907,7 @@
         "media/tuck-crunch/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "two-arm-dumbbell-preacher-curl",
@@ -17302,7 +17302,7 @@
         "media/v-bar-pullup/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "wide-grip-barbell-bench-press",
@@ -17510,7 +17510,7 @@
         "media/wide-grip-rear-pull-up/end.webp"
       ],
       "source": "catalog",
-      "excluded": false
+      "excluded": true
     },
     {
       "id": "wide-grip-standing-barbell-curl",
@@ -17767,5 +17767,6 @@
       "group": "arms",
       "aliases": []
     }
-  ]
+  ],
+  "selectionPolicyVersion": "modern-muscle-374-v1"
 }

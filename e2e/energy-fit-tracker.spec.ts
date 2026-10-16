@@ -30,14 +30,14 @@ test.describe('Energy Fit Tracker core offline workflow', () => {
     expect(stoneTheme.legacyTokens).toEqual([])
     expect(stoneTheme.scanlines).toBe('none')
     expect(stoneTheme.headerTrail).toBe('none')
-    await expect(page.getByText('465 of 465 exercises')).toBeVisible({ timeout: 30_000 })
+    await expect(page.getByText('374 of 374 exercises')).toBeVisible({ timeout: 30_000 })
     const firstCatalogName = (await page.locator('main ul > li > button').first().textContent())!
     await page.getByRole('button', { name: 'A–Z ↑' }).click()
     await expect(page.locator('main ul > li > button').first()).not.toHaveText(firstCatalogName)
     await page.getByRole('button', { name: 'Z–A ↓' }).click()
     await expect(page.locator('main ul > li > button').first()).toHaveText(firstCatalogName)
     await page.getByLabel('Search').fill('Barbell Bench Press - Medium Grip')
-    await expect(page.getByText('1 of 465 exercises')).toBeVisible()
+    await expect(page.getByText('1 of 374 exercises')).toBeVisible()
     await page.getByRole('button', { name: /Barbell Bench Press - Medium Grip/ }).click()
     await expect(page.getByRole('dialog', { name: 'Barbell Bench Press - Medium Grip' })).toBeVisible()
     const demonstration = page.getByRole('dialog', { name: 'Barbell Bench Press - Medium Grip' }).getByRole('img')
@@ -146,20 +146,14 @@ test.describe('Energy Fit Tracker core offline workflow', () => {
     await recordDetail.getByRole('button', { name: 'Close exercise details' }).click()
   })
 
-  test('starts the selected built-in rotation day as an editable active workout', async ({ page }) => {
+  test('blocks the legacy built-in rotation without injecting image-free program exercises', async ({ page }) => {
     await page.goto('./#/today')
     await expect(page.getByText(/Catalog:.*up to date/)).toBeVisible({ timeout: 30_000 })
+    await expect(page.getByText(/This program includes retired exercises/)).toBeVisible()
     const program = page.getByRole('region', { name: 'My Program' })
     const dayA = program.locator('article').filter({ hasText: 'Day A' })
-    await dayA.getByRole('button', { name: 'Start' }).click()
-
-    await expect(page).toHaveURL(/#\/workout$/)
-    await expect(page.getByText('Incline Chest Press Machine', { exact: true })).toBeVisible()
-    await expect(page.getByLabel('Reps')).toHaveCount(20)
-    await expect(page.getByLabel('Reps').first()).toHaveValue('8')
-    await expect(page.getByLabel('Load (kg)').first()).toHaveValue('')
-    await page.getByRole('button', { name: 'Discard' }).click()
-    await page.getByRole('button', { name: 'Discard' }).last().click()
+    await expect(dayA.getByRole('button', { name: 'Start', exact: true })).toBeDisabled()
+    await expect(page.getByRole('button', { name: 'Start program', exact: true })).toBeDisabled()
     await expect(page).toHaveURL(/#\/today$/)
   })
 
@@ -194,7 +188,7 @@ test.describe('Energy Fit Tracker core offline workflow', () => {
     expect(offlineTypography.family).toContain('Archivo')
     expect(offlineTypography.loaded).toBe(true)
     await page.getByRole('link', { name: 'Exercises' }).click()
-    await expect(page.getByText('465 of 465 exercises')).toBeVisible({ timeout: 30_000 })
+    await expect(page.getByText('374 of 374 exercises')).toBeVisible({ timeout: 30_000 })
     await expect(page.getByText(/offline — using local data/)).toHaveCount(0)
   })
 

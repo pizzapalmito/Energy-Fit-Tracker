@@ -50,7 +50,7 @@ function exercise(overrides: Partial<Exercise> = {}): Exercise {
     muscles: [{ muscleId: 'chest', weight: 1 }],
     defaultRestSeconds: 120,
     media: [],
-    source: 'catalog',
+    source: 'custom',
     excluded: false,
     ...overrides,
   }
@@ -166,9 +166,9 @@ describe('startWorkoutTemplate', () => {
     await expect(startWorkoutTemplate(db, template)).rejects.toThrow('does-not-exist')
   })
 
-  it('resolves a bundled custom exercise not yet in the catalog, persisting its definition in the same transaction', async () => {
+  it('resolves a personal template custom exercise not yet in the catalog, persisting its definition in the same transaction', async () => {
     const customExercise = exercise({
-      id: 'repwise-tibialis-raise',
+      id: 'personal-tibialis-raise',
       name: 'Tibialis Raise',
       category: 'strength',
       movementPattern: 'pull',
@@ -183,15 +183,15 @@ describe('startWorkoutTemplate', () => {
       name: 'Week 1 Day B — Back + Glutes Emphasis',
       createdAt: '2026-01-01T00:00:00.000Z',
       updatedAt: '2026-01-01T00:00:00.000Z',
-      exercises: [{ exerciseId: 'repwise-tibialis-raise', displayName: 'Tibialis Raise', sets: 2, repRange: [15, 25], restSeconds: 90 }],
+      exercises: [{ exerciseId: 'personal-tibialis-raise', displayName: 'Tibialis Raise', sets: 2, repRange: [15, 25], restSeconds: 90 }],
       customExercises: [customExercise],
     }
 
-    expect(await db.exercises.get('repwise-tibialis-raise')).toBeUndefined()
+    expect(await db.exercises.get('personal-tibialis-raise')).toBeUndefined()
 
     const workout = await startWorkoutTemplate(db, template)
 
-    const persisted = await db.exercises.get('repwise-tibialis-raise')
+    const persisted = await db.exercises.get('personal-tibialis-raise')
     expect(persisted).toEqual(customExercise)
 
     const workoutExercises = await new DexieWorkoutExerciseRepository(db).listByWorkout(workout.id)
@@ -201,22 +201,22 @@ describe('startWorkoutTemplate', () => {
   })
 
   it('never overwrites an existing exercise record when a template bundles a custom definition for the same id', async () => {
-    const existing = exercise({ id: 'repwise-tibialis-raise', name: 'Original Name', defaultRestSeconds: 45 })
+    const existing = exercise({ id: 'personal-tibialis-raise', name: 'Original Name', defaultRestSeconds: 45 })
     await db.exercises.put(existing)
 
-    const conflictingCustom = exercise({ id: 'repwise-tibialis-raise', name: 'Different Bundled Definition', defaultRestSeconds: 90 })
+    const conflictingCustom = exercise({ id: 'personal-tibialis-raise', name: 'Different Bundled Definition', defaultRestSeconds: 90 })
     const template: WorkoutTemplate = {
       id: 'w1-day-b',
       name: 'Week 1 Day B — Back + Glutes Emphasis',
       createdAt: '2026-01-01T00:00:00.000Z',
       updatedAt: '2026-01-01T00:00:00.000Z',
-      exercises: [{ exerciseId: 'repwise-tibialis-raise', displayName: 'Tibialis Raise', sets: 2, repRange: [15, 25], restSeconds: 90 }],
+      exercises: [{ exerciseId: 'personal-tibialis-raise', displayName: 'Tibialis Raise', sets: 2, repRange: [15, 25], restSeconds: 90 }],
       customExercises: [conflictingCustom],
     }
 
     await startWorkoutTemplate(db, template)
 
-    expect(await db.exercises.get('repwise-tibialis-raise')).toEqual(existing)
+    expect(await db.exercises.get('personal-tibialis-raise')).toEqual(existing)
   })
 })
 

@@ -1,3 +1,5 @@
+Current selectable policy (2026-10-16): **374 modern exercises**, comprising the original 347 plus 27 completion entries. The other 91 seeded entries are retired. [Authoritative selection decision](../SELECTION-POLICY.md). Earlier release validation below records its original scope.
+
 # Reviewed muscle-highlight images
 
 This release contains 347 original matte 3D exercise composites with localized primary-muscle highlights. New corrections use smooth featureless oval heads. Other approved images are retained.

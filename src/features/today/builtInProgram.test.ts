@@ -1,3 +1,4 @@
+import { isBundledProgramSelectable } from '../../catalog/selectionPolicy'
 import { describe, expect, it } from 'vitest'
 import { readFileSync } from 'node:fs'
 import { fileURLToPath } from 'node:url'
@@ -32,14 +33,14 @@ describe('BUILT_IN_PROGRAM', () => {
     ])
   })
 
-  it('every exercise resolves to either a stable, non-excluded catalog id or a bundled custom exercise carried on the same template', () => {
+  it('retains legacy program definitions for inspection; incompatible templates are unavailable for new workouts', () => {
     for (const template of BUILT_IN_PROGRAM) {
       const customById = new Map((template.customExercises ?? []).map((exercise) => [exercise.id, exercise]))
       for (const entry of template.exercises) {
         const catalogExercise = catalogById.get(entry.exerciseId)
         const customExercise = customById.get(entry.exerciseId)
         expect(catalogExercise ?? customExercise, `${template.id}: ${entry.exerciseId} is neither a catalog id nor a bundled custom exercise on this template`).toBeDefined()
-        if (catalogExercise) expect(catalogExercise.excluded, `${template.id}: ${entry.exerciseId} is excluded from the catalog`).toBe(false)
+        if (catalogExercise?.excluded || customExercise) expect(isBundledProgramSelectable(template.exercises.map(e => e.exerciseId))).toBe(false)
         if (customExercise) expect(customExercise.excluded, `${template.id}: custom ${entry.exerciseId} is excluded`).toBe(false)
       }
     }

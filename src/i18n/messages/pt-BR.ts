@@ -45,6 +45,7 @@ export const ptBR: Messages = {
     startWorkout: 'Iniciar treino',
     manualWorkoutSummary: 'Treino manual',
     startErrorManual: 'Não foi possível iniciar este treino.',
+    retiredProgram: "Este programa inclui exercícios retirados. Inicie um treino manual ou gere um com o catálogo atual.",
     startErrorTemplate: 'Não foi possível iniciar este treino do programa.',
     rotationEyebrow: 'Rotação de 3 semanas',
     myProgram: 'Meu Programa',

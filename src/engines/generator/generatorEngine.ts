@@ -1,9 +1,10 @@
+import { isExerciseSelectable } from '../../catalog/selectionPolicy'
 import type { GeneratedWorkout, GeneratorInput, RecoveryResult, WorkoutGenerator, WorkoutSplit } from '../../domain/contracts'
 import type { Exercise } from '../../domain/models'
 import { PRIMARY_WEIGHT_THRESHOLD } from '../shared/muscleContribution'
 import { PROGRESSION_GOAL_PRESETS } from '../progression/progressionEngine'
 
-export const GENERATOR_ENGINE_VERSION = 'generator-v2'
+export const GENERATOR_ENGINE_VERSION = 'generator-v3'
 
 /** Rough per-set time budget used only to decide how many exercises fit in the session. */
 export const ESTIMATED_WORK_SECONDS_PER_SET = 45
@@ -72,7 +73,7 @@ export class DeterministicWorkoutGenerator implements WorkoutGenerator {
   generate(input: GeneratorInput, exercises: Exercise[], recovery: RecoveryResult[]): GeneratedWorkout {
     const excluded = new Set(input.excludedExerciseIds)
     const usable = exercises.filter(
-      (e) => !e.excluded && !excluded.has(e.id) && isEquipmentAvailable(e, input.availableEquipment),
+      (e) => isExerciseSelectable(e) && !excluded.has(e.id) && isEquipmentAvailable(e, input.availableEquipment),
     )
 
     const readinessByMuscle = new Map(recovery.map((r) => [r.muscleId, r.recommendationReadiness]))

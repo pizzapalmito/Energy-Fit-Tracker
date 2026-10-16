@@ -24,6 +24,8 @@ async function fixture() {
   await json(join(catalogDir, 'catalog.json'), { version: 'before', sourceCommit: 'pinned', exercises: [exercise, excluded] })
   await json(auditPath, { counts: { acceptedExercises: 2 }, media: { missingImages: [] } })
   for (const frame of ['start', 'end']) { await writeFile(join(catalogDir, `media/curl/${frame}.webp`), original); await writeFile(join(catalogDir, `media/plank/${frame}.webp`), 'excluded-original') }
+  await mkdir(join(root, 'src/catalog'), { recursive: true })
+  await json(join(root, 'src/catalog/selection-policy.json'), { schemaVersion: 1, version: 'fixture-policy', selectable: [{ id: entry.id, candidateId: entry.candidateId, outputSha256: entry.outputSha256 }], retiredCatalog: [{ id: excluded.id }] })
   return { root, library, catalogDir, auditPath, exercise, excluded, bytes, original, entry, manifest }
 }
 describe('reviewed muscle image overlay', () => {
@@ -31,7 +33,7 @@ describe('reviewed muscle image overlay', () => {
     const f = await fixture(); expect(await integrateMuscleImages({ repoRoot: f.root })).toEqual({ integrated: 1 })
     for (const frame of ['start', 'end']) { expect(await readFile(join(f.catalogDir, `media/curl/${frame}.webp`))).toEqual(f.bytes); expect((await readFile(join(f.catalogDir, `media/plank/${frame}.webp`))).toString()).toBe('excluded-original') }
     const catalog = JSON.parse(await readFile(join(f.catalogDir, 'catalog.json'), 'utf8')), audit = JSON.parse(await readFile(f.auditPath, 'utf8'))
-    expect(catalog.exercises).toEqual([f.exercise, f.excluded]); expect(audit.counts.acceptedExercises).toBe(2)
+    expect(catalog.exercises).toEqual([{ ...f.exercise, excluded: false }, { ...f.excluded, excluded: true }]); expect(audit.counts.acceptedExercises).toBe(2)
     expect(audit.catalogVersion).toBe(catalog.version); expect(audit.perExerciseMediaHashes.curl).toEqual({ start: sha256(f.bytes), end: sha256(f.bytes) })
     expect(audit.media.generatedMuscleImages.approvedExerciseCount).toBe(1)
   })

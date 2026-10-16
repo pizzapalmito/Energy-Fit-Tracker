@@ -23,7 +23,7 @@ const exercise: Exercise = {
   ],
   defaultRestSeconds: 150,
   media: ['media/squat/start.webp', 'media/squat/end.webp'],
-  source: 'catalog',
+  source: 'custom',
   excluded: false,
 }
 

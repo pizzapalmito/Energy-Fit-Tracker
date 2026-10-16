@@ -5,7 +5,7 @@ import { expect, test } from '@playwright/test'
 const release = JSON.parse(readFileSync('docs/catalog/muscle-images/manifest.json', 'utf8')) as { exercises: Array<{ id: string; candidateId: string; outputSha256: string }> }
 const missing = JSON.parse(readFileSync('docs/catalog/muscle-images/missing-batch.json', 'utf8')) as { exercises: Array<{ id: string; candidateId: string; outputSha256: string }> }
 const coverage = release.exercises
-const catalog = JSON.parse(readFileSync('public/catalog/catalog.json', 'utf8')) as { version: string; exercises: Array<{ id: string; name: string }> }
+const catalog = JSON.parse(readFileSync('public/catalog/catalog.json', 'utf8')) as { version: string; exercises: Array<{ id: string; name: string; excluded: boolean }> }
 const selectedIds = new Set(['lying-close-grip-barbell-triceps-press-to-chin', 'lying-triceps-press', 'zottman-preacher-curl', 'upright-cable-row', 'wide-stance-barbell-squat', 'kettlebell-halo-with-overhead-extension'])
 for (const entry of missing.exercises) selectedIds.add(entry.id)
 const selected = coverage.filter(e => selectedIds.has(e.id)).map(e => ({ ...e, output: { sha256: e.outputSha256 } }))
@@ -16,13 +16,13 @@ test(`shows the ${target.exercises.length} approved composites without cropping 
   expect(selected.length).toBeGreaterThan(0)
   await page.setViewportSize({ width: 390, height: 844 })
   await page.goto('./#/exercises')
-  await expect(page.getByText(`${catalog.exercises.length} of ${catalog.exercises.length} exercises`)).toBeVisible({ timeout: 30_000 })
+  await expect(page.getByText(`${catalog.exercises.filter(entry => !entry.excluded).length} of ${catalog.exercises.filter(entry => !entry.excluded).length} exercises`)).toBeVisible({ timeout: 30_000 })
   await expect(page.getByText('Images under development. Use with caution.', { exact: true })).toBeVisible()
   await page.screenshot({ path: testInfo.outputPath('image-development-notice-390.png') })
   await page.evaluate(() => navigator.serviceWorker.ready.then(() => undefined))
   await page.reload()
   await expect.poll(() => page.evaluate(() => Boolean(navigator.serviceWorker.controller))).toBe(true)
-  await expect(page.getByText(`${catalog.exercises.length} of ${catalog.exercises.length} exercises`)).toBeVisible()
+  await expect(page.getByText(`${catalog.exercises.filter(entry => !entry.excluded).length} of ${catalog.exercises.filter(entry => !entry.excluded).length} exercises`)).toBeVisible()
   // Windows WebKit offline emulation is unreliable; Chromium proves cached bytes.
   if (browserName === 'chromium') await context.setOffline(true)
   // Verify both displayed slots for all 374 composites, offline in Chromium.
@@ -79,7 +79,7 @@ if (selected.some((entry) => entry.id === 'kettlebell-halo-with-overhead-extensi
   test('updates a previously seeded missing-image entry while retaining custom and historical records', async ({ page }) => {
     await page.setViewportSize({ width: 390, height: 844 })
     await page.goto('./#/exercises')
-    await expect(page.getByText(`${catalog.exercises.length} of ${catalog.exercises.length} exercises`)).toBeVisible({ timeout: 30_000 })
+    await expect(page.getByText(`${catalog.exercises.filter(entry => !entry.excluded).length} of ${catalog.exercises.filter(entry => !entry.excluded).length} exercises`)).toBeVisible({ timeout: 30_000 })
     const previousVersion = 'catalog-ce2b95aa0679ef1c'
     const retained = await page.evaluate(async (version) => {
       const db = await new Promise<IDBDatabase>((resolve, reject) => {
@@ -107,7 +107,7 @@ if (selected.some((entry) => entry.id === 'kettlebell-halo-with-overhead-extensi
       return { custom, workout, historical }
     }, previousVersion)
     await page.reload()
-    await expect(page.getByText(`${catalog.exercises.length + 1} of ${catalog.exercises.length + 1} exercises`)).toBeVisible({ timeout: 30_000 })
+    await expect(page.getByText(`${catalog.exercises.filter(entry => !entry.excluded).length + 1} of ${catalog.exercises.filter(entry => !entry.excluded).length + 1} exercises`)).toBeVisible({ timeout: 30_000 })
     const stored = await page.evaluate(async () => {
       const db = await new Promise<IDBDatabase>((resolve, reject) => {
         const request = indexedDB.open('repwise')

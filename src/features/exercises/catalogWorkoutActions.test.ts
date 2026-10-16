@@ -28,7 +28,7 @@ function exercise(overrides: Partial<Exercise> = {}): Exercise {
     muscles: [{ muscleId: 'chest', weight: 1 }],
     defaultRestSeconds: 120,
     media: [],
-    source: 'catalog',
+    source: 'custom',
     excluded: false,
     ...overrides,
   }
