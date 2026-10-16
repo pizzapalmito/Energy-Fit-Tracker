@@ -1,7 +1,7 @@
 .wrap { padding: .75rem 0 0; border-top: 0; }
 .wrap svg { display: block; width: min(100%, 28rem); margin: auto; }
 .wrap text { fill: var(--muted); font-family: var(--font-mono); font-size: 9.5px; font-weight: 500; letter-spacing: 1.6px; text-transform: uppercase; }
-.body, .outline { fill: #d8d2c5; stroke: #8a847a; stroke-width: 1.25; }
+.body, .outline { fill: var(--accent-soft); stroke: var(--map-outline); stroke-width: 1.25; }
 .region { cursor: pointer; stroke: #111111; stroke-opacity: .45; stroke-width: 1; transition: opacity .15s ease, stroke-opacity .15s ease, stroke-width .15s ease; }
 .region:hover, .region[data-selected] { stroke-opacity: 1; stroke-width: 2; }
 .region:focus-visible { outline: none; stroke-opacity: 1; stroke-width: 2.75; }

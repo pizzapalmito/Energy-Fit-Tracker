@@ -6,7 +6,7 @@ This is treated as the product owner's design asset. Independent third-party rig
 
 ## Regeneration
 
-All derived logo/icon assets are produced deterministically from this source by `scripts/generate-icons.mjs` using the already-installed Sharp toolchain. To regenerate every derived asset after changing this source file, run:
+App icon assets are produced deterministically from this source by `scripts/generate-icons.mjs` using the already-installed Sharp toolchain. To regenerate app icon assets after changing this source file, run:
 
 ```
 node scripts/generate-icons.mjs
@@ -16,6 +16,7 @@ This produces:
 - `public/icons/favicon-32.png` — 32x32 resize of the full square source.
 - `public/icons/icon-180.png`, `icon-192.png`, `icon-512.png` — square resizes of the full source for the home-screen/app icon and Apple touch icon.
 - `public/icons/icon-maskable-512.png` — the square source resized to 384px and centered on a 512x512 black canvas, keeping the crest inside the maskable safe circle.
-- `public/brand/eft-logo.webp` — the transparent header crest, encoded as WebP quality 90.
 
 No cropping, recoloring, or restyling is applied; the marble, gold, and transparent background are retained as supplied.
+
+The obsolete header logo was removed at the owner's request on 2026-10-15. The icon generator no longer creates a header logo asset.

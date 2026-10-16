@@ -1,15 +1,15 @@
 .page { --page-inset: 0px; --page-gap: 0px; position: relative; display: flex; flex-direction: column; gap: 0; }
 
 /* Up Next is the one dominant decision block on the screen. */
-.upNextCard { display: flex; flex-direction: column; gap: .9rem; padding: 1rem var(--gutter) 1.125rem; background: var(--text); color: var(--bg); }
+.upNextCard { display: flex; flex-direction: column; gap: .9rem; padding: 1rem var(--gutter) 1.125rem; background: var(--inverse-bg); color: var(--inverse-text); }
 .upNextHeading { display: flex; flex-direction: column; gap: .2rem; }
-.upNextEyebrow { margin: 0; padding-bottom: .5rem; border-bottom: 1px solid var(--ink-rule); color: var(--bg); font-family: var(--font-mono); font-size: .56rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; }
+.upNextEyebrow { margin: 0; padding-bottom: .5rem; border-bottom: 1px solid var(--ink-rule); color: var(--inverse-text); font-family: var(--font-mono); font-size: .56rem; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; }
 .upNextHeading h2 { margin: .4rem 0 0; font-family: var(--font-display); font-size: clamp(1.9rem, 9vw, 2.4rem); font-stretch: var(--display-stretch); font-weight: 800; line-height: .95; overflow-wrap: anywhere; text-transform: uppercase; }
 .upNextStats { display: flex; gap: 1.75rem; }
 .upNextStats div { display: flex; flex-direction: column; gap: .15rem; }
 .upNextStats strong { font-family: var(--font-mono); font-size: 1.35rem; font-weight: 600; font-variant-numeric: tabular-nums; line-height: 1; }
 .upNextStats span { color: var(--ink-muted); font-family: var(--font-mono); font-size: .52rem; letter-spacing: .16em; text-transform: uppercase; }
-.startProgramButton { width: 100%; min-height: 3.25rem; border: 0; background: var(--bg); color: var(--text); font-family: var(--font-display); font-size: 1.3rem; font-stretch: var(--display-stretch); font-weight: 800; letter-spacing: .02em; text-transform: uppercase; cursor: pointer; }
+.startProgramButton { width: 100%; min-height: 3.25rem; border: 0; background: var(--inverse-text); color: var(--inverse-bg); font-family: var(--font-display); font-size: 1.3rem; font-stretch: var(--display-stretch); font-weight: 800; letter-spacing: .02em; text-transform: uppercase; cursor: pointer; }
 .startProgramButton:focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; }
 .startProgramButton:disabled { opacity: .6; }
 
@@ -32,11 +32,11 @@
 .startCard label { color: var(--muted); font-family: var(--font-mono); font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; }
 .startRow { display: flex; gap: .6rem; flex-wrap: wrap; }
 .nameInput { flex: 1; min-width: 8rem; min-height: 2.75rem; border: 1px solid var(--line); background: var(--bg); color: var(--text); padding: 0 .75rem; }
-.startButton, .resumeButton { min-height: 2.75rem; padding: 0 1.4rem; border: 1px solid var(--text); background: var(--text); color: var(--bg); font-weight: 800; cursor: pointer; }
-.resumeButton { border-color: var(--bg); background: var(--bg); color: var(--text); font-family: var(--font-display); font-size: 1.15rem; font-stretch: var(--display-stretch); text-transform: uppercase; }
+.startButton, .resumeButton { min-height: 2.75rem; padding: 0 1.4rem; border: 1px solid var(--text); background: var(--inverse-bg); color: var(--inverse-text); font-weight: 800; cursor: pointer; }
+.resumeButton { border-color: var(--bg); background: var(--inverse-text); color: var(--inverse-bg); font-family: var(--font-display); font-size: 1.15rem; font-stretch: var(--display-stretch); text-transform: uppercase; }
 .resumeButton:focus-visible { outline: 3px solid var(--amber); outline-offset: 2px; }
 
-.resumeCard { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.1rem var(--gutter); border-bottom: 1px solid var(--line); background: var(--text); color: var(--bg); flex-wrap: wrap; }
+.resumeCard { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1.1rem var(--gutter); border-bottom: 1px solid var(--line); background: var(--inverse-bg); color: var(--inverse-text); flex-wrap: wrap; }
 .resumeCard > div { min-width: 0; }
 .resumeCard h2 { margin: 0; font-family: var(--font-display); font-size: 1.6rem; font-stretch: var(--display-stretch); font-weight: 800; line-height: 1; overflow-wrap: anywhere; text-transform: uppercase; }
 .resumeCard p { margin: .3rem 0 0; color: var(--ink-muted); font-family: var(--font-mono); font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; }

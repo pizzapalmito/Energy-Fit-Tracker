@@ -1,8 +1,9 @@
 import { fireEvent, render, screen, waitFor } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import { beforeEach, describe, expect, it } from 'vitest'
+import { beforeEach, describe, expect, it, vi } from 'vitest'
 import { createDatabase, type RepwiseDatabase } from '../../data/db'
-import { SETTINGS_SINGLETON_ID } from '../../data/repositories/settingsRepository'
+import { DexieSettingsRepository, SETTINGS_SINGLETON_ID } from '../../data/repositories/settingsRepository'
+import { ThemeProvider } from '../../theme/ThemeContext'
 import { I18nProvider } from '../../i18n/I18nContext'
 import { SettingsPage } from './SettingsPage'
 
@@ -19,10 +20,64 @@ beforeEach(async () => {
 function renderSettings() {
   return render(
     <I18nProvider db={db}>
-      <SettingsPage db={db} />
+      <ThemeProvider db={db}><SettingsPage db={db} /></ThemeProvider>
     </I18nProvider>,
   )
 }
+
+describe('SettingsPage appearance', () => {
+  it.each([undefined, 'system', 'unsupported'])('defaults to dark with a missing or legacy theme (%s)', async (theme) => {
+    await db.settings.put({ id: SETTINGS_SINGLETON_ID, unit: 'kg', theme })
+    renderSettings()
+    await waitFor(() => expect(screen.getByRole('button', { name: 'Dark' })).toBeEnabled())
+    expect(screen.getByRole('group', { name: 'Appearance' })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: 'Dark' })).toHaveAttribute('aria-pressed', 'true')
+    expect(document.documentElement.dataset.theme).toBe('dark')
+  })
+
+  it('creates the preference on first use and retains it after remounting', async () => {
+    const user = userEvent.setup()
+    const view = renderSettings()
+    const light = screen.getByRole('button', { name: 'Light' })
+    await waitFor(() => expect(light).toBeEnabled())
+    await user.click(light)
+    await waitFor(() => expect(light).toHaveAttribute('aria-pressed', 'true'))
+    expect(document.documentElement.dataset.theme).toBe('light')
+    expect(await db.settings.get(SETTINGS_SINGLETON_ID)).toMatchObject({ theme: 'light', unit: 'kg' })
+    view.unmount()
+    renderSettings()
+    await waitFor(() => expect(screen.getByRole('button', { name: 'Light' })).toHaveAttribute('aria-pressed', 'true'))
+  })
+
+  it('preserves other preferences and follows restored settings while mounted', async () => {
+    const original = { id: SETTINGS_SINGLETON_ID, unit: 'lb' as const, theme: 'light', trainingGoal: 'strength' as const, locale: 'fr' as const, activeEquipmentProfileId: 'home' }
+    await db.settings.put(original)
+    const user = userEvent.setup()
+    renderSettings()
+    const dark = await screen.findByRole('button', { name: 'Sombre' })
+    await waitFor(() => expect(dark).toBeEnabled())
+    await user.click(dark)
+    await waitFor(async () => expect(await db.settings.get(SETTINGS_SINGLETON_ID)).toEqual({ ...original, theme: 'dark' }))
+    await db.settings.put(original)
+    await waitFor(() => expect(document.documentElement.dataset.theme).toBe('light'))
+    expect(screen.getByRole('button', { name: 'Clair' })).toHaveAttribute('aria-pressed', 'true')
+  })
+
+  it('keeps the saved appearance and reports a failed write', async () => {
+    const user = userEvent.setup()
+    renderSettings()
+    const light = screen.getByRole('button', { name: 'Light' })
+    await waitFor(() => expect(light).toBeEnabled())
+    const failure = vi.spyOn(DexieSettingsRepository.prototype, 'setTheme').mockRejectedValueOnce(new Error('Storage unavailable'))
+    await user.click(light)
+    expect(await screen.findByRole('alert')).toHaveTextContent('Could not save appearance. Try again.')
+    expect(document.documentElement.dataset.theme).toBe('dark')
+    failure.mockRestore()
+    await user.click(light)
+    await waitFor(() => expect(light).toHaveAttribute('aria-pressed', 'true'))
+    expect(screen.queryByRole('alert')).not.toBeInTheDocument()
+  })
+})
 
 describe('SettingsPage language control', () => {
   it('defaults to English for a settings row with no saved locale', async () => {

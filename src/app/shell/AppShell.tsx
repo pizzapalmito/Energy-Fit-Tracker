@@ -22,7 +22,6 @@ export function AppShell() {
     <div className={styles.shell}>
       <header className={styles.header}>
         <div className={styles.heroArt} aria-hidden="true" style={{ backgroundImage: `url(${base}brand/mobile-hero.webp)` }} />
-        <img className={styles.mark} src={`${base}brand/eft-logo.webp`} alt="" aria-hidden="true" />
         <div className={styles.identity}><strong>{t('app.name')}</strong><small>{t('app.tagline')}</small></div>
       </header>
       <div className={styles.imageNotice}><ImageDevelopmentNotice /></div>

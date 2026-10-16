@@ -5,6 +5,7 @@ import { router } from './app/router'
 import { db, ensureAppDefaults } from './data/appDatabase'
 import { initCatalogSeeding } from './catalog/catalogReadiness'
 import { I18nProvider } from './i18n/I18nContext'
+import { ThemeProvider } from './theme/ThemeContext'
 import './styles/tokens.css'
 import './styles/fonts.css'
 import './styles/global.css'
@@ -15,7 +16,9 @@ void ensureAppDefaults()
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     <I18nProvider>
-      <RouterProvider router={router} />
+      <ThemeProvider>
+        <RouterProvider router={router} />
+      </ThemeProvider>
     </I18nProvider>
   </StrictMode>,
 )
