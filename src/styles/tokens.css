@@ -1,6 +1,45 @@
 :root {
+  color-scheme: dark;
+  /* Charcoal and warm stone. Dark also applies before settings load. */
+  --canvas: #101211;
+  --bg: #181a19;
+  --surface: #181a19;
+  --surface-raised: #272b28;
+  --text: #ece7db;
+  --muted: #b3aea4;
+  --line: #899087;
+  --rule: #454b45;
+  --accent: #ece7db;
+  --accent-soft: #343a34;
+  --map-outline: #899087;
+  --inverse-bg: #0e100f;
+  --inverse-text: #ece7db;
+  /* Rules and secondary text on inverse ink panels. */
+  --ink-rule: #454b45;
+  --ink-muted: #b3aea4;
+  /* Semantic signals: green is ready/complete, amber is recovery/secondary, orange is fatigue/caution. */
+  --green: #8bbf9c;
+  --amber: #ffac00;
+  --caution: #f2a16d;
+  --success: var(--green);
+  --danger: var(--amber);
+  --danger-soft: #493126;
+  --on-danger: #111111;
+  --hero-blend: screen;
+  --hero-opacity: .12;
+  --radius-card: 0;
+  --radius-media: 3px;
+  --gutter: 1.125rem;
+  --font-display: Archivo, Impact, Haettenschweiler, "Arial Narrow Bold", "Arial Narrow", sans-serif;
+  --display-stretch: 72%;
+  --font-sans: Archivo, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, "Cascadia Mono", "Segoe UI Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+  font-family: var(--font-sans);
+}
+
+:root[data-theme='light'] {
   color-scheme: light;
-  /* Stone and ink material. */
+  --canvas: #c9c5bc;
   --bg: #ece7db;
   --surface: #ece7db;
   --surface-raised: #ded9ce;
@@ -10,22 +49,13 @@
   --rule: #c3bdb1;
   --accent: #111111;
   --accent-soft: #d8d2c5;
-  /* Rules and secondary text on inverse ink panels. */
+  --map-outline: #8a847a;
+  --inverse-bg: #111111;
   --ink-rule: #4a4a4a;
   --ink-muted: #a09a90;
-  /* Semantic signals: green is ready/complete, amber is recovery/secondary, orange is fatigue/caution. */
   --green: #315b44;
-  --amber: #ffac00;
   --caution: #a3470f;
-  --success: var(--green);
-  --danger: var(--amber);
   --danger-soft: #e1c8bc;
-  --radius-card: 0;
-  --radius-media: 3px;
-  --gutter: 1.125rem;
-  --font-display: Archivo, Impact, Haettenschweiler, "Arial Narrow Bold", "Arial Narrow", sans-serif;
-  --display-stretch: 72%;
-  --font-sans: Archivo, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-  --font-mono: 'IBM Plex Mono', ui-monospace, "Cascadia Mono", "Segoe UI Mono", "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
-  font-family: var(--font-sans);
+  --hero-blend: multiply;
+  --hero-opacity: .3;
 }

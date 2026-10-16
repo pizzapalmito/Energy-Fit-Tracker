@@ -14,8 +14,4 @@ await sharp({ create: { width: 512, height: 512, channels: 4, background: { r: 0
   .png()
   .toFile(resolve('public/icons/icon-maskable-512.png'))
 
-await sharp(source)
-  .webp({ quality: 90, alphaQuality: 100 })
-  .toFile(resolve('public/brand/eft-logo.webp'))
-
-console.log('Generated Energy Fit Tracker icons: favicon-32, icon-180, icon-192, icon-512, icon-maskable-512, brand/eft-logo.webp')
+console.log('Generated Energy Fit Tracker icons: favicon-32, icon-180, icon-192, icon-512, icon-maskable-512')

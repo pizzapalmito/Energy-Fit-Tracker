@@ -12,7 +12,7 @@
 .metrics article:nth-child(even) { padding-right: var(--gutter); }
 .metrics strong { display: block; font-family: var(--font-mono); font-size: 1.15rem; font-weight: 600; font-variant-numeric: tabular-nums; line-height: 1.1; overflow-wrap: anywhere; }
 .metrics span { display: block; color: var(--muted); font-family: var(--font-mono); font-size: .55rem; letter-spacing: .1em; overflow-wrap: break-word; text-transform: uppercase; }
-.metrics .metricLead { padding-block: .9rem .85rem; border-top: 0; border-right-color: var(--ink-rule); background: var(--text); color: var(--bg); }
+.metrics .metricLead { padding-block: .9rem .85rem; border-top: 0; border-right-color: var(--ink-rule); background: var(--inverse-bg); color: var(--inverse-text); }
 .metrics .metricLead strong { font-family: var(--font-display); font-size: clamp(2.2rem, 11vw, 3rem); font-stretch: var(--display-stretch); font-weight: 800; line-height: .9; }
 .metrics .metricLead span { color: var(--ink-muted); }
 @media (min-width: 600px) {

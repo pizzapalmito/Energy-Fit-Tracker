@@ -108,7 +108,7 @@ export function MuscleMap({ recovery, selected, onSelect }: { recovery: MuscleMa
           <rect width="9" height="9" fill="#ffac00" /><circle cx="4.5" cy="4.5" r="1.6" fill="#8a5d00" />
         </pattern>
         <pattern id="readiness-ready" width="8" height="8" patternUnits="userSpaceOnUse">
-          <rect width="8" height="8" fill="#315b44" />
+          <rect width="8" height="8" fill="var(--green)" />
         </pattern>
       </defs>
       <text x="80" y="14" textAnchor="middle">{t('muscleMap.frontLabel')}</text><text x="240" y="14" textAnchor="middle">{t('muscleMap.backLabel')}</text>
