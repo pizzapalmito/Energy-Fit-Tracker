@@ -1,3 +1,4 @@
+import { isBundledProgramSelectable } from '../../catalog/selectionPolicy'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ScreenTitle } from '../../app/shell/ScreenTitle'
@@ -69,6 +70,7 @@ export function TodayPage({ db = appDb }: { db?: RepwiseDatabase }) {
   const selectedGlobalIndex = (programWeek - 1) * DAYS_PER_WEEK + boundedDayIndex
   const nextGlobalIndex = (selectedGlobalIndex + 1) % BUILT_IN_PROGRAM.length
   const nextTemplate = BUILT_IN_PROGRAM[nextGlobalIndex]
+  const programSelectable = selectedTemplate && isBundledProgramSelectable(selectedTemplate.exercises.map(entry => entry.exerciseId))
   const nextDayLetter = String.fromCharCode(65 + (nextGlobalIndex % DAYS_PER_WEEK))
 
   return (
@@ -112,7 +114,8 @@ export function TodayPage({ db = appDb }: { db?: RepwiseDatabase }) {
                     <div><strong>{selectedTemplate.exercises.length}</strong><span>{t('today.exerciseCountLabel')}</span></div>
                     <div><strong>{plannedSetCount(selectedTemplate)}</strong><span>{t('today.plannedSetsLabel')}</span></div>
                   </div>
-                  <button type="button" className={styles.startProgramButton} onClick={() => void handleStartTemplate(selectedTemplate)} disabled={Boolean(starting)}>
+                  {!programSelectable && <p role="status">{t('today.retiredProgram')}</p>}
+                  <button type="button" className={styles.startProgramButton} onClick={() => void handleStartTemplate(selectedTemplate)} disabled={Boolean(starting) || !programSelectable}>
                     {starting === selectedTemplate.id ? t('common.starting') : t('today.startProgram')}
                   </button>
                 </div>
@@ -176,7 +179,7 @@ export function TodayPage({ db = appDb }: { db?: RepwiseDatabase }) {
                   <strong>{t('today.dayLabel', { letter: String.fromCharCode(65 + index) })}</strong>
                   <span>{formatProgramFocus(t, focusOf(template))}</span>
                 </button>
-                <button type="button" className={styles.programStartButton} onClick={() => void handleStartTemplate(template)} disabled={Boolean(starting)}>{starting === template.id ? t('common.starting') : t('today.startAction')}</button>
+                <button type="button" className={styles.programStartButton} onClick={() => void handleStartTemplate(template)} disabled={Boolean(starting) || !isBundledProgramSelectable(template.exercises.map(entry => entry.exerciseId))}>{starting === template.id ? t('common.starting') : t('today.startAction')}</button>
               </article>)}
             </div>
           </section>}

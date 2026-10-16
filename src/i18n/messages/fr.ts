@@ -45,6 +45,7 @@ export const fr: Messages = {
     startWorkout: 'Démarrer la séance',
     manualWorkoutSummary: 'Séance manuelle',
     startErrorManual: 'Impossible de démarrer cette séance.',
+    retiredProgram: "Ce programme contient des exercices retirés. Commencez une séance manuelle ou générez-en une avec le catalogue actuel.",
     startErrorTemplate: 'Impossible de démarrer cette séance du programme.',
     rotationEyebrow: 'Rotation de 3 semaines',
     myProgram: 'Mon programme',

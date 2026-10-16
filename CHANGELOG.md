@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.1-beta.3 — 2026-10-16
+
+- Pin the owner-selected 374 modern muscle-highlight exercises; retire 91 legacy entries from new selection without deleting assets or workout history.
+- Enforce the policy on rebuild, startup, restore, generation, substitution and workout creation. Preserve genuine custom exercises; incompatible bundled programs require a new plan decision.
+
+
 ## 0.1.1-beta.2 — 2026-10-15
 
 - Default to a charcoal dark appearance, with Dark and Light options in Settings. Save the choice locally and restore it across navigation, reloads and offline use.

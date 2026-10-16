@@ -1,3 +1,4 @@
+import { assertExerciseSelectable } from '../../catalog/selectionPolicy'
 import type { Exercise, SetType, Workout, WorkoutExercise, WorkoutSet } from '../../domain/models'
 import type { GeneratedWorkout, GeneratorInput } from '../../domain/contracts'
 import type { WorkoutTemplate } from '../../data/types'
@@ -62,6 +63,7 @@ export async function startWorkoutTemplate(db: RepwiseDatabase, template: Workou
     const customExercisesToPersist = uniqueExerciseIds
       .filter((id) => !catalogById.has(id))
       .map((id) => customExercisesById.get(id)!)
+    for (const exercise of [...catalogById.values(), ...customExercisesToPersist]) assertExerciseSelectable(exercise)
     customExercisesToPersist.forEach((exercise) => catalogById.set(exercise.id, exercise))
     if (customExercisesToPersist.length > 0) await db.exercises.bulkAdd(customExercisesToPersist)
 
@@ -129,6 +131,7 @@ export async function startGeneratedWorkout(
     const catalogById = new Map(available.flatMap((entry) => entry ? [[entry.id, entry] as const] : []))
     const missing = uniqueIds.filter((id) => !catalogById.has(id))
     if (missing.length > 0) throw new Error(`Generated workout exercises are unavailable: ${missing.join(', ')}`)
+    for (const exercise of catalogById.values()) assertExerciseSelectable(exercise)
 
     const workoutExercises: WorkoutExercise[] = []
     const sets: WorkoutSet[] = []
@@ -165,6 +168,7 @@ export function isDuplicateExercise(existing: WorkoutExercise[], exerciseId: str
 
 /** Adds an exercise to a workout, snapshotting its catalog facts (name/equipment/movement/muscles/catalog version) at add-time. */
 export async function addExerciseToWorkout(db: RepwiseDatabase, workoutId: string, exercise: Exercise): Promise<WorkoutExercise> {
+  assertExerciseSelectable(exercise)
   const workoutExerciseRepo = new DexieWorkoutExerciseRepository(db)
   const existing = await workoutExerciseRepo.listByWorkout(workoutId)
   const catalogVersion = (await new DexieMetadataRepository(db).get(CATALOG_VERSION_METADATA_KEY)) ?? 'unknown'
@@ -197,7 +201,15 @@ export async function removeWorkoutExercise(db: RepwiseDatabase, workoutExercise
 }
 
 export async function updateWorkoutExercise(db: RepwiseDatabase, workoutExercise: WorkoutExercise): Promise<void> {
-  await new DexieWorkoutExerciseRepository(db).save(workoutExercise)
+  await db.transaction('rw', db.workoutExercises, db.exercises, async () => {
+    const previous = await db.workoutExercises.get(workoutExercise.id)
+    if (previous?.exerciseId !== workoutExercise.exerciseId) {
+      const candidate = await db.exercises.get(workoutExercise.exerciseId)
+      if (!candidate) throw new Error('Substitute exercise is unavailable.')
+      assertExerciseSelectable(candidate)
+    }
+    await new DexieWorkoutExerciseRepository(db).save(workoutExercise)
+  })
 }
 
 export function nextSetNumber(existingSets: WorkoutSet[]): number {

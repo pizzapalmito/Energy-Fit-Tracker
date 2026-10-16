@@ -26,3 +26,7 @@ Recovery and progression values are transparent training estimates, not medical 
 ## Third-party material
 
 Exercise metadata and demonstration sources are tracked in [`docs/licenses`](docs/licenses). No third-party asset is packaged without a recorded source revision and redistribution basis.
+
+## Current catalog selection
+
+The owner-selected catalog contains 374 modern muscle-highlight exercises. All 91 other seeded records are retired from new selection while history and assets remain intact. Read [the selection policy](docs/catalog/SELECTION-POLICY.md) before catalog or import changes. Run `npm run catalog:policy` to verify the pinned cohort and artwork hashes.

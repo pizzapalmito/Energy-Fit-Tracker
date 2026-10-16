@@ -1,3 +1,4 @@
+import { enforceStoredExercisePolicy } from './storedExercisePolicy'
 import type { RepwiseDatabase } from '../data/db'
 import { DexieExerciseRepository } from '../data/repositories/exerciseRepository'
 import { DexieMuscleRepository } from '../data/repositories/muscleRepository'
@@ -52,6 +53,7 @@ export async function seedCatalog(db: RepwiseDatabase, loadCatalog: () => Promis
   const metadataRepo = new DexieMetadataRepository(db)
   const currentVersion = await metadataRepo.get(CATALOG_VERSION_METADATA_KEY)
   if (currentVersion === catalog.version) {
+    await enforceStoredExercisePolicy(db)
     return { status: 'up-to-date', version: catalog.version }
   }
 
@@ -66,10 +68,12 @@ export async function seedCatalog(db: RepwiseDatabase, loadCatalog: () => Promis
         .filter((exercise) => !includedCatalogIds.has(exercise.id))
         .map((exercise) => ({ ...exercise, excluded: true }))
       if (superseded.length > 0) await exerciseRepo.bulkUpsert(superseded)
-      await exerciseRepo.bulkUpsert(catalog.exercises)
+      const customIds = new Set((await db.exercises.where('source').equals('custom').toArray()).map(exercise => exercise.id))
+      await exerciseRepo.bulkUpsert(catalog.exercises.filter(exercise => !customIds.has(exercise.id)))
       await muscleRepo.bulkUpsert(catalog.muscles)
       await metadataRepo.set(CATALOG_VERSION_METADATA_KEY, catalog.version)
       await metadataRepo.set(CATALOG_SOURCE_COMMIT_METADATA_KEY, catalog.sourceCommit)
+      await enforceStoredExercisePolicy(db)
     })
   } catch (error) {
     throw new CatalogSeedError(`Failed to write the exercise catalog to the local database: ${error instanceof Error ? error.message : String(error)}`, error)

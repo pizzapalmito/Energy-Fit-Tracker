@@ -1,8 +1,9 @@
+import { isExerciseSelectable } from '../../catalog/selectionPolicy'
 import type { ScoredExercise, SubstitutionEngine } from '../../domain/contracts'
 import type { Exercise } from '../../domain/models'
 import { PRIMARY_WEIGHT_THRESHOLD } from '../shared/muscleContribution'
 
-export const SUBSTITUTION_ENGINE_VERSION = 'substitution-v2'
+export const SUBSTITUTION_ENGINE_VERSION = 'substitution-v3'
 
 /** Point budget for each scoring factor; must total 100. */
 export const SUBSTITUTION_WEIGHTS = {
@@ -66,7 +67,7 @@ export class WeightedSubstitutionEngine implements SubstitutionEngine {
 
     for (const candidate of candidates) {
       if (candidate.id === source.id) continue
-      if (candidate.excluded) continue
+      if (!isExerciseSelectable(candidate)) continue
       if (!isEquipmentAvailable(candidate, availableEquipment)) continue
 
       const candidatePrimary = primaryMuscleIds(candidate)

@@ -1,0 +1,6 @@
+# These JSON bytes participate in reproducible catalog checksums.
+docs/catalog/muscle-images/manifest.json text eol=lf
+public/catalog/greek-ink-sheets-v1/accepted.json text eol=lf
+public/catalog/catalog.json text eol=lf
+src/catalog/selection-policy.json text eol=lf
+public/icons/*.svg text eol=lf

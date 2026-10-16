@@ -9,6 +9,8 @@ coverage/
 *.local
 
 # Local development-agent notes and assignments
-/AGENTS.md
 /PROJECT-MEMORY.md
 /docs/JUNIOR-*-ASSIGNMENT.md
+
+# Local verification evidence
+/*-validation.log

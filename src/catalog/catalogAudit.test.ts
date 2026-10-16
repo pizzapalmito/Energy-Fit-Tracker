@@ -97,10 +97,12 @@ describe('generated catalog audit invariants', () => {
     for (const id of muscleIds) expect(referenced.has(id)).toBe(true)
   })
 
-  it('every exercise is marked as catalog-sourced and not excluded', () => {
+  it('retains all catalog records with exactly 374 selectable and 91 retired', () => {
+    expect(catalog.exercises.filter(e => !e.excluded)).toHaveLength(374)
+    expect(catalog.exercises.filter(e => e.excluded)).toHaveLength(91)
     for (const exercise of catalog.exercises) {
       expect(exercise.source).toBe('catalog')
-      expect(exercise.excluded).toBe(false)
+      expect(typeof exercise.excluded).toBe('boolean')
     }
   })
 })

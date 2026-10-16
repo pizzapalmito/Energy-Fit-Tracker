@@ -1,10 +1,11 @@
+import { applyExercisePolicy } from './selectionPolicy'
 import type { Exercise, MuscleContribution } from '../domain/models'
 import type { Muscle } from '../data/types'
 import { PRIMARY_CONTRIBUTION_WEIGHT, SECONDARY_CONTRIBUTION_WEIGHT } from '../engines/shared/muscleContribution'
 import type { ImportResult, RawExerciseRecord } from './types'
 
 export const CATALOG_IMPORTER_VERSION = 'catalog-importer-v3'
-export const CATALOG_CURATION_VERSION = 'focused-strength-v2'
+export const CATALOG_CURATION_VERSION = 'modern-muscle-374-v1'
 export const CORE_STRENGTH_EXERCISE_COUNT = 438
 export const FOCUSED_STRENGTH_EXERCISE_COUNT = 465
 
@@ -257,7 +258,7 @@ export function importCatalog(raw: unknown): ImportResult {
   const curatedExercises = curateFocusedStrengthLibrary(exercises)
   const includedMuscleIds = new Set(curatedExercises.flatMap((exercise) => exercise.muscles.map((muscle) => muscle.muscleId)))
   return {
-    exercises: curatedExercises,
+    exercises: curatedExercises.map(applyExercisePolicy),
     muscles: [...musclesById.values()].filter((muscle) => includedMuscleIds.has(muscle.id)),
     rejected,
     curatedOutCount: exercises.length - curatedExercises.length,

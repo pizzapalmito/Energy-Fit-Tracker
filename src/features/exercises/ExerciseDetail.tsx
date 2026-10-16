@@ -1,3 +1,4 @@
+import { isExerciseSelectable } from '../../catalog/selectionPolicy'
 import { useEffect, useRef, useState } from 'react'
 import type { Exercise } from '../../domain/models'
 import { db as appDb } from '../../data/appDatabase'
@@ -129,7 +130,7 @@ export function ExerciseDetail({ db = appDb, exercise, onClose }: { db?: Repwise
           {active.status === 'error' && <p role="alert" className={styles.addStatus}>{t('exerciseDetail.addError')}</p>}
           {active.status === 'ready' && !active.value && <p className={styles.addStatus}>{t('exerciseDetail.noActiveWorkout')} <a className={styles.openWorkoutButton} href="#/today" onClick={onClose}>{t('workout.startFromToday')}</a></p>}
           {active.status === 'ready' && active.value && !addedForCurrent && (
-            <button type="button" className={styles.addButton} onClick={handleAddClick} disabled={addState === 'adding'}>
+            <button type="button" className={styles.addButton} onClick={handleAddClick} disabled={addState === 'adding' || !isExerciseSelectable(exercise)}>
               {addState === 'adding' ? t('exerciseDetail.adding') : t('exerciseDetail.addToWorkout')}
             </button>
           )}

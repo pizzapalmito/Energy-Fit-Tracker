@@ -19,7 +19,7 @@ function exercise(overrides: Partial<Exercise> = {}): Exercise {
     ],
     defaultRestSeconds: 120,
     media: [],
-    source: 'catalog',
+    source: 'custom',
     excluded: false,
     ...overrides,
   }

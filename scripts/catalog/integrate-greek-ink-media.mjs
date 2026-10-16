@@ -1,3 +1,4 @@
+import { loadSelectionPolicy } from './selection-policy.mjs'
 import { cp, mkdir, readdir, readFile, rename, rm, stat, writeFile } from 'node:fs/promises'
 import { createHash } from 'node:crypto'
 import { extname, join, resolve } from 'node:path'
@@ -38,6 +39,8 @@ export async function integrateGreekInkMedia({
   publicCatalogDir = resolve(repoRoot, 'public/catalog'),
   auditReportPath = resolve(repoRoot, 'docs/catalog/audit-report.json'),
 } = {}) {
+  const policy = await loadSelectionPolicy(repoRoot)
+  const selectable = new Set(policy.selectable.map(entry => entry.id))
   const libraryRoot = resolve(repoRoot, 'public/catalog/greek-ink-sheets-v1')
   const exercisesRoot = resolve(libraryRoot, 'exercises')
   const mediaRoot = resolve(publicCatalogDir, 'media')
@@ -57,10 +60,13 @@ export async function integrateGreekInkMedia({
   const exerciseIds = acceptedSheets.flatMap((sheet) => sheet.exerciseIds)
   const catalogById = new Map(catalog.exercises.map((exercise) => [exercise.id, exercise]))
   for (const exerciseId of exerciseIds) {
-    const tile = join(exercisesRoot, `${exerciseId}.webp`)
-    await stat(tile)
     const exercise = catalogById.get(exerciseId)
     if (!exercise) throw new Error(`Accepted Greek-ink exercise is absent from the catalog: ${exerciseId}`)
+    exercise.excluded = !selectable.has(exerciseId)
+    // A standalone legacy overlay must never overwrite pinned modern artwork.
+    if (selectable.has(exerciseId)) continue
+    const tile = join(exercisesRoot, `${exerciseId}.webp`)
+    await stat(tile)
     const destination = join(mediaRoot, exerciseId)
     await mkdir(destination, { recursive: true })
     await copyIfChanged(tile, join(destination, 'start.webp'))

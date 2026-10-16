@@ -1,13 +1,13 @@
 {
   "name": "energy-fit-tracker-pwa",
   "private": true,
-  "version": "0.1.1-beta.2",
+  "version": "0.1.1-beta.3",
   "type": "module",
   "scripts": {
     "dev": "vite",
     "preview": "vite preview",
     "preview:phone": "vite preview --host 0.0.0.0 --port 4173 --strictPort",
-    "build": "tsc -b && vite build",
+    "build": "npm run catalog:policy && tsc -b && vite build",
     "typecheck": "tsc -b --pretty false",
     "lint": "eslint . --max-warnings 0",
     "test": "vitest run",
@@ -16,7 +16,8 @@
     "catalog:build": "node scripts/catalog/cli-build.mjs",
     "catalog:check": "node scripts/catalog/cli-check.mjs",
     "brand:scan": "node scripts/quality/brand-scan.mjs",
-    "validate": "npm run lint && npm run typecheck && npm test && npm run brand:scan && npm run build"
+    "validate": "npm run lint && npm run typecheck && npm test && npm run brand:scan && npm run build",
+    "catalog:policy": "node scripts/catalog/check-selection-policy.mjs"
   },
   "dependencies": {
     "dexie": "^4.4.6",

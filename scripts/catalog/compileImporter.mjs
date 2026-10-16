@@ -1,16 +1,14 @@
 import { createRequire } from 'node:module'
-import { mkdtempSync, mkdirSync, readFileSync, writeFileSync, rmSync } from 'node:fs'
+import { mkdtempSync, mkdirSync, readFileSync, writeFileSync, rmSync, copyFileSync } from 'node:fs'
 import { dirname, join } from 'node:path'
 import { tmpdir } from 'node:os'
 import ts from 'typescript'
 
 const require = createRequire(import.meta.url)
 
-// The importer's only runtime (non `import type`) dependency. Both files are
-// transpiled per-file (matching the project's own `isolatedModules: true`),
-// so TypeScript elides every `import type` and only this relative import
-// needs to be mirrored on disk for CommonJS `require` resolution to work.
-const RUNTIME_SOURCE_FILES = ['src/engines/shared/muscleContribution.ts', 'src/catalog/importer.ts']
+// Mirror the importer's runtime dependencies, including the owner-selected
+// cohort, in the temporary CommonJS build. Type-only imports are elided.
+const RUNTIME_SOURCE_FILES = ['src/engines/shared/muscleContribution.ts', 'src/catalog/selectionPolicy.ts', 'src/catalog/importer.ts']
 
 function transpileToCommonJs(sourceText, fileName) {
   const { outputText, diagnostics } = ts.transpileModule(sourceText, {
@@ -51,6 +49,7 @@ export function loadRealImporter(repoRoot) {
       writeFileSync(outPath, compiled, 'utf8')
       if (relPath.endsWith('importer.ts')) importerOutPath = outPath
     }
+    copyFileSync(join(repoRoot, 'src/catalog/selection-policy.json'), join(tmpRoot, 'src/catalog/selection-policy.json'))
     const mod = require(importerOutPath)
     if (typeof mod.importCatalog !== 'function') {
       throw new Error('Compiled importer module did not export importCatalog as expected.')
